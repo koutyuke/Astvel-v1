@@ -9,8 +9,8 @@
     "lint": "eslint --ignore-path .gitignore src/**/*.{ts,tsx}",
     "lint-fix": "eslint --fix --ignore-path .gitignore src/**/*.{ts,tsx}",
     "fmt": "prettier --write src/**/*.{ts,tsx}",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
+    "sb": "start-storybook -p 6006",
+    "sb-build": "build-storybook",
     "test": "jest --watch"
   },
   "dependencies": {
