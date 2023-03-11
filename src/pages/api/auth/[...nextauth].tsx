@@ -1,7 +1,5 @@
-import nextAuth, { Account, Profile, User } from "next-auth";
+import nextAuth from "next-auth";
 import DiscordProvider from "next-auth/providers/discord";
-import { JWT } from "next-auth/jwt";
-import { AdapterUser } from "next-auth/adapters";
 
 export default nextAuth({
   providers: [
@@ -13,17 +11,7 @@ export default nextAuth({
   ],
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
-    async jwt({
-      token,
-      account,
-      user,
-      profile,
-    }: {
-      token: JWT;
-      account?: Account | undefined | null;
-      user?: User | AdapterUser;
-      profile?: Profile;
-    }) {
+    async jwt({ token, account, user, profile }) {
       if (account && user && profile) {
         return {
           profile,
