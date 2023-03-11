@@ -6,6 +6,12 @@ declare module "next-auth" {
     accessToken?: string;
     refreshToken?: string;
   }
+  interface Profile {
+    discriminator: string;
+    username: string;
+    image_url: string | null;
+    banner_color: string;
+  }
 }
 
 declare module "next-auth/jwt" {
