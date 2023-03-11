@@ -15,31 +15,31 @@ const SingInButton: FC = () => {
 
   if (session) {
     return (
-      <button
-        type="button"
+      <div
         className={`${isOpenLogout ? "" : " hover:outline"} relative rounded-md outline-offset-4 outline-orange-500 `}
-        onClick={() => setOpenLogout(!isOpenLogout)}
         onMouseLeave={() => {
           if (isOpenLogout) {
             setOpenLogout(false);
           }
         }}
       >
-        <SingInUser
-          image={session.profile?.image_url ?? ""}
-          name={session.profile?.username ?? ""}
-          discriminator={session.profile?.discriminator ?? ""}
-        />
         {isOpenLogout && (
           <button
             type="button"
-            className="absolute top-[3.25rem]  left-[2.6rem] flex h-10 w-[7.4rem] items-center justify-center rounded-xl bg-[#ff4da6] outline-[3px] outline-green-500 hover:outline"
+            className="absolute top-10 left-[2.6rem] flex h-[3.15rem] w-[7.4rem] items-center justify-center rounded-b-xl bg-[#ff4da6] pt-2 hover:bg-green-500"
             onClick={() => signOut({ callbackUrl: "/" })}
           >
             <span>Sing Out</span>
           </button>
         )}
-      </button>
+        <button type="button" onClick={() => setOpenLogout(!isOpenLogout)} className="z-10">
+          <SingInUser
+            image={session.profile?.image_url ?? ""}
+            name={session.profile?.username ?? ""}
+            discriminator={session.profile?.discriminator ?? ""}
+          />
+        </button>
+      </div>
     );
   }
 
