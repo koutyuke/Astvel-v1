@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Image from "next/image";
-import LogInOutButton from "components/elements/button/LogInOut";
+import LogInOutButton from "components/elements/button/SingInOut";
 import HeaderLinks from "./HeaderLinks";
 
 const Header: FC = () => (
