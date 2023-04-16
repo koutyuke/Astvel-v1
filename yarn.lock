@@ -1695,6 +1695,42 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@dnd-kit/accessibility@npm:^3.0.0":
+  version: 3.0.1
+  resolution: "@dnd-kit/accessibility@npm:3.0.1"
+  dependencies:
+    tslib: "npm:^2.0.0"
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: 8a1a36c5bc570e0e36bd5a975345046bbd177c7cd2ac3e281cecb221428768a58d1a73e32c9c731cf785facbed2c323418f03fc643c0773241b8992791481e5b
+  languageName: node
+  linkType: hard
+
+"@dnd-kit/core@npm:^6.0.8":
+  version: 6.0.8
+  resolution: "@dnd-kit/core@npm:6.0.8"
+  dependencies:
+    "@dnd-kit/accessibility": "npm:^3.0.0"
+    "@dnd-kit/utilities": "npm:^3.2.1"
+    tslib: "npm:^2.0.0"
+  peerDependencies:
+    react: ">=16.8.0"
+    react-dom: ">=16.8.0"
+  checksum: ca23c47c62d2419f8012311d7e41298e7e267989f4cf43183e8d33acd16bc409581ebc7e2d1170d46cdb4ddc94eacbc500ede98b0f65dbb1f4403d9ff34dc7bc
+  languageName: node
+  linkType: hard
+
+"@dnd-kit/utilities@npm:^3.2.1":
+  version: 3.2.1
+  resolution: "@dnd-kit/utilities@npm:3.2.1"
+  dependencies:
+    tslib: "npm:^2.0.0"
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: 19ac669f52aeada5bd7828b9d576b4db2848097df346c004c1c8f343a0d948e31eadf36c726ec1e00ca35a7101c9ca501d327e8907470548aba8d0793fa492d3
+  languageName: node
+  linkType: hard
+
 "@eslint/eslintrc@npm:^1.4.1":
   version: 1.4.1
   resolution: "@eslint/eslintrc@npm:1.4.1"
@@ -5324,6 +5360,8 @@ __metadata:
   resolution: "astvel@workspace:."
   dependencies:
     "@babel/core": "npm:^7.21.0"
+    "@dnd-kit/core": "npm:^6.0.8"
+    "@dnd-kit/utilities": "npm:^3.2.1"
     "@mdx-js/react": "npm:^1.6.22"
     "@radix-ui/react-avatar": "npm:^1.0.2"
     "@storybook/addon-actions": "npm:^6.5.16"
@@ -5366,6 +5404,7 @@ __metadata:
     jest-environment-jsdom: "npm:^29.4.3"
     next: "npm:^12"
     next-auth: "npm:^4.19.2"
+    next-intercept-stdout: "npm:^1.0.1"
     postcss: "npm:^8.4.21"
     postcss-nested: "npm:^6.0.1"
     prettier: "npm:^2.8.4"
@@ -10031,6 +10070,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"intercept-stdout@npm:^0.1.2":
+  version: 0.1.2
+  resolution: "intercept-stdout@npm:0.1.2"
+  dependencies:
+    lodash.toarray: "npm:^3.0.0"
+  checksum: f67351a3ac03fa624a87663243b0b6d7a0c07189354bfe82918d26e7bdcce84d7b019b117b67835427eb575cebc7e57696a9c6d157fb8f889e6a4198c1d55d2a
+  languageName: node
+  linkType: hard
+
 "internal-slot@npm:^1.0.3, internal-slot@npm:^1.0.4":
   version: 1.0.5
   resolution: "internal-slot@npm:1.0.5"
@@ -11660,10 +11708,56 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash._arraycopy@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "lodash._arraycopy@npm:3.0.0"
+  checksum: 56a8b29dbb799290c1c214913a159420d33a8918d42e6a2b2d68c1f5f25178e361ffd667e6e69721ea082802001321cf63f5a83ca8eb23bea95e39292ec8c4bf
+  languageName: node
+  linkType: hard
+
+"lodash._basevalues@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "lodash._basevalues@npm:3.0.0"
+  checksum: 97dc6beabf93b90c1c5eae44f9cade9265f5ef69043739de1f7dee470601301057a1b693be225eedc9dd4ae8406c82727d170b881858add33f9072e04ea9af24
+  languageName: node
+  linkType: hard
+
+"lodash._getnative@npm:^3.0.0":
+  version: 3.9.1
+  resolution: "lodash._getnative@npm:3.9.1"
+  checksum: 2bdbaa32ffea44360557b83611381b66c4515ebe99b0ae074cde09f0b9270accdb07246d0cd65eacca77ce9e06c0cd4da26bfd0cb36d03e69a844c434403586e
+  languageName: node
+  linkType: hard
+
 "lodash.debounce@npm:^4.0.8":
   version: 4.0.8
   resolution: "lodash.debounce@npm:4.0.8"
   checksum: 960a803d892fc09976e7b559c36407000c3beb136cf20e88ae6a694b5d7cf64e31dde516079140a945ba695b7d5e5699444d61fd13a70ff7de409bbae7604005
+  languageName: node
+  linkType: hard
+
+"lodash.isarguments@npm:^3.0.0":
+  version: 3.1.0
+  resolution: "lodash.isarguments@npm:3.1.0"
+  checksum: 2508395914b6bb037d90d2f151bd71b40fe3433956cd04eab9dd1073c62203e816bbfa74d9174002a05decd888db9377aa64637c7513c8e9f218a091301b9111
+  languageName: node
+  linkType: hard
+
+"lodash.isarray@npm:^3.0.0":
+  version: 3.0.4
+  resolution: "lodash.isarray@npm:3.0.4"
+  checksum: e2f0380c3757b44519c81aa8b9559131b1ec028c9998cfddf052b96dfb8fd3037e587295a89399a45df9211d75247ca536f0f1fc32c21569369340d118a617b8
+  languageName: node
+  linkType: hard
+
+"lodash.keys@npm:^3.0.0":
+  version: 3.1.2
+  resolution: "lodash.keys@npm:3.1.2"
+  dependencies:
+    lodash._getnative: "npm:^3.0.0"
+    lodash.isarguments: "npm:^3.0.0"
+    lodash.isarray: "npm:^3.0.0"
+  checksum: 1ecf2fd696cdbede88974b1f8f816157a1a4cc54dcc79e0c00bbbd2ba778cdea5fb5e4c041752361800413951275f0752e5a4a0f1d37d2eec6318882e807b967
   languageName: node
   linkType: hard
 
@@ -11678,6 +11772,17 @@ __metadata:
   version: 4.6.2
   resolution: "lodash.merge@npm:4.6.2"
   checksum: aab58997bcad5ab91908498bbe8ce4b78e8e5025a944f9a8b6a1f11bd2afba4dae55c61dfdcefadadd6cd04efb0c998109e14c633f4aa1f8b4541e4d252c69ea
+  languageName: node
+  linkType: hard
+
+"lodash.toarray@npm:^3.0.0":
+  version: 3.0.2
+  resolution: "lodash.toarray@npm:3.0.2"
+  dependencies:
+    lodash._arraycopy: "npm:^3.0.0"
+    lodash._basevalues: "npm:^3.0.0"
+    lodash.keys: "npm:^3.0.0"
+  checksum: e09f0594b1cacc0f0f0a40c98a2e84e4e83aeef85c5fa923f6883e01830ed2e0a71bd604123ab9497945639a6e30ddcc7ad9a6c933e0e4ab2461a95ac6d5e892
   languageName: node
   linkType: hard
 
@@ -12438,6 +12543,15 @@ __metadata:
     nodemailer:
       optional: true
   checksum: e2d3477c811ec448964a7be0a26f52c2350590a719374b4beefd5e12f11ffbab7e117849bcfbf86247315fac92a14390f21b573f8179f61dec1ec3e51489c7f2
+  languageName: node
+  linkType: hard
+
+"next-intercept-stdout@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "next-intercept-stdout@npm:1.0.1"
+  dependencies:
+    intercept-stdout: "npm:^0.1.2"
+  checksum: 82aea24283e3596df07ec32764cb23c886b243834f675805046732ecca3248cc161b70060cec96acfe603e255eea4b93bdce3149733070890715b57f1e5877aa
   languageName: node
   linkType: hard
 
