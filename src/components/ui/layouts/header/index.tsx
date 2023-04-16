@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Image from "next/image";
-import SingInButton from "components/elements/button/SingInOut";
+import SingInButton from "components/elements/button/singInOut";
 import HeaderLinks from "./HeaderLinks";
 
 const Header: FC = () => (
