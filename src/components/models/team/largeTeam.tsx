@@ -1,13 +1,14 @@
-import { ComponentPropsWithoutRef, FC } from "react";
+import { ComponentPropsWithoutRef, forwardRef } from "react";
 
 type Props = {
   emoji: string;
   name: string;
 } & Omit<ComponentPropsWithoutRef<"div">, "children">;
 
-const LargeTeamModel: FC<Props> = ({ emoji, name, className, ...other }) => (
+const LargeTeamModel = forwardRef<HTMLDivElement, Props>(({ emoji, name, className, ...other }, ref) => (
   <div
     className={`${className} flex h-24 w-20 flex-col items-center justify-center space-y-1 rounded-xl p-[2px]`}
+    ref={ref}
     {...other}
   >
     <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-white">
@@ -17,6 +18,8 @@ const LargeTeamModel: FC<Props> = ({ emoji, name, className, ...other }) => (
       <span className="text-xs">{name}</span>
     </p>
   </div>
-);
+));
+
+LargeTeamModel.displayName = "LargeTeamModel";
 
 export default LargeTeamModel;
