@@ -1,4 +1,3 @@
-import { Console, group } from "console";
 import { SetterOrUpdater } from "recoil";
 import { Category, NoCategory, NoSelect, Team } from "types/models/data";
 import { DragDataType, DropDataType } from "types/models/dnd";

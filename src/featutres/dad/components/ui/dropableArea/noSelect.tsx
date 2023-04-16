@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Member, Team } from "types/models/data";
-import { GroupNoSelectType, GroupType } from "types/models/dnd";
-import { UniqueIdentifier, useDroppable } from "@dnd-kit/core";
+import { GroupNoSelectType } from "types/models/dnd";
+import { useDroppable } from "@dnd-kit/core";
 import DraggableElememntPlaceArea from "../dragableElementPlaceArea";
 
 type Props = {
