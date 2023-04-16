@@ -1,10 +1,10 @@
-import { ComponentPropsWithoutRef, FC } from "react";
+import { ComponentPropsWithRef, FC } from "react";
 import * as Avatar from "@radix-ui/react-avatar";
 
 type Props = {
   imageUrl: string;
   name: string;
-} & Omit<ComponentPropsWithoutRef<"div">, "children">;
+} & Omit<ComponentPropsWithRef<"div">, "children">;
 
 const SmallMemberModel: FC<Props> = ({ imageUrl, name, className, ...props }) => (
   <Avatar.Root

@@ -1,9 +1,9 @@
-import { ComponentPropsWithoutRef, FC } from "react";
+import { ComponentPropsWithRef, FC } from "react";
 
 type Props = {
   emoji: string;
   name: string;
-} & Omit<ComponentPropsWithoutRef<"div">, "children">;
+} & Omit<ComponentPropsWithRef<"div">, "children">;
 
 const SmallTeamModel: FC<Props> = ({ emoji, name, className, ...props }) => (
   <div className={`${className} flex h-[30px] items-center justify-start space-x-1 pl-1`} {...props}>
