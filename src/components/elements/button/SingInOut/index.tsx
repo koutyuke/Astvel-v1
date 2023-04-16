@@ -1,6 +1,6 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import { FC, useState } from "react";
-import SingInUser from "components/models/user/SingInUser";
+import SingInUser from "components/models/user/singInUser";
 
 const SingInButton: FC = () => {
   const { data: session, status } = useSession();
