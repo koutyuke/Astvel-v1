@@ -6,7 +6,6 @@ import LargeDragOverlay from "./large";
 const Overlay: FC = () => {
   const dropAnimationConfig: DropAnimation = {
     keyframes({ transform }) {
-      // console.log(transform.initial, transform.final);
       return [
         { transform: CSS.Transform.toString(transform.initial) },
         { transform: CSS.Transform.toString(transform.final) },

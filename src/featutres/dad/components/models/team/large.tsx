@@ -24,7 +24,6 @@ const LargeDragTeam: FC<Props> = ({ team, group }) => {
     <div
       className={`${isDragging ? "bg-gray-400" : "hover:outline"} h-24 w-20 touch-none rounded-xl outline-orange-500`}
       ref={setNodeRef}
-      // onTransitionEnd={()=>{console.log(9)}}
     >
       {!isDragging && (
         <LargeTeamModel
