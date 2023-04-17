@@ -16,7 +16,7 @@ const InternalLink: FC<Props> = ({ url, children: text, className }) => {
     <button
       type="button"
       onClick={() => router.push(url)}
-      className={`${className} rounded-md outline-offset-2 outline-orange-500 hover:outline`}
+      className={`${className} rounded-md outline-offset-4 outline-orange-500 hover:outline`}
     >
       {text}
     </button>

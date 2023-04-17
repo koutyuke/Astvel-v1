@@ -23,7 +23,7 @@ const NoSelectDropableArea: FC<Props> = ({ group, members, teams }) => {
     <div
       className={`${
         isOver ? "outline" : ""
-      } h-full w-full overflow-auto rounded-md bg-orange-100 outline-2 outline-offset-4 outline-orange-400`}
+      } h-full w-full overflow-auto rounded-md bg-orange-100  outline-offset-4 outline-orange-500`}
       ref={setNodeRef}
     >
       <DraggableElememntPlaceArea group={group} members={members} teams={teams} />
