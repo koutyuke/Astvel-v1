@@ -8,7 +8,7 @@ type Props = {
 
 const SmallMemberModel: FC<Props> = ({ imageUrl, name, className, ...props }) => (
   <Avatar.Root
-    className={`${className} flex h-[30px] items-center justify-start space-x-1 bg-gray-300 pl-1`}
+    className={`${className} flex h-[30px] items-center justify-start space-x-2 bg-gray-300 pl-1`}
     {...props}
   >
     <Avatar.Image src={imageUrl} className="h-6 w-6 rounded-full" />
