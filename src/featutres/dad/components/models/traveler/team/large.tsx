@@ -1,4 +1,4 @@
-import LargeTeamModel from "components/models/team/largeTeam";
+import LargeTeamModel from "components/models/traveler/team/largeTeam";
 import { FC } from "react";
 import { GroupType } from "types/models/dnd";
 import { Team } from "types/models/data";

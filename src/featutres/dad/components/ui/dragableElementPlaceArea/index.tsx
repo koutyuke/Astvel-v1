@@ -1,8 +1,8 @@
 import { ComponentPropsWithoutRef, FC } from "react";
 import { GroupType } from "types/models/dnd";
 import { Member, Team } from "types/models/data";
-import LargeDragMember from "../../models/member/large";
-import LargeDragTeam from "../../models/team/large";
+import LargeDragMember from "../../models/traveler/member/large";
+import LargeDragTeam from "../../models/traveler/team/large";
 import LabelWrapper from "./Label";
 
 type Props = {

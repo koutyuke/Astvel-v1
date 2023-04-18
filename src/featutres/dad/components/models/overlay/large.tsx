@@ -1,8 +1,8 @@
 import { Active } from "@dnd-kit/core";
 import { FC } from "react";
 import { DragDataType } from "types/models/dnd";
-import LargeMemberModel from "components/models/member/largeMember";
-import LargeTeamModel from "components/models/team/largeTeam";
+import LargeMemberModel from "components/models/traveler/member/largeMember";
+import LargeTeamModel from "components/models/traveler/team/largeTeam";
 
 type Props = {
   active: Active | null;

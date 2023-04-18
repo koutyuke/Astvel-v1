@@ -1,4 +1,4 @@
-import LargeMemberModel from "components/models/member/largeMember";
+import LargeMemberModel from "components/models/traveler/member/largeMember";
 import { FC } from "react";
 import { GroupType } from "types/models/dnd";
 import { Member } from "types/models/data";

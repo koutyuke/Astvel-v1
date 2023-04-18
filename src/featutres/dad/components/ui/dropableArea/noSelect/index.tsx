@@ -2,12 +2,12 @@ import { FC } from "react";
 import { Member, Team } from "types/models/data";
 import { GroupNoSelectType } from "types/models/dnd";
 import { useDroppable } from "@dnd-kit/core";
-import DraggableElememntPlaceArea from "../dragableElementPlaceArea";
+import DraggableElememntPlaceArea from "../../dragableElementPlaceArea";
 
 type Props = {
   group: GroupNoSelectType;
   members: Member[];
-  teams?: Team[];
+  teams: Team[];
 };
 
 const NoSelectDropableArea: FC<Props> = ({ group, members, teams }) => {
@@ -29,10 +29,6 @@ const NoSelectDropableArea: FC<Props> = ({ group, members, teams }) => {
       <DraggableElememntPlaceArea group={group} members={members} teams={teams} />
     </div>
   );
-};
-
-NoSelectDropableArea.defaultProps = {
-  teams: undefined,
 };
 
 export default NoSelectDropableArea;
