@@ -2435,6 +2435,36 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@radix-ui/primitive@npm:1.0.0":
+  version: 1.0.0
+  resolution: "@radix-ui/primitive@npm:1.0.0"
+  dependencies:
+    "@babel/runtime": "npm:^7.13.10"
+  checksum: af39dd7fe5a5e41dd4a7bafd9ded2585793170b528211c9f43a64182e480a966152b8a94c93f7e4fb652943643b55e2613e7429900195f65a24c41305868ef66
+  languageName: node
+  linkType: hard
+
+"@radix-ui/react-accordion@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "@radix-ui/react-accordion@npm:1.1.1"
+  dependencies:
+    "@babel/runtime": "npm:^7.13.10"
+    "@radix-ui/primitive": "npm:1.0.0"
+    "@radix-ui/react-collapsible": "npm:1.0.2"
+    "@radix-ui/react-collection": "npm:1.0.2"
+    "@radix-ui/react-compose-refs": "npm:1.0.0"
+    "@radix-ui/react-context": "npm:1.0.0"
+    "@radix-ui/react-direction": "npm:1.0.0"
+    "@radix-ui/react-id": "npm:1.0.0"
+    "@radix-ui/react-primitive": "npm:1.0.2"
+    "@radix-ui/react-use-controllable-state": "npm:1.0.0"
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  checksum: 720dbd3396795cf3b6c6944084a6e98458fae4ebae2d33e38e847ff806a3881332c6a0eee7de40296050d82d8f0d5533908e72870434cfd2c2b6bd4dba64071c
+  languageName: node
+  linkType: hard
+
 "@radix-ui/react-avatar@npm:^1.0.2":
   version: 1.0.2
   resolution: "@radix-ui/react-avatar@npm:1.0.2"
@@ -2448,6 +2478,42 @@ __metadata:
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
   checksum: f9b642ffa49f179d36a2eadae413c5b81a78b94ced903a1a7635177b85727b16fec87cb7fe9ec45637af3db90e5915c0e7b504e2aa3c57f634607c7c249a8f85
+  languageName: node
+  linkType: hard
+
+"@radix-ui/react-collapsible@npm:1.0.2":
+  version: 1.0.2
+  resolution: "@radix-ui/react-collapsible@npm:1.0.2"
+  dependencies:
+    "@babel/runtime": "npm:^7.13.10"
+    "@radix-ui/primitive": "npm:1.0.0"
+    "@radix-ui/react-compose-refs": "npm:1.0.0"
+    "@radix-ui/react-context": "npm:1.0.0"
+    "@radix-ui/react-id": "npm:1.0.0"
+    "@radix-ui/react-presence": "npm:1.0.0"
+    "@radix-ui/react-primitive": "npm:1.0.2"
+    "@radix-ui/react-use-controllable-state": "npm:1.0.0"
+    "@radix-ui/react-use-layout-effect": "npm:1.0.0"
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  checksum: 89a64b502e8b08ee1a991834762792902b5cb71f2d08c40d44e6751b0f9690682cba9248bc7d624f7bb7f871b541ad5d7d449db5997e946474d0e0e9db4f7a8f
+  languageName: node
+  linkType: hard
+
+"@radix-ui/react-collection@npm:1.0.2":
+  version: 1.0.2
+  resolution: "@radix-ui/react-collection@npm:1.0.2"
+  dependencies:
+    "@babel/runtime": "npm:^7.13.10"
+    "@radix-ui/react-compose-refs": "npm:1.0.0"
+    "@radix-ui/react-context": "npm:1.0.0"
+    "@radix-ui/react-primitive": "npm:1.0.2"
+    "@radix-ui/react-slot": "npm:1.0.1"
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  checksum: 4347c9eef2c6bf92cfc9bfbb22e910386c294af77cd1ee0de16cc912847482f9d90479f1e19acfde11212e9de091c2912cc4457752979a497f087b513960ccfa
   languageName: node
   linkType: hard
 
@@ -2470,6 +2536,52 @@ __metadata:
   peerDependencies:
     react: ^16.8 || ^17.0 || ^18.0
   checksum: 6ea7aa4fa89ef9f4c6de6c89a8419779e8f2a992d8c46fdd55e97eb05f2e9683f0c8522692312f99d87b8f87e49aab9a4bec1fa5ab4398d18893759f4afc8633
+  languageName: node
+  linkType: hard
+
+"@radix-ui/react-direction@npm:1.0.0":
+  version: 1.0.0
+  resolution: "@radix-ui/react-direction@npm:1.0.0"
+  dependencies:
+    "@babel/runtime": "npm:^7.13.10"
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+  checksum: 9f5ad7e9976409ae8b26a6b927980f7dbe89f6889afa671a2ce3af41e3b891e1e5b26b29ba8c300695a2d74c3da0bf312b8704d82f887cf197f75f00b6820af0
+  languageName: node
+  linkType: hard
+
+"@radix-ui/react-icons@npm:^1.3.0":
+  version: 1.3.0
+  resolution: "@radix-ui/react-icons@npm:1.3.0"
+  peerDependencies:
+    react: ^16.x || ^17.x || ^18.x
+  checksum: b93696fd23afdfa5efb68a1ecebe902ff199e02a0957344de61fae4affdba10e919d61c40139ac1e25e6301eeda6b3360c3766736f5d4b8d9493ba83938ae9ea
+  languageName: node
+  linkType: hard
+
+"@radix-ui/react-id@npm:1.0.0":
+  version: 1.0.0
+  resolution: "@radix-ui/react-id@npm:1.0.0"
+  dependencies:
+    "@babel/runtime": "npm:^7.13.10"
+    "@radix-ui/react-use-layout-effect": "npm:1.0.0"
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+  checksum: 864802534364df7f40c16252c928903206797359221fddf8e9146f94763365188ccf4617a502c6954251f390ece2961eb71f1b5d3ad72c53c52ae9f8b489bf99
+  languageName: node
+  linkType: hard
+
+"@radix-ui/react-presence@npm:1.0.0":
+  version: 1.0.0
+  resolution: "@radix-ui/react-presence@npm:1.0.0"
+  dependencies:
+    "@babel/runtime": "npm:^7.13.10"
+    "@radix-ui/react-compose-refs": "npm:1.0.0"
+    "@radix-ui/react-use-layout-effect": "npm:1.0.0"
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  checksum: c421215897f572375f0fa3522cf04217e1dfcaa1bcc39926165e27d3c6132dd845caf9d999f252e57ad8d7f3a0991aa2a4ce53fb9d047f146457d0380300c741
   languageName: node
   linkType: hard
 
@@ -2506,6 +2618,18 @@ __metadata:
   peerDependencies:
     react: ^16.8 || ^17.0 || ^18.0
   checksum: b72d418f072cfbed9035fd5d7dcf15bd0feb8108356581b9224ef0c1ba180a8ef9ae5a7ace108f92939c9bf240aa263f43e4741d7e4c58f4afa796f8942aad7c
+  languageName: node
+  linkType: hard
+
+"@radix-ui/react-use-controllable-state@npm:1.0.0":
+  version: 1.0.0
+  resolution: "@radix-ui/react-use-controllable-state@npm:1.0.0"
+  dependencies:
+    "@babel/runtime": "npm:^7.13.10"
+    "@radix-ui/react-use-callback-ref": "npm:1.0.0"
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+  checksum: 345144f10720288e36a6c19bfe8b05b1d639fd21d2c05f3eaecc2efd973fdee13b2214fd4ca4e1476ef4b58cc7dfbb4bf2a4cc683ca7195be61ee44462254a96
   languageName: node
   linkType: hard
 
@@ -5363,7 +5487,9 @@ __metadata:
     "@dnd-kit/core": "npm:^6.0.8"
     "@dnd-kit/utilities": "npm:^3.2.1"
     "@mdx-js/react": "npm:^1.6.22"
+    "@radix-ui/react-accordion": "npm:^1.1.1"
     "@radix-ui/react-avatar": "npm:^1.0.2"
+    "@radix-ui/react-icons": "npm:^1.3.0"
     "@storybook/addon-actions": "npm:^6.5.16"
     "@storybook/addon-docs": "npm:^6.5.16"
     "@storybook/addon-essentials": "npm:^6.5.16"
