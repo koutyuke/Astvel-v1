@@ -42,7 +42,29 @@ const dataUpdate = ({
   noSelectMembersData,
   teamsData,
 }: Props): void => {
-  if (overData !== undefined && activeData !== undefined && overData.group.type !== activeData.group.type) {
+  if (overData !== undefined && activeData !== undefined) {
+    if (
+      overData.group.type === "channel" &&
+      activeData.group.type === "channel" &&
+      overData.group.channelId === activeData.group.channelId
+    ) {
+      return;
+    }
+    if (
+      overData.group.type === "team" &&
+      activeData.group.type === "team" &&
+      overData.group.teamId === activeData.group.teamId
+    ) {
+      return;
+    }
+    if (overData.group.type === "noSelect" && activeData.group.type === "noSelect") {
+      return;
+    }
+
+    let newDestinationChannelsData: DestinationChannelsDataType = destinationChannelsData;
+    let newNoSelectMembersData: NoSelectMembersDataType = noSelectMembersData;
+    let newTeamsData: TeamsDataType = teamsData;
+
     if (activeData.dataType === "member") {
       const changeTarget = activeData.data;
 
@@ -53,7 +75,7 @@ const dataUpdate = ({
         const targetChannelId = activeData.group.channelId;
 
         if (activeData.group.categoryType === "category") {
-          const changeCategory = destinationChannelsData.data.categories.find(
+          const changeCategory = newDestinationChannelsData.data.categories.find(
             category => category.id === targetCategoryId,
           );
 
@@ -61,12 +83,12 @@ const dataUpdate = ({
           const copyMembers = changeChannel?.members.filter(member => member.id !== changeTarget.id);
 
           if (changeCategory !== undefined && changeChannel !== undefined && copyMembers !== undefined) {
-            setDestinationChannels({
-              ...destinationChannelsData,
+            newDestinationChannelsData = {
+              ...newDestinationChannelsData,
               data: {
-                ...destinationChannelsData.data,
+                ...newDestinationChannelsData.data,
                 categories: [
-                  ...destinationChannelsData.data.categories.filter(category => category.id !== targetCategoryId),
+                  ...newDestinationChannelsData.data.categories.filter(category => category.id !== targetCategoryId),
                   {
                     ...changeCategory,
                     channels: [
@@ -79,23 +101,23 @@ const dataUpdate = ({
                   },
                 ],
               },
-            });
+            };
           }
         } else if (activeData.group.categoryType === "noCategory") {
-          const changeChannel = destinationChannelsData.data.noCategory.channels.find(
+          const changeChannel = newDestinationChannelsData.data.noCategory.channels.find(
             channel => channel.id === targetChannelId,
           );
           const copyMembers = changeChannel?.members.slice().filter(member => member.id !== changeTarget.id);
 
           if (changeChannel !== undefined && copyMembers !== undefined) {
-            setDestinationChannels({
-              ...destinationChannelsData,
+            newDestinationChannelsData = {
+              ...newDestinationChannelsData,
               data: {
-                ...destinationChannelsData.data,
+                ...newDestinationChannelsData.data,
                 noCategory: {
-                  ...destinationChannelsData.data.noCategory,
+                  ...newDestinationChannelsData.data.noCategory,
                   channels: [
-                    ...destinationChannelsData.data.noCategory.channels.filter(
+                    ...newDestinationChannelsData.data.noCategory.channels.filter(
                       channel => channel.id !== targetChannelId,
                     ),
                     {
@@ -105,34 +127,34 @@ const dataUpdate = ({
                   ],
                 },
               },
-            });
+            };
           }
         }
       } else if (activeData.group.type === "noSelect") {
-        const copyMembers = noSelectMembersData.data.members.slice().filter(member => member.id !== changeTarget.id);
-        setNoSelectMembers({
-          ...noSelectMembersData,
+        const copyMembers = newNoSelectMembersData.data.members.slice().filter(member => member.id !== changeTarget.id);
+        newNoSelectMembersData = {
+          ...newNoSelectMembersData,
           data: {
-            ...noSelectMembersData.data,
+            ...newNoSelectMembersData.data,
             members: copyMembers,
           },
-        });
+        };
       } else if (activeData.group.type === "team") {
         const targetTeamId = activeData.group.teamId;
-        const changeTeam = teamsData.data.find(team => team.id === targetTeamId);
+        const changeTeam = newTeamsData.data.find(team => team.id === targetTeamId);
         const copyMembers = changeTeam?.members.slice().filter(member => member.id !== changeTarget.id);
 
         if (changeTeam !== undefined && copyMembers !== undefined) {
-          setTeams({
-            ...teamsData,
+          newTeamsData = {
+            ...newTeamsData,
             data: [
-              ...teamsData.data.filter(team => team.id !== targetTeamId),
+              ...newTeamsData.data.filter(team => team.id !== targetTeamId),
               {
                 ...changeTeam,
                 members: copyMembers,
               },
             ],
-          });
+          };
         }
       }
 
@@ -142,7 +164,7 @@ const dataUpdate = ({
         const targetCategoryId = overData.group.categoryId;
 
         if (overData.group.categoryType === "category") {
-          const changeCategory = destinationChannelsData.data.categories.find(
+          const changeCategory = newDestinationChannelsData.data.categories.find(
             category => category.id === targetCategoryId,
           );
           const changeChannel = changeCategory?.channels.find(channel => channel.id === targetChannelId);
@@ -150,12 +172,12 @@ const dataUpdate = ({
           copyMembers?.push(changeTarget);
 
           if (changeCategory !== undefined && changeChannel !== undefined && copyMembers !== undefined) {
-            setDestinationChannels({
-              ...destinationChannelsData,
+            newDestinationChannelsData = {
+              ...newDestinationChannelsData,
               data: {
-                ...destinationChannelsData.data,
+                ...newDestinationChannelsData.data,
                 categories: [
-                  ...destinationChannelsData.data.categories.filter(category => category.id !== targetCategoryId),
+                  ...newDestinationChannelsData.data.categories.filter(category => category.id !== targetCategoryId),
                   {
                     ...changeCategory,
                     channels: [
@@ -168,24 +190,24 @@ const dataUpdate = ({
                   },
                 ],
               },
-            });
+            };
           }
         } else if (overData.group.categoryType === "noCategory") {
-          const changeChannel = destinationChannelsData.data.noCategory.channels.find(
+          const changeChannel = newDestinationChannelsData.data.noCategory.channels.find(
             channel => channel.id === targetChannelId,
           );
           const copyMembers = changeChannel?.members.slice();
           copyMembers?.push(changeTarget);
 
           if (changeChannel !== undefined && copyMembers !== undefined) {
-            setDestinationChannels({
-              ...destinationChannelsData,
+            newDestinationChannelsData = {
+              ...newDestinationChannelsData,
               data: {
-                ...destinationChannelsData.data,
+                ...newDestinationChannelsData.data,
                 noCategory: {
-                  ...destinationChannelsData.data.noCategory,
+                  ...newDestinationChannelsData.data.noCategory,
                   channels: [
-                    ...destinationChannelsData.data.noCategory.channels.filter(
+                    ...newDestinationChannelsData.data.noCategory.channels.filter(
                       channel => channel.id !== targetChannelId,
                     ),
                     {
@@ -195,37 +217,37 @@ const dataUpdate = ({
                   ],
                 },
               },
-            });
+            };
           }
         }
       } else if (overData.group.type === "noSelect") {
-        const copyMembers = noSelectMembersData.data.members.slice();
+        const copyMembers = newNoSelectMembersData.data.members.slice();
         copyMembers.push(changeTarget);
 
-        setNoSelectMembers({
-          ...noSelectMembersData,
+        newNoSelectMembersData = {
+          ...newNoSelectMembersData,
           data: {
-            ...noSelectMembersData.data,
+            ...newNoSelectMembersData.data,
             members: copyMembers,
           },
-        });
+        };
       } else if (overData.group.type === "team") {
         const targetTeamId = overData.group.teamId;
-        const changeTeam = teamsData.data.find(team => team.id === targetTeamId);
+        const changeTeam = newTeamsData.data.find(team => team.id === targetTeamId);
         const copyMembers = changeTeam?.members.slice();
         copyMembers?.push(changeTarget);
 
         if (changeTeam !== undefined && copyMembers !== undefined) {
-          setTeams({
-            ...teamsData,
+          newTeamsData = {
+            ...newTeamsData,
             data: [
-              ...teamsData.data.filter(team => team.id !== targetTeamId),
+              ...newTeamsData.data.filter(team => team.id !== targetTeamId),
               {
                 ...changeTeam,
                 members: copyMembers,
               },
             ],
-          });
+          };
         }
       }
     } else if (activeData.dataType === "team") {
@@ -238,7 +260,7 @@ const dataUpdate = ({
         const targetChannelId = activeData.group.channelId;
 
         if (activeData.group.categoryType === "category") {
-          const changeCategory = destinationChannelsData.data.categories.find(
+          const changeCategory = newDestinationChannelsData.data.categories.find(
             category => category.id === targetCategoryId,
           );
 
@@ -246,12 +268,12 @@ const dataUpdate = ({
           const copyTeams = changeChannel?.teams.filter(team => team.id !== changeTarget.id);
 
           if (changeCategory !== undefined && changeChannel !== undefined && copyTeams !== undefined) {
-            setDestinationChannels({
-              ...destinationChannelsData,
+            newDestinationChannelsData = {
+              ...newDestinationChannelsData,
               data: {
-                ...destinationChannelsData.data,
+                ...newDestinationChannelsData.data,
                 categories: [
-                  ...destinationChannelsData.data.categories.filter(category => category.id !== targetCategoryId),
+                  ...newDestinationChannelsData.data.categories.filter(category => category.id !== targetCategoryId),
                   {
                     ...changeCategory,
                     channels: [
@@ -264,23 +286,23 @@ const dataUpdate = ({
                   },
                 ],
               },
-            });
+            };
           }
         } else if (activeData.group.categoryType === "noCategory") {
-          const changeChannel = destinationChannelsData.data.noCategory.channels.find(
+          const changeChannel = newDestinationChannelsData.data.noCategory.channels.find(
             channel => channel.id === targetChannelId,
           );
           const copyTeams = changeChannel?.teams.slice().filter(team => team.id !== changeTarget.id);
 
           if (changeChannel !== undefined && copyTeams !== undefined) {
-            setDestinationChannels({
-              ...destinationChannelsData,
+            newDestinationChannelsData = {
+              ...newDestinationChannelsData,
               data: {
-                ...destinationChannelsData.data,
+                ...newDestinationChannelsData.data,
                 noCategory: {
-                  ...destinationChannelsData.data.noCategory,
+                  ...newDestinationChannelsData.data.noCategory,
                   channels: [
-                    ...destinationChannelsData.data.noCategory.channels.filter(
+                    ...newDestinationChannelsData.data.noCategory.channels.filter(
                       channel => channel.id !== targetChannelId,
                     ),
                     {
@@ -290,18 +312,18 @@ const dataUpdate = ({
                   ],
                 },
               },
-            });
+            };
           }
         }
       } else if (activeData.group.type === "noSelect") {
-        const copyTeams = noSelectMembersData.data.teams.slice().filter(team => team.id !== changeTarget.id);
-        setNoSelectMembers({
-          ...noSelectMembersData,
+        const copyTeams = newNoSelectMembersData.data.teams.slice().filter(team => team.id !== changeTarget.id);
+        newNoSelectMembersData = {
+          ...newNoSelectMembersData,
           data: {
-            ...noSelectMembersData.data,
+            ...newNoSelectMembersData.data,
             teams: copyTeams,
           },
-        });
+        };
       }
 
       // 追加処置
@@ -310,7 +332,7 @@ const dataUpdate = ({
         const targetCategoryId = overData.group.categoryId;
 
         if (overData.group.categoryType === "category") {
-          const changeCategory = destinationChannelsData.data.categories.find(
+          const changeCategory = newDestinationChannelsData.data.categories.find(
             category => category.id === targetCategoryId,
           );
           const changeChannel = changeCategory?.channels.find(channel => channel.id === targetChannelId);
@@ -320,12 +342,12 @@ const dataUpdate = ({
           // console.log(changeCategory, changeChannel,copyTeams)
 
           if (changeCategory !== undefined && changeChannel !== undefined && copyTeams !== undefined) {
-            setDestinationChannels({
-              ...destinationChannelsData,
+            newDestinationChannelsData = {
+              ...newDestinationChannelsData,
               data: {
-                ...destinationChannelsData.data,
+                ...newDestinationChannelsData.data,
                 categories: [
-                  ...destinationChannelsData.data.categories.filter(category => category.id !== targetCategoryId),
+                  ...newDestinationChannelsData.data.categories.filter(category => category.id !== targetCategoryId),
                   {
                     ...changeCategory,
                     channels: [
@@ -338,26 +360,26 @@ const dataUpdate = ({
                   },
                 ],
               },
-            });
+            };
 
             // console.log("ok")
           }
         } else if (overData.group.categoryType === "noCategory") {
-          const changeChannel = destinationChannelsData.data.noCategory.channels.find(
+          const changeChannel = newDestinationChannelsData.data.noCategory.channels.find(
             channel => channel.id === targetChannelId,
           );
           const copyTeams = changeChannel?.teams.slice();
           copyTeams?.push(changeTarget);
 
           if (changeChannel !== undefined && copyTeams !== undefined) {
-            setDestinationChannels({
-              ...destinationChannelsData,
+            newDestinationChannelsData = {
+              ...newDestinationChannelsData,
               data: {
-                ...destinationChannelsData.data,
+                ...newDestinationChannelsData.data,
                 noCategory: {
-                  ...destinationChannelsData.data.noCategory,
+                  ...newDestinationChannelsData.data.noCategory,
                   channels: [
-                    ...destinationChannelsData.data.noCategory.channels.filter(
+                    ...newDestinationChannelsData.data.noCategory.channels.filter(
                       channel => channel.id !== targetChannelId,
                     ),
                     {
@@ -367,21 +389,25 @@ const dataUpdate = ({
                   ],
                 },
               },
-            });
+            };
           }
         }
       } else if (overData.group.type === "noSelect") {
-        const copyTeams = noSelectMembersData.data.teams.slice();
+        const copyTeams = newNoSelectMembersData.data.teams.slice();
         copyTeams.push(changeTarget);
-        setNoSelectMembers({
-          ...noSelectMembersData,
+        newNoSelectMembersData = {
+          ...newNoSelectMembersData,
           data: {
-            ...noSelectMembersData.data,
+            ...newNoSelectMembersData.data,
             teams: copyTeams,
           },
-        });
+        };
       }
     }
+
+    setDestinationChannels(newDestinationChannelsData);
+    setNoSelectMembers(newNoSelectMembersData);
+    setTeams(newTeamsData);
   }
 };
 
