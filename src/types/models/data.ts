@@ -57,11 +57,6 @@ export type Team = {
   isShow: boolean;
 };
 
-export type NoSelect = {
-  members: Member[];
-  teams: Team[];
-};
-
 export type Member = {
   id: number;
   discordId: number;
@@ -82,4 +77,14 @@ export type Role = {
     moveMember: boolean;
     manageRoles: boolean;
   };
+};
+
+export type NoSelect = {
+  members: Member[];
+  teams: Team[];
+};
+
+export type DestinationChannels = {
+  noCategory: NoCategory;
+  categories: Category[];
 };
