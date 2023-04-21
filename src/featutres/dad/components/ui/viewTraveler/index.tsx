@@ -4,7 +4,7 @@ import SmallMemberModel from "components/models/traveler/member/smallMember";
 import SmallTeamModel from "components/models/traveler/team/smallTeam";
 
 type Props = {
-  teams: Team[];
+  teams?: Team[];
   members: Member[];
 } & ComponentPropsWithoutRef<"div">;
 
@@ -23,7 +23,7 @@ const ViewTraveler: FC<Props> = ({ teams, members, className, ...other }) => {
       )}
       {isTeamsShow !== 0 && (
         <div className="">
-          {teams.map(team => (
+          {teams?.map(team => (
             <SmallTeamModel emoji={team.iconEmoji} name={team.name} key={team.id} />
           ))}
         </div>
@@ -31,5 +31,9 @@ const ViewTraveler: FC<Props> = ({ teams, members, className, ...other }) => {
     </div>
   );
 };
+
+ViewTraveler.defaultProps = {
+  teams: undefined
+}
 
 export default ViewTraveler;
