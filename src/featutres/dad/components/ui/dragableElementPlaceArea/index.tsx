@@ -19,7 +19,7 @@ const DraggableElememntPlaceArea: FC<Props> = ({ group, members, className, team
     <div className={`${className} space-y-1 rounded-md p-2 text-black `} {...others}>
       {isMembersShow !== 0 && (
         <LabelWrapper label="Member">
-          <div className="pl-2">
+          <div className="grid w-full grid-cols-[repeat(auto-fit,5rem)] grid-rows-[repeat(auto-fit,6rem)]">
             {members.map(member => (
               <LargeDragMember member={member} group={group} key={member.id} />
             ))}
@@ -28,7 +28,7 @@ const DraggableElememntPlaceArea: FC<Props> = ({ group, members, className, team
       )}
       {isTeamsShow !== 0 && (
         <LabelWrapper label="Team">
-          <div className="grid w-full grid-cols-[repeat(auto-fit,5rem)] grid-rows-[repeat(auto-fit,6rem)] pl-2">
+          <div className="grid w-full grid-cols-[repeat(auto-fit,5rem)] grid-rows-[repeat(auto-fit,6rem)]">
             {teams?.map(team => (
               <LargeDragTeam team={team} group={group} key={team.id} />
             ))}
