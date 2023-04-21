@@ -1,16 +1,18 @@
 import { FC } from "react";
-import { Member, Team } from "types/models/data";
+import { NoSelect } from "types/models/data";
 import { GroupNoSelectType } from "types/models/dnd";
 import { useDroppable } from "@dnd-kit/core";
 import DraggableElememntPlaceArea from "../../dragableElementPlaceArea";
 
 type Props = {
-  group: GroupNoSelectType;
-  members: Member[];
-  teams: Team[];
+  data: NoSelect;
 };
 
-const NoSelectDropableArea: FC<Props> = ({ group, members, teams }) => {
+const NoSelectDropableArea: FC<Props> = ({ data }) => {
+  const group: GroupNoSelectType = {
+    type: "noSelect",
+  };
+  const { members, teams } = data;
   const { isOver, setNodeRef } = useDroppable({
     id: "noSelect",
     data: {
@@ -23,10 +25,12 @@ const NoSelectDropableArea: FC<Props> = ({ group, members, teams }) => {
     <div
       className={`${
         isOver ? "outline" : ""
-      } h-full w-full overflow-auto rounded-md bg-orange-100  outline-offset-4 outline-orange-500`}
+      } h-[calc(100%_-_3rem)] w-full  rounded-md bg-gradient-to-br from-[#4158D0] via-[#C850C0] to-[#FFCC70] p-2 outline-offset-4 outline-orange-500`}
       ref={setNodeRef}
     >
-      <DraggableElememntPlaceArea group={group} members={members} teams={teams} />
+      <div className="h-full overflow-auto rounded-lg bg-orange-100">
+        <DraggableElememntPlaceArea group={group} members={members} teams={teams} className="min-h-full" />
+      </div>
     </div>
   );
 };
