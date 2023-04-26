@@ -23,13 +23,15 @@ const NoSelectDropableArea: FC<Props> = ({ data }) => {
 
   return (
     <div
-      className={`${
-        isOver ? "outline" : ""
-      } h-[calc(100%_-_3rem)] w-full  rounded-md bg-gradient-to-br from-[#4158D0] via-[#C850C0] to-[#FFCC70] p-2 outline-offset-4 outline-orange-500`}
+      className="h-[calc(100%_-_3rem)] w-full  rounded-md bg-gradient-to-br from-[#4158D0] via-[#C850C0] to-[#FFCC70] p-2"
       ref={setNodeRef}
     >
-      <div className="h-full overflow-auto rounded-lg bg-orange-100">
-        <DraggableElememntPlaceArea group={group} members={members} teams={teams} className="min-h-full" />
+      <div
+        className={`${
+          isOver ? "scale-[1.015] drop-shadow-xl" : ""
+        } h-full overflow-auto rounded-lg bg-[rgba(255,255,255,0.6);] outline-2 outline-offset-[3px] outline-white duration-300`}
+      >
+        <DraggableElememntPlaceArea group={group} members={members} teams={teams} className="min-h-full py-2" />
       </div>
     </div>
   );

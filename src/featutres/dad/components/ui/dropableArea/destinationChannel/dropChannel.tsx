@@ -33,8 +33,8 @@ const DropChannel: FC<Props> = ({ channel, group }) => {
   return (
     <div
       className={`${
-        isOver ? "outline" : ""
-      } flex w-full flex-col items-center justify-center space-y-1 rounded-lg bg-gray-200 px-2 py-1 outline-2 outline-offset-[3px] outline-orange-400`}
+        isOver ? "scale-[1.02] drop-shadow-lg" : ""
+      } flex w-full flex-col items-center justify-center space-y-1 rounded-lg bg-[rgba(255,255,255,0.6)] px-2 py-1 duration-300`}
       ref={setNodeRef}
     >
       <div
@@ -54,7 +54,7 @@ const DropChannel: FC<Props> = ({ channel, group }) => {
 
       <div className="w-full">
         {isOpen || isKeep ? (
-          <DraggableElememntPlaceArea group={group} members={members} teams={teams} className="bg-orange-100" />
+          <DraggableElememntPlaceArea group={group} members={members} teams={teams} className="" />
         ) : (
           <ViewTraveler members={members} teams={teams} />
         )}
