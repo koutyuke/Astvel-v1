@@ -33,7 +33,7 @@ const ViewTraveler: FC<Props> = ({ teams, members, className, ...other }) => {
 };
 
 ViewTraveler.defaultProps = {
-  teams: undefined
-}
+  teams: undefined,
+};
 
 export default ViewTraveler;
