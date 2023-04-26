@@ -22,7 +22,7 @@ const CategoryAccordion: FC<Props> = ({ children, name, value, isPrivate }) => (
         <ChevronDownIcon className="h-4 w-4 duration-300 group-data-[state=closed]:rotate-180" />
       </Accordion.Trigger>
     </Accordion.Header>
-    <Accordion.Content>{children}</Accordion.Content>
+    <Accordion.Content className="flex flex-col space-y-1">{children}</Accordion.Content>
   </Accordion.Item>
 );
 
