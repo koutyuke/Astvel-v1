@@ -1,4 +1,5 @@
-import { Member, Team } from "./data";
+import { Member } from "./data";
+import { Team } from "./group";
 
 export type GroupChannelType = {
   type: "channel";

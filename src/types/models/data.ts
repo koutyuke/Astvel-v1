@@ -40,20 +40,8 @@ export type Channel = {
   discordId: number;
   name: string;
   isPrivate: boolean;
-
-  // role & member
-
-  members: Member[];
-  teams: Team[];
-  isHome: boolean;
-  isShow: boolean;
-};
-
-export type Team = {
-  id: number;
-  name: string;
-  iconEmoji: string;
-  members: Member[];
+  members: number[];
+  teams: number[];
   isShow: boolean;
 };
 
@@ -77,14 +65,4 @@ export type Role = {
     moveMember: boolean;
     manageRoles: boolean;
   };
-};
-
-export type NoSelect = {
-  members: Member[];
-  teams: Team[];
-};
-
-export type DestinationChannels = {
-  noCategory: NoCategory;
-  categories: Category[];
 };

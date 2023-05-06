@@ -1,4 +1,5 @@
-import { DestinationChannels, Guild, NoSelect, Team, UserInfo } from "types/models/data";
+import { Guild, Member, UserInfo } from "types/models/data";
+import { DestinationChannels, NoSelect, Team } from "types/models/group";
 
 export type UserKey =
   | {
@@ -24,6 +25,8 @@ export type GuildKey = AddStatus<Guild>;
 
 export type DestinationChannelsKey = AddStatus<DestinationChannels>;
 
-export type TeamKey = AddStatus<Team[]>;
-
 export type NoSelectKey = AddStatus<NoSelect>;
+
+export type TeamsKey = AddStatus<Team[]>;
+
+export type MembersKey = AddStatus<Member[]>;
