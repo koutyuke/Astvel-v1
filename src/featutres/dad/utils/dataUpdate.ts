@@ -1,7 +1,8 @@
 import { SetterOrUpdater } from "recoil";
-import { Category, NoCategory, NoSelect, Team } from "types/models/data";
+import { Category, NoCategory } from "types/models/data";
 import { DragDataType, DropDataType } from "types/models/dnd";
-import { DestinationChannelsKey, NoSelectKey, TeamKey } from "types/recoil/keys";
+import { NoSelect, Team } from "types/models/group";
+import { DestinationChannelsKey, NoSelectKey, TeamsKey } from "types/recoil/keys";
 
 type DestinationChannelsDataType = {
   status: "success";
@@ -26,7 +27,7 @@ type Props = {
   overData: DropDataType | undefined;
   setDestinationChannels: SetterOrUpdater<DestinationChannelsKey>;
   setNoSelectMembers: SetterOrUpdater<NoSelectKey>;
-  setTeams: SetterOrUpdater<TeamKey>;
+  setTeams: SetterOrUpdater<TeamsKey>;
   destinationChannelsData: DestinationChannelsDataType;
   noSelectMembersData: NoSelectMembersDataType;
   teamsData: TeamsDataType;
@@ -86,7 +87,7 @@ const dataUpdate = ({
 
           const categoryIndex = sliceCategories.findIndex(category => category.id === targetCategoryId);
           const channelIndex = sliceChannels?.findIndex(channel => channel.id === targetChannelId);
-          const memberIndex = sliceMembers?.findIndex(member => member.id === changeTarget.id);
+          const memberIndex = sliceMembers?.indexOf(changeTarget.id);
 
           if (
             categoryIndex !== undefined &&
@@ -124,7 +125,7 @@ const dataUpdate = ({
           const sliceMembers = updateChannel?.members.slice();
 
           const channelIndex = sliceChannels.findIndex(channel => channel.id === targetChannelId);
-          const memberIndex = sliceMembers?.findIndex(member => member.id === changeTarget.id);
+          const memberIndex = sliceMembers?.indexOf(changeTarget.id);
 
           if (
             channelIndex !== undefined &&
@@ -153,7 +154,7 @@ const dataUpdate = ({
           }
         }
       } else if (activeData.group.type === "noSelect") {
-        const copyMembers = newNoSelectMembersData.data.members.slice().filter(member => member.id !== changeTarget.id);
+        const copyMembers = newNoSelectMembersData.data.members.slice().filter(member => member !== changeTarget.id);
         newNoSelectMembersData = {
           ...newNoSelectMembersData,
           data: {
@@ -168,7 +169,7 @@ const dataUpdate = ({
         const updateTeam = sliceTeams.find(team => team.id === targetTeamId);
         const sliceMembers = updateTeam?.members.slice();
         const teamIndex = sliceTeams.findIndex(team => team.id === targetTeamId);
-        const memberIndex = sliceMembers?.findIndex(member => member.id === changeTarget.id);
+        const memberIndex = sliceMembers?.indexOf(changeTarget.id);
 
         if (
           memberIndex !== undefined &&
@@ -218,7 +219,7 @@ const dataUpdate = ({
             updateChannel &&
             sliceMembers
           ) {
-            sliceMembers.push(changeTarget);
+            sliceMembers.push(changeTarget.id);
             slcieChannels.splice(channelIndex, 1, {
               ...updateChannel,
               members: sliceMembers,
@@ -244,7 +245,7 @@ const dataUpdate = ({
           const channelIndex = sliceChannels.findIndex(channel => channel.id === targetChannelId);
 
           if (channelIndex !== undefined && channelIndex !== -1 && updateChannel && sliceMembers && sliceChannels) {
-            sliceMembers.push(changeTarget);
+            sliceMembers.push(changeTarget.id);
             sliceChannels.splice(channelIndex, 1, {
               ...updateChannel,
               members: sliceMembers,
@@ -263,7 +264,7 @@ const dataUpdate = ({
         }
       } else if (overData.group.type === "noSelect") {
         const copyMembers = newNoSelectMembersData.data.members.slice();
-        copyMembers.push(changeTarget);
+        copyMembers.push(changeTarget.id);
 
         newNoSelectMembersData = {
           ...newNoSelectMembersData,
@@ -280,7 +281,7 @@ const dataUpdate = ({
         const teamIndex = sliceTeams.findIndex(team => team.id === targetTeamId);
 
         if (teamIndex !== undefined && sliceMembers && sliceTeams && updateTeam && teamIndex !== -1) {
-          sliceMembers.push(changeTarget);
+          sliceMembers.push(changeTarget.id);
           sliceTeams.splice(teamIndex, 1, {
             ...updateTeam,
             members: sliceMembers,
@@ -310,7 +311,7 @@ const dataUpdate = ({
 
           const categoryIndex = sliceCategories.findIndex(category => category.id === targetCategoryId);
           const channelIndex = sliceChannels?.findIndex(channel => channel.id === targetChannelId);
-          const memberIndex = sliceTeams?.findIndex(team => team.id === changeTarget.id);
+          const memberIndex = sliceTeams?.indexOf(changeTarget.id);
 
           if (
             categoryIndex !== undefined &&
@@ -348,8 +349,7 @@ const dataUpdate = ({
           const sliceTeams = updateChannel?.teams.slice();
 
           const channelIndex = sliceChannels.findIndex(channel => channel.id === targetChannelId);
-          const teamIndex = sliceTeams?.findIndex(team => team.id === changeTarget.id);
-
+          const teamIndex = sliceTeams?.indexOf(changeTarget.id);
           if (
             channelIndex !== undefined &&
             teamIndex !== undefined &&
@@ -377,7 +377,7 @@ const dataUpdate = ({
           }
         }
       } else if (activeData.group.type === "noSelect") {
-        const copyTeams = newNoSelectMembersData.data.teams.slice().filter(team => team.id !== changeTarget.id);
+        const copyTeams = newNoSelectMembersData.data.teams.slice().filter(team => team !== changeTarget.id);
         newNoSelectMembersData = {
           ...newNoSelectMembersData,
           data: {
@@ -413,7 +413,7 @@ const dataUpdate = ({
             updateChannel &&
             sliceTeams
           ) {
-            sliceTeams.push(changeTarget);
+            sliceTeams.push(changeTarget.id);
             slcieChannels.splice(channelIndex, 1, {
               ...updateChannel,
               teams: sliceTeams,
@@ -439,7 +439,7 @@ const dataUpdate = ({
           const channelIndex = sliceChannels.findIndex(channel => channel.id === targetChannelId);
 
           if (channelIndex !== undefined && channelIndex !== -1 && updateChannel && sliceTeams && sliceChannels) {
-            sliceTeams.push(changeTarget);
+            sliceTeams.push(changeTarget.id);
             sliceChannels.splice(channelIndex, 1, {
               ...updateChannel,
               teams: sliceTeams,
@@ -458,7 +458,7 @@ const dataUpdate = ({
         }
       } else if (overData.group.type === "noSelect") {
         const copyTeams = newNoSelectMembersData.data.teams.slice();
-        copyTeams.push(changeTarget);
+        copyTeams.push(changeTarget.id);
         newNoSelectMembersData = {
           ...newNoSelectMembersData,
           data: {
