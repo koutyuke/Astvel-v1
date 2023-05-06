@@ -5,6 +5,8 @@ import { DragDataType, GroupChannelType } from "types/models/dnd";
 import { HiSpeakerWave } from "react-icons/hi2";
 import { IoLockClosed } from "react-icons/io5";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
+import { useRecoilValue } from "recoil";
+import { memberListSelector, teamListSelector } from "utils/recoil/keys";
 import ViewTraveler from "../../viewTraveler";
 import DraggableElememntPlaceArea from "../../dragableElementPlaceArea";
 
@@ -14,7 +16,7 @@ type Props = {
 };
 
 const DropChannel: FC<Props> = ({ channel, group }) => {
-  const { id, isPrivate, name, members, teams } = channel;
+  const { id, isPrivate, name, members: memberIdList, teams: teamIdList } = channel;
   const { isOver, active, setNodeRef } = useDroppable({
     id,
     data: {
@@ -29,6 +31,13 @@ const DropChannel: FC<Props> = ({ channel, group }) => {
     activeGroup.group.type === "channel" &&
     activeGroup.group.channelId === id
   );
+
+  const members = useRecoilValue(memberListSelector(memberIdList));
+  const teams = useRecoilValue(teamListSelector(teamIdList));
+
+  if (members === undefined || teams === undefined) {
+    return <div>error</div>;
+  }
 
   return (
     <div

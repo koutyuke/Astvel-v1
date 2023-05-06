@@ -1,7 +1,9 @@
 import { FC } from "react";
-import { NoSelect } from "types/models/data";
 import { GroupNoSelectType } from "types/models/dnd";
 import { useDroppable } from "@dnd-kit/core";
+import { NoSelect } from "types/models/group";
+import { useRecoilValue } from "recoil";
+import { memberListSelector, teamListSelector } from "utils/recoil/keys";
 import DraggableElememntPlaceArea from "../../dragableElementPlaceArea";
 
 type Props = {
@@ -12,7 +14,7 @@ const NoSelectDropableArea: FC<Props> = ({ data }) => {
   const group: GroupNoSelectType = {
     type: "noSelect",
   };
-  const { members, teams } = data;
+  const { members: memberIdList, teams: teamIdList } = data;
   const { isOver, setNodeRef } = useDroppable({
     id: "noSelect",
     data: {
@@ -21,9 +23,16 @@ const NoSelectDropableArea: FC<Props> = ({ data }) => {
     },
   });
 
+  const members = useRecoilValue(memberListSelector(memberIdList));
+  const teams = useRecoilValue(teamListSelector(teamIdList));
+
+  if (members === undefined || teams === undefined) {
+    return <div>error</div>;
+  }
+
   return (
     <div
-      className="h-[calc(100%_-_3rem)] w-full  rounded-md bg-gradient-to-br from-[#4158D0] via-[#C850C0] to-[#FFCC70] p-2"
+      className="h-full w-full  rounded-md bg-gradient-to-br from-[#4158D0] via-[#C850C0] to-[#FFCC70] p-2"
       ref={setNodeRef}
     >
       <div
