@@ -7,8 +7,8 @@ import { IoLockClosed } from "react-icons/io5";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { useRecoilValue } from "recoil";
 import { memberListSelector, teamListSelector } from "utils/recoil/keys";
-import ViewTraveler from "../../viewTraveler";
-import DraggableElememntPlaceArea from "../../dragableElementPlaceArea";
+import ViewTravelers from "../../viewTraveler";
+import DragTravelers from "../../dragableArea";
 
 type Props = {
   channel: Channel;
@@ -63,9 +63,9 @@ const DropChannel: FC<Props> = ({ channel, group }) => {
 
       <div className="w-full">
         {isOpen || isKeep ? (
-          <DraggableElememntPlaceArea group={group} members={members} teams={teams} className="" />
+          <DragTravelers group={group} members={members} teams={teams} className="" />
         ) : (
-          <ViewTraveler members={members} teams={teams} />
+          <ViewTravelers members={members} teams={teams} />
         )}
       </div>
     </div>

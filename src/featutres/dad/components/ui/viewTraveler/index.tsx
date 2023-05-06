@@ -9,7 +9,7 @@ type Props = {
   members: Member[];
 } & ComponentPropsWithoutRef<"div">;
 
-const ViewTraveler: FC<Props> = ({ teams, members, className, ...other }) => {
+const ViewTravelers: FC<Props> = ({ teams, members, className, ...other }) => {
   const isMembersShow = members.filter(member => member.isShow).length;
   const isTeamsShow = teams === undefined ? 0 : teams.filter(team => team.isShow).length;
 
@@ -33,8 +33,8 @@ const ViewTraveler: FC<Props> = ({ teams, members, className, ...other }) => {
   );
 };
 
-ViewTraveler.defaultProps = {
+ViewTravelers.defaultProps = {
   teams: undefined,
 };
 
-export default ViewTraveler;
+export default ViewTravelers;

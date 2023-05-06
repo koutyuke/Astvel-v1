@@ -12,7 +12,7 @@ type Props = {
   teams?: Team[];
 } & ComponentPropsWithoutRef<"div">;
 
-const DraggableElememntPlaceArea: FC<Props> = ({ group, members, className, teams, ...others }) => {
+const DragTravelers: FC<Props> = ({ group, members, className, teams, ...others }) => {
   const isMembersShow = members.filter(member => member.isShow).length;
   const isTeamsShow = teams === undefined ? 0 : teams.filter(team => team.isShow).length;
 
@@ -40,8 +40,8 @@ const DraggableElememntPlaceArea: FC<Props> = ({ group, members, className, team
   );
 };
 
-DraggableElememntPlaceArea.defaultProps = {
+DragTravelers.defaultProps = {
   teams: undefined,
 };
 
-export default DraggableElememntPlaceArea;
+export default DragTravelers;

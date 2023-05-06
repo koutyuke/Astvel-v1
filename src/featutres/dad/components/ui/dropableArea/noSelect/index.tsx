@@ -4,7 +4,7 @@ import { useDroppable } from "@dnd-kit/core";
 import { NoSelect } from "types/models/group";
 import { useRecoilValue } from "recoil";
 import { memberListSelector, teamListSelector } from "utils/recoil/keys";
-import DraggableElememntPlaceArea from "../../dragableElementPlaceArea";
+import DragTravelers from "../../dragableArea";
 
 type Props = {
   data: NoSelect;
@@ -40,7 +40,7 @@ const NoSelectDropableArea: FC<Props> = ({ data }) => {
           isOver ? "scale-[1.015] drop-shadow-xl" : ""
         } h-full overflow-auto rounded-lg bg-[rgba(255,255,255,0.6);] outline-2 outline-offset-[3px] outline-white duration-300`}
       >
-        <DraggableElememntPlaceArea group={group} members={members} teams={teams} className="min-h-full py-2" />
+        <DragTravelers group={group} members={members} teams={teams} className="min-h-full py-2" />
       </div>
     </div>
   );

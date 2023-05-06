@@ -6,8 +6,8 @@ import { HiUserGroup } from "react-icons/hi";
 import { Team } from "types/models/group";
 import { memberListSelector } from "utils/recoil/keys";
 import { useRecoilValue } from "recoil";
-import DraggableElememntPlaceArea from "../../dragableElementPlaceArea";
-import ViewTraveler from "../../viewTraveler";
+import DragTravelers from "../../dragableArea";
+import ViewTravelers from "../../viewTraveler";
 
 type Props = {
   group: GroupTeamType;
@@ -58,7 +58,7 @@ const DropTeam: FC<Props> = ({ group, team }) => {
         <ChevronDownIcon className={`${isOpen ? "" : "rotate-180"} h-4 w-4 duration-200`} />
       </div>
       <div className="relative w-full">
-        {isOpen ? <DraggableElememntPlaceArea group={group} members={members} /> : <ViewTraveler members={members} />}
+        {isOpen ? <DragTravelers group={group} members={members} /> : <ViewTravelers members={members} />}
       </div>
     </div>
   );
