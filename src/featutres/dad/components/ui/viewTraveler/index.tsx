@@ -14,7 +14,7 @@ const ViewTraveler: FC<Props> = ({ teams, members, className, ...other }) => {
   const isTeamsShow = teams === undefined ? 0 : teams.filter(team => team.isShow).length;
 
   return (
-    <div className={`${className} w-full pl-4 text-black`} {...other}>
+    <div className={`${className} w-full pl-4 text-gray-600`} {...other}>
       {isMembersShow !== 0 && (
         <div className="">
           {members.map(member => (

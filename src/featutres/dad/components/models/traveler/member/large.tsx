@@ -11,7 +11,6 @@ type Props = {
 
 const LargeDragMember: FC<Props> = ({ member, group }) => {
   const { name, iconUrl, id } = member;
-
   const { attributes, listeners, setNodeRef, isDragging, setActivatorNodeRef } = useDraggable({
     id,
     data: {
@@ -31,7 +30,7 @@ const LargeDragMember: FC<Props> = ({ member, group }) => {
           imageUrl={iconUrl}
           name={name}
           ref={setActivatorNodeRef}
-          className={`${isDragging ? "z-10 bg-gray-200" : "duration-300"}`}
+          className="select-none duration-200"
           {...listeners}
           {...attributes}
         />

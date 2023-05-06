@@ -17,7 +17,7 @@ const DraggableElememntPlaceArea: FC<Props> = ({ group, members, className, team
   const isTeamsShow = teams === undefined ? 0 : teams.filter(team => team.isShow).length;
 
   return (
-    <div className={`${className} space-y-1 rounded-md px-2 text-black `} {...others}>
+    <div className={`${className} space-y-1 rounded-md px-2 text-gray-700`} {...others}>
       {isMembersShow !== 0 && (
         <LabelWrapper label="Member">
           <div className="grid w-full grid-cols-[repeat(auto-fit,5rem)] grid-rows-[repeat(auto-fit,6rem)]">
