@@ -1,5 +1,6 @@
 import type { ComponentPropsWithoutRef, FC } from "react";
-import { Member, Team } from "types/models/data";
+import { Member } from "types/models/data";
+import { Team } from "types/models/group";
 import SmallMemberModel from "components/models/traveler/member/smallMember";
 import SmallTeamModel from "components/models/traveler/team/smallTeam";
 

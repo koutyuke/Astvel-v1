@@ -1,7 +1,7 @@
 import type { FC } from "react";
-import { DestinationChannels } from "types/models/data";
 import { GroupChannelType } from "types/models/dnd";
 import * as Accordion from "@radix-ui/react-accordion";
+import { DestinationChannels } from "types/models/group";
 import DropChannel from "./dropChannel";
 import CategoryAccordion from "./categoryAccordion";
 
@@ -16,7 +16,7 @@ const DestinationChannelDropArea: FC<Props> = ({ data }) => {
     ...categories.filter(category => category.channels.length !== 0).map(category => category.id.toString()),
   ];
   return (
-    <div className="h-[calc(100%_-_3rem)] rounded-lg bg-gradient-to-br from-[#0d6399] to-[#42cba8] py-2">
+    <div className="h-full w-full rounded-lg bg-gradient-to-br from-[#0d6399] to-[#42cba8] py-2">
       <Accordion.Root
         type="multiple"
         className="flex h-full w-full flex-col items-center justify-start space-y-1 overflow-auto px-2"

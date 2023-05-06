@@ -1,8 +1,8 @@
 import LargeTeamModel from "components/models/traveler/team/largeTeam";
 import { FC } from "react";
 import { GroupType } from "types/models/dnd";
-import { Team } from "types/models/data";
 import { useDraggable } from "@dnd-kit/core";
+import { Team } from "types/models/group";
 
 type Props = {
   team: Team;
