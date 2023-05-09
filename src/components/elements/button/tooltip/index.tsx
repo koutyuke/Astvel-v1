@@ -4,14 +4,12 @@ import { FC, ReactNode } from "react";
 type Props = {
   description: string;
   children: ReactNode;
-}
+};
 
-const BaseToolTip:FC<Props> = ({description, children}) => (
+const BaseToolTip: FC<Props> = ({ description, children }) => (
   <Tooltip.Provider>
     <Tooltip.Root>
-      <Tooltip.Trigger asChild>
-        {children}
-      </Tooltip.Trigger>
+      <Tooltip.Trigger asChild>{children}</Tooltip.Trigger>
       <Tooltip.Portal>
         <Tooltip.Content sideOffset={8} className="rounded-lg bg-white px-4 py-2 text-black drop-shadow-xl">
           <p>{description}</p>
@@ -20,6 +18,6 @@ const BaseToolTip:FC<Props> = ({description, children}) => (
       </Tooltip.Portal>
     </Tooltip.Root>
   </Tooltip.Provider>
-)
+);
 
-export default BaseToolTip
+export default BaseToolTip;

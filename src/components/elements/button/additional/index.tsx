@@ -15,7 +15,6 @@ const AdditionalButton: FC<Props> = forwardRef<ElementRef<"button">, Props>(
     >
       <HiOutlinePlusSm color="black" size={20} />
     </button>
-
   ),
 );
 
