@@ -1784,6 +1784,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hookform/resolvers@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "@hookform/resolvers@npm:3.1.0"
+  peerDependencies:
+    react-hook-form: ^7.0.0
+  checksum: 9cda9d60f16851ac6192396cfb789679276511526e7e2e462e2455b93819982db670261750ff693cf732c9ebdd81e79458d669584160d454693e05527f264be8
+  languageName: node
+  linkType: hard
+
 "@humanwhocodes/config-array@npm:^0.11.8":
   version: 0.11.8
   resolution: "@humanwhocodes/config-array@npm:0.11.8"
@@ -5723,6 +5732,7 @@ __metadata:
     "@babel/core": "npm:^7.21.0"
     "@dnd-kit/core": "npm:^6.0.8"
     "@dnd-kit/utilities": "npm:^3.2.1"
+    "@hookform/resolvers": "npm:^3.1.0"
     "@mdx-js/react": "npm:^1.6.22"
     "@radix-ui/react-accordion": "npm:^1.1.1"
     "@radix-ui/react-avatar": "npm:^1.0.2"
@@ -5783,6 +5793,7 @@ __metadata:
     tailwindcss: "npm:^3.2.7"
     ts-jest: "npm:^29.0.5"
     typescript: "npm:*"
+    zod: "npm:^3.21.4"
   languageName: unknown
   linkType: soft
 
@@ -18003,6 +18014,13 @@ __metadata:
   version: 0.1.0
   resolution: "yocto-queue@npm:0.1.0"
   checksum: 63eceacd482622afd71290541a9823a0e5eed88a6b58a5d136a5fb8151ed4d1549c80f28d74d4ad351582f9890635d49e6cf70f8d3cc64948640f839f6a37c70
+  languageName: node
+  linkType: hard
+
+"zod@npm:^3.21.4":
+  version: 3.21.4
+  resolution: "zod@npm:3.21.4"
+  checksum: f25f384f380c49d05a11541093a8d26f07688aa39f6a8adbd6dc338b43f63617bf138734fb1b79800ba374523f6a1bb561f7d401b3cc051fed2715eae5577d0a
   languageName: node
   linkType: hard
 
