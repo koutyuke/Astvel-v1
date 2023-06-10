@@ -3,7 +3,7 @@ import { FC, useState } from "react";
 import { useForm } from "react-hook-form";
 import dynamic from "next/dynamic";
 import { EmojiStyle } from "emoji-picker-react";
-import BaseButton from "components/elements/button/base";
+import BaseButton from "components/elements/button";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
