@@ -3,7 +3,7 @@ import { GroupNoSelectType } from "types/models/dnd";
 import { useDroppable } from "@dnd-kit/core";
 import { NoSelect } from "types/models/group";
 import { useRecoilValue } from "recoil";
-import { memberListSelector, teamListSelector } from "utils/recoil/keys";
+import { memberListSelector, teamListSelector } from "utils/recoil/dnd";
 import DragTravelers from "../../dragableArea";
 
 type Props = {

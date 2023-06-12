@@ -6,7 +6,7 @@ import { HiSpeakerWave } from "react-icons/hi2";
 import { IoLockClosed } from "react-icons/io5";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { useRecoilValue } from "recoil";
-import { memberListSelector, teamListSelector } from "utils/recoil/keys";
+import { memberListSelector, teamListSelector } from "utils/recoil/dnd";
 import ViewTravelers from "../../viewTraveler";
 import DragTravelers from "../../dragableArea";
 

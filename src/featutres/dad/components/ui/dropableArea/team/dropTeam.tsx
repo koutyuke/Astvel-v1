@@ -4,7 +4,7 @@ import { useState, type FC } from "react";
 import { DragDataType, GroupTeamType } from "types/models/dnd";
 import { HiUserGroup } from "react-icons/hi";
 import { Team } from "types/models/group";
-import { memberListSelector } from "utils/recoil/keys";
+import { memberListSelector } from "utils/recoil/dnd";
 import { useRecoilValue } from "recoil";
 import DragTravelers from "../../dragableArea";
 import ViewTravelers from "../../viewTraveler";
