@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { FC, useState } from "react";
+import React, { FC, useState } from "react";
 import { useForm } from "react-hook-form";
 import dynamic from "next/dynamic";
 import { EmojiStyle } from "emoji-picker-react";
@@ -16,10 +16,13 @@ type FormValue = {
 
 type Props = {
   title: string;
+  buttonTitle: string;
   onSubmit: (data: FormValue) => void;
+  defaultEmoji: string;
+  defaultName: string;
 };
 
-const TeamInfoForm: FC<Props> = ({ title, onSubmit }) => {
+const TeamInfoForm: FC<Props> = ({ title, buttonTitle, defaultEmoji, defaultName, onSubmit }) => {
   const schema = z.object({
     emoji: z.string().min(1, { message: "Please Select a Emoji." }),
     name: z.string().min(1, { message: "Name length is 1~20." }).max(20, { message: "Name length is 1~20." }),
@@ -29,7 +32,13 @@ const TeamInfoForm: FC<Props> = ({ title, onSubmit }) => {
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm<FormValue>({ resolver: zodResolver(schema) });
+  } = useForm<FormValue>({
+    defaultValues: {
+      name: defaultName,
+      emoji: defaultEmoji,
+    },
+    resolver: zodResolver(schema),
+  });
   const [showPicker, setPicker] = useState(false);
 
   return (
@@ -92,7 +101,7 @@ const TeamInfoForm: FC<Props> = ({ title, onSubmit }) => {
       </div>
       <div className="mt-4 flex h-12 w-full items-center justify-center">
         <BaseButton type="submit" className="bg-green-500 text-white">
-          Create
+          {buttonTitle}
         </BaseButton>
       </div>
     </form>

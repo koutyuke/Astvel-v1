@@ -5,17 +5,21 @@ import { FC, useState } from "react";
 
 const CreateTeamMenu: FC = () => {
   const [open, setOpen] = useState(false);
+  const AddDialog = BaseDialog(<AdditionalButton />);
 
   return (
-    <BaseDialog open={open} setOpen={setOpen} TrigerButton={AdditionalButton}>
+    <AddDialog open={open} setOpen={setOpen}>
       <TeamInfoForm
         title="Create New Team"
+        buttonTitle="Create"
+        defaultEmoji=""
+        defaultName=""
         onSubmit={data => {
           console.log(data);
           setOpen(false);
         }}
       />
-    </BaseDialog>
+    </AddDialog>
   );
 };
 
