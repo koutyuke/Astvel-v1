@@ -3,6 +3,7 @@ import { DragDataType, GroupTeamType } from "types/models/dnd";
 import { useDndContext } from "@dnd-kit/core";
 import { Team } from "types/models/group";
 import DropTeam from "./dropTeam";
+import CreateTeamMenu from "../../menu/createTeam";
 
 type Props = {
   data: Team[];
@@ -16,7 +17,7 @@ const TeamDropArea: FC<Props> = ({ data }) => {
   return (
     <div className="relative h-full w-full rounded-lg bg-gradient-to-br from-red-500 to-yellow-600 py-2">
       {isDragTeam && (
-        <div className="absolute top-1 left-1 z-10 flex h-[calc(100%_-_0.5rem)] w-[calc(100%_-_0.5rem)] items-center justify-center rounded-lg bg-[rgba(100,116,139,0.7)]">
+        <div className="absolute left-1 top-1 z-10 flex h-[calc(100%_-_0.5rem)] w-[calc(100%_-_0.5rem)] items-center justify-center rounded-lg bg-[rgba(100,116,139,0.7)]">
           <p>Cannot drop a team into a team</p>
         </div>
       )}
@@ -29,6 +30,9 @@ const TeamDropArea: FC<Props> = ({ data }) => {
 
           return <DropTeam group={group} team={team} key={team.id} />;
         })}
+      </div>
+      <div className="absolute bottom-0 right-0 pb-4 pr-4">
+        <CreateTeamMenu />
       </div>
     </div>
   );
