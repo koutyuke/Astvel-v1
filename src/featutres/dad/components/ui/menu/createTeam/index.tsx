@@ -1,4 +1,4 @@
-import AdditionalButton from "components/elements/button/additional";
+import AdditionalButton from "components/elements/button/icon/additional";
 import BaseDialog from "components/elements/dialog";
 import TeamInfoForm from "featutres/dad/components/elements/form/teamInfo";
 import useToastSetter from "hooks/useToastSetter";
