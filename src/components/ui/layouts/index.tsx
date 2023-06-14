@@ -9,7 +9,7 @@ type Props = {
 const Layout: FC<Props> = ({ children }) => (
   <>
     <Header />
-    <main className="min-h-[100vh] w-full pt-32 pb-8">{children}</main>
+    <main className="min-h-[100vh] w-full pb-8 pt-32">{children}</main>
     <Footer />
   </>
 );

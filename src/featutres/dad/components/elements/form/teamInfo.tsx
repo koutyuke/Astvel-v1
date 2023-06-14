@@ -52,14 +52,14 @@ const TeamInfoForm: FC<Props> = ({ title, buttonTitle, defaultEmoji, defaultName
       <div className="mt-12 h-44 w-full">
         {showPicker && (
           <div
-            className="absolute top-0 left-0 h-96 w-96"
+            className="absolute left-0 top-0 h-96 w-96"
             aria-hidden="true"
             onClick={() => {
               setPicker(false);
             }}
           />
         )}
-        <div className={`absolute top-3 left-[60%] ${showPicker ? "block" : "hidden"}`}>
+        <div className={`absolute left-[60%] top-3 ${showPicker ? "block" : "hidden"}`}>
           <Picker
             onEmojiClick={emojiData => {
               setPicker(false);

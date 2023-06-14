@@ -26,7 +26,7 @@ const SingInButton: FC = () => {
         {isOpenLogout && (
           <button
             type="button"
-            className="absolute top-10 left-[2.6rem] flex h-[3.15rem] w-[7.4rem] items-center justify-center rounded-b-xl bg-[#ff4da6] pt-2 hover:bg-green-500"
+            className="absolute left-[2.6rem] top-10 flex h-[3.15rem] w-[7.4rem] items-center justify-center rounded-b-xl bg-[#ff4da6] pt-2 hover:bg-green-500"
             onClick={() => signOut({ callbackUrl: "/" })}
           >
             <span>Sing Out</span>
