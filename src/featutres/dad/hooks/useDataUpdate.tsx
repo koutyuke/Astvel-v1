@@ -1,49 +1,23 @@
-import { SetterOrUpdater } from "recoil";
-import { Category, NoCategory } from "types/models/data";
+import { useRecoilState } from "recoil";
 import { DragDataType, DropDataType } from "types/models/dnd";
-import { NoSelect, Team } from "types/models/group";
-import { DestinationChannelsKey, NoSelectKey, TeamsKey } from "types/recoil/keys";
+import { destinationChannels, noSelectMembers, teams } from "utils/recoil/dnd";
 
-type DestinationChannelsDataType = {
-  status: "success";
-  data: {
-    noCategory: NoCategory;
-    categories: Category[];
-  };
-};
+const useDataUpdate = () => {
+  const [noSelectMembersData, setNoSelectMembers] = useRecoilState(noSelectMembers);
+  const [destinationChannelsData, setDestinationChannels] = useRecoilState(destinationChannels);
+  const [teamsData, setTeams] = useRecoilState(teams);
 
-type NoSelectMembersDataType = {
-  status: "success";
-  data: NoSelect;
-};
-
-type TeamsDataType = {
-  status: "success";
-  data: Team[];
-};
-
-type Props = {
-  activeData: DragDataType | undefined;
-  overData: DropDataType | undefined;
-  setDestinationChannels: SetterOrUpdater<DestinationChannelsKey>;
-  setNoSelectMembers: SetterOrUpdater<NoSelectKey>;
-  setTeams: SetterOrUpdater<TeamsKey>;
-  destinationChannelsData: DestinationChannelsDataType;
-  noSelectMembersData: NoSelectMembersDataType;
-  teamsData: TeamsDataType;
-};
-
-const dataUpdate = ({
-  activeData,
-  overData,
-  setDestinationChannels,
-  setNoSelectMembers,
-  setTeams,
-  destinationChannelsData,
-  noSelectMembersData,
-  teamsData,
-}: Props): void => {
-  if (overData !== undefined && activeData !== undefined) {
+  return (activeData: DragDataType | undefined, overData: DropDataType | undefined) => {
+    if (
+      noSelectMembersData.status === "failure" ||
+      destinationChannelsData.status === "failure" ||
+      teamsData.status === "failure"
+    ) {
+      return;
+    }
+    if (overData === undefined || activeData === undefined) {
+      return;
+    }
     if (
       overData.group.type === "channel" &&
       activeData.group.type === "channel" &&
@@ -64,10 +38,9 @@ const dataUpdate = ({
     if (overData.group.type === "team" && activeData.dataType === "team") {
       return;
     }
-
-    let newDestinationChannelsData: DestinationChannelsDataType = destinationChannelsData;
-    let newNoSelectMembersData: NoSelectMembersDataType = noSelectMembersData;
-    let newTeamsData: TeamsDataType = teamsData;
+    let newDestinationChannelsData = destinationChannelsData;
+    let newNoSelectMembersData = noSelectMembersData;
+    let newTeamsData = teamsData;
 
     if (activeData.dataType === "member") {
       const changeTarget = activeData.data;
@@ -472,7 +445,7 @@ const dataUpdate = ({
     setDestinationChannels(newDestinationChannelsData);
     setNoSelectMembers(newNoSelectMembersData);
     setTeams(newTeamsData);
-  }
+  };
 };
 
-export default dataUpdate;
+export default useDataUpdate;
