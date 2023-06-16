@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useRecoilState } from "recoil";
-import { ToastType } from "types/elements/toast";
-import { toast } from "utils/recoil/elements";
+import { ToastType } from "types/recoil/toast";
+import { toast } from "utils/recoil/toast";
 
 const useToastSetter = () => {
   const timerRef = useRef(0);

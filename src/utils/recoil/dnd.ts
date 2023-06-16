@@ -1,7 +1,7 @@
 import { atom, selectorFamily } from "recoil";
 import { Member } from "types/models/data";
 import { Team } from "types/models/group";
-import { DestinationChannelsKey, MembersKey, NoSelectKey, TeamsKey } from "types/recoil/keys";
+import { DestinationChannelsKey, MembersKey, NoSelectKey, TeamsKey } from "types/recoil/dnd";
 
 export const guild = atom({
   key: "",

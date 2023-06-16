@@ -1,5 +1,5 @@
 import { atom } from "recoil";
-import { UserKey } from "types/recoil/keys";
+import { UserKey } from "types/recoil/dnd";
 
 // eslint-disable-next-line import/prefer-default-export
 export const userInfo = atom<UserKey>({

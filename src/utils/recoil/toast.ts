@@ -1,5 +1,5 @@
 import { atom } from "recoil";
-import { ToastType } from "types/elements/toast";
+import { ToastType } from "types/recoil/toast";
 
 // eslint-disable-next-line import/prefer-default-export
 export const toast = atom<ToastType>({

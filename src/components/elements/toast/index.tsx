@@ -3,7 +3,7 @@ import { FC, ReactNode } from "react";
 import { IoCheckmarkCircleOutline, IoClose, IoInformationCircleOutline, IoWarningOutline } from "react-icons/io5";
 import { MdOutlineDoNotDisturbAlt } from "react-icons/md";
 import { useRecoilState } from "recoil";
-import { toast } from "utils/recoil/elements";
+import { toast } from "utils/recoil/toast";
 import style from "./index.module.scss";
 
 const BaseToast: FC = () => {
