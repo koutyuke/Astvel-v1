@@ -32,7 +32,7 @@ const NoSelectDropableArea: FC<Props> = ({ data }) => {
 
   return (
     <div
-      className="h-full w-full  rounded-md bg-gradient-to-br from-[#4158D0] via-[#C850C0] to-[#FFCC70] p-2"
+      className="h-full w-full  rounded-md bg-gradient-to-br from-[#4158D0] via-[#C850C0] to-[#cc2b5e] p-2"
       ref={setNodeRef}
     >
       <div
