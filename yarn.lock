@@ -2576,6 +2576,34 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@prisma/client@npm:^4.16.0":
+  version: 4.16.0
+  resolution: "@prisma/client@npm:4.16.0"
+  dependencies:
+    "@prisma/engines-version": "npm:4.16.0-66.b20ead4d3ab9e78ac112966e242ded703f4a052c"
+  peerDependencies:
+    prisma: "*"
+  peerDependenciesMeta:
+    prisma:
+      optional: true
+  checksum: 47f755307caaf23a82cf6a9e72afcbacf8142421a4345a3d46a4d1f7a2b312560012f3a33a91e6d41c1bd9b2dc9fca96e943bef593f47eea45ce72cee5cbc1e3
+  languageName: node
+  linkType: hard
+
+"@prisma/engines-version@npm:4.16.0-66.b20ead4d3ab9e78ac112966e242ded703f4a052c":
+  version: 4.16.0-66.b20ead4d3ab9e78ac112966e242ded703f4a052c
+  resolution: "@prisma/engines-version@npm:4.16.0-66.b20ead4d3ab9e78ac112966e242ded703f4a052c"
+  checksum: cdf42d18ddb7a8aa1620bb36cec0b6528521d92a9c23563e103555a23e8d9ef6f7ee0e00da58514c3d359af359ddbce4bfa54e98861360f84eb5fd41f82757da
+  languageName: node
+  linkType: hard
+
+"@prisma/engines@npm:4.16.0":
+  version: 4.16.0
+  resolution: "@prisma/engines@npm:4.16.0"
+  checksum: d3f4a7e3ffc97f7ac8a20c921655cd0ac55141a4c2f1d4e224b0ed7e234d863142a9d2a15fac6f5fdbb5860d58fe761f91db425b08655dc8d0aec6a98a245843
+  languageName: node
+  linkType: hard
+
 "@radix-ui/primitive@npm:1.0.1":
   version: 1.0.1
   resolution: "@radix-ui/primitive@npm:1.0.1"
@@ -6215,6 +6243,7 @@ __metadata:
     "@dnd-kit/utilities": "npm:^3.2.1"
     "@hookform/resolvers": "npm:^3.1.0"
     "@mdx-js/react": "npm:^1.6.22"
+    "@prisma/client": "npm:^4.16.0"
     "@radix-ui/react-accordion": "npm:^1.1.2"
     "@radix-ui/react-avatar": "npm:^1.0.3"
     "@radix-ui/react-dialog": "npm:^1.0.4"
@@ -6271,6 +6300,7 @@ __metadata:
     postcss-nested: "npm:^6.0.1"
     prettier: "npm:^2.8.4"
     prettier-plugin-tailwindcss: "npm:^0.2.3"
+    prisma: "npm:^4.16.0"
     react: "npm:18.2.0"
     react-dom: "npm:18.2.0"
     react-hook-form: "npm:^7.44.3"
@@ -15093,6 +15123,18 @@ __metadata:
   version: 1.0.3
   resolution: "pretty-hrtime@npm:1.0.3"
   checksum: 0c7e44c877abaaef41d93231e143d5505d0234376a7074a6ec65dc6809e751398f18949014977f4cce1c9117ae27ecb28d73ed2995bf5fedfb54776d4bd55824
+  languageName: node
+  linkType: hard
+
+"prisma@npm:^4.16.0":
+  version: 4.16.0
+  resolution: "prisma@npm:4.16.0"
+  dependencies:
+    "@prisma/engines": "npm:4.16.0"
+  bin:
+    prisma: build/index.js
+    prisma2: build/index.js
+  checksum: 676b99b31edd5dee60b7040624684cc56851338309701da8d8a0d5385764ddb3014ad0416cbc221c1ed92b6d4cd40cdb5ce108b46a322e271e962924cc9cda7d
   languageName: node
   linkType: hard
 
