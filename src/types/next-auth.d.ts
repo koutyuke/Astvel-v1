@@ -7,9 +7,11 @@ declare module "next-auth" {
     refreshToken?: string;
   }
   interface Profile {
-    discriminator: string;
+    id: string;
     username: string;
-    image_url: string | null;
+    global_name: string;
+    avatar: string | null;
+    discriminator: string;
     banner_color: string;
   }
 }
