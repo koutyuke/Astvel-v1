@@ -1,12 +1,12 @@
 import BaseDialog from "components/elements/dialog";
 // import useToastSetter from "hooks/useToastSetter";
 import { FC, useState } from "react";
-import BaseToolButton from "featutres/dad/components/elements/button/tool";
-import { TbReload } from "react-icons/tb";
+import { BsFillRocketTakeoffFill } from "react-icons/bs";
+import BaseToolButton from "featutres/dnd/components/elements/button/tool";
 
-const ToolResetMenu: FC = () => {
+const ToolMoveMenu: FC = () => {
   const [open, setOpen] = useState(false);
-  const AddDialog = BaseDialog(<BaseToolButton Icon={TbReload} title="Reset" />);
+  const AddDialog = BaseDialog(<BaseToolButton Icon={BsFillRocketTakeoffFill} title="Move" />);
   // const toastSetter = useToastSetter();
 
   return (
@@ -16,4 +16,4 @@ const ToolResetMenu: FC = () => {
   );
 };
 
-export default ToolResetMenu;
+export default ToolMoveMenu;

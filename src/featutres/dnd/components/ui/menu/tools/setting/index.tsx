@@ -1,7 +1,7 @@
 import BaseDialog from "components/elements/dialog";
 // import useToastSetter from "hooks/useToastSetter";
 import { FC, useState } from "react";
-import BaseToolButton from "featutres/dad/components/elements/button/tool";
+import BaseToolButton from "featutres/dnd/components/elements/button/tool";
 import { FiSettings } from "react-icons/fi";
 
 const ToolSettingMenu: FC = () => {

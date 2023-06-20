@@ -1,6 +1,6 @@
-import AdditionalButton from "featutres/dad/components/ui/menu/createTeam/additional";
+import AdditionalButton from "featutres/dnd/components/ui/menu/createTeam/additional";
 import BaseDialog from "components/elements/dialog";
-import TeamInfoForm from "featutres/dad/components/elements/form/teamInfo";
+import TeamInfoForm from "featutres/dnd/components/elements/form/teamInfo";
 import useToastSetter from "hooks/useToastSetter";
 import { FC, useState } from "react";
 
