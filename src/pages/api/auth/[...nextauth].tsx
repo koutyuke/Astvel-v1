@@ -1,5 +1,7 @@
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import prisma from "libs/prisma";
 import nextAuth from "next-auth";
-import DiscordProvider from "next-auth/providers/discord";
+import DiscordProvider, { DiscordProfile } from "next-auth/providers/discord";
 
 export default nextAuth({
   providers: [
@@ -7,30 +9,29 @@ export default nextAuth({
       clientId: process.env.DISCORD_CLIENT_ID ?? "",
       clientSecret: process.env.DISCORD_CLIENT_SECRET ?? "",
       authorization: process.env.DISCORD_AUTHORIZATION ?? "",
+      profile(profile: DiscordProfile, token) {
+        return {
+          id: profile.id,
+          provider_id: profile.id,
+          username: profile.username,
+          global_name: profile.global_name,
+          avatar: profile.avatar,
+          discriminator: profile.discriminator,
+          banner_color: profile.banner_color,
+          access_token: token.access_token,
+          refresh_token: token.refresh_token,
+        };
+      },
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET,
+  adapter: PrismaAdapter(prisma),
   callbacks: {
-    async jwt({ token, account, user, profile }) {
-      if (account && user && profile) {
-        return {
-          profile,
-          accessToken: account.access_token,
-          refreshToken: account.refresh_token,
-          user,
-        };
-      }
-      return token;
-    },
-    async session({ session, token }) {
+    async session({ session, user }) {
       const setSession = session;
-      // const guildInfo = await getWithAuthorization<GetUserDiscordGuildInfo>("https://discordapp.com/api/users/@me/guilds", tokenValue.accessToken).then((data) => data.data).catch((error) =>[])
-
-      setSession.user = token.user;
-      setSession.profile = token.profile;
-      setSession.accessToken = token.accessToken;
-      setSession.refreshToken = token.refreshToken;
-
+      setSession.user = user;
+      setSession.accessToken = user.access_token;
+      setSession.refreshToken = user.refresh_token;
       return setSession;
     },
   },

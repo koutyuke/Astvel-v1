@@ -35,16 +35,12 @@ const SingInOutButton: FC = () => {
         )}
         <button type="button" onClick={() => setOpenLogout(!isOpenLogout)} className="z-10">
           <SingInUser
-            image={iconUrlGen(session.profile?.id ?? "", session.profile?.avatar ?? "")}
-            main={
-              session.profile?.discriminator === "0"
-                ? session.profile?.global_name ?? ""
-                : session.profile?.username ?? ""
-            }
+            image={iconUrlGen(session.user?.provider_id ?? "", session.user?.avatar ?? "")}
+            main={session.user?.discriminator === "0" ? session.user?.global_name ?? "" : session.user?.username ?? ""}
             sub={
-              session.profile?.discriminator === "0"
-                ? `@${session.profile?.username}`
-                : `#${session.profile?.discriminator ?? ""}`
+              session.user?.discriminator === "0"
+                ? `@${session.user?.username}`
+                : `#${session.user?.discriminator ?? ""}`
             }
           />
         </button>
