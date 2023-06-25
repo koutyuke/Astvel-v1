@@ -8,7 +8,11 @@ export default nextAuth({
     DiscordProvider({
       clientId: process.env.DISCORD_CLIENT_ID ?? "",
       clientSecret: process.env.DISCORD_CLIENT_SECRET ?? "",
-      authorization: process.env.DISCORD_AUTHORIZATION ?? "",
+      authorization: {
+        params: {
+          scope: "guilds",
+        },
+      },
       profile(profile: DiscordProfile, token) {
         return {
           id: profile.id,
