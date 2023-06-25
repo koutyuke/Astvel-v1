@@ -1,6 +1,6 @@
 import { isAxiosError } from "axios";
 import { APIGuild, APIGuildMember, Routes } from "discord.js";
-import discordAPIAccesser from "libs/axios/discordAPIAccesser";
+import createDiscordAPI from "libs/axios/createDiscordAPI";
 import prisma from "libs/prisma";
 import { NextApiRequest, NextApiResponse } from "next";
 import { z } from "zod";
@@ -9,6 +9,8 @@ const schema = z.object({
   guild_id: z.string(),
   user_id: z.string(),
 });
+
+const discordAPI = createDiscordAPI(`Bot ${process.env.DISCORD_BOT_TOKEN}`);
 
 const apiGuilds = async (req: NextApiRequest, res: NextApiResponse) => {
   const userToken = req.headers.authorization?.replace("Bearer ", "");
@@ -26,8 +28,8 @@ const apiGuilds = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
 
     const [, guildData] = await Promise.all([
-      discordAPIAccesser.get<APIGuildMember>(Routes.guildMember(guildId, userId)),
-      discordAPIAccesser.get<APIGuild>(Routes.guild(guildId)).then(r => r.data),
+      discordAPI.get<APIGuildMember>(Routes.guildMember(guildId, userId)),
+      discordAPI.get<APIGuild>(Routes.guild(guildId)).then(r => r.data),
     ])
 
     const account = await prisma.account.findUnique({
