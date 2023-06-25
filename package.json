@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "server dev": "SET NODE_ENV=development& nodemon",
+    "dev:server": "SET NODE_ENV=development& nodemon",
     "build": "next build",
     "start": "next start",
     "lint": "eslint --ignore-path .gitignore src/**/*.{ts,tsx}",
@@ -31,6 +31,7 @@
     "@radix-ui/react-tooltip": "^1.0.6",
     "axios": "^1.4.0",
     "destyle.css": "^4.0.0",
+    "discord-api-types": "^0.37.46",
     "discord.js": "^14.11.0",
     "dotenv": "^16.3.1",
     "emoji-picker-react": "^4.4.9",

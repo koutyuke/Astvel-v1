@@ -6283,6 +6283,7 @@ __metadata:
     axios: "npm:^1.4.0"
     babel-loader: "npm:^8.3.0"
     destyle.css: "npm:^4.0.0"
+    discord-api-types: "npm:^0.37.46"
     discord.js: "npm:^14.11.0"
     dotenv: "npm:^16.3.1"
     emoji-picker-react: "npm:^4.4.9"
@@ -8388,6 +8389,13 @@ __metadata:
   version: 0.37.45
   resolution: "discord-api-types@npm:0.37.45"
   checksum: d4b6749bf55a6a844859a86bd932e57deb28e2a660bf904f2a41734b8085d8927b637b1a76f972e60dec0be1e1afa4349500536ab5fa031b45172a4ea1a838ff
+  languageName: node
+  linkType: hard
+
+"discord-api-types@npm:^0.37.46":
+  version: 0.37.46
+  resolution: "discord-api-types@npm:0.37.46"
+  checksum: ddfde0d96cfbcc7d0be947f1fc98e0dedf01c7521b6295e9e905193102806d9e7b23940e17971635a7f3185341cf8e0f70db7b80989b20067a7b6717ddc103cb
   languageName: node
   linkType: hard
 
