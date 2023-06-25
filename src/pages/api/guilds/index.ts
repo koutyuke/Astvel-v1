@@ -26,11 +26,10 @@ const apiGuilds = async (req: NextApiRequest, res: NextApiResponse) => {
   const { user_id: userId, guild_id: guildId } = query.data;
 
   try {
-
     const [, guildData] = await Promise.all([
       discordAPI.get<APIGuildMember>(Routes.guildMember(guildId, userId)),
       discordAPI.get<APIGuild>(Routes.guild(guildId)).then(r => r.data),
-    ])
+    ]);
 
     const account = await prisma.account.findUnique({
       where: {
@@ -44,7 +43,6 @@ const apiGuilds = async (req: NextApiRequest, res: NextApiResponse) => {
     if (account === null || account.access_token === null || account.access_token !== userToken) {
       return res.status(401).json({ message: "Unauthorized" });
     }
-
 
     return res.status(200).json({
       id: guildData.id,
