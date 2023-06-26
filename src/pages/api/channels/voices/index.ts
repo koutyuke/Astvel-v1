@@ -24,7 +24,7 @@ const discordAPI = createDiscordAPI(`Bot ${process.env.DISCORD_BOT_TOKEN}`);
 
 const permissionChecher = (permissions: bigint | number, target: bigint) => (BigInt(permissions) & target) === target;
 
-const apiChannels = async (req: NextApiRequest, res: NextApiResponse) => {
+const index = async (req: NextApiRequest, res: NextApiResponse) => {
   const userToken = req.headers.authorization?.replace("Bearer ", "");
   const query = schema.safeParse(req.query);
   const botToken = process.env.DISCORD_BOT_TOKEN;
@@ -54,16 +54,23 @@ const apiChannels = async (req: NextApiRequest, res: NextApiResponse) => {
     const [{ roles: guildRoles, owner_id: ownerId }, { roles: userRoleIds }, channel] = await Promise.all([
       discordAPI.get<APIGuild>(Routes.guild(guildId)).then(g => g.data),
       discordAPI.get<APIGuildMember>(Routes.guildMember(guildId, userId)).then(u => u.data),
-      discordAPI.get<APIGuildChannel<ChannelType.GuildVoice>>(Routes.channel(channelId)).then(c => c.data),
+      discordAPI
+        .get<APIGuildChannel<ChannelType.GuildVoice>>(Routes.channel(channelId))
+        .then(c => (c.data.type === ChannelType.GuildVoice ? c.data : undefined)),
     ]);
 
     const everyone = guildRoles.find(role => role.id === guildId)?.permissions;
 
-    if (everyone === undefined || channel.type !== ChannelType.GuildVoice) {
+    if (everyone === undefined || channel === undefined) {
       return res.status(400).json({ message: "Bad Request" });
     }
 
     let permissions = BigInt(everyone);
+    guildRoles.forEach(guildRole => {
+      if (userRoleIds.includes(guildRole.id)) {
+        permissions |= BigInt(guildRole.permissions);
+      }
+    });
 
     const permissionOverwriteRoles =
       channel.permission_overwrites?.filter(overwrite => overwrite.type === OverwriteType.Role) ?? [];
@@ -78,16 +85,28 @@ const apiChannels = async (req: NextApiRequest, res: NextApiResponse) => {
       parentId: channel.parent_id,
     };
 
-    // create overwrited permission
+    // owenr
+    if (ownerId === userId) {
+      // console.log("owner");
+      return res.status(200).json(returnData);
+    }
 
+    // admin
+    if (permissionChecher(permissions, PermissionFlagsBits.Administrator)) {
+      // console.log("admin");
+      return res.status(200).json(returnData);
+    }
+
+    // create overwrited permission
+    let allow = BigInt(0);
+    let deny = BigInt(0);
     const overwriteEveryone = permissionOverwriteRoles.find(role => role.id === guildId);
+    const overwriteMember = permissionOverwriteMembers.find(m => m.id === userId);
+
     if (overwriteEveryone) {
       permissions &= ~BigInt(overwriteEveryone.deny);
       permissions |= BigInt(overwriteEveryone.allow);
     }
-
-    let allow = BigInt(0);
-    let deny = BigInt(0);
 
     userRoleIds.forEach(userRoleId => {
       const overwriteRole = permissionOverwriteRoles.find(r => r.id === userRoleId);
@@ -100,34 +119,12 @@ const apiChannels = async (req: NextApiRequest, res: NextApiResponse) => {
     permissions &= ~deny;
     permissions |= allow;
 
-    const overwriteMember = permissionOverwriteMembers.find(m => m.id === userId);
     if (overwriteMember) {
       permissions &= ~BigInt(overwriteMember.deny);
       permissions |= BigInt(overwriteMember.allow);
     }
 
-    // owenr
-    if (ownerId === userId) {
-      // console.log("owner");
-      return res.status(200).json(returnData);
-    }
-
-    // admin
-    if (
-      userRoleIds.some(userRoleId => {
-        const role = guildRoles.find(r => r.id === userRoleId);
-        if (role === undefined) {
-          return false;
-        }
-        return (BigInt(role.permissions) & PermissionFlagsBits.Administrator) === PermissionFlagsBits.Administrator;
-      })
-    ) {
-      // console.log("admin");
-      return res.status(200).json(returnData);
-    }
-
     // access ok
-
     if (
       permissionChecher(permissions, PermissionFlagsBits.Connect) &&
       permissionChecher(permissions, PermissionFlagsBits.ViewChannel) &&
@@ -137,7 +134,7 @@ const apiChannels = async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(200).json(returnData);
     }
 
-    return res.status(400).json({ message: "Bad Request" });
+    return res.status(200).json(null);
   } catch (e) {
     if (isAxiosError(e) && e.response) {
       // console.log(e.response);
@@ -147,4 +144,4 @@ const apiChannels = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-export default apiChannels;
+export default index;
