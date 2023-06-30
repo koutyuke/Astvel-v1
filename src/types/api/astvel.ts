@@ -1,4 +1,11 @@
-import { PermissionOverwrites } from "discord.js";
+import { OverwriteType } from "discord.js";
+
+type Permission = {
+  id: string;
+  type: OverwriteType;
+  allow: string;
+  deny: string;
+};
 
 type APIGuild = {
   id: string;
@@ -9,16 +16,16 @@ type APIGuild = {
 type APICategory = {
   id: string;
   name: string;
-  permissionOverwriteRoles: PermissionOverwrites[];
-  permissionOverwriteMembers: PermissionOverwrites[];
+  permissionOverwriteRoles: Permission[];
+  permissionOverwriteMembers: Permission[];
   parentId: null;
 };
 
 type APIVoice = {
   id: string;
   name: string;
-  permissionOverwriteRoles: PermissionOverwrites[];
-  permissionOverwriteMembers: PermissionOverwrites[];
+  permissionOverwriteRoles: Permission[];
+  permissionOverwriteMembers: Permission[];
   parentId: string | null;
 };
 
