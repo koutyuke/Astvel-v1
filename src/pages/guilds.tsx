@@ -33,9 +33,9 @@ const Guilds: NextPage = () => {
   if (!query.success) {
     return <div>not query</div>;
   }
-  
-  if(guild.isLoading){
-    return <div>loading</div>
+
+  if (guild.isLoading) {
+    return <div>loading</div>;
   }
 
   if (guild.data === undefined || guild.error) {
