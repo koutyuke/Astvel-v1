@@ -46,6 +46,7 @@
     "socket.io": "^4.6.2",
     "socket.io-client": "^4.6.2",
     "swr": "^2.2.0",
+    "uuid": "^9.0.0",
     "zod": "^3.21.4"
   },
   "devDependencies": {
@@ -67,6 +68,7 @@
     "@types/prettier": "^2",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
+    "@types/uuid": "^9",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
     "autoprefixer": "^10.4.13",

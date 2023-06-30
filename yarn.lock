@@ -5108,6 +5108,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/uuid@npm:^9":
+  version: 9.0.2
+  resolution: "@types/uuid@npm:9.0.2"
+  checksum: dfb80ebf6fadb343b05f12e7f162bad47b19d290194b0a074a4b16c115272345b27501a3abce3f9fd2cb392a645b171f7cf7008cf25029c1a270fae050450d71
+  languageName: node
+  linkType: hard
+
 "@types/webpack-env@npm:^1.16.0":
   version: 1.18.0
   resolution: "@types/webpack-env@npm:1.18.0"
@@ -6277,6 +6284,7 @@ __metadata:
     "@types/prettier": "npm:^2"
     "@types/react": "npm:18.0.28"
     "@types/react-dom": "npm:18.0.11"
+    "@types/uuid": "npm:^9"
     "@typescript-eslint/eslint-plugin": "npm:^5.0.0"
     "@typescript-eslint/parser": "npm:^5.0.0"
     autoprefixer: "npm:^10.4.13"
@@ -6326,6 +6334,7 @@ __metadata:
     ts-jest: "npm:^29.0.5"
     ts-node: "npm:^10.9.1"
     typescript: "npm:*"
+    uuid: "npm:^9.0.0"
     zod: "npm:^3.21.4"
   languageName: unknown
   linkType: soft
@@ -18395,6 +18404,15 @@ __metadata:
   bin:
     uuid: dist/bin/uuid
   checksum: 236a12282c6fa32f326aa1b6d5699a843572e9ab7de84a1507a6b7c315fdcf55bf6ed333fd37d35c5c656f4cb96af998844e1c8cae281c442a1ec3b66df62962
+  languageName: node
+  linkType: hard
+
+"uuid@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "uuid@npm:9.0.0"
+  bin:
+    uuid: dist/bin/uuid
+  checksum: e1f76aff372e430bb129157360fd4cd3b393411b245604ea78e178a822ab7874ec2ebecec03ce94422b0b80bbd24733c6fa1df166c9cbad5086ef4b4843140bb
   languageName: node
   linkType: hard
 
