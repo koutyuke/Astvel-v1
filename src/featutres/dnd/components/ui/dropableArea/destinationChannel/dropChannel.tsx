@@ -72,7 +72,7 @@ const DropChannel: FC<Props> = ({ channel, guildId }) => {
       >
         {/* {isPrivate ? <IoLockClosed size={20} /> : } */}
         <HiSpeakerWave size={20} />
-        <p className="w-full overflow-hidden text-ellipsis">
+        <p className="w-full min-w-0 overflow-hidden text-ellipsis whitespace-nowrap">
           <span className="text-base">{name}</span>
         </p>
         <ChevronDownIcon className={`${isOpen || isKeep ? "" : "rotate-180"} h-4 w-4 duration-200`} />
