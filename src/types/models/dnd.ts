@@ -1,37 +1,22 @@
-import { Member } from "./data";
-import { Team } from "./group";
+import { APIMember } from "types/api/astvel";
+import { Team } from "types/recoil/dnd";
 
-export type GroupChannelType = {
-  type: "channel";
-  channelId: number;
-} & (
+export type GroupType =
   | {
-      categoryType: "noCategory";
-      categoryId: null;
+      type: "channel" | "team";
+      id: string;
     }
   | {
-      categoryType: "category";
-      categoryId: number;
-    }
-);
-
-export type GroupNoSelectType = {
-  type: "noSelect";
-};
-
-export type GroupTeamType = {
-  type: "team";
-  teamId: number;
-};
-
-export type GroupType = GroupChannelType | GroupNoSelectType | GroupTeamType;
+      type: "noSelect";
+      id: null;
+    };
 
 export type DragDataType = {
   group: GroupType;
 } & (
   | {
       dataType: "member";
-      data: Member;
+      data: APIMember;
     }
   | {
       dataType: "team";

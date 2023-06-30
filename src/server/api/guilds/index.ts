@@ -48,7 +48,7 @@ const apiGuild = async (req: Request, res: Response, client: Client<boolean>) =>
       return;
     }
 
-    res.status(400).json({ message: "Bad Request" });
+    res.status(200).json(null);
     return;
   } catch (e) {
     res.status(400).json({ message: "Bad Request" });

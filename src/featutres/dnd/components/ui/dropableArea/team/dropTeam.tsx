@@ -1,21 +1,29 @@
 import { useDroppable } from "@dnd-kit/core";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { useState, type FC } from "react";
-import { DragDataType, GroupTeamType } from "types/models/dnd";
+import { DragDataType, GroupType } from "types/models/dnd";
 import { HiUserGroup } from "react-icons/hi";
-import { Team } from "types/models/group";
-import { memberListSelector } from "utils/recoil/dnd";
+import { DnDMembersAtom } from "utils/recoil/dnd";
+import useAllMembers from "featutres/dnd/hooks/swr/useAllMembers";
 import { useRecoilValue } from "recoil";
-import DragTravelers from "../../dragableArea";
+import { Team } from "types/recoil/dnd";
 import ViewTravelers from "../../viewTraveler";
+import DragTravelers from "../../dragableArea";
 
 type Props = {
-  group: GroupTeamType;
   team: Team;
+  guildId: string;
 };
 
-const DropTeam: FC<Props> = ({ group, team }) => {
-  const { id, name, members: memberIdList, iconEmoji } = team;
+const DropTeam: FC<Props> = ({ team, guildId }) => {
+  const { id, name, iconEmoji } = team;
+  const group: GroupType = {
+    type: "team",
+    id,
+  };
+
+  const allMembers = useAllMembers(guildId);
+  const DnDMembers = useRecoilValue(DnDMembersAtom);
   const { isOver, active, setNodeRef } = useDroppable({
     id,
     data: {
@@ -25,12 +33,15 @@ const DropTeam: FC<Props> = ({ group, team }) => {
   });
   const [isOpen, setOpen] = useState<boolean>(false);
   const activeGroup = active?.data.current as DragDataType | undefined;
-  const isDragTeam = activeGroup?.dataType === "team";
-  const members = useRecoilValue(memberListSelector(memberIdList));
 
-  if (members === undefined) {
-    return <div>error</div>;
+  if (allMembers.data === undefined || allMembers.error !== undefined) {
+    return null;
   }
+
+  const members = allMembers.data.filter(member =>
+    DnDMembers.some(DnDMember => DnDMember.attributionType === "team" && DnDMember.id === member.id),
+  );
+  const isDragTeam = activeGroup?.dataType === "team";
 
   return (
     <div

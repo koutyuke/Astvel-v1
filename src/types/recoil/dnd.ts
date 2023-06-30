@@ -1,32 +1,31 @@
-import { Guild, Member, UserInfo } from "types/models/data";
-import { DestinationChannels, NoSelect, Team } from "types/models/group";
+export type Team = {
+  id: string;
+  name: string;
+  iconEmoji: string;
+};
 
-export type UserKey =
+export type DnDMember = {
+  id: string;
+} & (
   | {
-      status: "success";
-      data: UserInfo;
+      attributionType: "channel" | "team";
+      attributionId: string;
     }
   | {
-      status: "noLogined" | "failure";
-      data: null;
-    };
+      attributionType: "noSelect";
+      attributionId: null;
+    }
+);
 
-type AddStatus<T> =
+export type DnDTeam = {
+  id: string;
+} & (
   | {
-      status: "success";
-      data: T;
+      attributionType: "channel";
+      attributionId: string;
     }
   | {
-      status: "failure";
-      data: null;
-    };
-
-export type GuildKey = AddStatus<Guild>;
-
-export type DestinationChannelsKey = AddStatus<DestinationChannels>;
-
-export type NoSelectKey = AddStatus<NoSelect>;
-
-export type TeamsKey = AddStatus<Team[]>;
-
-export type MembersKey = AddStatus<Member[]>;
+      attributionType: "noSelect";
+      attributionId: null;
+    }
+);

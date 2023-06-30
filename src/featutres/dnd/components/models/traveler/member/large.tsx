@@ -1,16 +1,17 @@
 import LargeMemberModel from "components/models/traveler/member/largeMember";
 import { FC } from "react";
 import { GroupType } from "types/models/dnd";
-import { Member } from "types/models/data";
 import { useDraggable } from "@dnd-kit/core";
+import { APIMember } from "types/api/astvel";
+import iconUrlGen from "utils/iconUrlGen";
 
 type Props = {
-  member: Member;
+  member: APIMember;
   group: GroupType;
 };
 
 const LargeDragMember: FC<Props> = ({ member, group }) => {
-  const { name, iconUrl, id } = member;
+  const { displayName, avatar, id, userAvatar } = member;
   const { attributes, listeners, setNodeRef, isDragging, setActivatorNodeRef } = useDraggable({
     id,
     data: {
@@ -20,6 +21,8 @@ const LargeDragMember: FC<Props> = ({ member, group }) => {
     },
   });
 
+  const iconUrl = iconUrlGen(id, avatar ?? userAvatar);
+
   return (
     <div
       className={`${isDragging ? "bg-gray-400" : "hover:outline"} h-24 w-20 touch-none rounded-xl outline-orange-500`}
@@ -28,7 +31,7 @@ const LargeDragMember: FC<Props> = ({ member, group }) => {
       {!isDragging && (
         <LargeMemberModel
           imageUrl={iconUrl}
-          name={name}
+          name={displayName}
           ref={setActivatorNodeRef}
           className="select-none duration-200"
           {...listeners}

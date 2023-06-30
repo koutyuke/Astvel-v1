@@ -1,43 +1,57 @@
 import { useDroppable } from "@dnd-kit/core";
 import { useState, type FC } from "react";
-import { Channel } from "types/models/data";
-import { DragDataType, GroupChannelType } from "types/models/dnd";
+import { DragDataType, GroupType } from "types/models/dnd";
 import { HiSpeakerWave } from "react-icons/hi2";
-import { IoLockClosed } from "react-icons/io5";
+// import { IoLockClosed } from "react-icons/io5";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { useRecoilValue } from "recoil";
-import { memberListSelector, teamListSelector } from "utils/recoil/dnd";
+import { APIVoice } from "types/api/astvel";
+import { DnDMembersAtom, DnDTeamsAtom, TeamsAtom } from "utils/recoil/dnd";
+import useAllMembers from "featutres/dnd/hooks/swr/useAllMembers";
 import ViewTravelers from "../../viewTraveler";
 import DragTravelers from "../../dragableArea";
 
 type Props = {
-  channel: Channel;
-  group: GroupChannelType;
+  channel: APIVoice;
+  guildId: string;
 };
 
-const DropChannel: FC<Props> = ({ channel, group }) => {
-  const { id, isPrivate, name, members: memberIdList, teams: teamIdList } = channel;
+const DropChannel: FC<Props> = ({ channel, guildId }) => {
+  const { id, name } = channel;
+  const group: GroupType = {
+    type: "channel",
+    id,
+  };
   const { isOver, active, setNodeRef } = useDroppable({
     id,
     data: {
-      group: { ...group },
+      group,
       data: {},
     },
   });
   const [isOpen, setOpen] = useState<boolean>(false);
   const activeGroup = active?.data.current as DragDataType | undefined;
-  const isKeep = !!(
-    activeGroup !== undefined &&
-    activeGroup.group.type === "channel" &&
-    activeGroup.group.channelId === id
-  );
 
-  const members = useRecoilValue(memberListSelector(memberIdList));
-  const teams = useRecoilValue(teamListSelector(teamIdList));
+  const isKeep = !!(activeGroup !== undefined && activeGroup.group.type === "channel" && activeGroup.group.id === id);
 
-  if (members === undefined || teams === undefined) {
-    return <div>error</div>;
+  const allMembers = useAllMembers(guildId);
+  const allTeams = useRecoilValue(TeamsAtom);
+
+  const DnDMembers = useRecoilValue(DnDMembersAtom);
+  const DnDTeams = useRecoilValue(DnDTeamsAtom);
+
+  if (allMembers.data === undefined || allMembers.error !== undefined) {
+    return null;
   }
+  const members = allMembers.data.filter(member =>
+    DnDMembers.some(
+      DnDMember =>
+        DnDMember.attributionType === "channel" && DnDMember.id === member.id && DnDMember.attributionId === id,
+    ),
+  );
+  const teams = allTeams.filter(team =>
+    DnDTeams.some(DnDTeam => DnDTeam.attributionType === "channel" && DnDTeam.id === team.id),
+  );
 
   return (
     <div
@@ -54,7 +68,8 @@ const DropChannel: FC<Props> = ({ channel, group }) => {
         role="button"
         aria-hidden="true"
       >
-        {isPrivate ? <IoLockClosed size={20} /> : <HiSpeakerWave size={20} />}
+        {/* {isPrivate ? <IoLockClosed size={20} /> : } */}
+        <HiSpeakerWave size={20} />
         <p className="w-full overflow-hidden text-ellipsis">
           <span className="text-base">{name}</span>
         </p>

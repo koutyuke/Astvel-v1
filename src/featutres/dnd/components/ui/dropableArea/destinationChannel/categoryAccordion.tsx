@@ -2,20 +2,18 @@ import { type FC, type ReactNode } from "react";
 import * as Accordion from "@radix-ui/react-accordion";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { BiCategory } from "react-icons/bi";
-import { IoLockClosed } from "react-icons/io5";
 
 type Props = {
   children: ReactNode;
   name: string;
-  value: string;
-  isPrivate: boolean;
+  id: string;
 };
 
-const CategoryAccordion: FC<Props> = ({ children, name, value, isPrivate }) => (
-  <Accordion.Item value={value} className="w-full">
+const CategoryAccordion: FC<Props> = ({ children, id, name }) => (
+  <Accordion.Item value={id} className="w-full">
     <Accordion.Header>
       <Accordion.Trigger className="group flex w-full space-x-1 p-1">
-        {isPrivate ? <IoLockClosed size={20} /> : <BiCategory size={20} />}
+        <BiCategory size={20} />
         <p className=" w-full">
           <span className="">{name}</span>
         </p>

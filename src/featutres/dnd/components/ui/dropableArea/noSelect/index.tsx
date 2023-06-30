@@ -1,20 +1,20 @@
 import { FC } from "react";
-import { GroupNoSelectType } from "types/models/dnd";
+import { GroupType } from "types/models/dnd";
 import { useDroppable } from "@dnd-kit/core";
-import { NoSelect } from "types/models/group";
 import { useRecoilValue } from "recoil";
-import { memberListSelector, teamListSelector } from "utils/recoil/dnd";
+import { DnDMembersAtom, DnDTeamsAtom, TeamsAtom } from "utils/recoil/dnd";
+import useAllMembers from "featutres/dnd/hooks/swr/useAllMembers";
 import DragTravelers from "../../dragableArea";
 
 type Props = {
-  data: NoSelect;
+  guildId: string;
 };
 
-const NoSelectDropableArea: FC<Props> = ({ data }) => {
-  const group: GroupNoSelectType = {
+const NoSelectDropableArea: FC<Props> = ({ guildId }) => {
+  const group: GroupType = {
     type: "noSelect",
+    id: null,
   };
-  const { members: memberIdList, teams: teamIdList } = data;
   const { isOver, setNodeRef } = useDroppable({
     id: "noSelect",
     data: {
@@ -23,12 +23,22 @@ const NoSelectDropableArea: FC<Props> = ({ data }) => {
     },
   });
 
-  const members = useRecoilValue(memberListSelector(memberIdList));
-  const teams = useRecoilValue(teamListSelector(teamIdList));
+  const allMembers = useAllMembers(guildId);
+  const allTeams = useRecoilValue(TeamsAtom);
 
-  if (members === undefined || teams === undefined) {
-    return <div>error</div>;
+  const DnDMembers = useRecoilValue(DnDMembersAtom);
+  const DnDTeams = useRecoilValue(DnDTeamsAtom);
+
+  if (allMembers.data === undefined || allMembers.error !== undefined) {
+    return null;
   }
+
+  const members = allMembers.data.filter(member =>
+    DnDMembers.some(DnDMember => DnDMember.attributionType === "noSelect" && DnDMember.id === member.id),
+  );
+  const teams = allTeams.filter(team =>
+    DnDTeams.some(DnDTeam => DnDTeam.attributionType === "noSelect" && DnDTeam.id === team.id),
+  );
 
   return (
     <div

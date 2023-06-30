@@ -1,24 +1,29 @@
 import type { ComponentPropsWithoutRef, FC } from "react";
-import { Member } from "types/models/data";
-import { Team } from "types/models/group";
 import SmallMemberModel from "components/models/traveler/member/smallMember";
 import SmallTeamModel from "components/models/traveler/team/smallTeam";
+import { APIMember } from "types/api/astvel";
+import iconUrlGen from "utils/iconUrlGen";
+import { Team } from "types/recoil/dnd";
 
 type Props = {
   teams?: Team[];
-  members: Member[];
+  members: APIMember[];
 } & ComponentPropsWithoutRef<"div">;
 
 const ViewTravelers: FC<Props> = ({ teams, members, className, ...other }) => {
-  const isMembersShow = members.filter(member => member.isShow).length;
-  const isTeamsShow = teams === undefined ? 0 : teams.filter(team => team.isShow).length;
+  const isMembersShow = members.length;
+  const isTeamsShow = teams === undefined ? 0 : teams.length;
 
   return (
     <div className={`${className} w-full pl-4 text-gray-600`} {...other}>
       {isMembersShow !== 0 && (
         <div className="">
           {members.map(member => (
-            <SmallMemberModel imageUrl={member.iconUrl} name={member.name} key={member.id} />
+            <SmallMemberModel
+              imageUrl={iconUrlGen(member.id, member.avatar)}
+              name={member.displayName}
+              key={member.id}
+            />
           ))}
         </div>
       )}

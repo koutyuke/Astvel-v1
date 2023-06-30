@@ -1,20 +1,20 @@
 import { ComponentPropsWithoutRef, FC } from "react";
 import { GroupType } from "types/models/dnd";
-import { Member } from "types/models/data";
-import { Team } from "types/models/group";
+import { APIMember } from "types/api/astvel";
+import { Team } from "types/recoil/dnd";
 import LargeDragMember from "../../models/traveler/member/large";
 import LargeDragTeam from "../../models/traveler/team/large";
 import LabelWrapper from "./Label";
 
 type Props = {
   group: GroupType;
-  members: Member[];
+  members: APIMember[];
   teams?: Team[];
 } & ComponentPropsWithoutRef<"div">;
 
 const DragTravelers: FC<Props> = ({ group, members, className, teams, ...others }) => {
-  const isMembersShow = members.filter(member => member.isShow).length;
-  const isTeamsShow = teams === undefined ? 0 : teams.filter(team => team.isShow).length;
+  const isMembersShow = members.length;
+  const isTeamsShow = teams === undefined ? 0 : teams.length;
 
   return (
     <div className={`${className} space-y-1 rounded-md px-2 text-gray-700`} {...others}>

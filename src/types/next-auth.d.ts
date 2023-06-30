@@ -9,12 +9,11 @@ declare module "next-auth" {
   interface User {
     id: string;
     provider_id: string;
-    accountId?: string;
     username: string;
     global_name: string;
     avatar: string | null;
     discriminator: string;
-    banner_color: string;
+    banner_color: string | null;
     access_token?: string;
     refresh_token?: string;
   }
