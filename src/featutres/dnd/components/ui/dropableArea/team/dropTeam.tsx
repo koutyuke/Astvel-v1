@@ -39,7 +39,9 @@ const DropTeam: FC<Props> = ({ team, guildId }) => {
   }
 
   const members = allMembers.data.filter(member =>
-    DnDMembers.some(DnDMember => DnDMember.attributionType === "team" && DnDMember.id === member.id),
+    DnDMembers.some(
+      DnDMember => DnDMember.attributionType === "team" && DnDMember.id === member.id && DnDMember.attributionId === id,
+    ),
   );
   const isDragTeam = activeGroup?.dataType === "team";
 

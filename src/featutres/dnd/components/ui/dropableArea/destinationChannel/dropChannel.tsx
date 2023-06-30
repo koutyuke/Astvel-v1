@@ -50,7 +50,9 @@ const DropChannel: FC<Props> = ({ channel, guildId }) => {
     ),
   );
   const teams = allTeams.filter(team =>
-    DnDTeams.some(DnDTeam => DnDTeam.attributionType === "channel" && DnDTeam.id === team.id),
+    DnDTeams.some(
+      DnDTeam => DnDTeam.attributionType === "channel" && DnDTeam.id === team.id && DnDTeam.attributionId === id,
+    ),
   );
 
   return (
