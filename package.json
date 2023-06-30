@@ -45,6 +45,7 @@
     "recoil": "^0.7.7",
     "socket.io": "^4.6.2",
     "socket.io-client": "^4.6.2",
+    "swr": "^2.2.0",
     "zod": "^3.21.4"
   },
   "devDependencies": {

@@ -6321,6 +6321,7 @@ __metadata:
     sass: "npm:^1.58.3"
     socket.io: "npm:^4.6.2"
     socket.io-client: "npm:^4.6.2"
+    swr: "npm:^2.2.0"
     tailwindcss: "npm:^3.3.2"
     ts-jest: "npm:^29.0.5"
     ts-node: "npm:^10.9.1"
@@ -17261,6 +17262,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"swr@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "swr@npm:2.2.0"
+  dependencies:
+    use-sync-external-store: "npm:^1.2.0"
+  peerDependencies:
+    react: ^16.11.0 || ^17.0.0 || ^18.0.0
+  checksum: 1bd254bb3f3e8abf7b663c29b2636271a210b383d537417056716a6785fa96323653097dc3cf6a129ee3deb01b69999d125540dd1b39652b7edeb83870c7021c
+  languageName: node
+  linkType: hard
+
 "symbol-tree@npm:^3.2.4":
   version: 3.2.4
   resolution: "symbol-tree@npm:3.2.4"
@@ -18296,7 +18308,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-sync-external-store@npm:1.2.0":
+"use-sync-external-store@npm:1.2.0, use-sync-external-store@npm:^1.2.0":
   version: 1.2.0
   resolution: "use-sync-external-store@npm:1.2.0"
   peerDependencies:
