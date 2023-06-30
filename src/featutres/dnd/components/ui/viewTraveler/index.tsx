@@ -20,7 +20,7 @@ const ViewTravelers: FC<Props> = ({ teams, members, className, ...other }) => {
         <div className="">
           {members.map(member => (
             <SmallMemberModel
-              imageUrl={iconUrlGen(member.id, member.avatar)}
+              imageUrl={iconUrlGen(member.id, member.avatar ?? member.userAvatar)}
               name={member.displayName}
               key={member.id}
             />
