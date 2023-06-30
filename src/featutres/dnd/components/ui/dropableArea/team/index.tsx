@@ -14,7 +14,7 @@ const TeamDropArea: FC<Props> = ({ guildId }) => {
   const allTeams = useRecoilValue(TeamsAtom);
 
   return (
-    <div className="relative h-full w-full rounded-lg bg-gradient-to-br from-red-500 to-yellow-600 py-2">
+    <div className="relative h-full w-[calc((100%_-_3rem)/3)] rounded-lg bg-gradient-to-br from-red-500 to-yellow-600 py-2">
       {active?.data.current?.dataType === "team" && (
         <div className="absolute left-1 top-1 z-10 flex h-[calc(100%_-_0.5rem)] w-[calc(100%_-_0.5rem)] items-center justify-center rounded-lg bg-[rgba(100,116,139,0.7)]">
           <p>Cannot drop a team into a team</p>

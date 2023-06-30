@@ -60,7 +60,7 @@ const Guilds: NextPage = () => {
       onDragOver={() => {}}
       onDragMove={() => {}}
     >
-      <div className="grid h-[calc(100vh_-_10rem)] grid-cols-[4rem_1fr_1fr_1fr] grid-rows-[minmax(0,1fr)] gap-x-4 px-10">
+      <div className="mx-10 flex h-[calc(100vh_-_10rem)] space-x-4 pl-16">
         <ToolBar />
         <DestinationChannelDropArea guildId={query.data.id} />
         <NoSelectDropableArea guildId={query.data.id} />
