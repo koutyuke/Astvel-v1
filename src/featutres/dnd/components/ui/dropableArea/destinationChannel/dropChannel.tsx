@@ -2,12 +2,13 @@ import { useDroppable } from "@dnd-kit/core";
 import { useState, type FC } from "react";
 import { DragDataType, GroupType } from "types/models/dnd";
 import { HiSpeakerWave } from "react-icons/hi2";
-// import { IoLockClosed } from "react-icons/io5";
+import { IoLockClosed } from "react-icons/io5";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { useRecoilValue } from "recoil";
 import { APIVoice } from "types/api/astvel";
 import { DnDMembersAtom, DnDTeamsAtom, TeamsAtom } from "utils/recoil/dnd";
 import useAllMembers from "featutres/dnd/hooks/swr/useAllMembers";
+import permissionCheck from "utils/permissionCheck";
 import ViewTravelers from "../../viewTraveler";
 import DragTravelers from "../../dragableArea";
 
@@ -55,6 +56,12 @@ const DropChannel: FC<Props> = ({ channel, guildId }) => {
     ),
   );
 
+  const everyone = channel.permissionOverwriteRoles.find(role => role.id === guildId);
+  const isPrivate =
+    everyone !== undefined
+      ? permissionCheck(BigInt(everyone.deny), BigInt(1024)) && permissionCheck(BigInt(everyone.deny), BigInt(1048576))
+      : false;
+
   return (
     <div
       className={`${
@@ -70,8 +77,8 @@ const DropChannel: FC<Props> = ({ channel, guildId }) => {
         role="button"
         aria-hidden="true"
       >
-        {/* {isPrivate ? <IoLockClosed size={20} /> : } */}
-        <HiSpeakerWave size={20} />
+        {isPrivate ? <IoLockClosed size={20} /> : <HiSpeakerWave size={20} />}
+
         <p className="w-full min-w-0 overflow-hidden text-ellipsis whitespace-nowrap">
           <span className="text-base">{name}</span>
         </p>
