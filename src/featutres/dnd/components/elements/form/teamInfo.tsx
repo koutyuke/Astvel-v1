@@ -9,7 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 const Picker = dynamic(() => import("emoji-picker-react"), { ssr: false });
 
-type FormValue = {
+export type FormValue = {
   emoji: string;
   name: string;
 };

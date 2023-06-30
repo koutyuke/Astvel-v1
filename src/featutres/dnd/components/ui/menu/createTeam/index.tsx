@@ -3,11 +3,13 @@ import BaseDialog from "components/elements/dialog";
 import TeamInfoForm from "featutres/dnd/components/elements/form/teamInfo";
 import useToastSetter from "hooks/useToastSetter";
 import { FC, useState } from "react";
+import useCreateTeam from "featutres/dnd/hooks/useCreateTeam";
 
 const CreateTeamMenu: FC = () => {
   const [open, setOpen] = useState(false);
   const AddDialog = BaseDialog(<AdditionalButton />);
   const toastSetter = useToastSetter();
+  const createTeam = useCreateTeam();
 
   return (
     <AddDialog open={open} setOpen={setOpen}>
@@ -17,13 +19,21 @@ const CreateTeamMenu: FC = () => {
         defaultEmoji=""
         defaultName=""
         onSubmit={data => {
-          // console.log(data);
           setOpen(false);
-          toastSetter({
-            title: "Create New Team",
-            message: `success for ${data.emoji}${data.name}`,
-            status: "success",
-          });
+          try {
+            createTeam(data);
+            toastSetter({
+              title: "Create New Team",
+              message: `success for ${data.emoji}${data.name}`,
+              status: "success",
+            });
+          } catch {
+            toastSetter({
+              title: "Error",
+              message: "Could Not Create Team",
+              status: "error",
+            });
+          }
         }}
       />
     </AddDialog>
