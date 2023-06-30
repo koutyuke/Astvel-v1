@@ -1,7 +1,6 @@
 import { atom } from "recoil";
 import { ToastType } from "types/recoil/toast";
 
-// eslint-disable-next-line import/prefer-default-export
 export const toast = atom<ToastType>({
   key: "toast",
   default: {
@@ -10,4 +9,9 @@ export const toast = atom<ToastType>({
     message: "",
     status: "success",
   },
+});
+
+export const toastRefId = atom<number>({
+  key: "toastRefId",
+  default: 0,
 });
