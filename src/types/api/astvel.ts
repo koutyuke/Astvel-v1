@@ -7,6 +7,14 @@ type Permission = {
   deny: string;
 };
 
+type APIUserGuild = {
+  id: string;
+  name: string;
+  icon?: string;
+  owner: boolean;
+  permissions: string;
+};
+
 type APIGuild = {
   id: string;
   name: string;
@@ -45,4 +53,4 @@ type APIRole = {
   permissions: string;
 };
 
-export type { APIGuild, APIMember, APIVoice, APICategory, APIRole };
+export type { APIGuild, APIMember, APIVoice, APICategory, APIRole, APIUserGuild };
