@@ -1,7 +1,7 @@
-import { ComponentPropsWithoutRef, FC, forwardRef } from "react";
+import { ComponentPropsWithoutRef, FC, ReactNode, forwardRef } from "react";
 
 type Props = {
-  children: string;
+  children: string | ReactNode;
 } & ComponentPropsWithoutRef<"button">;
 
 const BaseButton: FC<Props> = forwardRef<HTMLButtonElement, Props>(({ className, children, ...other }, ref) => (
