@@ -14,6 +14,7 @@ import guildPageQuerySchema from "schema/guildPageQuery";
 import useGuild from "featutres/dnd/hooks/swr/useGuild";
 import useUpdateDnDTravelers from "featutres/dnd/hooks/useUpdateTravelers";
 import useUpdateDnD from "featutres/dnd/hooks/useUpdateDnD";
+import SelectGuild from "components/ui/selectGuild";
 
 const Guilds: NextPage = () => {
   const { data: SESSION } = useSession();
@@ -31,7 +32,11 @@ const Guilds: NextPage = () => {
   }
 
   if (!query.success) {
-    return <div>not query</div>;
+    return (
+      <div className="mx-10">
+        <SelectGuild />
+      </div>
+    );
   }
 
   if (guild.isLoading) {
