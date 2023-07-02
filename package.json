@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "dev:server": "SET NODE_ENV=development& nodemon",
+    "dev:server": "nodemon",
     "build": "next build && tsc --project tsconfig.server.json && tsc-alias --project tsconfig.server.json",
     "start": "node dist/server/index.js",
     "lint": "eslint --ignore-path .gitignore src/**/*.{ts,tsx}",
