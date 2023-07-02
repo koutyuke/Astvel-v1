@@ -13,6 +13,14 @@ const DestinationChannelDropArea: FC<Props> = ({ guildId }) => {
   const allCategories = useAllCategories(guildId);
   const allVoices = useAllVoices(guildId);
 
+  if (allCategories.isLoading || allVoices.isLoading) {
+    return (
+      <div className="h-full w-[calc((100%_-_3rem)/3)] rounded-lg bg-gradient-to-br from-[#0d6399] to-[#42cba8] py-2">
+        Loading
+      </div>
+    );
+  }
+
   if (
     allCategories.error !== undefined ||
     allCategories.data === undefined ||
