@@ -56,7 +56,6 @@ const apiRole = async (req: Request, res: Response, client: Client<boolean>) => 
     };
 
     res.status(200).json(returnData);
-    return;
   } catch (e) {
     res.status(400).json({ message: "Bad Request" });
   }

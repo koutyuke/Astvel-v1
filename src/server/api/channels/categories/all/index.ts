@@ -68,7 +68,6 @@ const apiAllCategoryChannels = async (req: Request, res: Response, client: Clien
     });
 
     res.status(200).json(returnData);
-    return;
   } catch (e) {
     res.status(400).json({ message: "Bad Request" });
   }
