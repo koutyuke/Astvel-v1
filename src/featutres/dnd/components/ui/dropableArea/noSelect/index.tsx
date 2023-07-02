@@ -29,6 +29,14 @@ const NoSelectDropableArea: FC<Props> = ({ guildId }) => {
   const DnDMembers = useRecoilValue(DnDMembersAtom);
   const DnDTeams = useRecoilValue(DnDTeamsAtom);
 
+  if (allMembers.isLoading) {
+    return (
+      <div className="h-full w-[calc((100%_-_3rem)/3)] rounded-md bg-gradient-to-br from-[#4158D0] via-[#C850C0] to-[#cc2b5e] p-2">
+        Loading
+      </div>
+    );
+  }
+
   if (allMembers.data === undefined || allMembers.error !== undefined) {
     return null;
   }
