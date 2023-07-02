@@ -43,14 +43,9 @@ app.prepare().then(() => {
   io.on("connection", socket => {
     socket.on("join", (guildId: string) => {
       socket.join(guildId);
-      // eslint-disable-next-line no-console
-      console.log(`join room!: ${guildId}`);
     });
 
-    socket.on("disconnect", () => {
-      // eslint-disable-next-line no-console
-      console.log("disconnect");
-    });
+    socket.on("disconnect", () => {});
   });
 
   expressApp.get("/api/guilds", (req: express.Request, res: express.Response) => {
