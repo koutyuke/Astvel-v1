@@ -11,7 +11,7 @@ const ToolSettingMenu: FC = () => {
 
   return (
     <AddDialog open={open} setOpen={setOpen}>
-      <div>jpeg</div>
+      <div>Comming Soon...</div>
     </AddDialog>
   );
 };
