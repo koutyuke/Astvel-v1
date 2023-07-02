@@ -4,6 +4,8 @@ import next, { NextApiHandler, NextApiRequest } from "next";
 import { Server as SocketioServer } from "socket.io";
 import { Client, GatewayIntentBits } from "discord.js";
 import dotenv from "dotenv";
+import { ClientToServerEvents } from "types/socket/clientToServer";
+import { ServerToClientEvents } from "types/socket/serverToClient";
 import apiGuild from "./api/guilds";
 import apiVoiceChannel from "./api/channels/voices";
 import apiAllVoiceChannels from "./api/channels/voices/all";
@@ -31,7 +33,25 @@ app.prepare().then(() => {
   expressApp.use(express.urlencoded({ extended: true }));
   const socketServer = createServer(expressApp);
 
-  const io = new SocketioServer(socketServer);
+  const io = new SocketioServer<ClientToServerEvents, ServerToClientEvents>(socketServer, {
+    cors: {
+      origin: ["http://localhost:3000"],
+      credentials: true,
+    },
+  });
+
+  io.on("connection", socket => {
+    socket.on("join", (guildId: string) => {
+      socket.join(guildId);
+      // eslint-disable-next-line no-console
+      console.log(`join room!: ${guildId}`);
+    });
+
+    socket.on("disconnect", () => {
+      // eslint-disable-next-line no-console
+      console.log("disconnect");
+    });
+  });
 
   expressApp.get("/api/guilds", (req: express.Request, res: express.Response) => {
     apiGuild(req, res, client);
@@ -78,15 +98,20 @@ app.prepare().then(() => {
     console.log("ready!!");
   });
 
-  client.on("messageCreate", message => {
-    if (!message.author.bot) {
-      console.log(message.content);
+  client.on("voiceStateUpdate", (oldState, newState) => {
+    if (oldState.channelId === null) {
+      io.to(oldState.guild.id).emit("memberVoiceState", "join", newState.channelId, newState.member?.id);
+    } else if (newState.channelId === null) {
+      io.to(oldState.guild.id).emit("memberVoiceState", "leave", oldState.channelId, oldState.member?.id);
+    } else if (newState.channelId !== oldState.channelId) {
+      io.to(oldState.guild.id).emit("memberVoiceState", "move", newState.channelId, newState.member?.id);
     }
   });
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   expressApp.all("*", (req: NextApiRequest, res: any) => handle(req, res));
   socketServer.listen(port, () => {
+    // eslint-disable-next-line no-console
     console.log(`Ready on http://localhost:${port}`);
   });
 
