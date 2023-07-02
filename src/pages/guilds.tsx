@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-import { useSession } from "next-auth/react";
 import { DndContext } from "@dnd-kit/core";
 import Overlay from "featutres/dnd/components/models/overlay";
 import { DragDataType, DropDataType } from "types/models/dnd";
@@ -8,7 +7,6 @@ import NoSelectDropableArea from "featutres/dnd/components/ui/dropableArea/noSel
 import TeamDropArea from "featutres/dnd/components/ui/dropableArea/team";
 import BaseToast from "components/elements/toast";
 import ToolBar from "featutres/dnd/components/ui/toolbar";
-import sessionSchema from "schema/session";
 import { useRouter } from "next/router";
 import guildPageQuerySchema from "schema/guildPageQuery";
 import useGuild from "featutres/dnd/hooks/swr/useGuild";
@@ -17,16 +15,19 @@ import useUpdateDnD from "featutres/dnd/hooks/useUpdateDnD";
 import SelectGuild from "components/ui/selectGuild";
 import ErrorMessage from "components/ui/errorMessage";
 import InviteBot from "components/ui/inviteBot";
+import useSocketEffect from "hooks/useSocketEffect";
+import useValidatedSession from "hooks/useValidatedSession";
 
 const Guilds: NextPage = () => {
-  const { data: SESSION } = useSession();
-  const session = sessionSchema.safeParse(SESSION);
+  const session = useValidatedSession();
   const router = useRouter();
   const QUERY = router.query;
   const query = guildPageQuerySchema.safeParse(QUERY);
   const guild = useGuild(query.success ? query.data.id : undefined);
 
   useUpdateDnDTravelers(query.success ? query.data.id : undefined);
+  useSocketEffect(guild.data?.id);
+
   const UpdateDnD = useUpdateDnD();
 
   if (!session.success) {
