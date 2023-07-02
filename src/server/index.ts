@@ -13,6 +13,7 @@ import apiMember from "./api/members";
 import apiAllMembers from "./api/members/all";
 import apiRole from "./api/roles";
 import apiAllRoles from "./api/roles/all";
+import apiMove from "./api/move";
 
 dotenv.config();
 const port = parseInt(process.env.PORT || "3000", 10);
@@ -26,7 +27,10 @@ const client = new Client({ intents: allIntents });
 
 app.prepare().then(() => {
   const expressApp = express();
+  expressApp.use(express.json());
+  expressApp.use(express.urlencoded({ extended: true }));
   const socketServer = createServer(expressApp);
+
   const io = new SocketioServer(socketServer);
 
   expressApp.get("/api/guilds", (req: express.Request, res: express.Response) => {
@@ -65,7 +69,12 @@ app.prepare().then(() => {
     apiAllVoiceChannels(req, res, client);
   });
 
+  expressApp.patch("/api/move", (req: express.Request, res: express.Response) => {
+    apiMove(req, res, client);
+  });
+
   client.once("ready", () => {
+    // eslint-disable-next-line no-console
     console.log("ready!!");
   });
 
