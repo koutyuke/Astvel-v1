@@ -86,9 +86,9 @@ const ToolMoveMenu: FC<Props> = ({ guildId }) => {
 
   return (
     <AddDialog open={open} setOpen={setOpen}>
-      <div className="h-[60vh] w-96 space-y-2 rounded-lg bg-white px-8 py-6 text-gray-500">
+      <div className="h-[60vh] w-[30vw] min-w-[24rem] space-y-2 rounded-lg bg-white px-8 py-6 text-gray-500">
         <p className="h-10 w-full text-center text-3xl">confirmation</p>
-        <div className="flex h-[calc(60vh_-_9rem)] flex-col space-y-2 overflow-auto rounded-lg bg-gray-200 px-4 py-2">
+        <div className="flex h-[calc(100%_-_6rem)] flex-col space-y-2 overflow-auto rounded-lg bg-gray-200 px-4 py-2">
           {moveData.map(voice => {
             if (
               voice.members.length === 0 &&
@@ -99,8 +99,8 @@ const ToolMoveMenu: FC<Props> = ({ guildId }) => {
 
             return (
               <div key={voice.id} className=" flex flex-col space-y-1">
-                <p className="w-full truncate">{voice.name}</p>
-                <div className="flex space-x-2 pl-2">
+                <p className="w-full truncate text-xl">{voice.name}</p>
+                <div className="flex space-x-2 pl-4">
                   <div className="min-h-full w-[2px] bg-gray-400" />
                   <div>
                     {voice.members.map(member => (
