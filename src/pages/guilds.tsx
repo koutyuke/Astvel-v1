@@ -15,6 +15,8 @@ import useGuild from "featutres/dnd/hooks/swr/useGuild";
 import useUpdateDnDTravelers from "featutres/dnd/hooks/useUpdateTravelers";
 import useUpdateDnD from "featutres/dnd/hooks/useUpdateDnD";
 import SelectGuild from "components/ui/selectGuild";
+import ErrorMessage from "components/ui/errorMessage";
+import InviteBot from "components/ui/inviteBot";
 
 const Guilds: NextPage = () => {
   const { data: SESSION } = useSession();
@@ -28,7 +30,11 @@ const Guilds: NextPage = () => {
   const UpdateDnD = useUpdateDnD();
 
   if (!session.success) {
-    return <div>session error</div>;
+    return (
+      <div className="mx-10 flex h-[calc(100vh_-_10rem)] items-center justify-center">
+        <ErrorMessage title="No Login">Please login with Discord.</ErrorMessage>
+      </div>
+    );
   }
 
   if (!query.success) {
@@ -44,11 +50,30 @@ const Guilds: NextPage = () => {
   }
 
   if (guild.data === undefined || guild.error) {
-    return <div>guild is undefined</div>;
+    return (
+      <div className="mx-10 flex h-[calc(100vh_-_10rem)] items-center justify-center">
+        <ErrorMessage title="Access Error">
+          Cannot Access Server.
+          <br />
+          Please Check Your Internet.
+        </ErrorMessage>
+      </div>
+    );
   }
 
   if (guild.data === null) {
-    return <div>guild does not found</div>;
+    return (
+      <div className="mx-10 flex h-[calc(100vh_-_10rem)] flex-col items-center justify-center space-y-6">
+        <div className="text-center text-2xl">
+          Astvel Discord Bot has not joined this server.
+          <br />
+          Please join the Bot!
+        </div>
+        <div className="h-80">
+          <InviteBot />
+        </div>
+      </div>
+    );
   }
 
   return (
