@@ -10,7 +10,7 @@ export default nextAuth({
       clientSecret: process.env.DISCORD_CLIENT_SECRET ?? "",
       authorization: {
         params: {
-          scope: "guilds",
+          scope: "identify email guilds",
         },
       },
       profile(profile: DiscordProfile, token) {
