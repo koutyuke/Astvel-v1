@@ -33,7 +33,7 @@ const Guilds: NextPage = () => {
   if (!session.success) {
     return (
       <div className="flex h-full w-full items-center justify-center">
-        <ErrorMessage title="No Login">Please login with Discord.</ErrorMessage>
+        <ErrorMessage title="No Sign In">Please Sign In with Discord.</ErrorMessage>
       </div>
     );
   }

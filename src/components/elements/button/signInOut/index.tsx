@@ -32,7 +32,7 @@ const SignInOutButton: FC = () => {
             className="absolute left-[2.6rem] top-10 flex h-[3.15rem] w-[7.4rem] items-center justify-center rounded-b-xl bg-[#ff4da6] pt-2 hover:bg-green-500"
             onClick={() => signOut({ callbackUrl: "/" })}
           >
-            <span>Sing Out</span>
+            <span>Sign Out</span>
           </button>
         )}
         <button type="button" onClick={() => setOpenLogout(!isOpenLogout)} className="z-10">
@@ -52,7 +52,7 @@ const SignInOutButton: FC = () => {
       onClick={() => signIn("discord")}
       className="flex h-10 w-40 items-center justify-center rounded-full bg-[#ff4da6] outline-2 outline-offset-[3px] outline-green-500 hover:outline"
     >
-      <span className="text-lg">Sing In</span>
+      <span className="text-lg">Sign In</span>
     </button>
   );
 };
