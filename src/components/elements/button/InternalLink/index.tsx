@@ -9,7 +9,7 @@ type Props = {
 const InternalLink: FC<Props> = ({ url, children: text, className }) => {
   const router = useRouter();
   if (router.pathname === url) {
-    return <div className={`underline decoration-white underline-offset-1 ${className}`}>{text}</div>;
+    return <div className={`underline decoration-white underline-offset-2 ${className}`}>{text}</div>;
   }
 
   return (
