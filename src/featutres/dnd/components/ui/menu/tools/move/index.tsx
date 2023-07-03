@@ -23,7 +23,7 @@ const ToolMoveMenu: FC<Props> = ({ guildId }) => {
   const AddDialog = BaseDialog(<BaseToolButton Icon={BsFillRocketTakeoffFill} title="Move" />);
   const toastSetter = useToastSetter();
 
-  const session = useValidatedSession();
+  const { session } = useValidatedSession();
   const allVoices = useAllVoices(guildId);
   const allMembers = useAllMembers(guildId);
   const allTeams = useRecoilValue(TeamsAtom);

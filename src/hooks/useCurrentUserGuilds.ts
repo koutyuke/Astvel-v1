@@ -4,7 +4,7 @@ import useSWR from "swr";
 import { APIUserGuild } from "types/api/astvel";
 
 const useCurrentUserGuilds = () => {
-  const session = useValidatedSession();
+  const { session } = useValidatedSession();
 
   return useSWR<APIUserGuild[]>(
     session.success
