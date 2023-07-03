@@ -7,7 +7,7 @@ type Props = {
   sub: string;
 };
 
-const SingInUser: FC<Props> = ({ image, main, sub }) => (
+const SignInUser: FC<Props> = ({ image, main, sub }) => (
   <Avatar.Root className="relative flex h-14 min-w-[10rem] flex-col overflow-auto py-1 pl-8">
     <Avatar.Image src={image} className="absolute left-0 top-0 h-14 w-14 rounded-full border-[3px] border-white" />
     <div className="h-12 min-w-[8rem] rounded-r-xl bg-white py-1 pl-6 pr-1">
@@ -19,4 +19,4 @@ const SingInUser: FC<Props> = ({ image, main, sub }) => (
   </Avatar.Root>
 );
 
-export default SingInUser;
+export default SignInUser;

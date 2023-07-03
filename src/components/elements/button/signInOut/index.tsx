@@ -1,9 +1,9 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import { FC, useState } from "react";
-import SingInUser from "components/models/user/singInUser";
+import SignInUser from "components/models/user/singInUser";
 import iconUrlGen from "utils/iconUrlGen";
 
-const SingInOutButton: FC = () => {
+const SignInOutButton: FC = () => {
   const { data: session, status } = useSession();
   const [isOpenLogout, setOpenLogout] = useState(false);
   if (status === "loading") {
@@ -34,7 +34,7 @@ const SingInOutButton: FC = () => {
           </button>
         )}
         <button type="button" onClick={() => setOpenLogout(!isOpenLogout)} className="z-10">
-          <SingInUser
+          <SignInUser
             image={iconUrlGen(session.user?.provider_id ?? "", session.user?.avatar ?? "")}
             main={session.user?.discriminator === "0" ? session.user?.global_name ?? "" : session.user?.username ?? ""}
             sub={
@@ -59,4 +59,4 @@ const SingInOutButton: FC = () => {
   );
 };
 
-export default SingInOutButton;
+export default SignInOutButton;

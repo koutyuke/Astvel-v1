@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Image from "next/image";
-import SingInOutButton from "components/elements/button/singInOut";
+import SignInOutButton from "components/elements/button/signInOut";
 import HeaderLinks from "./HeaderLinks";
 
 const Header: FC = () => (
@@ -10,7 +10,7 @@ const Header: FC = () => (
     </div>
     <HeaderLinks />
     <div className="flex h-full w-full items-center justify-center">
-      <SingInOutButton />
+      <SignInOutButton />
     </div>
   </header>
 );
