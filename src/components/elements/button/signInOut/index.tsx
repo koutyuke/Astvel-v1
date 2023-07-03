@@ -1,10 +1,11 @@
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signIn, signOut } from "next-auth/react";
 import { FC, useState } from "react";
 import SignInUser from "components/models/user/singInUser";
 import iconUrlGen from "utils/iconUrlGen";
+import useValidatedSession from "hooks/useValidatedSession";
 
 const SignInOutButton: FC = () => {
-  const { data: session, status } = useSession();
+  const { session, status } = useValidatedSession();
   const [isOpenLogout, setOpenLogout] = useState(false);
   if (status === "loading") {
     return (
@@ -14,7 +15,8 @@ const SignInOutButton: FC = () => {
     );
   }
 
-  if (session) {
+  if (session.success) {
+    const { user } = session.data;
     return (
       <div
         className={`${isOpenLogout ? "" : " hover:outline"} relative rounded-md outline-offset-4 outline-orange-500 `}
@@ -35,13 +37,9 @@ const SignInOutButton: FC = () => {
         )}
         <button type="button" onClick={() => setOpenLogout(!isOpenLogout)} className="z-10">
           <SignInUser
-            image={iconUrlGen(session.user?.provider_id ?? "", session.user?.avatar ?? "")}
-            main={session.user?.discriminator === "0" ? session.user?.global_name ?? "" : session.user?.username ?? ""}
-            sub={
-              session.user?.discriminator === "0"
-                ? `@${session.user?.username}`
-                : `#${session.user?.discriminator ?? ""}`
-            }
+            image={iconUrlGen(user.provider_id ?? "", user.avatar ?? "")}
+            main={user.discriminator === "0" ? user.global_name ?? "" : user.username ?? ""}
+            sub={user.discriminator === "0" ? `@${user.username}` : `#${user.discriminator ?? ""}`}
           />
         </button>
       </div>

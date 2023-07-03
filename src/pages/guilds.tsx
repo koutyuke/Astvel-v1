@@ -19,7 +19,7 @@ import useSocketEffect from "hooks/useSocketEffect";
 import useValidatedSession from "hooks/useValidatedSession";
 
 const Guilds: NextPage = () => {
-  const session = useValidatedSession();
+  const { session } = useValidatedSession();
   const router = useRouter();
   const QUERY = router.query;
   const query = guildPageQuerySchema.safeParse(QUERY);
