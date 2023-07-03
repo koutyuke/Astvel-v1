@@ -32,7 +32,7 @@ const Guilds: NextPage = () => {
 
   if (!session.success) {
     return (
-      <div className="mx-10 flex h-[calc(100vh_-_10rem)] w-full items-center justify-center">
+      <div className="flex h-full w-full items-center justify-center">
         <ErrorMessage title="No Login">Please login with Discord.</ErrorMessage>
       </div>
     );
@@ -40,7 +40,7 @@ const Guilds: NextPage = () => {
 
   if (!query.success) {
     return (
-      <div className="mx-10 w-full">
+      <div className="h-full w-full">
         <SelectGuild />
       </div>
     );
@@ -52,7 +52,7 @@ const Guilds: NextPage = () => {
 
   if (guild.data === undefined || guild.error) {
     return (
-      <div className="mx-10 flex h-[calc(100vh_-_10rem)] w-full items-center justify-center">
+      <div className="flex h-full w-full items-center justify-center">
         <ErrorMessage title="Access Error">
           Cannot Access Server.
           <br />
@@ -64,7 +64,7 @@ const Guilds: NextPage = () => {
 
   if (guild.data === null) {
     return (
-      <div className="mx-10 flex h-[calc(100vh_-_10rem)] w-full flex-col items-center justify-center space-y-6">
+      <div className="flex h-full w-full flex-col items-center justify-center space-y-6">
         <div className="text-center text-2xl">
           Astvel Discord Bot has not joined this server.
           <br />
@@ -91,7 +91,7 @@ const Guilds: NextPage = () => {
       onDragOver={() => {}}
       onDragMove={() => {}}
     >
-      <div className="mx-10 flex h-[calc(100vh_-_10rem)] w-full max-w-[100rem] space-x-4 pl-16">
+      <div className="flex h-full w-full max-w-[100rem] space-x-4 pl-16">
         <ToolBar guildId={query.data.id} />
         <DestinationChannelDropArea guildId={query.data.id} />
         <NoSelectDropableArea guildId={query.data.id} />
