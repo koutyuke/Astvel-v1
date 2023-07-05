@@ -6366,6 +6366,7 @@ __metadata:
     eslint-plugin-storybook: "npm:^0.6.10"
     eslint-plugin-tailwindcss: "npm:^3.8.3"
     express: "npm:^4.18.2"
+    hamburger-react: "npm:^2.5.0"
     jest: "npm:^29.4.3"
     jest-environment-jsdom: "npm:^29.4.3"
     next: "npm:^12.3.4"
@@ -10585,6 +10586,15 @@ __metadata:
   version: 1.0.4
   resolution: "grapheme-splitter@npm:1.0.4"
   checksum: c67a8e522758dd907770a78ad750e6dfdcce327b0696fdd82f4b7acb8bb22b0574c88f806afb3c6597a536fa9016e6e3486071535fd0e9226b8505c67cf2fb01
+  languageName: node
+  linkType: hard
+
+"hamburger-react@npm:^2.5.0":
+  version: 2.5.0
+  resolution: "hamburger-react@npm:2.5.0"
+  peerDependencies:
+    react: ^16.8 || ^17 || ^18
+  checksum: 4bbe521c7737d0290c9f7394280848a27b1e2b05151b3de9efd188de6f44530234037d3aff6ec7a800c9057fa8c8d428a1d4c2bba8f970fc4be9594d5d955d03
   languageName: node
   linkType: hard
 
