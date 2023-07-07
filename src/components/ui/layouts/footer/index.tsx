@@ -4,7 +4,7 @@ import FooterRightContents from "./right";
 import FooterCenterContents from "./center";
 
 const Footer = () => (
-  <footer className="flex grid-cols-[1fr_1fr_1fr] grid-rows-[3.5rem_minmax(6rem,1fr)_2rem] flex-col  gap-x-2 gap-y-4 space-y-3 bg-gray-800 px-2 pt-6 text-white sm:grid sm:space-y-2">
+  <footer className="flex grid-cols-[1fr_1fr_1fr] grid-rows-[3.5rem_minmax(6rem,1fr)_1.5rem] flex-col  space-y-6 bg-gray-800 px-2 pb-2 pt-6 text-white sm:grid sm:gap-x-2 sm:gap-y-4 sm:space-y-0">
     <div className="col-[1_/_4] row-start-1 flex h-full items-center justify-center">
       <Image src="/icon.PNG" alt="icon" className="" width={50} height={50} />
       <Image src="/logo.PNG" alt="logo" width={200} height={50} />
@@ -12,7 +12,7 @@ const Footer = () => (
     <FooterLeftContets />
     <FooterCenterContents />
     <FooterRightContents />
-    <span className="col-[1_/_4] row-start-3 w-full text-center">&copy; Astnvel</span>
+    <span className="col-[1_/_4] row-start-3 h-6 w-full text-center">&copy; Astnvel</span>
   </footer>
 );
 
