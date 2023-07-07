@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import BaseToast from "components/elements/toast";
 
 const Home: NextPage = () => (
-  <div className="flex h-[calc(100vh_-_10rem)] flex-col items-center justify-center space-x-10 space-y-4 px-10">
+  <div className="flex h-full flex-col items-center justify-center space-x-10 space-y-4">
     <BaseToast />
     <p className="w-full text-center text-4xl">Varsion &alpha;</p>
     <div className="text-center text-xl">

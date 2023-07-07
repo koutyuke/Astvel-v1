@@ -9,7 +9,7 @@ import getAstvelAPI from "libs/axios/getAstvelAPI";
 import useValidatedSession from "./useValidatedSession";
 
 const useSocketEffect = (guildId: string | undefined) => {
-  const session = useValidatedSession();
+  const { session } = useValidatedSession();
   // const allVoices = useAllVoices(guildId);
   const allMembers = useAllMembers(guildId);
 

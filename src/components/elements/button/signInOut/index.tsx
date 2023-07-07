@@ -1,10 +1,11 @@
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signIn, signOut } from "next-auth/react";
 import { FC, useState } from "react";
-import SingInUser from "components/models/user/singInUser";
+import SignInUser from "components/models/user/singInUser";
 import iconUrlGen from "utils/iconUrlGen";
+import useValidatedSession from "hooks/useValidatedSession";
 
-const SingInOutButton: FC = () => {
-  const { data: session, status } = useSession();
+const SignInOutButton: FC = () => {
+  const { session, status } = useValidatedSession();
   const [isOpenLogout, setOpenLogout] = useState(false);
   if (status === "loading") {
     return (
@@ -14,7 +15,8 @@ const SingInOutButton: FC = () => {
     );
   }
 
-  if (session) {
+  if (session.success) {
+    const { user } = session.data;
     return (
       <div
         className={`${isOpenLogout ? "" : " hover:outline"} relative rounded-md outline-offset-4 outline-orange-500 `}
@@ -30,18 +32,14 @@ const SingInOutButton: FC = () => {
             className="absolute left-[2.6rem] top-10 flex h-[3.15rem] w-[7.4rem] items-center justify-center rounded-b-xl bg-[#ff4da6] pt-2 hover:bg-green-500"
             onClick={() => signOut({ callbackUrl: "/" })}
           >
-            <span>Sing Out</span>
+            <span>Sign Out</span>
           </button>
         )}
         <button type="button" onClick={() => setOpenLogout(!isOpenLogout)} className="z-10">
-          <SingInUser
-            image={iconUrlGen(session.user?.provider_id ?? "", session.user?.avatar ?? "")}
-            main={session.user?.discriminator === "0" ? session.user?.global_name ?? "" : session.user?.username ?? ""}
-            sub={
-              session.user?.discriminator === "0"
-                ? `@${session.user?.username}`
-                : `#${session.user?.discriminator ?? ""}`
-            }
+          <SignInUser
+            image={iconUrlGen(user.provider_id ?? "", user.avatar ?? "")}
+            main={user.discriminator === "0" ? user.global_name ?? "" : user.username ?? ""}
+            sub={user.discriminator === "0" ? `@${user.username}` : `#${user.discriminator ?? ""}`}
           />
         </button>
       </div>
@@ -54,9 +52,9 @@ const SingInOutButton: FC = () => {
       onClick={() => signIn("discord")}
       className="flex h-10 w-40 items-center justify-center rounded-full bg-[#ff4da6] outline-2 outline-offset-[3px] outline-green-500 hover:outline"
     >
-      <span className="text-lg">Sing In</span>
+      <span className="text-lg">Sign In</span>
     </button>
   );
 };
 
-export default SingInOutButton;
+export default SignInOutButton;

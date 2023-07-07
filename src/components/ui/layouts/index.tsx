@@ -9,7 +9,9 @@ type Props = {
 const Layout: FC<Props> = ({ children }) => (
   <>
     <Header />
-    <main className="flex min-h-[100vh] w-full justify-center pb-8 pt-32">{children}</main>
+    <main className="m-auto flex h-0 min-h-[calc(100vh_-_5rem)] w-full max-w-[100rem] items-center justify-center px-10 py-8 md:min-h-[calc(100vh_-_6rem)]">
+      {children}
+    </main>
     <Footer />
   </>
 );
