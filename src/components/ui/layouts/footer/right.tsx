@@ -14,8 +14,8 @@ import { IoLibrarySharp } from "react-icons/io5";
 import ContentsTitle from "./ContentsTitle";
 
 const FooterRightContents: FC = () => (
-  <div className="flex flex-col space-y-4">
-    <div className="flex h-full w-full  flex-col items-center justify-start space-y-2">
+  <div className="flex flex-col space-y-6 sm:space-y-4">
+    <div className="flex flex-col items-center justify-start space-y-2">
       <ContentsTitle title="Framework" Icon={IoLibrarySharp} />
       <div className="flex space-x-4">
         <SiNextdotjs size={24} />
