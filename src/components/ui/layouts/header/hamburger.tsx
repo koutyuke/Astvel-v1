@@ -12,9 +12,7 @@ const HamburgerMenu: FC = () => {
     <>
       <Hamburger size={24} toggle={setOpen} toggled={open} />
       <button
-        className={`fixed left-0 top-20 z-40 opacity-90 ${
-          open ? "h-[calc(100vh_-_5rem)] w-full" : "h-0 w-0"
-        }`}
+        className={`fixed left-0 top-20 z-40 opacity-90 ${open ? "h-[calc(100vh_-_5rem)] w-full" : "h-0 w-0"}`}
         onClick={() => {
           setOpen(false);
         }}

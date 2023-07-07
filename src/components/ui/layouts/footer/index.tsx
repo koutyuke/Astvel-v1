@@ -9,9 +9,9 @@ const Footer = () => (
       <Image src="/icon.PNG" alt="icon" className="" width={50} height={50} />
       <Image src="/logo.PNG" alt="logo" width={200} height={50} />
     </div>
-    <FooterLeftContets/>
-    <FooterCenterContents/>
-    <FooterRightContents/>
+    <FooterLeftContets />
+    <FooterCenterContents />
+    <FooterRightContents />
     <span className="col-[1_/_4] row-start-3 w-full text-center">&copy; Astnvel</span>
   </footer>
 );
