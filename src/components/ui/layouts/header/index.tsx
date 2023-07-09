@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Image from "next/image";
 import SignInOutButton from "components/elements/button/signInOut";
-import HeaderLinks from "./HeaderLinks";
+import HeaderLinks from "./links";
 import HamburgerMenu from "./hamburger";
 
 const Header: FC = () => (
