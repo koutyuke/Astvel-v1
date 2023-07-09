@@ -5,7 +5,7 @@ import Title from "./title";
 
 type Props = ComponentPropsWithoutRef<"div">;
 
-const Framework: FC<Props> = ({ className, ...other}) => (
+const Framework: FC<Props> = ({ className, ...other }) => (
   <div className={`flex flex-col items-center justify-start space-y-2 ${className}`} {...other}>
     <Title title="Framework" Icon={IoLibrarySharp} />
     <div className="flex space-x-4">

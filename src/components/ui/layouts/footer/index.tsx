@@ -14,7 +14,7 @@ const Footer = () => (
     <div className="flex grid-cols-3 grid-rows-2 flex-col space-y-6 sm:grid sm:space-y-0">
       <Navigate className="order-1 col-start-1 row-[1_/_3]" />
       <Creater className="order-2 col-start-2 row-start-1" />
-      <Framework className="order-4 col-start-3 row-start-1"/>
+      <Framework className="order-4 col-start-3 row-start-1" />
       <Repository className="order-3 col-start-2 row-start-2" />
       <Library className="order-5 col-start-3 row-start-2" />
     </div>

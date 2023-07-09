@@ -6,7 +6,7 @@ import Title from "./title";
 
 type Props = ComponentPropsWithoutRef<"div">;
 
-const Framework: FC<Props> = ({ className, ...other }) => (
+const Library: FC<Props> = ({ className, ...other }) => (
   <div className={`flex h-full w-full flex-col items-center justify-start space-y-2 ${className}`} {...other}>
     <Title title="Library" Icon={IoLibrarySharp} />
     <div className="grid w-[10rem] grid-cols-4 grid-rows-[repeat(auto-fit,2rem)] place-content-center place-items-center gap-2">
@@ -21,4 +21,4 @@ const Framework: FC<Props> = ({ className, ...other }) => (
   </div>
 );
 
-export default Framework;
+export default Library;
