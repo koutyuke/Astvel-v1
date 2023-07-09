@@ -6,7 +6,7 @@ const InviteBot: FC = () => {
   const url = "https://discord.com/api/oauth2/authorize?client_id=1078178551624368229&permissions=8&scope=bot";
 
   return (
-    <div className="flex h-full w-full flex-col items-center space-y-8 overflow-auto py-4 text-gray-500">
+    <div className="flex w-full flex-col items-center space-y-8 py-4 text-gray-500">
       <div className="flex max-w-[40rem] flex-col space-y-2 rounded-lg bg-yellow-200 p-6">
         <div className="flex items-center justify-start space-x-2">
           <AiOutlineInfoCircle size={24} />

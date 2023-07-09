@@ -74,9 +74,7 @@ const Guilds: NextPage = () => {
           <br />
           Please join the Bot!
         </div>
-        <div className="h-80">
-          <InviteBot />
-        </div>
+        <InviteBot />
       </div>
     );
   }
