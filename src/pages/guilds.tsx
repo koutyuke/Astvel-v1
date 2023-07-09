@@ -25,7 +25,11 @@ const Guilds: NextPage = () => {
   const query = guildPageQuerySchema.safeParse(QUERY);
   const guild = useGuild(query.success ? query.data.id : undefined);
 
-  useUpdateDnDTravelers(query.success ? query.data.id : undefined);
+  useUpdateDnDTravelers(
+    query.success && guild.data !== undefined && guild.error === undefined && guild.data !== null
+      ? query.data.id
+      : undefined,
+  );
   useSocketEffect(guild.data?.id);
 
   const UpdateDnD = useUpdateDnD();
@@ -70,9 +74,7 @@ const Guilds: NextPage = () => {
           <br />
           Please join the Bot!
         </div>
-        <div className="h-80">
-          <InviteBot />
-        </div>
+        <InviteBot />
       </div>
     );
   }
