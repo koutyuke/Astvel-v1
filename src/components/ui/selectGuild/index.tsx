@@ -35,13 +35,13 @@ const SelectGuild: FC = () => {
       </Tabs.TabsList>
       <Tabs.Content
         value="guilds"
-        className="h-[calc(100vh_-_14rem)] w-full max-w-[60rem] overflow-hidden rounded-b-[1rem] bg-white"
+        className="h-[calc(100vh_-_14rem)] w-full max-w-[60rem]  overflow-hidden rounded-b-[1rem] bg-white data-[state=active]:block data-[state=inactive]:hidden"
       >
         <ListGuilds />
       </Tabs.Content>
       <Tabs.Content
         value="bot"
-        className="h-[calc(100vh_-_14rem)] w-full max-w-[60rem] overflow-hidden rounded-b-[1rem] bg-white"
+        className="h-[calc(100vh_-_14rem)] w-full max-w-[60rem] items-center justify-center overflow-hidden rounded-b-[1rem] bg-white data-[state=active]:flex data-[state=inactive]:hidden"
       >
         <InviteBot />
       </Tabs.Content>
