@@ -5,7 +5,7 @@ const HeaderLinks = () => (
     <InternalLink url="/">Home</InternalLink>
     <InternalLink url="/guilds">Guilds</InternalLink>
     <InternalLink url="/usage">Usage</InternalLink>
-    <InternalLink url="/faq">FAQ</InternalLink>
+    <InternalLink url="/information">Info</InternalLink>
   </div>
 );
 
