@@ -21,8 +21,8 @@ const pathParams: PathParamsType[] = [
     title: "",
   },
   {
-    path: "/faq",
-    display: "FAQ",
+    path: "/information",
+    display: "Information",
     title: "",
   },
 ];
