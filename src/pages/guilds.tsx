@@ -17,6 +17,7 @@ import ErrorMessage from "components/ui/errorMessage";
 import InviteBot from "components/ui/inviteBot";
 import useSocketEffect from "hooks/useSocketEffect";
 import useValidatedSession from "hooks/useValidatedSession";
+import NoSignIn from "components/ui/errorMessage/noSignIn";
 
 const Guilds: NextPage = () => {
   const { session } = useValidatedSession();
@@ -35,11 +36,7 @@ const Guilds: NextPage = () => {
   const UpdateDnD = useUpdateDnD();
 
   if (!session.success) {
-    return (
-      <div className="flex h-full w-full items-center justify-center">
-        <ErrorMessage title="No Sign In">Please Sign In with Discord.</ErrorMessage>
-      </div>
-    );
+    return <NoSignIn />;
   }
 
   if (!query.success) {
