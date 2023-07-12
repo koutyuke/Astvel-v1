@@ -1,7 +1,7 @@
 import { FC, Fragment, useState } from "react";
 import { Fade as Hamburger } from "hamburger-react";
 import InternalLink from "components/elements/button/InternalLink";
-import SignInLarge from "components/elements/button/signInOut/large";
+import SignInOutLarge from "components/elements/button/signInOut/large";
 import SignOutButton from "components/elements/button/signInOut/signOut";
 import pathParams from "const/path";
 
@@ -20,7 +20,7 @@ const HamburgerMenu: FC = () => {
         aria-label="Close"
       />
       <div
-        className={`fixed right-0 top-20 z-50 bg-black opacity-90 duration-300 ${
+        className={`fixed right-0 top-20 z-50 overflow-hidden bg-black opacity-90 duration-300 ${
           open ? "h-[calc(100vh_-_5rem)] w-72 rounded-none " : "h-0 w-0 rounded-b-[5rem] rounded-tl-[5rem]"
         }`}
       >
@@ -30,7 +30,7 @@ const HamburgerMenu: FC = () => {
           } flex h-full w-full flex-col items-start space-y-8 overflow-auto px-4 py-8`}
         >
           <div className="flex w-full justify-center">
-            <SignInLarge />
+            <SignInOutLarge />
           </div>
           <div className="flex w-full flex-col space-y-3">
             {pathParams.map(({ path, display }) => (
