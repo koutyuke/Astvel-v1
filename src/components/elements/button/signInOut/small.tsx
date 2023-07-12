@@ -1,10 +1,11 @@
-import { signIn, signOut } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import { FC, useState } from "react";
 import SignInUser from "components/models/user/singInUser";
 import iconUrlGen from "utils/iconUrlGen";
 import useValidatedSession from "hooks/useValidatedSession";
+import SignInButton from "./signIn";
 
-const SignInOutButton: FC = () => {
+const SignInOutSmall: FC = () => {
   const { session, status } = useValidatedSession();
   const [isOpenLogout, setOpenLogout] = useState(false);
   if (status === "loading") {
@@ -47,14 +48,8 @@ const SignInOutButton: FC = () => {
   }
 
   return (
-    <button
-      type="button"
-      onClick={() => signIn("discord")}
-      className="flex h-10 w-40 items-center justify-center rounded-full bg-[#ff4da6] outline-2 outline-offset-[3px] outline-green-500 hover:outline"
-    >
-      <span className="text-lg">Sign In</span>
-    </button>
+    <SignInButton className="outline-2 outline-offset-[3px] outline-green-500 hover:outline" />
   );
 };
 
-export default SignInOutButton;
+export default SignInOutSmall;

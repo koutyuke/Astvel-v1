@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Image from "next/image";
-import SignInOutButton from "components/elements/button/signInOut";
+import SignInOutSmall from "components/elements/button/signInOut/small";
 import HeaderLinks from "./links";
 import HamburgerMenu from "./hamburger";
 
@@ -11,7 +11,7 @@ const Header: FC = () => (
     </div>
     <HeaderLinks />
     <div className="hidden h-full w-full items-center justify-center sm:flex">
-      <SignInOutButton />
+      <SignInOutSmall />
     </div>
     <div className="h-12 w-12 rounded-lg bg-gray-500 sm:hidden">
       <HamburgerMenu />
