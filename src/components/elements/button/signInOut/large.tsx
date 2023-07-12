@@ -1,10 +1,10 @@
 import LargeSignInUser from "components/models/user/large";
 import useValidatedSession from "hooks/useValidatedSession";
-import { signIn } from "next-auth/react";
 import { FC } from "react";
 import iconUrlGen from "utils/iconUrlGen";
+import SignInButton from "./signIn";
 
-const SignInLarge: FC = () => {
+const SignInOutLarge: FC = () => {
   const { session, status } = useValidatedSession();
 
   if (status === "loading") {
@@ -26,15 +26,7 @@ const SignInLarge: FC = () => {
     );
   }
 
-  return (
-    <button
-      type="button"
-      onClick={() => signIn("discord")}
-      className="flex h-10 w-40 items-center justify-center rounded-full bg-[#ff4da6] outline-2"
-    >
-      <span className="text-lg">Sign In</span>
-    </button>
-  );
+  return (<SignInButton/>);
 };
 
-export default SignInLarge;
+export default SignInOutLarge;
