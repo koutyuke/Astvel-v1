@@ -26,7 +26,7 @@ const SignInOutLarge: FC = () => {
     );
   }
 
-  return (<SignInButton/>);
+  return <SignInButton />;
 };
 
 export default SignInOutLarge;

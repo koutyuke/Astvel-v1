@@ -1,7 +1,6 @@
 import { signIn } from "next-auth/react";
 import { ComponentPropsWithoutRef, FC } from "react";
 
-
 type SignOutProps = ComponentPropsWithoutRef<"button">;
 
 const SignInButton: FC<SignOutProps> = ({ className, ...other }) => (
@@ -13,6 +12,6 @@ const SignInButton: FC<SignOutProps> = ({ className, ...other }) => (
   >
     <span className="text-lg">Sign In</span>
   </button>
-)
+);
 
-export default SignInButton
+export default SignInButton;

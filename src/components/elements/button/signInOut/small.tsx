@@ -47,9 +47,7 @@ const SignInOutSmall: FC = () => {
     );
   }
 
-  return (
-    <SignInButton className="outline-2 outline-offset-[3px] outline-green-500 hover:outline" />
-  );
+  return <SignInButton className="outline-2 outline-offset-[3px] outline-green-500 hover:outline" />;
 };
 
 export default SignInOutSmall;
