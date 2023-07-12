@@ -39,4 +39,7 @@ export default nextAuth({
       return setSession;
     },
   },
+  pages: {
+    signIn: "/auth/signin",
+  },
 });
