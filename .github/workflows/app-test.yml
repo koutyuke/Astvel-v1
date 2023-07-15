@@ -31,14 +31,8 @@ jobs:
           key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}
           restore-keys: ${{ runner.os }}-node_modules-
 
-      - name: yarn-version
-        run: yarn -v
-
       - name: setup yarn@3.x
         run: yarn set version ${{ env.yarn-version }}
-
-      - name: yarn-version
-        run: yarn -v
 
       - name: install
         run: yarn add --cached
