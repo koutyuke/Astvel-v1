@@ -4,6 +4,10 @@ on:
   pull_request:
     branches:
       - main
+
+env:
+  yarn-version: 3.6.1
+
 jobs:
   app-test:
     runs-on: ubuntu-latest
@@ -27,8 +31,11 @@ jobs:
           key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}
           restore-keys: ${{ runner.os }}-node_modules-
 
+      - name: setup yarn@3.x
+        run: yarn set version ${{ env.yarn-version }}
+
       - name: install
-        run: yarn install --prefer-offline
+        run: yarn add --cached
 
       - name: Build
         run: yarn build
