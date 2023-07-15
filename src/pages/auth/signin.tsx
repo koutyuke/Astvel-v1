@@ -5,8 +5,8 @@ import { FaDiscord } from "react-icons/fa";
 import { TbCirclesRelation } from "react-icons/tb";
 
 const Signin: NextPage = () => (
-  <div className="flex h-full w-full max-w-[30rem] flex-col items-center justify-center space-y-4 rounded-xl text-center">
-    <p className="text-5xl">Signin</p>
+  <div className="flex h-full w-full max-w-[30rem] flex-col items-center justify-center space-y-4 text-center">
+    <p className="text-5xl">Sign In</p>
     <p className="">
       This application operates a Discord bot.
       <br />
