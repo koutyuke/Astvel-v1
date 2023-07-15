@@ -41,3 +41,7 @@ next-env.d.ts
 /prisma/dev.db
 /prisma/migrations
 /prisma/dev.db-journal
+
+#yarn
+.yarn/
+!.yarn/release/*
