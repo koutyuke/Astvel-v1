@@ -22,7 +22,7 @@ const SignOutButton: FC<SignOutProps> = ({ className, onClick, ...other }) => {
       }}
       {...other}
     >
-      Sign out
+      Sign Out
     </button>
   );
 };
