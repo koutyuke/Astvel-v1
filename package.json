@@ -1,6 +1,11 @@
 {
   "name": "astvel",
-  "version": "0.1.0",
+  "engines": {
+    "node": ">=19.0.0 <20"
+  },
+  "volta": {
+    "node": "19.4.0"
+  },
   "private": true,
   "scripts": {
     "dev": "next dev",
