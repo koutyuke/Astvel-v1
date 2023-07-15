@@ -37,8 +37,11 @@ jobs:
       - name: setup yarn@3.x
         run: yarn set version ${{ env.yarn-version }}
 
+      - name: yarn-version
+        run: yarn -v
+
       - name: install
-        run: yarn install --prefer-offline
+        run: yarn add --cached
 
       - name: Build
         run: yarn build
