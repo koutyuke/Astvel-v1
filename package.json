@@ -1,10 +1,12 @@
 {
   "name": "astvel",
   "engines": {
-    "node": ">=19.0.0 <20"
+    "node": "19.x",
+    "yarn": "3.x"
   },
   "volta": {
-    "node": "19.4.0"
+    "node": "19.4.0",
+    "yarn": "3.6.1"
   },
   "private": true,
   "scripts": {
