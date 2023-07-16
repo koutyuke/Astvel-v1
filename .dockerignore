@@ -1,0 +1,14 @@
+# module
+node_modules
+
+# yarn
+.yarn
+
+# next.js
+.next
+
+# build
+dist
+
+#env
+.env*

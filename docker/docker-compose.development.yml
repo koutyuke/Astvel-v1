@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  app:
+    build: 
+      context: ../
+      dockerfile: ./docker/Dockerfile
+      args:
+        - NODE_VERSION=8.16.1
+        - YARN_VERSION=3.6.1
+      
+    image: astvel:latest
+    container_name: Astvel
+    ports:
+      - 3000:3000
+    env_file:
+      - ../.env
+      - ../.env.local
