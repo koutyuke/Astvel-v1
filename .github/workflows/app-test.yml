@@ -19,6 +19,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version-file: package.json
+          cache: yarn
 
       - name: setup yarn@3.x
         run: yarn set version ${{ env.yarn-version }}
