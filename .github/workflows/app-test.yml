@@ -38,12 +38,6 @@ jobs:
       - name: install
         run: yarn install
 
-      - name: show dir
-        run: ls -A
-
-      - name: show .yarn path
-        run: ls ./.yarn
-
       - name: Build
         run: yarn build
 
