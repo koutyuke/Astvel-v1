@@ -13,7 +13,7 @@ const Seo: FC<Props> = ({ title, description }) => (
     <meta property="og:url" content="https://www.astvel.app" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
-    <meta property="og:discription" content={description ?? "hoge"} />
+    <meta property="og:discription" content={description ?? "DiscordでVCに入っているメンバーを一斉に動かしたい、そんな体験ありませんか？AstvelではWebサイト上でドラック&ドロップで簡単に設定、ボタンひとつでできちゃいます!ぜひDiscordというVCの宇宙空間を気軽にみんなと旅行してみてください!!"} />
     <meta property="og:site_name" content="Astvel" />
     <meta property="og:image" content="https://www.astvel.app/OGP.jpeg" />
     <meta property="og:image:width" content="1200" />
