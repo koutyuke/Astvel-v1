@@ -26,7 +26,7 @@ jobs:
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "DIR_PATH=~/.yarn/cache" >> $GITHUB_OUTPUT
+        run: echo "DIR_PATH=./.yarn/cache" >> $GITHUB_OUTPUT
 
       - name: cache yarn-cache
         uses: actions/cache@v3
@@ -39,10 +39,10 @@ jobs:
         run: yarn install
 
       - name: show dir
-        run: ls
+        run: ls -A
 
-      - name: show absolute path
-        run: ls ~
+      - name: show .yarn path
+        run: ls ./.yarn
 
       - name: Build
         run: yarn build
