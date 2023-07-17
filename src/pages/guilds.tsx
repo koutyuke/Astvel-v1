@@ -1,4 +1,4 @@
-import type { NextPage } from "next";
+import type { NextPageWithLayout } from "next";
 import { DndContext } from "@dnd-kit/core";
 import Overlay from "featutres/dnd/components/models/overlay";
 import { DragDataType, DropDataType } from "types/models/dnd";
@@ -18,8 +18,9 @@ import InviteBot from "components/ui/inviteBot";
 import useSocketEffect from "hooks/useSocketEffect";
 import useValidatedSession from "hooks/useValidatedSession";
 import NoSignIn from "components/ui/errorMessage/noSignIn";
+import Layout from "components/ui/layouts";
 
-const Guilds: NextPage = () => {
+const Guilds: NextPageWithLayout = () => {
   const { session } = useValidatedSession();
   const router = useRouter();
   const QUERY = router.query;
@@ -101,5 +102,7 @@ const Guilds: NextPage = () => {
     </DndContext>
   );
 };
+
+Guilds.getLayout = page => <Layout title="Guilds - Astvel">{page}</Layout>;
 
 export default Guilds;

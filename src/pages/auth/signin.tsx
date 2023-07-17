@@ -1,10 +1,11 @@
 import SignInButton from "components/elements/button/signInOut/signIn";
-import { NextPage } from "next";
+import Layout from "components/ui/layouts";
+import { NextPageWithLayout } from "next";
 import Image from "next/image";
 import { FaDiscord } from "react-icons/fa";
 import { TbCirclesRelation } from "react-icons/tb";
 
-const Signin: NextPage = () => (
+const Signin: NextPageWithLayout = () => (
   <div className="flex h-full w-full max-w-[30rem] flex-col items-center justify-center space-y-4 text-center">
     <p className="text-5xl">Sign In</p>
     <p className="">
@@ -24,4 +25,7 @@ const Signin: NextPage = () => (
     <SignInButton />
   </div>
 );
+
+Signin.getLayout = page => <Layout title="Sign In - Astvel">{page}</Layout>;
+
 export default Signin;

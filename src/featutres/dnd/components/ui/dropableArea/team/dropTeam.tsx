@@ -63,7 +63,7 @@ const DropTeam: FC<Props> = ({ team, guildId }) => {
         aria-hidden="true"
       >
         <HiUserGroup size={20} />
-        <p className="w-full min-w-0 overflow-hidden text-ellipsis whitespace-nowrap">
+        <p className="w-full min-w-0 truncate">
           <span className="text-center text-base">
             <span className="opacity-75">{iconEmoji}</span> {name}
           </span>

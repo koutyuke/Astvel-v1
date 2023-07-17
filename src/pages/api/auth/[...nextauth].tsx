@@ -41,6 +41,6 @@ export default nextAuth({
   },
   pages: {
     signIn: "/auth/signin",
-    signOut: "/auth/signout"
+    signOut: "/auth/signout",
   },
 });

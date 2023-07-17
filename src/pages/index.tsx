@@ -1,7 +1,8 @@
-import type { NextPage } from "next";
+import type { NextPageWithLayout } from "next";
 import BaseToast from "components/elements/toast";
+import Layout from "components/ui/layouts";
 
-const Home: NextPage = () => (
+const Home: NextPageWithLayout = () => (
   <>
     <BaseToast />
     <div className="flex h-full flex-col items-center justify-center space-y-4">
@@ -18,5 +19,7 @@ const Home: NextPage = () => (
     </div>
   </>
 );
+
+Home.getLayout = page => <Layout title="Astvel - DiscordVC拡張操作アプリケーション">{page}</Layout>;
 
 export default Home;

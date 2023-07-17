@@ -1,25 +1,17 @@
 import "../styles/globals.scss";
-import type { AppProps } from "next/app";
+import type { AppPropsWithLayout } from "next/app";
 import "destyle.css";
 import { SessionProvider } from "next-auth/react";
 import { Session } from "next-auth";
-import Layout from "components/ui/layouts";
 import { RecoilRoot } from "recoil";
-import Head from "next/head";
 
-const MyApp = ({ Component, pageProps: { session, ...pageProps } }: AppProps<{ session: Session }>) => (
-  <>
-    <Head>
-      <title>Astvel - DiscordVC拡張操作アプリケーション</title>
-    </Head>
+const MyApp = ({ Component, pageProps: { session, ...pageProps } }: AppPropsWithLayout<{ session: Session }>) => {
+  const getLayout = Component.getLayout ?? ((page: unknown) => page);
+  return (
     <RecoilRoot>
-      <SessionProvider session={session}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </SessionProvider>
+      <SessionProvider session={session}>{getLayout(<Component {...pageProps} />)}</SessionProvider>
     </RecoilRoot>
-  </>
-);
+  );
+};
 
 export default MyApp;

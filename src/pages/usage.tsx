@@ -1,7 +1,10 @@
-import { NextPage } from "next";
+import Layout from "components/ui/layouts";
+import { NextPageWithLayout } from "next";
 
-const HowToUse: NextPage = () => (
+const Usage: NextPageWithLayout = () => (
   <div className="flex h-full items-center justify-center text-2xl">Comming Soon....</div>
 );
 
-export default HowToUse;
+Usage.getLayout = page => <Layout title="Usage - Astvel">{page}</Layout>;
+
+export default Usage;
