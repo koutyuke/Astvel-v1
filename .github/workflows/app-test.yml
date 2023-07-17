@@ -26,7 +26,7 @@ jobs:
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "DIR_PATH=/.yarn/cache" >> $GITHUB_OUTPUT
+        run: echo "DIR_PATH=./.yarn/cache" >> $GITHUB_OUTPUT
 
       - name: cache node_modules
         uses: actions/cache@v3
