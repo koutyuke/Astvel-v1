@@ -1,7 +1,8 @@
-import { NextPage } from "next";
+import Layout from "components/ui/layouts";
+import { NextPageWithLayout } from "next";
 import Image from "next/image";
 
-const NotFound: NextPage = () => (
+const NotFound: NextPageWithLayout = () => (
   <div className="flex h-full flex-col items-center justify-center space-y-4">
     <div className="flex h-20 items-center text-7xl">
       <span>4</span>
@@ -17,5 +18,7 @@ const NotFound: NextPage = () => (
     </p>
   </div>
 );
+
+NotFound.getLayout = page => <Layout title="Page Not Fournd - Astvel">{page}</Layout>;
 
 export default NotFound;
