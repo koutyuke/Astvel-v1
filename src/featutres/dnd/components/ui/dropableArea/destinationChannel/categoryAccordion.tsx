@@ -14,7 +14,7 @@ const CategoryAccordion: FC<Props> = ({ children, id, name }) => (
     <Accordion.Header>
       <Accordion.Trigger className="group flex w-full space-x-1 p-1">
         <BiCategory size={20} />
-        <p className="w-full min-w-0 overflow-hidden text-ellipsis whitespace-nowrap">
+        <p className="w-full min-w-0 truncate">
           <span className="">{name}</span>
         </p>
         <ChevronDownIcon className="h-4 w-4 duration-300 group-data-[state=closed]:rotate-180" />
