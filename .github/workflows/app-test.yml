@@ -33,9 +33,6 @@ jobs:
           key: ${{ runner.os }}-cache-${{ hashFiles('**/yarn.lock') }}
           restore-keys: ${{ runner.os }}-cache-
 
-      - name: show path
-        run: ls ${{github.workspace}}
-
       - name: install
         run: yarn install
 
