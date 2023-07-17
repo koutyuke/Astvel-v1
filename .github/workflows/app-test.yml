@@ -24,14 +24,16 @@ jobs:
       - name: setup yarn@3.x
         run: yarn set version ${{ env.yarn-version }}
 
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "DIR_PATH=./.yarn/cache" >> $GITHUB_OUTPUT
+      - name: cache next-cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}
 
       - name: cache yarn-cache
         uses: actions/cache@v3
         with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.DIR_PATH }}
+          path: ${{ github.workspace }}/.yarn/cache
           key: ${{ runner.os }}-yarn-cache-${{ hashFiles('**/yarn.lock') }}
           restore-keys: ${{ runner.os }}-yarn-cache-
 
