@@ -1,4 +1,5 @@
 ARG NODE_VERSION="18.16.1"
+ARG DISTROLESS_VERSION="18"
 ARG YARN_VERSION="3.6.1"
 ARG PORT
 
@@ -38,7 +39,7 @@ RUN yarn build
 #  > Run Part <
 # ￣Y^Y^Y^Y^Y￣
 
-FROM node:${NODE_VERSION}-bullseye AS Run
+FROM gcr.io/distroless/nodejs:${DISTROLESS_VERSION}-debug AS Run
 
 ARG YARN_VERSION
 WORKDIR /Astvel
@@ -48,8 +49,7 @@ COPY --from=Build /Astvel/dist ./dist
 COPY --from=Build /Astvel/public ./public
 COPY --from=Build /Astvel/node_modules ./node_modules
 
-# USER nextjs
 ENV NODE_ENV=production
 EXPOSE 3000
 
-CMD ["node", "dist/server/index.js"]
+CMD ["dist/server/index.js"]
