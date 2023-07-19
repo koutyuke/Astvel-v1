@@ -1,6 +1,6 @@
 import { signOut } from "next-auth/react";
 import { FC, useState } from "react";
-import SignInUser from "components/models/user/singInUser";
+import SignInUser from "components/models/user/signInUser";
 import iconUrlGen from "utils/iconUrlGen";
 import useValidatedSession from "hooks/useValidatedSession";
 import SignInButton from "./signIn";
