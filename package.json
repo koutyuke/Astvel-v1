@@ -11,9 +11,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "dev:server": "nodemon",
-    "build": "prisma generate &&  next build && tsc --project tsconfig.server.json && tsc-alias --project tsconfig.server.json",
-    "start": "node dist/server/index.js",
+    "dev:server": "NODE_ENV=development && nodemon",
+    "build": "prisma generate && next build && tsc --project tsconfig.server.json && tsc-alias --project tsconfig.server.json",
+    "start": "NODE_ENV=production && node dist/server/index.js",
     "lint": "eslint --ignore-path .gitignore src/**/*.{ts,tsx}",
     "lint-fix": "eslint --fix --ignore-path .gitignore src/**/*.{ts,tsx}",
     "fmt": "prettier --write src/**/*.{ts,tsx}",
