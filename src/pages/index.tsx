@@ -6,7 +6,7 @@ const Home: NextPageWithLayout = () => (
   <>
     <BaseToast />
     <div className="flex h-full flex-col items-center justify-center space-y-4">
-      <p className="w-full text-center text-4xl">Varsion &alpha;</p>
+      <p className="w-full text-center text-4xl">Version &alpha;</p>
       <div className="text-center text-xl">
         Therefore, there are bugs and unimplemented.
         <br />
