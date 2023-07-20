@@ -20,7 +20,9 @@ const SignInOutSmall: FC = () => {
     const { user } = session.data;
     return (
       <div
-        className={`${isOpen ? "" : " hover:outline"} relative max-w-full rounded-md outline-offset-4 outline-orange-500 `}
+        className={`${
+          isOpen ? "" : " hover:outline"
+        } relative max-w-full rounded-md outline-offset-4 outline-orange-500 `}
         onMouseLeave={() => {
           if (isOpen) {
             setOpen(false);
@@ -30,7 +32,7 @@ const SignInOutSmall: FC = () => {
         {isOpen && (
           <button
             type="button"
-            className="absolute left-[2.6rem] top-10 flex h-[3.15rem] w-[7.4rem] items-center justify-center rounded-b-xl bg-[#ff4da6] pt-2 hover:bg-green-500"
+            className="absolute left-[2.6rem] top-10 flex h-[3.15rem] w-[calc(100%_-_2.6rem)] items-center justify-center rounded-b-xl bg-[#ff4da6] pt-2 hover:bg-green-500"
             onClick={() => signOut({ callbackUrl: "/" })}
           >
             <span>Sign Out</span>
