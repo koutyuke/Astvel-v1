@@ -153,7 +153,7 @@ const ToolMoveMenu: FC<Props> = ({ guildId }) => {
                   },
                 });
 
-                if(res.status === 200) {
+                if (res.status === 200) {
                   toastSetter({ title: "Do Move", message: "Success for Move Member!!", status: "success" });
                 } else {
                   toastSetter({
@@ -162,7 +162,6 @@ const ToolMoveMenu: FC<Props> = ({ guildId }) => {
                     status: "error",
                   });
                 }
-
               } catch {
                 toastSetter({
                   title: "Cannot Move",
