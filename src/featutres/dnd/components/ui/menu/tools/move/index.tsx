@@ -145,7 +145,7 @@ const ToolMoveMenu: FC<Props> = ({ guildId }) => {
               setOpen(false);
 
               try {
-                await axios.patch("/api/move", patchData, {
+                const res = await axios.patch("/api/move", patchData, {
                   headers: { Authorization: `Bearer ${session.data.accessToken}` },
                   params: {
                     guild_id: guildId,
@@ -153,7 +153,16 @@ const ToolMoveMenu: FC<Props> = ({ guildId }) => {
                   },
                 });
 
-                toastSetter({ title: "Do Move", message: "Success for Move Member!!", status: "success" });
+                if(res.status === 200) {
+                  toastSetter({ title: "Do Move", message: "Success for Move Member!!", status: "success" });
+                } else {
+                  toastSetter({
+                    title: "Cannot Move",
+                    message: "Error for Move Member. please Check Internet",
+                    status: "error",
+                  });
+                }
+
               } catch {
                 toastSetter({
                   title: "Cannot Move",
