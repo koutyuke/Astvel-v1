@@ -1,7 +1,7 @@
 import { signOut } from "next-auth/react";
 import { FC, useState } from "react";
 import SignInUser from "components/models/user/signInUser";
-import iconUrlGen from "utils/iconUrlGen";
+import { avatarUrlGen } from "utils/iconUrlGen";
 import useValidatedSession from "hooks/useValidatedSession";
 import SignInButton from "./signIn";
 
@@ -40,7 +40,7 @@ const SignInOutSmall: FC = () => {
         )}
         <button type="button" onClick={() => setOpen(!isOpen)} className="z-10 w-full">
           <SignInUser
-            image={iconUrlGen(user.provider_id ?? "", user.avatar ?? "")}
+            image={avatarUrlGen(user.provider_id ?? "", user.avatar ?? "")}
             main={user.discriminator === "0" ? user.global_name ?? "" : user.username ?? ""}
             sub={user.discriminator === "0" ? `@${user.username}` : `#${user.discriminator ?? ""}`}
           />

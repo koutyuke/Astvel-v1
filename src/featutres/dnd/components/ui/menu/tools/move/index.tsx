@@ -10,7 +10,7 @@ import useValidatedSession from "hooks/useValidatedSession";
 import useAllVoices from "featutres/dnd/hooks/swr/useAllVoices";
 import BaseButton from "components/elements/button";
 import SmallMemberModel from "components/models/traveler/member/smallMember";
-import iconUrlGen from "utils/iconUrlGen";
+import { avatarUrlGen } from "utils/iconUrlGen";
 import SmallTeamModel from "components/models/traveler/team/smallTeam";
 import axios from "axios";
 
@@ -105,7 +105,7 @@ const ToolMoveMenu: FC<Props> = ({ guildId }) => {
                   <div>
                     {voice.members.map(member => (
                       <SmallMemberModel
-                        imageUrl={iconUrlGen(member.id, member.avatar ?? member.userAvatar)}
+                        imageUrl={avatarUrlGen(member.id, member.avatar ?? member.userAvatar)}
                         name={member.displayName}
                         key={member.id}
                       />
@@ -122,7 +122,7 @@ const ToolMoveMenu: FC<Props> = ({ guildId }) => {
                             <div className="">
                               {team.members.map(member => (
                                 <SmallMemberModel
-                                  imageUrl={iconUrlGen(member.id, member.avatar ?? member.userAvatar)}
+                                  imageUrl={avatarUrlGen(member.id, member.avatar ?? member.userAvatar)}
                                   name={member.displayName}
                                   key={member.id}
                                 />

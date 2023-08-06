@@ -2,7 +2,7 @@ import type { ComponentPropsWithoutRef, FC } from "react";
 import SmallMemberModel from "components/models/traveler/member/smallMember";
 import SmallTeamModel from "components/models/traveler/team/smallTeam";
 import { APIMember } from "types/api/astvel";
-import iconUrlGen from "utils/iconUrlGen";
+import { avatarUrlGen } from "utils/iconUrlGen";
 import { Team } from "types/recoil/dnd";
 
 type Props = {
@@ -20,7 +20,7 @@ const ViewTravelers: FC<Props> = ({ teams, members, className, ...other }) => {
         <div className="">
           {members.map(member => (
             <SmallMemberModel
-              imageUrl={iconUrlGen(member.id, member.avatar ?? member.userAvatar)}
+              imageUrl={avatarUrlGen(member.id, member.avatar ?? member.userAvatar)}
               name={member.displayName}
               key={member.id}
             />

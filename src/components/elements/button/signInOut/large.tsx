@@ -1,7 +1,7 @@
 import LargeSignInUser from "components/models/user/large";
 import useValidatedSession from "hooks/useValidatedSession";
 import { FC } from "react";
-import iconUrlGen from "utils/iconUrlGen";
+import { avatarUrlGen } from "utils/iconUrlGen";
 import SignInButton from "./signIn";
 
 const SignInOutLarge: FC = () => {
@@ -19,7 +19,7 @@ const SignInOutLarge: FC = () => {
     const { user } = session.data;
     return (
       <LargeSignInUser
-        image={iconUrlGen(user.provider_id ?? "", user.avatar ?? "")}
+        image={avatarUrlGen(user.provider_id ?? "", user.avatar ?? "")}
         main={user.discriminator === "0" ? user.global_name ?? "" : user.username ?? ""}
         sub={user.discriminator === "0" ? `@${user.username}` : `#${user.discriminator ?? ""}`}
       />

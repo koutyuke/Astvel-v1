@@ -3,7 +3,7 @@ import { FC } from "react";
 import { DragDataType } from "types/models/dnd";
 import LargeMemberModel from "components/models/traveler/member/largeMember";
 import LargeTeamModel from "components/models/traveler/team/largeTeam";
-import iconUrlGen from "utils/iconUrlGen";
+import { avatarUrlGen } from "utils/iconUrlGen";
 
 type Props = {
   active: Active | null;
@@ -18,7 +18,7 @@ const LargeDragOverlay: FC<Props> = ({ active }) => {
 
   return dragData.dataType === "member" ? (
     <LargeMemberModel
-      imageUrl={iconUrlGen(dragData.data.id, dragData.data.avatar ?? dragData.data.userAvatar)}
+      imageUrl={avatarUrlGen(dragData.data.id, dragData.data.avatar ?? dragData.data.userAvatar)}
       name={dragData.data.displayName}
       className="cursor-grabbing bg-gray-200 text-black"
     />
