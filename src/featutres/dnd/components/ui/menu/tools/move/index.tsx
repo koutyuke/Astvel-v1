@@ -87,7 +87,7 @@ const ToolMoveMenu: FC<Props> = ({ guildId }) => {
   return (
     <AddDialog open={open} setOpen={setOpen}>
       <div className="h-[60vh] w-[30vw] min-w-[24rem] space-y-2 rounded-lg bg-white px-8 py-6 text-gray-500">
-        <p className="h-10 w-full text-center text-3xl">confirmation</p>
+        <p className="h-10 w-full text-center text-2xl">Move Member</p>
         <div className="flex h-[calc(100%_-_6rem)] flex-col space-y-2 overflow-auto rounded-lg bg-gray-200 px-4 py-2">
           {moveData.map(voice => {
             if (
@@ -138,9 +138,17 @@ const ToolMoveMenu: FC<Props> = ({ guildId }) => {
             );
           })}
         </div>
-        <div className="flex h-10 items-center justify-center">
+        <div className="flex h-10 items-center justify-between">
           <BaseButton
-            className="h-8 bg-green-300 text-green-700 duration-100 hover:scale-105"
+            className="h-8 border-2 border-gray-300 duration-200 hover:scale-110"
+            onClick={() => {
+              setOpen(false);
+            }}
+          >
+            <p>Calcel</p>
+          </BaseButton>
+          <BaseButton
+            className="h-8 bg-green-300 text-green-700 duration-200 hover:scale-110"
             onClick={async () => {
               setOpen(false);
 
@@ -171,7 +179,9 @@ const ToolMoveMenu: FC<Props> = ({ guildId }) => {
               }
             }}
           >
-            Move!!
+            <p>
+              Move!!
+            </p>
           </BaseButton>
         </div>
       </div>
