@@ -12,8 +12,8 @@ const ToolBackGuildsMenu: FC = () => {
 
   return (
     <AddDialog open={open} setOpen={setOpen}>
-      <div className="flex h-40 w-80 flex-col items-center justify-between rounded-lg bg-white p-4 text-gray-500">
-        <p className="w-full text-center text-xl">Go Back Guild Select</p>
+      <div className="flex h-48 w-80 flex-col items-center justify-between rounded-lg bg-white p-4 text-gray-500">
+        <p className="w-full text-center text-2xl">Go Back Guild Select</p>
         <p className="w-full text-center">
           All teams will be deleted.
           <br />
