@@ -3,7 +3,7 @@ import { DnDMembersAtom, DnDTeamsAtom, TeamsAtom } from "utils/recoil/dnd";
 import { useEffect } from "react";
 import useAllMembers from "./swr/useAllMembers";
 
-const useUpdateDnDTravelers = (guildId: string | undefined) => {
+const useDnDTravelersEffect = (guildId: string | undefined) => {
   const allMembers = useAllMembers(guildId);
   const setDnDMembers = useSetRecoilState(DnDMembersAtom);
 
@@ -40,4 +40,4 @@ const useUpdateDnDTravelers = (guildId: string | undefined) => {
   }, [allTeams, setDnDTeams]);
 };
 
-export default useUpdateDnDTravelers;
+export default useDnDTravelersEffect;

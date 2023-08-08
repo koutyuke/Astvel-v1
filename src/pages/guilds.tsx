@@ -10,7 +10,7 @@ import ToolBar from "featutres/dnd/components/ui/toolbar";
 import { useRouter } from "next/router";
 import guildPageQuerySchema from "schema/guildPageQuery";
 import useGuild from "featutres/dnd/hooks/swr/useGuild";
-import useUpdateDnDTravelers from "featutres/dnd/hooks/useUpdateTravelers";
+import useDnDTravelersEffect from "featutres/dnd/hooks/useDnDTravelersEffect";
 import useUpdateDnD from "featutres/dnd/hooks/useUpdateDnD";
 import SelectGuild from "components/ui/selectGuild";
 import ErrorMessage from "components/ui/errorMessage";
@@ -27,7 +27,7 @@ const Guilds: NextPageWithLayout = () => {
   const query = guildPageQuerySchema.safeParse(QUERY);
   const guild = useGuild(query.success ? query.data.id : undefined);
 
-  useUpdateDnDTravelers(
+  useDnDTravelersEffect(
     query.success && guild.data !== undefined && guild.error === undefined && guild.data !== null
       ? query.data.id
       : undefined,
