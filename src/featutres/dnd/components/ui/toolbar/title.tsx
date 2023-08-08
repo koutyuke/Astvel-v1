@@ -41,7 +41,7 @@ const ToolTitle: FC<Props> = ({ guildId }) => {
         )}
       </div>
       <div className="hidden h-full w-[calc(100%_-_3.5rem)] items-center justify-start group-hover:flex ">
-        <p className="max-w-full overflow-hidden text-ellipsis text-start text-xl">{guild.name}</p>
+        <p className="max-w-full truncate text-xl">{guild.name}</p>
       </div>
     </div>
   );
