@@ -10,7 +10,7 @@ import useValidatedSession from "hooks/useValidatedSession";
 import useAllVoices from "featutres/dnd/hooks/swr/useAllVoices";
 import BaseButton from "components/elements/button";
 import SmallMemberModel from "components/models/traveler/member/smallMember";
-import iconUrlGen from "utils/iconUrlGen";
+import { avatarUrlGen } from "utils/iconUrlGen";
 import SmallTeamModel from "components/models/traveler/team/smallTeam";
 import axios from "axios";
 
@@ -87,7 +87,7 @@ const ToolMoveMenu: FC<Props> = ({ guildId }) => {
   return (
     <AddDialog open={open} setOpen={setOpen}>
       <div className="h-[60vh] w-[30vw] min-w-[24rem] space-y-2 rounded-lg bg-white px-8 py-6 text-gray-500">
-        <p className="h-10 w-full text-center text-3xl">confirmation</p>
+        <p className="h-10 w-full text-center text-2xl">Move Member</p>
         <div className="flex h-[calc(100%_-_6rem)] flex-col space-y-2 overflow-auto rounded-lg bg-gray-200 px-4 py-2">
           {moveData.map(voice => {
             if (
@@ -105,7 +105,7 @@ const ToolMoveMenu: FC<Props> = ({ guildId }) => {
                   <div>
                     {voice.members.map(member => (
                       <SmallMemberModel
-                        imageUrl={iconUrlGen(member.id, member.avatar ?? member.userAvatar)}
+                        imageUrl={avatarUrlGen(member.id, member.avatar ?? member.userAvatar)}
                         name={member.displayName}
                         key={member.id}
                       />
@@ -122,7 +122,7 @@ const ToolMoveMenu: FC<Props> = ({ guildId }) => {
                             <div className="">
                               {team.members.map(member => (
                                 <SmallMemberModel
-                                  imageUrl={iconUrlGen(member.id, member.avatar ?? member.userAvatar)}
+                                  imageUrl={avatarUrlGen(member.id, member.avatar ?? member.userAvatar)}
                                   name={member.displayName}
                                   key={member.id}
                                 />
@@ -138,14 +138,22 @@ const ToolMoveMenu: FC<Props> = ({ guildId }) => {
             );
           })}
         </div>
-        <div className="flex h-10 items-center justify-center">
+        <div className="flex h-10 items-center justify-between">
           <BaseButton
-            className="h-8 bg-green-300 text-green-700 duration-100 hover:scale-105"
+            className="h-8 border-2 border-gray-300 duration-200 hover:scale-110"
+            onClick={() => {
+              setOpen(false);
+            }}
+          >
+            <p>Calcel</p>
+          </BaseButton>
+          <BaseButton
+            className="h-8 bg-green-300 text-green-700 duration-200 hover:scale-110"
             onClick={async () => {
               setOpen(false);
 
               try {
-                await axios.patch("/api/move", patchData, {
+                const res = await axios.patch("/api/move", patchData, {
                   headers: { Authorization: `Bearer ${session.data.accessToken}` },
                   params: {
                     guild_id: guildId,
@@ -153,7 +161,15 @@ const ToolMoveMenu: FC<Props> = ({ guildId }) => {
                   },
                 });
 
-                toastSetter({ title: "Do Move", message: "Success for Move Member!!", status: "success" });
+                if (res.status === 200) {
+                  toastSetter({ title: "Do Move", message: "Success for Move Member!!", status: "success" });
+                } else {
+                  toastSetter({
+                    title: "Cannot Move",
+                    message: "Error for Move Member. please Check Internet",
+                    status: "error",
+                  });
+                }
               } catch {
                 toastSetter({
                   title: "Cannot Move",
@@ -163,7 +179,9 @@ const ToolMoveMenu: FC<Props> = ({ guildId }) => {
               }
             }}
           >
-            Move!!
+            <p>
+              Move!!
+            </p>
           </BaseButton>
         </div>
       </div>

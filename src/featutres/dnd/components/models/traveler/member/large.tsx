@@ -3,7 +3,7 @@ import { FC } from "react";
 import { GroupType } from "types/models/dnd";
 import { useDraggable } from "@dnd-kit/core";
 import { APIMember } from "types/api/astvel";
-import iconUrlGen from "utils/iconUrlGen";
+import { avatarUrlGen } from "utils/iconUrlGen";
 
 type Props = {
   member: APIMember;
@@ -21,7 +21,7 @@ const LargeDragMember: FC<Props> = ({ member, group }) => {
     },
   });
 
-  const iconUrl = iconUrlGen(id, avatar ?? userAvatar);
+  const iconUrl = avatarUrlGen(id, avatar ?? userAvatar);
 
   return (
     <div
