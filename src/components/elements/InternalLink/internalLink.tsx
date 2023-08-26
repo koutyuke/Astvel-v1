@@ -29,4 +29,4 @@ const InternalLink: FC<Props> = ({ url, children: text, className, onClick, ...o
   );
 };
 
-export default InternalLink;
+export { InternalLink };
