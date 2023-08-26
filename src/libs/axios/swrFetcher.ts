@@ -1,11 +1,20 @@
-import axios from "axios";
+import { astvelAPI } from "./astvelAPI";
 
 type KeyType = {
   url: string;
   token: string;
-  params: object;
+  params: {
+    guild_id: string;
+    user_id: string;
+  } & { [key: string]: unknown };
 };
 
-const fetcherWithBearer = ({ url, token, params }: KeyType) =>
-  axios.get(url, { headers: { Authorization: `Bearer ${token}` }, params }).then(res => res.data);
-export default fetcherWithBearer;
+const swrAstvelFetcher = ({ url, token, params }: KeyType) =>
+  astvelAPI({
+    token,
+    params: {
+      guild_id: params.guild_id,
+      user_id: params.user_id,
+    },
+  }).get(url, { params });
+export { swrAstvelFetcher };
