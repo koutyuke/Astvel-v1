@@ -1,5 +1,5 @@
-import SignInButton from "components/elements/button/signInOut/signIn";
-import Layout from "components/ui/layouts";
+import { Layout } from "components/layouts";
+import { SignInButton } from "featutres/signIn/components";
 import { NextPageWithLayout } from "next";
 import Image from "next/image";
 import { FaDiscord } from "react-icons/fa";

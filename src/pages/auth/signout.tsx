@@ -1,5 +1,5 @@
-import SignOutButton from "components/elements/button/signInOut/signOut";
-import Layout from "components/ui/layouts";
+import { Layout } from "components/layouts";
+import { SignOutButton } from "featutres/signIn/components";
 import { NextPageWithLayout } from "next";
 import Image from "next/image";
 
