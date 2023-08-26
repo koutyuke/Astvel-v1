@@ -12,4 +12,4 @@ const BaseButton: FC<Props> = forwardRef<HTMLButtonElement, Props>(({ className,
 
 BaseButton.displayName = "BaseButton";
 
-export default BaseButton;
+export { BaseButton };
