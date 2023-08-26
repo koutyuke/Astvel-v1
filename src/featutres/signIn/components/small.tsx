@@ -3,7 +3,7 @@ import { FC, useState } from "react";
 import SignInUser from "components/models/user/signInUser";
 import { avatarUrlGen } from "utils/iconUrlGen";
 import useValidatedSession from "hooks/useValidatedSession";
-import SignInButton from "./signIn";
+import { SignInButton } from "./signIn";
 
 const SignInOutSmall: FC = () => {
   const { session, status } = useValidatedSession();
@@ -52,4 +52,4 @@ const SignInOutSmall: FC = () => {
   return <SignInButton className="outline-2 outline-offset-[3px] outline-green-500 hover:outline" />;
 };
 
-export default SignInOutSmall;
+export { SignInOutSmall };

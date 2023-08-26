@@ -27,4 +27,4 @@ const SignOutButton: FC<SignOutProps> = ({ className, onClick, ...other }) => {
   );
 };
 
-export default SignOutButton;
+export { SignOutButton };

@@ -2,7 +2,7 @@ import LargeSignInUser from "components/models/user/large";
 import useValidatedSession from "hooks/useValidatedSession";
 import { FC } from "react";
 import { avatarUrlGen } from "utils/iconUrlGen";
-import SignInButton from "./signIn";
+import { SignInButton } from "./signIn";
 
 const SignInOutLarge: FC = () => {
   const { session, status } = useValidatedSession();
@@ -29,4 +29,4 @@ const SignInOutLarge: FC = () => {
   return <SignInButton />;
 };
 
-export default SignInOutLarge;
+export { SignInOutLarge };
