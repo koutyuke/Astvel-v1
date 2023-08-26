@@ -1,9 +1,26 @@
 import { FC, Fragment, useState } from "react";
 import { Fade as Hamburger } from "hamburger-react";
-import InternalLink from "components/elements/button/InternalLink";
-import SignInOutLarge from "components/elements/button/signInOut/large";
-import SignOutButton from "components/elements/button/signInOut/signOut";
-import pathParams from "const/path";
+import { SignInOutLarge, SignOutButton } from "featutres/signIn/components";
+import { InternalLink } from "components/elements/InternalLink";
+
+const pathParams = [
+  {
+    path: "/",
+    display: "Home",
+  },
+  {
+    path: "/guilds",
+    display: "Guilds",
+  },
+  {
+    path: "/usage",
+    display: "Usage",
+  },
+  {
+    path: "/info",
+    display: "Information",
+  },
+];
 
 const HamburgerMenu: FC = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -61,4 +78,4 @@ const HamburgerMenu: FC = () => {
   );
 };
 
-export default HamburgerMenu;
+export { HamburgerMenu };
