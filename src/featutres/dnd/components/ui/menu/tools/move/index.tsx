@@ -179,9 +179,7 @@ const ToolMoveMenu: FC<Props> = ({ guildId }) => {
               }
             }}
           >
-            <p>
-              Move!!
-            </p>
+            <p>Move!!</p>
           </BaseButton>
         </div>
       </div>
