@@ -1,7 +1,7 @@
 import { ComponentProps, FC, ReactNode } from "react";
-import Footer from "./footer";
-import Header from "./header";
-import Seo from "./seo";
+import { Seo } from "./seo";
+import { Header } from "./header";
+import { Footer } from "./footer";
 
 type Props = {
   children: ReactNode;
@@ -18,4 +18,4 @@ const Layout: FC<Props> = ({ children, title, description }) => (
   </>
 );
 
-export default Layout;
+export { Layout };
