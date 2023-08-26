@@ -29,4 +29,4 @@ const Seo: FC<Props> = ({ title, description }) => (
   </Head>
 );
 
-export default Seo;
+export { Seo };
