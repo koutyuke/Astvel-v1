@@ -1,6 +1,7 @@
 import { astvelAPI } from "./astvelAPI";
+import { discordAPI } from "./discordAPI";
 
-type KeyType = {
+type AstvelKeyType = {
   url: string;
   token: string;
   params: {
@@ -9,12 +10,26 @@ type KeyType = {
   } & { [key: string]: unknown };
 };
 
-const swrAstvelFetcher = ({ url, token, params }: KeyType) =>
+type DiscordKeyType = {
+  url: string;
+  token: string;
+  params: { [key: string]: unknown };
+};
+
+const swrAstvelFetcher = ({ url, token, params }: AstvelKeyType) =>
   astvelAPI({
     token,
     params: {
       guild_id: params.guild_id,
       user_id: params.user_id,
     },
-  }).get(url, { params });
-export { swrAstvelFetcher };
+  })
+    .get(url, { params })
+    .then(res => res.data);
+
+const swrDiscordFetcher = ({ url, token, params }: DiscordKeyType) =>
+  discordAPI({ token, params: {} })
+    .get(url, { params })
+    .then(res => res.data);
+
+export { swrAstvelFetcher, swrDiscordFetcher };
