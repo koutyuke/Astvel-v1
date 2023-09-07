@@ -16,4 +16,4 @@ const sessionSchema = z.object({
   refreshToken: z.string(),
 });
 
-export default sessionSchema;
+export { sessionSchema };
