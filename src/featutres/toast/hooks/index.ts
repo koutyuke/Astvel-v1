@@ -1,1 +1,1 @@
-export { useSetToast } from "./setToast";
+export { useSetToast } from "./useSetToast";

@@ -4,7 +4,7 @@ import { IoCheckmarkCircleOutline, IoClose, IoInformationCircleOutline, IoWarnin
 import { MdOutlineDoNotDisturbAlt } from "react-icons/md";
 import { useRecoilState } from "recoil";
 import { toastAtom } from "featutres/toast/stores/atom/atom";
-import style from "./index.module.scss";
+import style from "./toast.module.scss";
 
 const Toast: FC = () => {
   const [toastData, setToast] = useRecoilState(toastAtom);
