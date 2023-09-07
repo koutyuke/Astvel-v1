@@ -1,29 +1,29 @@
 import { useDroppable } from "@dnd-kit/core";
 import { useState, type FC } from "react";
-import { DragDataType, GroupType } from "types/models/dnd";
+import { GroupType } from "types/models/dnd";
 import { HiSpeakerWave } from "react-icons/hi2";
 import { IoLockClosed } from "react-icons/io5";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { useRecoilValue } from "recoil";
 import { APIVoice } from "types/api/astvel";
-import { DnDMembersAtom, DnDTeamsAtom, TeamsAtom } from "utils/recoil/dnd";
-import useAllMembers from "featutres/dnd/hooks/swr/useAllMembers";
+import { DnDMembersAtom, DnDTeamsAtom, TeamsAtom } from "stores/atom/dnd";
 import permissionCheck from "utils/permissionCheck";
-import ViewTravelers from "../../viewTraveler";
-import DragTravelers from "../../dragableArea";
+import { useAllMembers } from "ui/guilds/hooks/swr";
+import { DraggableTravelers } from "featutres/dnd/components/draggableTravelers";
+import { ViewonlyTravelers } from "featutres/dnd/components/viewonlyTravelers";
 
 type Props = {
   channel: APIVoice;
   guildId: string;
 };
 
-const DropChannel: FC<Props> = ({ channel, guildId }) => {
+const DroppableChannel: FC<Props> = ({ channel, guildId }) => {
   const { id, name } = channel;
   const group: GroupType = {
     type: "channel",
     id,
   };
-  const { isOver, active, setNodeRef } = useDroppable({
+  const { isOver, setNodeRef } = useDroppable({
     id,
     data: {
       group,
@@ -31,9 +31,6 @@ const DropChannel: FC<Props> = ({ channel, guildId }) => {
     },
   });
   const [isOpen, setOpen] = useState<boolean>(false);
-  const activeGroup = active?.data.current as DragDataType | undefined;
-
-  const isKeep = !!(activeGroup !== undefined && activeGroup.group.type === "channel" && activeGroup.group.id === id);
 
   const allMembers = useAllMembers(guildId);
   const allTeams = useRecoilValue(TeamsAtom);
@@ -82,18 +79,18 @@ const DropChannel: FC<Props> = ({ channel, guildId }) => {
         <p className="w-full min-w-0 truncate">
           <span className="text-base">{name}</span>
         </p>
-        <ChevronDownIcon className={`${isOpen || isKeep ? "" : "rotate-180"} h-4 w-4 duration-200`} />
+        <ChevronDownIcon className={`${isOpen ? "" : "rotate-180"} h-4 w-4 duration-200`} />
       </div>
 
       <div className="w-full">
-        {isOpen || isKeep ? (
-          <DragTravelers group={group} members={members} teams={teams} className="" />
+        {isOpen ? (
+          <DraggableTravelers group={group} members={members} teams={teams} />
         ) : (
-          <ViewTravelers members={members} teams={teams} />
+          <ViewonlyTravelers members={members} teams={teams} />
         )}
       </div>
     </div>
   );
 };
 
-export default DropChannel;
+export { DroppableChannel };

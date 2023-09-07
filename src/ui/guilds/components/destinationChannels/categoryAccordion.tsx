@@ -24,4 +24,4 @@ const CategoryAccordion: FC<Props> = ({ children, id, name }) => (
   </Accordion.Item>
 );
 
-export default CategoryAccordion;
+export { CategoryAccordion };

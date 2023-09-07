@@ -1,15 +1,14 @@
 import type { FC } from "react";
 import * as Accordion from "@radix-ui/react-accordion";
-import useAllVoices from "featutres/dnd/hooks/swr/useAllVoices";
-import useAllCategories from "featutres/dnd/hooks/swr/useAllCategories";
-import CategoryAccordion from "./categoryAccordion";
-import DropChannel from "./dropChannel";
+import { useAllCategories, useAllVoices } from "ui/guilds/hooks/swr";
+import { CategoryAccordion } from "./categoryAccordion";
+import { DroppableChannel } from "./droppableChannels";
 
 type Props = {
   guildId: string;
 };
 
-const DestinationChannelDropArea: FC<Props> = ({ guildId }) => {
+const DestinationChannels: FC<Props> = ({ guildId }) => {
   const allCategories = useAllCategories(guildId);
   const allVoices = useAllVoices(guildId);
 
@@ -42,7 +41,7 @@ const DestinationChannelDropArea: FC<Props> = ({ guildId }) => {
         {noCategoryVoices.length !== 0 && (
           <CategoryAccordion name="nocategory" id="nocategory">
             {noCategoryVoices.map(channel => (
-              <DropChannel channel={channel} guildId={guildId} key={channel.id} />
+              <DroppableChannel channel={channel} guildId={guildId} key={channel.id} />
             ))}
           </CategoryAccordion>
         )}
@@ -54,7 +53,7 @@ const DestinationChannelDropArea: FC<Props> = ({ guildId }) => {
           return (
             <CategoryAccordion id={category.id} name={category.name} key={category.id}>
               {channels.map(channel => (
-                <DropChannel channel={channel} guildId={guildId} key={channel.id} />
+                <DroppableChannel channel={channel} guildId={guildId} key={channel.id} />
               ))}
             </CategoryAccordion>
           );
@@ -64,4 +63,4 @@ const DestinationChannelDropArea: FC<Props> = ({ guildId }) => {
   );
 };
 
-export default DestinationChannelDropArea;
+export { DestinationChannels };
