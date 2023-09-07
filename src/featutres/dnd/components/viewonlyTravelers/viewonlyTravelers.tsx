@@ -10,7 +10,7 @@ type Props = {
   members: APIMember[];
 } & ComponentPropsWithoutRef<"div">;
 
-const ViewTravelers: FC<Props> = ({ teams, members, className, ...other }) => {
+const ViewonlyTravelers: FC<Props> = ({ teams, members, className, ...other }) => {
   const isMembersShow = members.length;
   const isTeamsShow = teams === undefined ? 0 : teams.length;
 
@@ -38,8 +38,8 @@ const ViewTravelers: FC<Props> = ({ teams, members, className, ...other }) => {
   );
 };
 
-ViewTravelers.defaultProps = {
+ViewonlyTravelers.defaultProps = {
   teams: undefined,
 };
 
-export default ViewTravelers;
+export { ViewonlyTravelers };
