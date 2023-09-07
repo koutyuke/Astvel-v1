@@ -1,6 +1,6 @@
-import fetcherWithBearer from "libs/axios/swrFetcher";
+import { swrAstvelFetcher } from "libs/axios";
 import { useSession } from "next-auth/react";
-import sessionSchema from "schema/session";
+import { sessionSchema } from "stores/schema/session";
 import useSWR from "swr";
 import { APICategory } from "types/api/astvel";
 
@@ -19,8 +19,8 @@ const useAllCategories = (guildId?: string) => {
           },
         }
       : null,
-    fetcherWithBearer,
+    swrAstvelFetcher,
   );
 };
 
-export default useAllCategories;
+export { useAllCategories };

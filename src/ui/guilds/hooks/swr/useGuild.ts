@@ -1,8 +1,8 @@
-import fetcherWithBearer from "libs/axios/swrFetcher";
 import useSWR from "swr";
 import { APIGuild } from "types/api/astvel";
 import { useSession } from "next-auth/react";
-import sessionSchema from "schema/session";
+import { swrAstvelFetcher } from "libs/axios";
+import { sessionSchema } from "stores/schema/session";
 
 const useGuild = (guildId?: string) => {
   const { data: SESSION } = useSession();
@@ -19,8 +19,8 @@ const useGuild = (guildId?: string) => {
           },
         }
       : null,
-    fetcherWithBearer,
+    swrAstvelFetcher,
   );
 };
 
-export default useGuild;
+export { useGuild };
