@@ -22,4 +22,4 @@ const LargeTeamModel = forwardRef<HTMLDivElement, Props>(({ emoji, name, classNa
 
 LargeTeamModel.displayName = "LargeTeamModel";
 
-export default LargeTeamModel;
+export { LargeTeamModel };

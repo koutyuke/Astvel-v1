@@ -14,4 +14,4 @@ const SmallTeamModel: FC<Props> = ({ emoji, name, className, ...props }) => (
   </div>
 );
 
-export default SmallTeamModel;
+export { SmallTeamModel };
