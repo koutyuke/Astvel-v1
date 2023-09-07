@@ -3,7 +3,7 @@ import { HiOutlinePlusSm } from "react-icons/hi";
 
 type Props = ComponentPropsWithoutRef<"button">;
 
-const AdditionalButton: FC<Props> = forwardRef<ElementRef<"button">, Props>(({ className, ...other }, ref) => (
+const TriggerButton: FC<Props> = forwardRef<ElementRef<"button">, Props>(({ className, ...other }, ref) => (
   <button
     type="button"
     className={`${className} flex h-10 w-10 items-center justify-center rounded-full bg-white drop-shadow-xl duration-300 hover:scale-110`}
@@ -14,6 +14,6 @@ const AdditionalButton: FC<Props> = forwardRef<ElementRef<"button">, Props>(({ c
   </button>
 ));
 
-AdditionalButton.displayName = "AdditionalButton";
+TriggerButton.displayName = "AdditionalButton";
 
-export default AdditionalButton;
+export { TriggerButton };

@@ -1,19 +1,19 @@
-import AdditionalButton from "featutres/dnd/components/ui/menu/createTeam/additional";
-import BaseDialog from "components/elements/dialog";
-import TeamInfoForm from "featutres/dnd/components/elements/form/teamInfo";
-import useToastSetter from "hooks/useToastSetter";
 import { FC, useState } from "react";
-import useCreateTeam from "featutres/dnd/hooks/useCreateTeam";
+import { useCreateTeam } from "ui/guilds/hooks/useCreateTeam";
+import { createDialog } from "components/elements/dialog";
+import { useSetToast } from "featutres/toast/hooks";
+import { TeamSetting } from "../elements/form/teamSetting";
+import { TriggerButton } from "./triggerButton";
 
-const CreateTeamMenu: FC = () => {
+const CreateTeam: FC = () => {
   const [open, setOpen] = useState(false);
-  const AddDialog = BaseDialog(<AdditionalButton />);
-  const toastSetter = useToastSetter();
+  const AddDialog = createDialog(<TriggerButton />);
+  const toastSetter = useSetToast();
   const createTeam = useCreateTeam();
 
   return (
     <AddDialog open={open} setOpen={setOpen}>
-      <TeamInfoForm
+      <TeamSetting
         title="Create New Team"
         buttonTitle="Create"
         defaultEmoji=""
@@ -40,4 +40,4 @@ const CreateTeamMenu: FC = () => {
   );
 };
 
-export default CreateTeamMenu;
+export { CreateTeam };
