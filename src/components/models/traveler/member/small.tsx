@@ -15,4 +15,4 @@ const SmallMemberModel: FC<Props> = ({ imageUrl, name, className, ...props }) =>
   </Avatar.Root>
 );
 
-export default SmallMemberModel;
+export { SmallMemberModel };

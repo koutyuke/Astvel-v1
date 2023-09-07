@@ -21,4 +21,4 @@ const LargeMemberModel = forwardRef<HTMLDivElement, Props>(({ imageUrl, name, cl
 
 LargeMemberModel.displayName = "LargeMemberModel";
 
-export default LargeMemberModel;
+export { LargeMemberModel };
