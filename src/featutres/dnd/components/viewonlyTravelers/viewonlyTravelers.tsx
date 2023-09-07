@@ -1,9 +1,9 @@
 import type { ComponentPropsWithoutRef, FC } from "react";
-import SmallMemberModel from "components/models/traveler/member/smallMember";
-import SmallTeamModel from "components/models/traveler/team/smallTeam";
 import { APIMember } from "types/api/astvel";
 import { avatarUrlGen } from "utils/iconUrlGen";
 import { Team } from "types/recoil/dnd";
+import { SmallMemberModel } from "components/models/traveler/member";
+import { SmallTeamModel } from "components/models/traveler/team";
 
 type Props = {
   teams?: Team[];

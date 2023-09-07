@@ -7,7 +7,7 @@ import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { useRecoilValue } from "recoil";
 import { APIVoice } from "types/api/astvel";
 import { DnDMembersAtom, DnDTeamsAtom, TeamsAtom } from "stores/atom/dnd";
-import permissionCheck from "utils/permissionCheck";
+import { permissionCheck } from "utils/permissionCheck";
 import { useAllMembers } from "ui/guilds/hooks/swr";
 import { DraggableTravelers } from "featutres/dnd/components/draggableTravelers";
 import { ViewonlyTravelers } from "featutres/dnd/components/viewonlyTravelers";

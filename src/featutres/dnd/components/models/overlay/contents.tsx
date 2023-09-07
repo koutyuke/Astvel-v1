@@ -1,8 +1,8 @@
 import { Active } from "@dnd-kit/core";
+import { LargeMemberModel } from "components/models/traveler/member";
+import { LargeTeamModel } from "components/models/traveler/team";
 import { FC } from "react";
 import { DragDataType } from "types/models/dnd";
-import LargeMemberModel from "components/models/traveler/member/largeMember";
-import LargeTeamModel from "components/models/traveler/team/largeTeam";
 import { avatarUrlGen } from "utils/iconUrlGen";
 
 type Props = {

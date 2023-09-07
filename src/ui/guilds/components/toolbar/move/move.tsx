@@ -3,14 +3,14 @@ import { BsFillRocketTakeoffFill } from "react-icons/bs";
 import { useRecoilValue } from "recoil";
 import { DnDMembersAtom, DnDTeamsAtom, TeamsAtom } from "stores/atom/dnd";
 import { useValidatedSession } from "hooks";
-import SmallMemberModel from "components/models/traveler/member/smallMember";
 import { avatarUrlGen } from "utils/iconUrlGen";
-import SmallTeamModel from "components/models/traveler/team/smallTeam";
 import axios from "axios";
 import { useAllMembers, useAllVoices } from "ui/guilds/hooks/swr";
 import { BaseButton } from "components/elements/button";
 import { createDialog } from "components/elements/dialog";
 import { useSetToast } from "featutres/toast/hooks";
+import { SmallMemberModel } from "components/models/traveler/member";
+import { SmallTeamModel } from "components/models/traveler/team";
 import { ToolTriggerButton } from "../triggerButton";
 
 type Props = {

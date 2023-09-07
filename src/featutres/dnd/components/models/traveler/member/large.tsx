@@ -1,9 +1,9 @@
-import LargeMemberModel from "components/models/traveler/member/largeMember";
 import { FC } from "react";
 import { GroupType } from "types/models/dnd";
 import { useDraggable } from "@dnd-kit/core";
 import { APIMember } from "types/api/astvel";
 import { avatarUrlGen } from "utils/iconUrlGen";
+import { LargeMemberModel } from "components/models/traveler/member";
 
 type Props = {
   member: APIMember;
