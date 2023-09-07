@@ -1,11 +1,11 @@
-import useCurrentUserGuilds from "hooks/useCurrentUserGuilds";
+import { useCurrentUserGuilds } from "hooks";
 import { FC } from "react";
 import { useRouter } from "next/router";
 import { useResetRecoilState } from "recoil";
-import { DnDMembersAtom, DnDTeamsAtom, TeamsAtom } from "utils/recoil/dnd";
-import GuildModel from "./guildModel";
+import { DnDMembersAtom, DnDTeamsAtom, TeamsAtom } from "stores/atom/dnd";
+import { Guild } from "../model/guild";
 
-const ListGuilds: FC = () => {
+const Guilds: FC = () => {
   const { data: guilds, error, isLoading } = useCurrentUserGuilds();
   const router = useRouter();
   const resetDnDMembers = useResetRecoilState(DnDMembersAtom);
@@ -37,11 +37,11 @@ const ListGuilds: FC = () => {
             });
           }}
         >
-          <GuildModel id={guild.id} icon={guild.icon} name={guild.name} />
+          <Guild id={guild.id} icon={guild.icon} name={guild.name} />
         </button>
       ))}
     </div>
   );
 };
 
-export default ListGuilds;
+export { Guilds };

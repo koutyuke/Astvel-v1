@@ -1,8 +1,8 @@
-import useCurrentUserGuilds from "hooks/useCurrentUserGuilds";
+import { useCurrentUserGuilds } from "hooks";
 import { FC } from "react";
 import * as Tabs from "@radix-ui/react-tabs";
-import ListGuilds from "./listGuilds";
-import InviteBot from "../inviteBot";
+import { InviteBot } from "ui/inviteBot";
+import { Guilds } from "./components/guilds";
 
 const SelectGuild: FC = () => {
   const { data: guilds, error, isLoading } = useCurrentUserGuilds();
@@ -37,7 +37,7 @@ const SelectGuild: FC = () => {
         value="guilds"
         className="h-[calc(100vh_-_14rem)] w-full max-w-[60rem]  overflow-hidden rounded-b-[1rem] bg-white data-[state=active]:block data-[state=inactive]:hidden"
       >
-        <ListGuilds />
+        <Guilds />
       </Tabs.Content>
       <Tabs.Content
         value="bot"
@@ -49,4 +49,4 @@ const SelectGuild: FC = () => {
   );
 };
 
-export default SelectGuild;
+export { SelectGuild };

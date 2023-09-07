@@ -7,7 +7,7 @@ type Props = {
   name: string;
 };
 
-const GuildModel: FC<Props> = ({ id, icon, name }) => {
+const Guild: FC<Props> = ({ id, icon, name }) => {
   const image = `https://cdn.discordapp.com/icons/${id}/${icon}.png `;
 
   return (
@@ -27,4 +27,4 @@ const GuildModel: FC<Props> = ({ id, icon, name }) => {
   );
 };
 
-export default GuildModel;
+export { Guild };
