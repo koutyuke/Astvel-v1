@@ -34,4 +34,4 @@ const InviteBot: FC = () => {
   );
 };
 
-export default InviteBot;
+export { InviteBot };
