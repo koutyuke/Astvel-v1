@@ -2,15 +2,15 @@ import { FC } from "react";
 import { GroupType } from "types/models/dnd";
 import { useDroppable } from "@dnd-kit/core";
 import { useRecoilValue } from "recoil";
-import { DnDMembersAtom, DnDTeamsAtom, TeamsAtom } from "utils/recoil/dnd";
-import useAllMembers from "featutres/dnd/hooks/swr/useAllMembers";
-import DragTravelers from "../../dragableArea";
+import { DnDMembersAtom, DnDTeamsAtom, TeamsAtom } from "stores/atom/dnd";
+import { useAllMembers } from "ui/guilds/hooks/swr";
+import { DraggableTravelers } from "featutres/dnd/components/draggableTravelers";
 
 type Props = {
   guildId: string;
 };
 
-const NoSelectDropableArea: FC<Props> = ({ guildId }) => {
+const NoSelect: FC<Props> = ({ guildId }) => {
   const group: GroupType = {
     type: "noSelect",
     id: null,
@@ -29,14 +29,6 @@ const NoSelectDropableArea: FC<Props> = ({ guildId }) => {
   const DnDMembers = useRecoilValue(DnDMembersAtom);
   const DnDTeams = useRecoilValue(DnDTeamsAtom);
 
-  if (allMembers.isLoading) {
-    return (
-      <div className="h-full w-[calc((100%_-_3rem)/3)] rounded-md bg-gradient-to-br from-[#4158D0] via-[#C850C0] to-[#cc2b5e] p-2">
-        Loading
-      </div>
-    );
-  }
-
   if (allMembers.data === undefined || allMembers.error !== undefined) {
     return null;
   }
@@ -53,15 +45,19 @@ const NoSelectDropableArea: FC<Props> = ({ guildId }) => {
       className="h-full w-[calc((100%_-_3rem)/3)] rounded-md bg-gradient-to-br from-[#4158D0] via-[#C850C0] to-[#cc2b5e] p-2"
       ref={setNodeRef}
     >
-      <div
-        className={`${
-          isOver ? "scale-[1.015] drop-shadow-xl" : ""
-        } h-full overflow-auto rounded-lg bg-[rgba(255,255,255,0.6);] outline-2 outline-offset-[3px] outline-white duration-300`}
-      >
-        <DragTravelers group={group} members={members} teams={teams} className="min-h-full py-2" />
-      </div>
+      {allMembers.isLoading ? (
+        "Loading"
+      ) : (
+        <div
+          className={`${
+            isOver ? "scale-[1.015] drop-shadow-xl" : ""
+          } h-full overflow-auto rounded-lg bg-[rgba(255,255,255,0.6);] outline-2 outline-offset-[3px] outline-white duration-300`}
+        >
+          <DraggableTravelers group={group} members={members} teams={teams} className="min-h-full py-2" />
+        </div>
+      )}
     </div>
   );
 };
 
-export default NoSelectDropableArea;
+export { NoSelect };
