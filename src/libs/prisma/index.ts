@@ -9,4 +9,4 @@ if (!globalForPrisma.prisma) {
 }
 const { prisma } = globalForPrisma;
 
-export default prisma;
+export { prisma };
