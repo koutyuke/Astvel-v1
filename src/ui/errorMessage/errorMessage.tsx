@@ -14,4 +14,4 @@ const ErrorMessage: FC<Props> = ({ title, children }) => (
   </div>
 );
 
-export default ErrorMessage;
+export { ErrorMessage };

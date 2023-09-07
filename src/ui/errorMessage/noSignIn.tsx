@@ -12,4 +12,4 @@ const NoSignIn: FC = () => (
   </div>
 );
 
-export default NoSignIn;
+export { NoSignIn };
