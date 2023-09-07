@@ -1,5 +1,5 @@
 import LargeSignInUser from "components/models/user/large";
-import useValidatedSession from "hooks/useValidatedSession";
+import { useValidatedSession } from "hooks";
 import { FC } from "react";
 import { avatarUrlGen } from "utils/iconUrlGen";
 import { SignInButton } from "./signIn";

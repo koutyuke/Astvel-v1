@@ -2,7 +2,7 @@ import { signOut } from "next-auth/react";
 import { FC, useState } from "react";
 import SignInUser from "components/models/user/signInUser";
 import { avatarUrlGen } from "utils/iconUrlGen";
-import useValidatedSession from "hooks/useValidatedSession";
+import { useValidatedSession } from "hooks";
 import { SignInButton } from "./signIn";
 
 const SignInOutSmall: FC = () => {

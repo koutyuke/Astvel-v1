@@ -1,4 +1,4 @@
-import useValidatedSession from "hooks/useValidatedSession";
+import { useValidatedSession } from "hooks";
 import { signOut } from "next-auth/react";
 import { ComponentPropsWithoutRef, FC } from "react";
 
