@@ -11,7 +11,7 @@ type AstvelKeyType = {
 };
 
 type DiscordKeyType = {
-  url: string;
+  path: string;
   token: string;
   params: { [key: string]: unknown };
 };
@@ -27,9 +27,9 @@ const swrAstvelFetcher = ({ url, token, params }: AstvelKeyType) =>
     .get(url, { params })
     .then(res => res.data);
 
-const swrDiscordFetcher = ({ url, token, params }: DiscordKeyType) =>
+const swrDiscordFetcher = ({ path, token, params }: DiscordKeyType) =>
   discordAPI({ token, params: {} })
-    .get(url, { params })
+    .get(path, { params })
     .then(res => res.data);
 
 export { swrAstvelFetcher, swrDiscordFetcher };

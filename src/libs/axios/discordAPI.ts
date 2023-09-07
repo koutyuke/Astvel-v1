@@ -8,7 +8,7 @@ type KeyType = {
 const discordAPI = ({ token, params }: KeyType) =>
   axios.create({
     baseURL: "https://discord.com/api/v10",
-    headers: { Authorization: token },
+    headers: { Authorization: `Bearer ${token}` },
     params,
   });
 
