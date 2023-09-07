@@ -3,19 +3,19 @@ import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { useState, type FC } from "react";
 import { DragDataType, GroupType } from "types/models/dnd";
 import { HiUserGroup } from "react-icons/hi";
-import { DnDMembersAtom } from "utils/recoil/dnd";
-import useAllMembers from "featutres/dnd/hooks/swr/useAllMembers";
+import { DnDMembersAtom } from "stores/atom/dnd";
 import { useRecoilValue } from "recoil";
 import { Team } from "types/recoil/dnd";
-import ViewTravelers from "../../viewTraveler";
-import DragTravelers from "../../dragableArea";
+import { useAllMembers } from "ui/guilds/hooks/swr";
+import { DraggableTravelers } from "featutres/dnd/components/draggableTravelers";
+import { ViewonlyTravelers } from "featutres/dnd/components/viewonlyTravelers";
 
 type Props = {
   team: Team;
   guildId: string;
 };
 
-const DropTeam: FC<Props> = ({ team, guildId }) => {
+const DroppableTeam: FC<Props> = ({ team, guildId }) => {
   const { id, name, iconEmoji } = team;
   const group: GroupType = {
     type: "team",
@@ -71,10 +71,10 @@ const DropTeam: FC<Props> = ({ team, guildId }) => {
         <ChevronDownIcon className={`${isOpen ? "" : "rotate-180"} h-4 w-4 duration-200`} />
       </div>
       <div className="relative w-full">
-        {isOpen ? <DragTravelers group={group} members={members} /> : <ViewTravelers members={members} />}
+        {isOpen ? <DraggableTravelers group={group} members={members} /> : <ViewonlyTravelers members={members} />}
       </div>
     </div>
   );
 };
 
-export default DropTeam;
+export { DroppableTeam };
