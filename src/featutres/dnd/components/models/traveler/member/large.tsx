@@ -42,4 +42,4 @@ const LargeDragMember: FC<Props> = ({ member, group }) => {
   );
 };
 
-export default LargeDragMember;
+export { LargeDragMember };

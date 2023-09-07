@@ -39,4 +39,4 @@ const LargeDragTeam: FC<Props> = ({ team, group }) => {
   );
 };
 
-export default LargeDragTeam;
+export { LargeDragTeam };
