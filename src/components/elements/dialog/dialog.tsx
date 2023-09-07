@@ -13,7 +13,7 @@ const createDialog: (TrigerButton: ReactNode) => FC<Props> = TrigerButton => {
       <radixDialog.Trigger asChild>{TrigerButton}</radixDialog.Trigger>
       <radixDialog.Portal>
         <radixDialog.Overlay className="fixed inset-0 z-[999] bg-[rgba(0,0,0,0.5)]" />
-        <radixDialog.Content className="fixed left-[50%] top-[50%] z-[52] translate-x-[-50%] translate-y-[-50%]">
+        <radixDialog.Content className="fixed left-[50%] top-[50%] z-[1000] translate-x-[-50%] translate-y-[-50%]">
           {children}
         </radixDialog.Content>
       </radixDialog.Portal>
