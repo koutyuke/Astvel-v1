@@ -1,9 +1,9 @@
 import { DragOverlay, DropAnimation, useDndContext } from "@dnd-kit/core";
 import { FC } from "react";
 import { CSS } from "@dnd-kit/utilities";
-import LargeDragOverlay from "./large";
+import { OverlayContents } from "./contents";
 
-const Overlay: FC = () => {
+const DndOverlay: FC = () => {
   const dropAnimationConfig: DropAnimation = {
     keyframes({ transform }) {
       return [
@@ -17,9 +17,9 @@ const Overlay: FC = () => {
 
   return (
     <DragOverlay dropAnimation={dropAnimationConfig}>
-      <LargeDragOverlay active={active} />
+      <OverlayContents active={active} />
     </DragOverlay>
   );
 };
 
-export default Overlay;
+export { DndOverlay };

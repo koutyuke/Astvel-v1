@@ -9,7 +9,7 @@ type Props = {
   active: Active | null;
 };
 
-const LargeDragOverlay: FC<Props> = ({ active }) => {
+const OverlayContents: FC<Props> = ({ active }) => {
   const dragData = active?.data.current as DragDataType | undefined;
 
   if (dragData === undefined) {
@@ -31,4 +31,4 @@ const LargeDragOverlay: FC<Props> = ({ active }) => {
   );
 };
 
-export default LargeDragOverlay;
+export { OverlayContents };
