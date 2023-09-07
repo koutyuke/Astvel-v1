@@ -7,7 +7,7 @@ type Props = {
   sub: string;
 };
 
-const SignInUser: FC<Props> = ({ image, main, sub }) => (
+const SmallSignInUser: FC<Props> = ({ image, main, sub }) => (
   <Avatar.Root className="relative h-14 min-w-[10rem] max-w-full">
     <div className="absolute left-0 top-0 z-[1] h-14 w-14 rounded-full bg-white p-[3px]">
       <Avatar.Image src={image} className="h-[50px] w-[50px] rounded-full" />
@@ -21,4 +21,4 @@ const SignInUser: FC<Props> = ({ image, main, sub }) => (
   </Avatar.Root>
 );
 
-export default SignInUser;
+export { SmallSignInUser };
