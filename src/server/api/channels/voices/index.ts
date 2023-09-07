@@ -1,8 +1,8 @@
 /* eslint-disable no-bitwise */
 import { ChannelType, Client, OverwriteType, PermissionFlagsBits, VoiceChannel } from "discord.js";
 import { Request, Response } from "express";
-import prisma from "libs/prisma";
-import permissionCheck from "utils/permissionCheck";
+import { prisma } from "libs/prisma";
+import { permissionCheck } from "utils/permissionCheck";
 import { z } from "zod";
 
 const schema = z.object({
@@ -140,4 +140,4 @@ const apiVoiceChannel = async (req: Request, res: Response, client: Client<boole
   }
 };
 
-export default apiVoiceChannel;
+export { apiVoiceChannel };

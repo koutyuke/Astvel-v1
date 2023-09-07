@@ -1,7 +1,7 @@
 /* eslint-disable no-bitwise */
 import { CategoryChannel, ChannelType, Client, OverwriteType } from "discord.js";
 import { Request, Response } from "express";
-import prisma from "libs/prisma";
+import { prisma } from "libs/prisma";
 import { z } from "zod";
 
 const schema = z.object({
@@ -73,4 +73,4 @@ const apiAllCategoryChannels = async (req: Request, res: Response, client: Clien
   }
 };
 
-export default apiAllCategoryChannels;
+export { apiAllCategoryChannels };
