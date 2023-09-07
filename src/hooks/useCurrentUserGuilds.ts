@@ -1,5 +1,5 @@
-import useValidatedSession from "hooks/useValidatedSession";
-import fetcherWithBearer from "libs/axios/swrFetcher";
+import { useValidatedSession } from "hooks/useValidatedSession";
+import { swrDiscordFetcher } from "libs/axios";
 import useSWR from "swr";
 import { APIUserGuild } from "types/api/astvel";
 
@@ -9,12 +9,12 @@ const useCurrentUserGuilds = () => {
   return useSWR<APIUserGuild[]>(
     session.success
       ? {
-          url: "https://discord.com/api/v10/users/@me/guilds",
+          path: "/users/@me/guilds",
           token: session.data.accessToken,
         }
       : null,
-    fetcherWithBearer,
+    swrDiscordFetcher,
   );
 };
 
-export default useCurrentUserGuilds;
+export { useCurrentUserGuilds };

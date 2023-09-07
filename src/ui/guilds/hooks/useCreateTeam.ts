@@ -1,7 +1,7 @@
 import { useSetRecoilState } from "recoil";
-import { TeamsAtom } from "utils/recoil/dnd";
+import { TeamsAtom } from "stores/atom/dnd";
 import { v4 as uuidv4 } from "uuid";
-import { FormValue } from "../components/elements/form/teamInfo";
+import { FormValue } from "../components/elements/form/teamSetting";
 
 const useCreateTeam = () => {
   const setTeam = useSetRecoilState(TeamsAtom);
@@ -19,4 +19,4 @@ const useCreateTeam = () => {
   };
 };
 
-export default useCreateTeam;
+export { useCreateTeam };

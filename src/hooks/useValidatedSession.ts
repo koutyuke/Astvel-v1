@@ -1,5 +1,5 @@
 import { useSession } from "next-auth/react";
-import sessionSchema from "schema/session";
+import { sessionSchema } from "stores/schema";
 
 const useValidatedSession = () => {
   const { data: SESSION, status } = useSession();
@@ -7,4 +7,4 @@ const useValidatedSession = () => {
   return { session, status };
 };
 
-export default useValidatedSession;
+export { useValidatedSession };

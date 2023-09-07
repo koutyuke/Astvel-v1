@@ -3,10 +3,10 @@ import { Socket, io } from "socket.io-client";
 import { ClientToServerEvents } from "types/socket/clientToServer";
 import { ServerToClientEvents } from "types/socket/serverToClient";
 // import useAllVoices from "featutres/dnd/hooks/swr/useAllVoices";
-import useAllMembers from "featutres/dnd/hooks/swr/useAllMembers";
+import { useAllMembers } from "ui/guilds/hooks/swr/useAllMembers";
 import { APIMember } from "types/api/astvel";
-import getAstvelAPI from "libs/axios/getAstvelAPI";
-import useValidatedSession from "./useValidatedSession";
+import { astvelAPI } from "libs/axios/astvelAPI";
+import { useValidatedSession } from "hooks/useValidatedSession";
 
 const useSocketEffect = (guildId: string | undefined) => {
   const { session } = useValidatedSession();
@@ -14,10 +14,10 @@ const useSocketEffect = (guildId: string | undefined) => {
   const allMembers = useAllMembers(guildId);
 
   const accessToken = session.success ? session.data.accessToken : undefined;
-  const useId = session.success ? session.data.user.provider_id : undefined;
+  const userId = session.success ? session.data.user.provider_id : undefined;
 
   useEffect(() => {
-    if (guildId === undefined || !session.success || accessToken === undefined) {
+    if (guildId === undefined || userId === undefined || !session.success || accessToken === undefined) {
       return;
     }
     const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io();
@@ -29,15 +29,20 @@ const useSocketEffect = (guildId: string | undefined) => {
     socket.on("memberVoiceState", async (type, channelId, memberId) => {
       // console.log(type, channelId, memberId)
 
-      const newMember = await getAstvelAPI<APIMember | null>({
-        url: "/api/members",
+      const newMember = await astvelAPI({
         token: accessToken,
         params: {
           guild_id: guildId,
-          user_id: useId,
-          member_id: memberId,
+          user_id: userId,
         },
-      }).catch(() => undefined);
+      })
+        .get<APIMember | null>("/api/members", {
+          params: {
+            member_id: memberId,
+          },
+        })
+        .then(res => res.data)
+        .catch(() => undefined);
 
       if (allMembers.data === undefined || allMembers.error !== undefined || newMember === undefined) {
         return;
@@ -52,7 +57,7 @@ const useSocketEffect = (guildId: string | undefined) => {
         allMembers.mutate(allMembers.data.filter(member => member.id !== memberId));
       }
     });
-  }, [accessToken, allMembers, guildId, session.success, useId]);
+  }, [accessToken, allMembers, guildId, session.success, userId]);
 };
 
-export default useSocketEffect;
+export { useSocketEffect };

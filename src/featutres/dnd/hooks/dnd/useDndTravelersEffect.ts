@@ -1,7 +1,7 @@
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { DnDMembersAtom, DnDTeamsAtom, TeamsAtom } from "utils/recoil/dnd";
+import { DnDMembersAtom, DnDTeamsAtom, TeamsAtom } from "stores/atom/dnd";
 import { useEffect } from "react";
-import useAllMembers from "./swr/useAllMembers";
+import { useAllMembers } from "../../../../ui/guilds/hooks/swr";
 
 const useDnDTravelersEffect = (guildId: string | undefined) => {
   const allMembers = useAllMembers(guildId);
@@ -40,4 +40,4 @@ const useDnDTravelersEffect = (guildId: string | undefined) => {
   }, [allTeams, setDnDTeams]);
 };
 
-export default useDnDTravelersEffect;
+export { useDnDTravelersEffect };

@@ -1,9 +1,9 @@
 /* eslint-disable default-case */
 import { useSetRecoilState } from "recoil";
 import { DragDataType, DropDataType } from "types/models/dnd";
-import { DnDMembersAtom, DnDTeamsAtom } from "utils/recoil/dnd";
+import { DnDMembersAtom, DnDTeamsAtom } from "stores/atom/dnd";
 
-const useUpdateDnD = () => {
+const useSetTravelers = () => {
   const setMembers = useSetRecoilState(DnDMembersAtom);
   const setTeams = useSetRecoilState(DnDTeamsAtom);
 
@@ -86,4 +86,4 @@ const useUpdateDnD = () => {
   };
 };
 
-export default useUpdateDnD;
+export { useSetTravelers };
