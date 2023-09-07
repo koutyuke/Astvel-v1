@@ -3,9 +3,9 @@ import React, { FC, useState } from "react";
 import { useForm } from "react-hook-form";
 import dynamic from "next/dynamic";
 import { EmojiStyle } from "emoji-picker-react";
-import BaseButton from "components/elements/button";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { BaseButton } from "components/elements/button";
 
 const Picker = dynamic(() => import("emoji-picker-react"), { ssr: false });
 
@@ -22,7 +22,7 @@ type Props = {
   defaultName: string;
 };
 
-const TeamInfoForm: FC<Props> = ({ title, buttonTitle, defaultEmoji, defaultName, onSubmit }) => {
+const TeamSetting: FC<Props> = ({ title, buttonTitle, defaultEmoji, defaultName, onSubmit }) => {
   const schema = z.object({
     emoji: z.string().min(1, { message: "Please Select a Emoji." }),
     name: z.string().min(1, { message: "Name length is 1~20." }).max(20, { message: "Name length is 1~20." }),
@@ -74,17 +74,15 @@ const TeamInfoForm: FC<Props> = ({ title, buttonTitle, defaultEmoji, defaultName
           <label htmlFor="emoji" className="m-auto block w-fit">
             icon emoji
           </label>
-          <div className="mx-auto flex h-10 w-10 space-x-2">
-            <input
-              id="emoji"
-              {...register("emoji")}
-              readOnly
-              className="block h-10 w-10 rounded-lg text-center text-4xl outline outline-2 outline-red-200"
-              onClick={() => {
-                setPicker(!showPicker);
-              }}
-            />
-          </div>
+          <input
+            id="emoji"
+            {...register("emoji")}
+            readOnly
+            className="m-auto block h-10 w-10 cursor-pointer rounded-lg text-center text-4xl outline outline-2 outline-red-200"
+            onClick={() => {
+              setPicker(!showPicker);
+            }}
+          />
           {errors.emoji?.message && <p className="text-center text-sm text-red-500">{errors.emoji.message}</p>}
         </div>
         <div className="h-20 w-full flex-col space-y-2">
@@ -108,4 +106,4 @@ const TeamInfoForm: FC<Props> = ({ title, buttonTitle, defaultEmoji, defaultName
   );
 };
 
-export default TeamInfoForm;
+export { TeamSetting };
