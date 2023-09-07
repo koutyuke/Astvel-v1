@@ -1,24 +1,21 @@
 import type { NextPageWithLayout } from "next";
 import { DndContext } from "@dnd-kit/core";
-import Overlay from "featutres/dnd/components/models/overlay";
 import { DragDataType, DropDataType } from "types/models/dnd";
-import DestinationChannelDropArea from "featutres/dnd/components/ui/dropableArea/destinationChannel";
-import NoSelectDropableArea from "featutres/dnd/components/ui/dropableArea/noSelect";
-import TeamDropArea from "featutres/dnd/components/ui/dropableArea/team";
-import BaseToast from "components/elements/toast";
-import ToolBar from "featutres/dnd/components/ui/toolbar";
+import { Toast } from "featutres/toast/components/toast";
+import { ToolBar } from "ui/guilds/components/toolbar";
 import { useRouter } from "next/router";
-import guildPageQuerySchema from "schema/guildPageQuery";
-import useGuild from "featutres/dnd/hooks/swr/useGuild";
-import useDnDTravelersEffect from "featutres/dnd/hooks/useDnDTravelersEffect";
-import useUpdateDnD from "featutres/dnd/hooks/useUpdateDnD";
-import SelectGuild from "components/ui/selectGuild";
-import ErrorMessage from "components/ui/errorMessage";
-import InviteBot from "components/ui/inviteBot";
-import useSocketEffect from "hooks/useSocketEffect";
-import useValidatedSession from "hooks/useValidatedSession";
-import NoSignIn from "components/ui/errorMessage/noSignIn";
-import Layout from "components/ui/layouts";
+import { useGuild } from "ui/guilds/hooks/swr";
+import { useSocketEffect, useValidatedSession } from "hooks";
+import { Layout } from "components/layouts";
+import { DndOverlay } from "featutres/dnd/components/models/overlay";
+import { DestinationChannels } from "ui/guilds/components/destinationChannels";
+import { Team } from "ui/guilds/components/team/team";
+import { NoSelect } from "ui/guilds/components/noSelect";
+import { guildPageQuerySchema } from "stores/schema";
+import { useDnDTravelersEffect, useUpdateDnD } from "featutres/dnd/hooks/dnd";
+import { SelectGuild } from "ui/selectGuild";
+import { InviteBot } from "ui/inviteBot";
+import { ErrorMessage, NoSignIn } from "ui/errorMessage";
 
 const Guilds: NextPageWithLayout = () => {
   const { session } = useValidatedSession();
@@ -93,12 +90,12 @@ const Guilds: NextPageWithLayout = () => {
     >
       <div className="flex h-full w-full space-x-4 pl-16">
         <ToolBar guildId={query.data.id} />
-        <DestinationChannelDropArea guildId={query.data.id} />
-        <NoSelectDropableArea guildId={query.data.id} />
-        <TeamDropArea guildId={query.data.id} />
+        <DestinationChannels guildId={query.data.id} />
+        <NoSelect guildId={query.data.id} />
+        <Team guildId={query.data.id} />
       </div>
-      <Overlay />
-      <BaseToast />
+      <DndOverlay />
+      <Toast />
     </DndContext>
   );
 };

@@ -1,6 +1,6 @@
 import { Client } from "discord.js";
 import { Request, Response } from "express";
-import prisma from "libs/prisma";
+import { prisma } from "libs/prisma";
 import { z } from "zod";
 
 const schema = z.object({
@@ -60,4 +60,4 @@ const apiAllRoles = async (req: Request, res: Response, client: Client<boolean>)
   }
 };
 
-export default apiAllRoles;
+export { apiAllRoles };

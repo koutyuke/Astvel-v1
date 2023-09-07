@@ -17,4 +17,4 @@ const LargeSignInUser: FC<Props> = ({ image, main, sub }) => (
   </Avatar.Root>
 );
 
-export default LargeSignInUser;
+export { LargeSignInUser };

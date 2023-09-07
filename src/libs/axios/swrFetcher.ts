@@ -1,11 +1,35 @@
-import axios from "axios";
+import { astvelAPI } from "./astvelAPI";
+import { discordAPI } from "./discordAPI";
 
-type KeyType = {
+type AstvelKeyType = {
   url: string;
   token: string;
-  params: object;
+  params: {
+    guild_id: string;
+    user_id: string;
+  } & { [key: string]: unknown };
 };
 
-const fetcherWithBearer = ({ url, token, params }: KeyType) =>
-  axios.get(url, { headers: { Authorization: `Bearer ${token}` }, params }).then(res => res.data);
-export default fetcherWithBearer;
+type DiscordKeyType = {
+  path: string;
+  token: string;
+  params: { [key: string]: unknown };
+};
+
+const swrAstvelFetcher = ({ url, token, params }: AstvelKeyType) =>
+  astvelAPI({
+    token,
+    params: {
+      guild_id: params.guild_id,
+      user_id: params.user_id,
+    },
+  })
+    .get(url, { params })
+    .then(res => res.data);
+
+const swrDiscordFetcher = ({ path, token, params }: DiscordKeyType) =>
+  discordAPI({ token, params: {} })
+    .get(path, { params })
+    .then(res => res.data);
+
+export { swrAstvelFetcher, swrDiscordFetcher };

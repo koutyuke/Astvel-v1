@@ -1,8 +1,8 @@
-import LargeTeamModel from "components/models/traveler/team/largeTeam";
 import { FC } from "react";
 import { GroupType } from "types/models/dnd";
 import { useDraggable } from "@dnd-kit/core";
 import { Team } from "types/recoil/dnd";
+import { LargeTeamModel } from "components/models/traveler/team";
 
 type Props = {
   team: Team;
@@ -39,4 +39,4 @@ const LargeDragTeam: FC<Props> = ({ team, group }) => {
   );
 };
 
-export default LargeDragTeam;
+export { LargeDragTeam };
