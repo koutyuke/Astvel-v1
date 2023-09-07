@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { LuMinusCircle } from "react-icons/lu";
-import useCurrentUserGuilds from "hooks/useCurrentUserGuilds";
+import { useCurrentUserGuilds } from "hooks";
 import { guildIconUrlGen } from "utils/iconUrlGen";
 import * as Avatar from "@radix-ui/react-avatar";
 
@@ -8,7 +8,7 @@ type Props = {
   guildId: string;
 };
 
-const ToolTitle: FC<Props> = ({ guildId }) => {
+const SelectedGuild: FC<Props> = ({ guildId }) => {
   const guildList = useCurrentUserGuilds();
 
   if (guildList.data === undefined || guildList.error !== undefined) return null;
@@ -47,4 +47,4 @@ const ToolTitle: FC<Props> = ({ guildId }) => {
   );
 };
 
-export default ToolTitle;
+export { SelectedGuild };

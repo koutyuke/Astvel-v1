@@ -1,27 +1,26 @@
-import BaseDialog from "components/elements/dialog";
-import useToastSetter from "hooks/useToastSetter";
 import { FC, useState } from "react";
 import { BsFillRocketTakeoffFill } from "react-icons/bs";
-import BaseToolButton from "featutres/dnd/components/elements/button/tool";
 import { useRecoilValue } from "recoil";
-import { DnDMembersAtom, DnDTeamsAtom, TeamsAtom } from "utils/recoil/dnd";
-import useAllMembers from "featutres/dnd/hooks/swr/useAllMembers";
-import useValidatedSession from "hooks/useValidatedSession";
-import useAllVoices from "featutres/dnd/hooks/swr/useAllVoices";
-import BaseButton from "components/elements/button";
+import { DnDMembersAtom, DnDTeamsAtom, TeamsAtom } from "stores/atom/dnd";
+import { useValidatedSession } from "hooks";
 import SmallMemberModel from "components/models/traveler/member/smallMember";
 import { avatarUrlGen } from "utils/iconUrlGen";
 import SmallTeamModel from "components/models/traveler/team/smallTeam";
 import axios from "axios";
+import { useAllMembers, useAllVoices } from "ui/guilds/hooks/swr";
+import { BaseButton } from "components/elements/button";
+import { createDialog } from "components/elements/dialog";
+import { useSetToast } from "featutres/toast/hooks";
+import { ToolTriggerButton } from "../triggerButton";
 
 type Props = {
   guildId: string;
 };
 
-const ToolMoveMenu: FC<Props> = ({ guildId }) => {
+const Move: FC<Props> = ({ guildId }) => {
   const [open, setOpen] = useState(false);
-  const AddDialog = BaseDialog(<BaseToolButton Icon={BsFillRocketTakeoffFill} title="Move" />);
-  const toastSetter = useToastSetter();
+  const AddDialog = createDialog(<ToolTriggerButton Icon={BsFillRocketTakeoffFill} title="Move" />);
+  const toastSetter = useSetToast();
 
   const { session } = useValidatedSession();
   const allVoices = useAllVoices(guildId);
@@ -187,4 +186,4 @@ const ToolMoveMenu: FC<Props> = ({ guildId }) => {
   );
 };
 
-export default ToolMoveMenu;
+export { Move };

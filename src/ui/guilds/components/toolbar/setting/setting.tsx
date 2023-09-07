@@ -1,12 +1,12 @@
-import BaseDialog from "components/elements/dialog";
 // import useToastSetter from "hooks/useToastSetter";
 import { FC, useState } from "react";
-import BaseToolButton from "featutres/dnd/components/elements/button/tool";
 import { FiSettings } from "react-icons/fi";
+import { createDialog } from "components/elements/dialog";
+import { ToolTriggerButton } from "../triggerButton";
 
-const ToolSettingMenu: FC = () => {
+const Setting: FC = () => {
   const [open, setOpen] = useState(false);
-  const AddDialog = BaseDialog(<BaseToolButton Icon={FiSettings} title="Setting" />);
+  const AddDialog = createDialog(<ToolTriggerButton Icon={FiSettings} title="Setting" />);
   // const toastSetter = useToastSetter();
 
   return (
@@ -16,4 +16,4 @@ const ToolSettingMenu: FC = () => {
   );
 };
 
-export default ToolSettingMenu;
+export { Setting };

@@ -1,13 +1,13 @@
-import BaseButton from "components/elements/button";
-import BaseDialog from "components/elements/dialog";
-import BaseToolButton from "featutres/dnd/components/elements/button/tool";
+import { BaseButton } from "components/elements/button";
+import { createDialog } from "components/elements/dialog";
 import { useRouter } from "next/router";
 import { FC, useState } from "react";
 import { TbLogout2 } from "react-icons/tb";
+import { ToolTriggerButton } from "../triggerButton";
 
-const ToolBackGuildsMenu: FC = () => {
+const BackGuilds: FC = () => {
   const [open, setOpen] = useState(false);
-  const AddDialog = BaseDialog(<BaseToolButton Icon={TbLogout2} title="Select" />);
+  const AddDialog = createDialog(<ToolTriggerButton Icon={TbLogout2} title="Select" />);
   const router = useRouter();
 
   return (
@@ -42,4 +42,4 @@ const ToolBackGuildsMenu: FC = () => {
   );
 };
 
-export default ToolBackGuildsMenu;
+export { BackGuilds };
