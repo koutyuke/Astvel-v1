@@ -1,14 +1,14 @@
 import { FC, useState } from "react";
 import { TbReload } from "react-icons/tb";
 import { createDialog } from "components/elements/dialog";
-import { useSetToast } from "featutres/toast/hooks";
+// import { useSetToast } from "featutres/toast/hooks";
 import { BaseButton } from "components/elements/button";
 import { ToolTriggerButton } from "../triggerButton";
 
 const Reset: FC = () => {
   const [open, setOpen] = useState(false);
   const AddDialog = createDialog(<ToolTriggerButton Icon={TbReload} title="Reset" />);
-  const toastSetter = useSetToast();
+  // const toastSetter = useSetToast();
 
   return (
     <AddDialog open={open} setOpen={setOpen}>
