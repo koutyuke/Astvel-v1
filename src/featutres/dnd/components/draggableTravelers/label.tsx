@@ -6,7 +6,7 @@ type Props = {
   children: ReactNode;
 };
 
-const LabelWrapper: FC<Props> = ({ label, children }) => (
+const Label: FC<Props> = ({ label, children }) => (
   <div className="flex w-full flex-col space-y-1">
     <div className="flex w-full items-center justify-start space-x-1">
       <TbTriangleInvertedFilled size={10} color="#6B7280" />
@@ -16,4 +16,4 @@ const LabelWrapper: FC<Props> = ({ label, children }) => (
   </div>
 );
 
-export default LabelWrapper;
+export { Label };
