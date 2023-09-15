@@ -6,12 +6,10 @@ type Props = {
   children: string;
 } & ComponentPropsWithoutRef<"button">;
 
-const PageLink: FC<Props> = ({ url, children: text, className, onClick, ...other }) => {
+const InternalLink: FC<Props> = ({ url, children: text, className, onClick, ...other }) => {
   const router = useRouter();
   if (router.pathname === url) {
-    return (
-      <div className={`text-white underline decoration-white decoration-1 underline-offset-2 ${className}`}>{text}</div>
-    );
+    return <div className={`underline decoration-white underline-offset-2 ${className}`}>{text}</div>;
   }
 
   return (
@@ -23,7 +21,7 @@ const PageLink: FC<Props> = ({ url, children: text, className, onClick, ...other
           onClick(e);
         }
       }}
-      className={`${className} rounded-md text-white hover:text-green-500`}
+      className={`${className} rounded-md outline-offset-4 outline-orange-500 hover:outline`}
       {...other}
     >
       {text}
@@ -31,4 +29,4 @@ const PageLink: FC<Props> = ({ url, children: text, className, onClick, ...other
   );
 };
 
-export { PageLink };
+export { InternalLink };

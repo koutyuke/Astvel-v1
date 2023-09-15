@@ -1,7 +1,7 @@
 import { FC, Fragment, useState } from "react";
 import { Fade as Hamburger } from "hamburger-react";
 import { SignInOutLarge, SignOutButton } from "featutres/signIn/components";
-import { PageLink } from "components/elements/pageLink";
+import { InternalLink } from "components/elements/InternalLink";
 
 const pathParams = [
   {
@@ -53,7 +53,7 @@ const HamburgerMenu: FC = () => {
             {pathParams.map(({ path, display }) => (
               <Fragment key={path}>
                 <div className="h-[2px] w-full bg-gray-200" />
-                <PageLink
+                <InternalLink
                   url={path}
                   className="px-4 text-2xl font-light"
                   onClick={() => {
@@ -61,7 +61,7 @@ const HamburgerMenu: FC = () => {
                   }}
                 >
                   {display}
-                </PageLink>
+                </InternalLink>
               </Fragment>
             ))}
             <div className="h-[2px] w-full bg-gray-200" />

@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef, FC } from "react";
 import { FaSatellite } from "react-icons/fa";
-import { PageLink } from "components/elements/pageLink";
+import { InternalLink } from "components/elements/InternalLink";
 import { Title } from "./title";
 
 type Props = ComponentPropsWithoutRef<"nav">;
@@ -10,9 +10,9 @@ const Navigate: FC<Props> = ({ className, ...other }) => (
     <Title title="Navigate" Icon={FaSatellite} />
     <ul>
       <li>
-        <PageLink url="/guilds" className="">
+        <InternalLink url="/guilds" className="">
           Guilds
-        </PageLink>
+        </InternalLink>
       </li>
     </ul>
   </nav>
