@@ -1,23 +1,28 @@
 import { ExternalLinkIcon } from "components/icon/externalLink";
-import { FC, ReactNode } from "react";
+import { ComponentPropsWithoutRef, FC, ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
 type Props = {
   url: string;
   children: ReactNode;
-  icon: boolean;
-};
+  icon?: boolean;
+} & ComponentPropsWithoutRef<"a">;
 
-const ExternalLink: FC<Props> = ({ url, children, icon }) => (
+const ExternalLink: FC<Props> = ({ url, children, icon, className, ...other }) => (
   <a
     href={url}
-    className={twMerge("flex items-center text-white hover:text-green-500")}
+    className={twMerge("flex items-center space-x-1 text-white hover:text-green-500", className)}
     rel="noreferrer noopener"
     target="_blank"
+    {...other}
   >
     {children}
-    {icon && <ExternalLinkIcon />}
+    {icon && <ExternalLinkIcon className="aspect-square h-full" />}
   </a>
 );
+
+ExternalLink.defaultProps = {
+  icon: false,
+};
 
 export { ExternalLink };
