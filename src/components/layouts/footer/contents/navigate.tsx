@@ -10,7 +10,7 @@ const Navigate: FC<Props> = ({ className, ...other }) => (
     <Title title="Navigate" Icon={FaSatellite} />
     <ul>
       <li>
-        <InternalLink url="/guilds" className="">
+        <InternalLink path="/guilds" className="">
           Guilds
         </InternalLink>
       </li>

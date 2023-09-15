@@ -1,30 +1,32 @@
 import { useRouter } from "next/router";
-import { ComponentPropsWithoutRef, FC } from "react";
+import { ComponentPropsWithoutRef, FC, ReactNode } from "react";
 
 type Props = {
-  url: string;
-  children: string;
+  path: string;
+  children: ReactNode;
 } & ComponentPropsWithoutRef<"button">;
 
-const InternalLink: FC<Props> = ({ url, children: text, className, onClick, ...other }) => {
+const InternalLink: FC<Props> = ({ path, children, className, onClick, ...other }) => {
   const router = useRouter();
-  if (router.pathname === url) {
-    return <div className={`underline decoration-white underline-offset-2 ${className}`}>{text}</div>;
+  if (router.pathname === path) {
+    return (
+      <div className={`underline decoration-white decoration-1 underline-offset-[3px] ${className}`}>{children}</div>
+    );
   }
 
   return (
     <button
       type="button"
       onClick={e => {
-        router.push(url);
+        router.push(path);
         if (onClick) {
           onClick(e);
         }
       }}
-      className={`${className} rounded-md outline-offset-4 outline-orange-500 hover:outline`}
+      className={`${className} rounded-md text-white transition hover:text-green-400`}
       {...other}
     >
-      {text}
+      {children}
     </button>
   );
 };

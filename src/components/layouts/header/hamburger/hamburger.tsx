@@ -54,7 +54,7 @@ const HamburgerMenu: FC = () => {
               <Fragment key={path}>
                 <div className="h-[2px] w-full bg-gray-200" />
                 <InternalLink
-                  url={path}
+                  path={path}
                   className="px-4 text-2xl font-light"
                   onClick={() => {
                     setOpen(false);
