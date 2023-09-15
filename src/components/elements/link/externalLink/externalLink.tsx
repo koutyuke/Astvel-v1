@@ -11,7 +11,7 @@ type Props = {
 const ExternalLink: FC<Props> = ({ url, children, icon, className, ...other }) => (
   <a
     href={url}
-    className={twMerge("flex items-center space-x-1 text-white hover:text-green-500", className)}
+    className={twMerge("flex items-center space-x-1 text-white transition hover:text-green-500", className)}
     rel="noreferrer noopener"
     target="_blank"
     {...other}
