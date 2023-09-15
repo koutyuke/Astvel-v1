@@ -1,7 +1,7 @@
 import { FC, Fragment, useState } from "react";
 import { Fade as Hamburger } from "hamburger-react";
 import { SignInOutLarge, SignOutButton } from "featutres/signIn/components";
-import { InternalLink } from "components/elements/InternalLink";
+import { InternalLink } from "components/elements/link";
 
 const pathParams = [
   {

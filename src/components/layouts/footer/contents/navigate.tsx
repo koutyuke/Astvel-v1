@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef, FC } from "react";
 import { FaSatellite } from "react-icons/fa";
-import { InternalLink } from "components/elements/InternalLink";
+import { InternalLink } from "components/elements/link";
 import { Title } from "./title";
 
 type Props = ComponentPropsWithoutRef<"nav">;
