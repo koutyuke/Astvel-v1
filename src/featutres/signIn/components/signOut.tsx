@@ -5,7 +5,7 @@ import { signOut } from "../utils";
 
 type SignOutProps = ComponentPropsWithoutRef<"button">;
 
-const SignOutButton: FC<SignOutProps> = ({ className, onClick, ...other }) => {
+const SignOut: FC<SignOutProps> = ({ className, onClick, ...other }) => {
   const { session } = useValidatedSession();
   if (!session.success) {
     return null;
@@ -31,4 +31,4 @@ const SignOutButton: FC<SignOutProps> = ({ className, onClick, ...other }) => {
   );
 };
 
-export { SignOutButton };
+export { SignOut };
