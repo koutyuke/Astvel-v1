@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const withInterceptStdout = require('next-intercept-stdout');
+const withInterceptStdout = require("next-intercept-stdout");
 
 const nextConfig = withInterceptStdout(
   {
@@ -8,15 +8,18 @@ const nextConfig = withInterceptStdout(
     async redirects() {
       return [
         {
-          source: '/:slug*',
-          destination: 'https://www.astvel.app/:slug*',
-          has: [{ type: 'host', value: 'astvel.app' }],
+          source: "/:slug*",
+          destination: "https://www.astvel.app/:slug*",
+          has: [{ type: "host", value: "astvel.app" }],
           permanent: true,
         },
-      ]
+      ];
+    },
+    images: {
+      domains: ["cdn.discordapp.com"],
     },
   },
-  (text) => (text.includes('Duplicate atom key') ? '' : text),
+  text => (text.includes("Duplicate atom key") ? "" : text),
 );
 
-module.exports = nextConfig
+module.exports = nextConfig;
