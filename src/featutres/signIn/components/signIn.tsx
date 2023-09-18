@@ -1,17 +1,51 @@
-import { signIn } from "next-auth/react";
-import { ComponentPropsWithoutRef, FC } from "react";
+import { User } from "components/models/user";
+import { useValidatedSession } from "hooks";
+import { ComponentProps, ComponentPropsWithoutRef, FC } from "react";
+import { SignOutIcon } from "components/icon/signoOut";
+import { signIn, signOut } from "../utils";
 
-type SignOutProps = ComponentPropsWithoutRef<"button">;
+type SignOutProps = ComponentPropsWithoutRef<"button"> & Pick<ComponentProps<typeof User>, "contentAlignment">;
 
-const SignInButton: FC<SignOutProps> = ({ className, ...other }) => (
-  <button
-    type="button"
-    onClick={() => signIn("discord")}
-    className={`flex h-10 w-40 items-center justify-center rounded-full bg-[#ff4da6] outline-2 ${className}`}
-    {...other}
-  >
-    <span className="text-lg">Sign In</span>
-  </button>
-);
+const SignIn: FC<SignOutProps> = ({ contentAlignment }) => {
+  const { session, status } = useValidatedSession();
 
-export { SignInButton };
+  if (status === "loading") {
+    return <div className="h-9 w-9 animate-pulse rounded-full bg-gray-300 outline outline-2 outline-white" />;
+  }
+
+  if (session.success) {
+    const { user } = session.data;
+    return (
+      <User
+        name={user.discriminator === "0" ? user.global_name ?? "" : user.username ?? ""}
+        id={user.discriminator === "0" ? `@${user.username}` : `#${user.discriminator ?? ""}`}
+        image="https://cdn.discordapp.com/icons/854266006738305050/823b42954380ace3af5231013a6c22b5.png"
+        contentAlignment={contentAlignment}
+      >
+        <button
+          type="button"
+          onClick={() => {
+            signOut();
+          }}
+          className="group mx-auto mt-4 flex items-center space-x-1"
+        >
+          <SignOutIcon size={20} className="text-red-700 transition group-hover:text-green-500" />
+          <p className="text-red-700 transition group-hover:text-green-500">Sign out</p>
+        </button>
+      </User>
+    );
+  }
+  return (
+    <button
+      type="button"
+      className="h-9 w-24 rounded-lg p-2 outline outline-2 outline-white transition hover:text-green-500 hover:outline-green-500"
+      onClick={() => {
+        signIn();
+      }}
+    >
+      <p className="m-auto text-center ">Sign in</p>
+    </button>
+  );
+};
+
+export { SignIn };

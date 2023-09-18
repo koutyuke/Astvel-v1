@@ -1,24 +1,29 @@
 import { FC } from "react";
 import Image from "next/image";
-import { SignInOutSmall } from "featutres/signIn/components";
-import { InternalLink } from "components/elements/InternalLink";
+import { InternalLink } from "components/elements/link";
+import { SignInButton } from "featutres/signIn/components";
 import { HamburgerMenu } from "./hamburger/hamburger";
 
 const Header: FC = () => (
-  <header className="sticky top-0 z-50 flex h-20 w-full grid-cols-[10rem_1fr_10rem] justify-between px-6 py-4 backdrop-blur sm:grid md:h-24 md:grid-cols-[12.5rem_1fr_12.5rem]">
-    <div className="flex h-full w-40 items-center justify-center md:w-[12.5rem]">
-      <Image src="/logo.PNG" alt="logo" width={200} height={50} />
+  <header className="sticky top-0 z-50 box-border flex h-16 w-full items-center justify-between space-x-3 border-b-[1px] border-gray-500 px-8 backdrop-blur tablet:space-x-8 tablet:px-16 ">
+    <InternalLink path="/">
+      <figure className="flex h-full items-center justify-center">
+        <Image src="/icon.PNG" alt="icon image at Astvel" width={40} height={40} />
+        <span className="hidden h-7 laptop:block">
+          <Image src="/logo.PNG" alt="logo image at Astvel" style={{ display: "none" }} width={108} height={27} />
+        </span>
+      </figure>
+    </InternalLink>
+    <nav className="hidden w-auto grow items-center justify-start space-x-5 text-white tablet:flex">
+      <InternalLink path="/">Home</InternalLink>
+      <InternalLink path="/guilds">Guilds</InternalLink>
+      <InternalLink path="/usage">Usage</InternalLink>
+      <InternalLink path="/information">Info</InternalLink>
+    </nav>
+    <div className="flex grow items-center justify-end tablet:grow-0">
+      <SignInButton contentAlignment="end" />
     </div>
-    <div className="hidden h-full w-full items-center justify-center space-x-4 text-xl text-white sm:flex md:space-x-8">
-      <InternalLink url="/">Home</InternalLink>
-      <InternalLink url="/guilds">Guilds</InternalLink>
-      <InternalLink url="/usage">Usage</InternalLink>
-      <InternalLink url="/information">Info</InternalLink>
-    </div>
-    <div className="hidden h-full w-full items-center justify-center sm:flex">
-      <SignInOutSmall />
-    </div>
-    <div className="h-12 w-12 rounded-lg bg-gray-500 sm:hidden">
+    <div className="tablet:hidden">
       <HamburgerMenu />
     </div>
   </header>
