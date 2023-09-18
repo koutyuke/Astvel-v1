@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Image from "next/image";
 import { InternalLink } from "components/elements/link";
-import { SignInButton } from "featutres/signIn/components";
+import { SignIn } from "featutres/signIn/components";
 import { HamburgerMenu } from "./hamburger/hamburger";
 
 const Header: FC = () => (
@@ -9,7 +9,7 @@ const Header: FC = () => (
     <InternalLink path="/">
       <figure className="flex h-full items-center justify-center">
         <Image src="/icon.PNG" alt="icon image at Astvel" width={40} height={40} />
-        <span className="hidden h-7 laptop:block">
+        <span className="hidden h-7 tablet:block">
           <Image src="/logo.PNG" alt="logo image at Astvel" style={{ display: "none" }} width={108} height={27} />
         </span>
       </figure>
@@ -21,7 +21,7 @@ const Header: FC = () => (
       <InternalLink path="/information">Info</InternalLink>
     </nav>
     <div className="flex grow items-center justify-end tablet:grow-0">
-      <SignInButton contentAlignment="end" />
+      <SignIn contentAlignment="end" />
     </div>
     <div className="tablet:hidden">
       <HamburgerMenu />
