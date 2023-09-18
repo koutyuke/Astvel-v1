@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { ComponentPropsWithoutRef, FC, ReactNode } from "react";
+import { twMerge } from "tailwind-merge";
 
 type Props = {
   path: string;
@@ -23,7 +24,7 @@ const InternalLink: FC<Props> = ({ path, children, className, onClick, ...other 
           onClick(e);
         }
       }}
-      className={`${className} rounded-md text-white transition hover:text-green-400`}
+      className={twMerge("rounded-md text-white transition hover:text-green-500", className)}
       {...other}
     >
       {children}
