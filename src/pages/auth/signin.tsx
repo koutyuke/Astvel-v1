@@ -1,7 +1,7 @@
 import { DiscordIcon } from "components/icon/discord";
 import { LinkIcon } from "components/icon/link";
 import { Layout } from "components/layouts";
-import { SignInButton } from "featutres/signIn/components";
+import { SignIn } from "featutres/signIn/components";
 import { NextPageWithLayout } from "next";
 import Image from "next/image";
 
@@ -22,7 +22,7 @@ const Signin: NextPageWithLayout = () => (
         <DiscordIcon size={100} />
       </div>
     </div>
-    <SignInButton />
+    <SignIn />
   </div>
 );
 
