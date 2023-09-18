@@ -32,6 +32,7 @@ COPY . .
 COPY --from=Install /Astvel/node_modules ./node_modules
 COPY --from=Install /Astvel/.yarn ./.yarn
 COPY --from=Install /Astvel/.yarnrc.yml ./
+COPY --from=Install /Astvel/next.config.js ./next.config.js
 
 RUN yarn build
 
@@ -48,6 +49,7 @@ COPY --from=Build /Astvel/.next ./.next
 COPY --from=Build /Astvel/dist ./dist
 COPY --from=Build /Astvel/public ./public
 COPY --from=Build /Astvel/node_modules ./node_modules
+COPY --from=Build /Astvel/next.config.js ./next.config.js
 
 ENV NODE_ENV=production
 EXPOSE 3000
