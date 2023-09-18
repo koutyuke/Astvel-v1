@@ -20,7 +20,7 @@ const Footer = () => (
           </ExternalLink>
         </div>
       </div>
-      <div className="col-start-2 col-end-7 row-start-2 flex h-full flex-col space-y-3 tablet:col-end-5 laptop:col-start-7 laptop:col-end-9 laptop:row-start-1">
+      <nav className="col-start-2 col-end-7 row-start-2 flex h-full flex-col space-y-3 tablet:col-end-5 laptop:col-start-7 laptop:col-end-9 laptop:row-start-1">
         <p className="text-xl font-bold">Content</p>
         <InternalLink path="/" className="text-xs">
           <p>Home</p>
@@ -34,7 +34,7 @@ const Footer = () => (
         <InternalLink path="/information" className="text-xs">
           <p>Information</p>
         </InternalLink>
-      </div>
+      </nav>
       <div className="col-start-7 col-end-12  row-start-2 h-full space-y-3 tablet:col-start-5 tablet:col-end-9 laptop:col-start-9 laptop:col-end-11 laptop:row-start-1">
         <p className="text-xl font-bold">About</p>
         <ExternalLink url="https://github.com/koutyuke/Astvel" className="text-xs" icon>
