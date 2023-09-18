@@ -2,6 +2,7 @@ import { User } from "components/models/user";
 import { useValidatedSession } from "hooks";
 import { ComponentProps, ComponentPropsWithoutRef, FC } from "react";
 import { SignOutIcon } from "components/icon/signoOut";
+import { avatarUrlGen } from "utils/iconUrlGen";
 import { signIn, signOut } from "../utils";
 
 type SignOutProps = ComponentPropsWithoutRef<"button"> & Pick<ComponentProps<typeof User>, "contentAlignment">;
@@ -19,7 +20,7 @@ const SignIn: FC<SignOutProps> = ({ contentAlignment }) => {
       <User
         name={user.discriminator === "0" ? user.global_name ?? "" : user.username ?? ""}
         id={user.discriminator === "0" ? `@${user.username}` : `#${user.discriminator ?? ""}`}
-        image="https://cdn.discordapp.com/icons/854266006738305050/823b42954380ace3af5231013a6c22b5.png"
+        image={avatarUrlGen(user.provider_id, user.avatar)}
         contentAlignment={contentAlignment}
       >
         <button

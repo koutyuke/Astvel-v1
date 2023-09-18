@@ -1,5 +1,5 @@
 import { Layout } from "components/layouts";
-import { SignOutButton } from "featutres/signIn/components";
+import { SignOut } from "featutres/signIn/components";
 import { NextPageWithLayout } from "next";
 import Image from "next/image";
 
@@ -14,7 +14,7 @@ const Signout: NextPageWithLayout = () => (
     <div className="flex h-32 w-full items-center justify-center">
       <Image src="/space/astronaut-ingravity.png" alt="astronaut" width={150} height={150} />
     </div>
-    <SignOutButton />
+    <SignOut />
   </div>
 );
 
