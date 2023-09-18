@@ -32,7 +32,6 @@ COPY . .
 COPY --from=Install /Astvel/node_modules ./node_modules
 COPY --from=Install /Astvel/.yarn ./.yarn
 COPY --from=Install /Astvel/.yarnrc.yml ./
-COPY --from=Install /Astvel/next.config.js ./next.config.js
 
 RUN yarn build
 
