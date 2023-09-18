@@ -1,9 +1,6 @@
 name: APP Test
 
-on:
-  push:
-    branches:
-      - main
+on: push
 
 env:
   yarn-version: 3.6.1
