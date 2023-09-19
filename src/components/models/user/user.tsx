@@ -14,7 +14,7 @@ const User: FC<Props> = ({ id, name, image, children, contentAlignment }) => {
   const [open, setOpen] = useState(false);
   const Popover = createPopover(
     <button type="button">
-      <UserIcon image={image} id={id} className="transition hover:outline-green-500" />
+      <UserIcon image={image} id={id} className="transition hover:border-green-500" />
     </button>,
   );
 

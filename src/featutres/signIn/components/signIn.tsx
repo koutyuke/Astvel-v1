@@ -39,7 +39,7 @@ const SignIn: FC<SignOutProps> = ({ contentAlignment }) => {
   return (
     <button
       type="button"
-      className="h-9 w-24 rounded-lg p-2 outline outline-2 outline-white transition hover:text-green-500 hover:outline-green-500"
+      className="box-border h-10 w-24 rounded-lg border-2 border-white p-2 transition hover:border-green-500 hover:text-green-500"
       onClick={() => {
         signIn();
       }}

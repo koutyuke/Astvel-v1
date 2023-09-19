@@ -15,7 +15,7 @@ const SignOut: FC<SignOutProps> = ({ className, onClick, ...other }) => {
     <button
       type="button"
       className={twMerge(
-        "group h-9 w-24 rounded-lg p-2 outline outline-2 outline-red-700 transition duration-150  hover:outline-green-500",
+        "group h-10 w-24 rounded-lg border-2 border-red-700 p-2 transition hover:border-green-500",
         className,
       )}
       onClick={e => {
