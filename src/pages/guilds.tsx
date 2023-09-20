@@ -5,7 +5,6 @@ import { Toast } from "featutres/toast/components/toast";
 import { ToolBar } from "ui/guilds/components/toolbar";
 import { useRouter } from "next/router";
 import { useGuild } from "ui/guilds/hooks/swr";
-import { useSocketEffect, useValidatedSession } from "hooks";
 import { Layout } from "components/layouts";
 import { DndOverlay } from "featutres/dnd/components/models/overlay";
 import { DestinationChannels } from "ui/guilds/components/destinationChannels";
@@ -16,6 +15,8 @@ import { useDnDTravelersEffect, useUpdateDnD } from "featutres/dnd/hooks/dnd";
 import { SelectGuild } from "ui/selectGuild";
 import { InviteBot } from "ui/inviteBot";
 import { ErrorMessage, NoSignIn } from "ui/errorMessage";
+import { useValidatedSession } from "hooks/useValidatedSession";
+import { useSocketEffect } from "ui/guilds/hooks/useSocketEffect";
 
 const Guilds: NextPageWithLayout = () => {
   const { session } = useValidatedSession();
