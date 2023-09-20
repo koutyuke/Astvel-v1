@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { LuMinusCircle } from "react-icons/lu";
-import { useCurrentUserGuilds } from "hooks";
 import { guildIconUrlGen } from "utils/iconUrlGen";
 import * as Avatar from "@radix-ui/react-avatar";
+import { useCurrentUserGuilds } from "ui/selectGuild/hooks/useCurrentUserGuilds";
 
 type Props = {
   guildId: string;

@@ -1,5 +1,5 @@
 import { User } from "components/models/user";
-import { useValidatedSession } from "hooks";
+import { useValidatedSession } from "hooks/useValidatedSession";
 import { ComponentProps, ComponentPropsWithoutRef, FC } from "react";
 import { SignOutIcon } from "components/icon/signoOut";
 import { avatarUrlGen } from "utils/iconUrlGen";

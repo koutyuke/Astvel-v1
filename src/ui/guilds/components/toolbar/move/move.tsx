@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import { BsFillRocketTakeoffFill } from "react-icons/bs";
 import { useRecoilValue } from "recoil";
 import { DnDMembersAtom, DnDTeamsAtom, TeamsAtom } from "stores/atom/dnd";
-import { useValidatedSession } from "hooks";
+import { useValidatedSession } from "hooks/useValidatedSession";
 import { avatarUrlGen } from "utils/iconUrlGen";
 import axios from "axios";
 import { useAllMembers, useAllVoices } from "ui/guilds/hooks/swr";

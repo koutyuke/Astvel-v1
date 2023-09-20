@@ -1,4 +1,4 @@
-import { useValidatedSession } from "hooks";
+import { useValidatedSession } from "hooks/useValidatedSession";
 import { ComponentPropsWithoutRef, FC } from "react";
 import { twMerge } from "tailwind-merge";
 import { signOut } from "../utils";

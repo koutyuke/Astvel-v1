@@ -1,8 +1,8 @@
-import { useCurrentUserGuilds } from "hooks";
 import { FC } from "react";
 import { useRouter } from "next/router";
 import { useResetRecoilState } from "recoil";
 import { DnDMembersAtom, DnDTeamsAtom, TeamsAtom } from "stores/atom/dnd";
+import { useCurrentUserGuilds } from "ui/selectGuild/hooks/useCurrentUserGuilds";
 import { Guild } from "../model/guild";
 
 const Guilds: FC = () => {
