@@ -1,0 +1,1 @@
+export { FillSquareIcon } from "./fillSqueare";
