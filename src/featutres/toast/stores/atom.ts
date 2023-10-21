@@ -1,7 +1,7 @@
 import { atom } from "recoil";
-import { ToastType } from "types/recoil/toast";
+import { Toast } from "./type";
 
-export const toastAtom = atom<ToastType>({
+export const ToastAtom = atom<Toast>({
   key: "toast",
   default: {
     open: false,
@@ -11,7 +11,7 @@ export const toastAtom = atom<ToastType>({
   },
 });
 
-export const toastRefIdAtom = atom<number>({
+export const ToastRefIdAtom = atom<number>({
   key: "toastRefId",
   default: 0,
 });
