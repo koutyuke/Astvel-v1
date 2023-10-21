@@ -1,1 +1,1 @@
-export { GridIcon } from "./grid";
+export { GridIcon, SmallGridIcon } from "./grid";
