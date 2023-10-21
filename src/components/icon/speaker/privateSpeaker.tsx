@@ -11,7 +11,7 @@ type Props = {
 const PrivateSpeakerIcon: FC<IconBaseProps & Props> = ({ backgroundColor, className, ...props }) => (
   <span className="relative">
     <HiMiniSpeakerWave className={twMerge(className, backgroundColor)} {...props} />
-    <BiSolidLockAlt className={twMerge("absolute left-1/2 top-[5%] h-1/2 w-1/2", backgroundColor)} />
+    <BiSolidLockAlt className={twMerge("absolute left-[60%] top-0 h-1/2 w-1/2", backgroundColor)} />
   </span>
 );
 
