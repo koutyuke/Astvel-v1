@@ -1,34 +1,39 @@
-import type { FC } from "react";
+import { SortableContext } from "@dnd-kit/sortable";
+import { ComponentPropsWithoutRef, FC } from "react";
+import { useTeamsValue } from "stores/teams";
+import { twMerge } from "tailwind-merge";
 import { useDndContext } from "@dnd-kit/core";
-import { useRecoilValue } from "recoil";
-import { TeamsAtom } from "stores/atom/dnd";
-import { DroppableTeam } from "./droppableTeam";
-import { CreateTeam } from "../createTeam";
+import { DndData } from "types/models/dnd";
+import { TeamDroppableContainer } from "./droppableContainer";
 
-type Props = {
-  guildId: string;
-};
+type Props = Omit<ComponentPropsWithoutRef<"div">, "children">;
 
-const Team: FC<Props> = ({ guildId }) => {
+const Team: FC<Props> = ({ className }) => {
+  const teams = useTeamsValue();
   const { active } = useDndContext();
-  const allTeams = useRecoilValue(TeamsAtom);
-
+  const activeData = active?.data.current as DndData | undefined;
   return (
-    <div className="relative h-full w-[calc((100%_-_3rem)/3)] rounded-lg bg-gradient-to-br from-red-500 to-yellow-600 py-2">
-      {active?.data.current?.dataType === "team" && (
-        <div className="absolute left-1 top-1 z-10 flex h-[calc(100%_-_0.5rem)] w-[calc(100%_-_0.5rem)] items-center justify-center rounded-lg bg-[rgba(100,116,139,0.7)]">
-          <p>Cannot drop a team into a team</p>
+    <SortableContext items={teams}>
+      <div className={twMerge("relative rounded-lg border border-gray-500 bg-black-2", className)}>
+        <div className=" h-full w-full space-y-2.5 overflow-auto p-2.5">
+          {teams.map(team => (
+            <TeamDroppableContainer data={team} spaceSize={10} key={`team-${team.id}`} />
+          ))}
         </div>
-      )}
-      <div className="flex h-full w-full flex-col items-center justify-start space-y-2 overflow-auto px-2">
-        {allTeams.map(team => (
-          <DroppableTeam team={team} key={team.id} guildId={guildId} />
-        ))}
+        <div
+          className={twMerge(
+            "absolute left-0 top-0  z-10 box-border hidden h-full  w-full items-center rounded-lg bg-black/50 p-2",
+            activeData?.type === "travelerTeam" && "flex",
+          )}
+        >
+          <p className="grow text-center">
+            Teams cannot be
+            <br />
+            dropped on a team.
+          </p>
+        </div>
       </div>
-      <div className="absolute bottom-0 right-0 pb-4 pr-4">
-        <CreateTeam />
-      </div>
-    </div>
+    </SortableContext>
   );
 };
 
