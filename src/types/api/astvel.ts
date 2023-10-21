@@ -53,4 +53,4 @@ type APIRole = {
   permissions: string;
 };
 
-export type { APIGuild, APIMember, APIVoice, APICategory, APIRole, APIUserGuild };
+export type { APIGuild, APIMember, APIVoice, APICategory, APIRole, APIUserGuild, Permission };
