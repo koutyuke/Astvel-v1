@@ -1,6 +1,6 @@
 import { IconType } from "react-icons";
-import { GoRows } from "react-icons/go";
+import { PiRows } from "react-icons/pi";
 
-const RowsIcon: IconType = props => <GoRows {...props} />;
+const RowsIcon: IconType = props => <PiRows {...props} />;
 
 export { RowsIcon };
