@@ -1,1 +1,1 @@
-export { LargeDragMember } from "./large";
+export { DraggableMember } from "./member";
