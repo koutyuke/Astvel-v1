@@ -1,1 +1,0 @@
-export { BackGuilds } from "./backGuilds";

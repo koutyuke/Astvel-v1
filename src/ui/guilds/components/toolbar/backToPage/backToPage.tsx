@@ -2,18 +2,21 @@ import { BaseButton } from "components/elements/button";
 import { createDialog } from "components/elements/dialog";
 import { useRouter } from "next/router";
 import { FC, useState } from "react";
-import { TbLogout2 } from "react-icons/tb";
-import { ToolTriggerButton } from "../triggerButton";
+import { SignOutIcon } from "components/icon/signOut";
 
-const BackGuilds: FC = () => {
+const BackToPage: FC = () => {
   const [open, setOpen] = useState(false);
-  const AddDialog = createDialog(<ToolTriggerButton Icon={TbLogout2} title="Select" />);
+  const AddDialog = createDialog(
+    <span>
+      <SignOutIcon size={24} className="stroke-gray-400 transition hover:stroke-green-500" />
+    </span>,
+  );
   const router = useRouter();
 
   return (
     <AddDialog open={open} setOpen={setOpen}>
-      <div className="flex h-48 w-80 flex-col items-center justify-between rounded-lg bg-white p-4 text-gray-500">
-        <p className="w-full text-center text-2xl">Go Back Guild Select</p>
+      <div className="flex aspect-video w-96 max-w-[90vw]  flex-col items-center justify-between space-y-6 rounded-lg bg-black-1 p-6 text-white outline outline-1 outline-gray-500">
+        <p className="w-full text-center text-2xl">Back to Guild Select Page</p>
         <p className="w-full text-center">
           All teams will be deleted.
           <br />
@@ -21,20 +24,22 @@ const BackGuilds: FC = () => {
         </p>
         <div className="flex w-full items-center justify-between">
           <BaseButton
-            className="h-8 border-2 border-gray-300 duration-200 hover:scale-110"
+            className="h-8"
+            theme="nomal"
             onClick={() => {
               setOpen(false);
             }}
           >
-            <p>Calcel</p>
+            <p>Cancel</p>
           </BaseButton>
           <BaseButton
-            className="h-8 bg-green-300 text-green-700 duration-200 hover:scale-110"
+            className="h-8"
+            theme="danger"
             onClick={() => {
               router.push("/guilds");
             }}
           >
-            <p>Go Back</p>
+            <p>OK</p>
           </BaseButton>
         </div>
       </div>
@@ -42,4 +47,4 @@ const BackGuilds: FC = () => {
   );
 };
 
-export { BackGuilds };
+export { BackToPage };
