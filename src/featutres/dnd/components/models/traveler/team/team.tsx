@@ -36,7 +36,7 @@ const DraggableTeam = ({ team, parentId, group }: Props) => {
     <div
       ref={setNodeRef}
       className={twMerge(
-        "cursor-grab rounded-lg outline outline-1 outline-black-3 transition-[outline-color] hover:outline-green-500",
+        "h-fit w-fit cursor-grab rounded-lg outline outline-1 outline-black-3 transition-[outline-color] hover:outline-green-500",
         isDragging && "opacity-50",
         isOver && active?.id !== over?.id && "outline-green-500",
       )}
