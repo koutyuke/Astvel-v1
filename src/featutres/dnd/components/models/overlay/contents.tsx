@@ -3,6 +3,7 @@ import { CategoryIcon } from "components/icon/category";
 import { DownIcon } from "components/icon/down";
 import { DragIcon } from "components/icon/drag";
 import { PrivateSpeakerIcon, SpeakerIcon } from "components/icon/speaker";
+import { TeamIcon } from "components/icon/team";
 import { Member } from "components/models/traveler/member";
 import { Team } from "components/models/traveler/team";
 import { FC, memo } from "react";
@@ -83,7 +84,8 @@ const NoMemoOverlayContents: FC<Props> = ({ guildId, active, size }) => {
           <div className="text-green-500">
             <DragIcon className="h-5 w-5" />
           </div>
-          <span className="w-5 text-center">{activeData.data.iconEmoji}</span>
+          <TeamIcon className="ml-1 h-5 w-5" />
+          <span className="ml-1 w-5 text-center">{activeData.data.iconEmoji}</span>
           <p className="ml-2 grow truncate text-start">{activeData.data.name}</p>
           <DownIcon className="h-5 w-5 transition duration-300 hover:text-green-500" />
         </div>
