@@ -8,15 +8,26 @@ import * as Accordion from "@radix-ui/react-accordion";
 import { DragIcon } from "components/icon/drag";
 import { DownIcon } from "components/icon/down";
 import { twMerge } from "tailwind-merge";
-import { useIdTeamTravelersValue } from "stores/travelers";
+import { useIdTeamTravelersValue, useTravelerSizeValue } from "stores/travelers";
 import { DraggableMember } from "featutres/dnd/components/models/traveler/member";
 import { TeamIcon } from "components/icon/team";
 import { FillSquareIcon } from "components/icon/square";
+import { tv } from "tailwind-variants";
 
 type Props = {
   data: Team;
   spaceSize: number;
 };
+
+const variant = tv({
+  variants: {
+    placeTraveler: {
+      small: "grid grid-cols-[repeat(auto-fill_,_minmax(2.5rem_,_1fr))] gap-1",
+      regular: "grid grid-cols-[repeat(auto-fill_,_minmax(8rem_,_1fr))] gap-1",
+      large: "grid grid-cols-[repeat(auto-fill_,_minmax(5rem_,_1fr))] gap-1",
+    },
+  },
+});
 
 const NoMemoTeamDroppableContainer: FC<Props> = ({ data: teamData, spaceSize }) => {
   const travelers = useIdTeamTravelersValue(teamData.id);
@@ -47,6 +58,8 @@ const NoMemoTeamDroppableContainer: FC<Props> = ({ data: teamData, spaceSize }) 
     ),
     transition,
   };
+
+  const travelerSize = useTravelerSizeValue();
 
   if (travelers === undefined) {
     return null;
@@ -92,7 +105,12 @@ const NoMemoTeamDroppableContainer: FC<Props> = ({ data: teamData, spaceSize }) 
                 <p className="text-sm">Members</p>
               </div>
               <SortableContext items={travelers.members}>
-                <div className="flex w-full ">
+                <div
+                  className={twMerge(
+                    "w-full items-center justify-items-center",
+                    variant({ placeTraveler: travelerSize }),
+                  )}
+                >
                   {travelers.members.map(member => (
                     <DraggableMember
                       key={`member-${teamData.id}-${member.id}`}

@@ -11,9 +11,10 @@ import { DraggableMember } from "featutres/dnd/components/models/traveler/member
 import { DndData } from "types/models/dnd";
 import { twMerge } from "tailwind-merge";
 import { sortMoveY } from "ui/guilds/utils/sortMoveY";
-import { useIdVoiceTravelerValue } from "stores/travelers/state";
+import { useIdVoiceTravelerValue, useTravelerSizeValue } from "stores/travelers/state";
 import { DraggableTeam } from "featutres/dnd/components/models/traveler/team";
 import { isPrivateVoiceChannel } from "utils/isPrivateVoiceChannel";
+import { tv } from "tailwind-variants";
 
 type Props = {
   guildId: string;
@@ -21,6 +22,16 @@ type Props = {
   spaceSize: number;
   categoryId: string;
 };
+
+const variant = tv({
+  variants: {
+    placeTraveler: {
+      small: "grid grid-cols-[repeat(auto-fill_,_minmax(2.5rem_,_1fr))] gap-1",
+      regular: "grid grid-cols-[repeat(auto-fill_,_minmax(8rem_,_1fr))] gap-1",
+      large: "grid grid-cols-[repeat(auto-fill_,_minmax(5rem_,_1fr))] gap-1",
+    },
+  },
+});
 
 const NoMemoVoice = ({ guildId, data: voiceData, spaceSize }: Props) => {
   const travelers = useIdVoiceTravelerValue(voiceData.id);
@@ -47,6 +58,8 @@ const NoMemoVoice = ({ guildId, data: voiceData, spaceSize }: Props) => {
   const activeData = active?.data.current as DndData | undefined;
 
   const [droppable, setDroppalbe] = useState(true);
+
+  const travelerSize = useTravelerSizeValue();
 
   const style = {
     transform: CSS.Translate.toString(
@@ -107,7 +120,12 @@ const NoMemoVoice = ({ guildId, data: voiceData, spaceSize }: Props) => {
                 <p className="text-sm">Members</p>
               </div>
               <SortableContext items={members}>
-                <div className="flex w-full flex-wrap space-x-1">
+                <div
+                  className={twMerge(
+                    "w-full items-center justify-items-center",
+                    variant({ placeTraveler: travelerSize }),
+                  )}
+                >
                   {members.map(member => (
                     <DraggableMember
                       key={`member-${voiceData.id}-${member.id}`}
@@ -130,7 +148,7 @@ const NoMemoVoice = ({ guildId, data: voiceData, spaceSize }: Props) => {
                 <p className="text-sm">Teams</p>
               </div>
               <SortableContext items={teams}>
-                <div className="flex w-full flex-wrap">
+                <div className={twMerge("w-full", variant({ placeTraveler: travelerSize }))}>
                   {teams.map(team => (
                     <DraggableTeam
                       key={`member-${voiceData.id}-${team.id}`}
