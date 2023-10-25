@@ -188,15 +188,14 @@ const useDragEnd = () => {
                 return current;
               }
 
+              const members = changeVoice.members.slice();
+              members.splice(overMemberIndex, 0, activeData.data);
+
               return [
                 ...current.slice(0, changeVoiceIndex),
                 {
                   ...changeVoice,
-                  members: [
-                    ...changeVoice.members.slice(0, overMemberIndex - 1),
-                    activeData.data,
-                    ...changeVoice.members.slice(overMemberIndex),
-                  ],
+                  members,
                 },
                 ...current.slice(changeVoiceIndex + 1),
               ];
@@ -205,13 +204,16 @@ const useDragEnd = () => {
           case "unselected":
             unselectedTravelersMutater(currentTravelers => {
               const overMemberIndex = currentTravelers.members.findIndex(member => member.id === overData.data.id);
+              if (overMemberIndex === -1) {
+                return currentTravelers;
+              }
+
+              const members = currentTravelers.members.slice();
+              members.splice(overMemberIndex, 0, activeData.data);
+
               return {
                 ...currentTravelers,
-                members: [
-                  ...currentTravelers.members.slice(0, overMemberIndex - 1),
-                  activeData.data,
-                  ...currentTravelers.members.slice(overMemberIndex),
-                ],
+                members,
               };
             });
             break;
@@ -229,15 +231,14 @@ const useDragEnd = () => {
                 return current;
               }
 
+              const members = changeTeam.members.slice();
+              members.splice(overMemberIndex, 0, activeData.data);
+
               return [
                 ...current.slice(0, changeTeamIndex),
                 {
                   ...changeTeam,
-                  members: [
-                    ...changeTeam.members.slice(0, overMemberIndex - 1),
-                    activeData.data,
-                    ...changeTeam.members.slice(overMemberIndex),
-                  ],
+                  members,
                 },
                 ...current.slice(changeTeamIndex + 1),
               ];
@@ -337,16 +338,14 @@ const useDragEnd = () => {
               ) {
                 return current;
               }
+              const teams = changeVoice.teams.slice();
+              teams.splice(overTeamIndex, 0, activeData.data);
 
               return [
                 ...current.slice(0, changeVoiceIndex),
                 {
                   ...changeVoice,
-                  teams: [
-                    ...changeVoice.teams.slice(0, overTeamIndex - 1),
-                    activeData.data,
-                    ...changeVoice.teams.slice(overTeamIndex),
-                  ],
+                  teams,
                 },
                 ...current.slice(changeVoiceIndex + 1),
               ];
@@ -355,13 +354,17 @@ const useDragEnd = () => {
           case "unselected":
             unselectedTravelersMutater(currentTravelers => {
               const overTeamIndex = currentTravelers.teams.findIndex(team => team.id === overData.data.id);
+
+              if (overTeamIndex === -1) {
+                return currentTravelers;
+              }
+
+              const teams = currentTravelers.teams.slice();
+              teams.splice(overTeamIndex, 0, activeData.data);
+
               return {
                 ...currentTravelers,
-                teams: [
-                  ...currentTravelers.teams.slice(0, overTeamIndex - 1),
-                  activeData.data,
-                  ...currentTravelers.teams.slice(overTeamIndex),
-                ],
+                teams,
               };
             });
             break;
