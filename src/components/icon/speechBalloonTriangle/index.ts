@@ -1,0 +1,1 @@
+export { SpeechBalloonTriangle } from "./speechBalloonTriangle";
