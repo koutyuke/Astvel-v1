@@ -4,6 +4,7 @@ import { useTeamsValue } from "stores/teams";
 import { twMerge } from "tailwind-merge";
 import { useDndContext } from "@dnd-kit/core";
 import { DndData } from "types/models/dnd";
+import { TeamIcon } from "components/icon/team";
 import { TeamDroppableContainer } from "./droppableContainer";
 
 type Props = Omit<ComponentPropsWithoutRef<"div">, "children">;
@@ -19,6 +20,19 @@ const Team: FC<Props> = ({ className }) => {
           {teams.map(team => (
             <TeamDroppableContainer data={team} spaceSize={10} key={`team-${team.id}`} />
           ))}
+          {teams.length === 0 && (
+            <div className="flex h-full items-center justify-center">
+              <p className="text-center leading-6 text-gray-500">
+                No team
+                <br />
+                If you want to create a team, click the
+                <span className="mx-1 inline-block w-5 translate-y-0.5">
+                  <TeamIcon size={20} />{" "}
+                </span>
+                button.
+              </p>
+            </div>
+          )}
         </div>
         <div
           className={twMerge(
