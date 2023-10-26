@@ -6,7 +6,7 @@ import { DiscordIcon } from "components/icon/discord";
 const Footer = () => (
   <footer className="flex w-full flex-col justify-center space-y-8 border-t border-gray-500 px-8 py-16 tablet:p-16">
     <div className="grid h-full grid-cols-12 grid-rows-3 justify-items-center gap-6 border-b border-gray-500 pb-8 tablet:grid-rows-2 laptop:grid-rows-1">
-      <div className="col-start-2 col-end-12 row-start-1 flex h-full flex-col items-center justify-start laptop:col-start-2 laptop:col-end-7">
+      <div className="col-start-2 col-end-12 row-start-1 flex h-full flex-col items-center justify-start laptop:col-start-1 laptop:col-end-7">
         <div className="flex h-16 items-center">
           <Image src="/icon.PNG" alt="icon" className="" width={64} height={64} />
           <Image src="/logo.PNG" alt="logo" width={160} height={40} />

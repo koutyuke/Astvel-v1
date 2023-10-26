@@ -1,9 +1,14 @@
 import { DragOverlay, DropAnimation, useDndContext } from "@dnd-kit/core";
 import { FC } from "react";
 import { CSS } from "@dnd-kit/utilities";
+import { useTravelerSizeValue } from "stores/travelers";
 import { OverlayContents } from "./contents";
 
-const DndOverlay: FC = () => {
+type Props = {
+  guildId: string;
+};
+
+const DndOverlay: FC<Props> = ({ guildId }) => {
   const dropAnimationConfig: DropAnimation = {
     keyframes({ transform }) {
       return [
@@ -13,11 +18,12 @@ const DndOverlay: FC = () => {
     },
   };
 
-  const { active } = useDndContext();
+  const { active, activeNodeRect } = useDndContext();
+  const size = useTravelerSizeValue();
 
   return (
-    <DragOverlay dropAnimation={dropAnimationConfig}>
-      <OverlayContents active={active} />
+    <DragOverlay dropAnimation={dropAnimationConfig} style={{ width: activeNodeRect?.width }}>
+      <OverlayContents active={active} guildId={guildId} size={size} />
     </DragOverlay>
   );
 };

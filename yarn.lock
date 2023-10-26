@@ -1943,7 +1943,33 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@dnd-kit/utilities@npm:^3.2.1":
+"@dnd-kit/modifiers@npm:^6.0.1":
+  version: 6.0.1
+  resolution: "@dnd-kit/modifiers@npm:6.0.1"
+  dependencies:
+    "@dnd-kit/utilities": ^3.2.1
+    tslib: ^2.0.0
+  peerDependencies:
+    "@dnd-kit/core": ^6.0.6
+    react: ">=16.8.0"
+  checksum: cd31715aac81baa2398558dc7c877a483d1c4c41cdb2f466557fdc41bb742db5cd1b34b3b84332b94ac4a2835e7e5a0e28c64e621936e976399788f1dd029ea4
+  languageName: node
+  linkType: hard
+
+"@dnd-kit/sortable@npm:^7.0.2":
+  version: 7.0.2
+  resolution: "@dnd-kit/sortable@npm:7.0.2"
+  dependencies:
+    "@dnd-kit/utilities": ^3.2.0
+    tslib: ^2.0.0
+  peerDependencies:
+    "@dnd-kit/core": ^6.0.7
+    react: ">=16.8.0"
+  checksum: 4ce705aceb15766a0deefe25a9d95a87e9413c3fb9088ea3eb0962e57f844895000117fcec7c0944a0d4ae4e1e889cfa69e3d3778164d4d23115fb1edb218283
+  languageName: node
+  linkType: hard
+
+"@dnd-kit/utilities@npm:^3.2.0, @dnd-kit/utilities@npm:^3.2.1":
   version: 3.2.1
   resolution: "@dnd-kit/utilities@npm:3.2.1"
   dependencies:
@@ -6566,6 +6592,8 @@ __metadata:
   dependencies:
     "@babel/core": ^7.21.0
     "@dnd-kit/core": ^6.0.8
+    "@dnd-kit/modifiers": ^6.0.1
+    "@dnd-kit/sortable": ^7.0.2
     "@dnd-kit/utilities": ^3.2.1
     "@hookform/resolvers": ^3.1.0
     "@mdx-js/react": ^1.6.22
@@ -6621,13 +6649,12 @@ __metadata:
     eslint-plugin-storybook: ^0.6.10
     eslint-plugin-tailwindcss: ^3.8.3
     express: ^4.18.2
-    hamburger-react: ^2.5.0
     jest: ^29.4.3
     jest-environment-jsdom: ^29.4.3
     next: ^12.3.4
     next-auth: ^4.19.2
     next-intercept-stdout: ^1.0.1
-    nodemon: ^2.0.22
+    nodemon: ^3.0.1
     postcss: ^8.4.24
     postcss-nested: ^6.0.1
     prettier: ^2.8.4
@@ -6646,10 +6673,10 @@ __metadata:
     tailwind-merge: ^1.14.0
     tailwind-variants: ^0.1.14
     tailwindcss: ^3.3.2
-    ts-jest: ^29.0.5
+    ts-jest: ^29.1.1
     ts-node: ^10.9.1
-    tsc-alias: ^1.8.6
-    typescript: "*"
+    tsc-alias: ^1.8.8
+    typescript: ^5.2.2
     uuid: ^9.0.0
     zod: ^3.21.4
   languageName: unknown
@@ -11023,15 +11050,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hamburger-react@npm:^2.5.0":
-  version: 2.5.0
-  resolution: "hamburger-react@npm:2.5.0"
-  peerDependencies:
-    react: ^16.8 || ^17 || ^18
-  checksum: 5c3835a1b271fd50f5fcc600d55d0dc296cb05c2eed5ec4bf6386c3da6f5b33a370f6ff5b81ebe97f29beb41cc37f5f5d4c5ff958507435e6561a15c8f7e3562
-  languageName: node
-  linkType: hard
-
 "hamt_plus@npm:1.0.2":
   version: 1.0.2
   resolution: "hamt_plus@npm:1.0.2"
@@ -14457,23 +14475,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nodemon@npm:^2.0.22":
-  version: 2.0.22
-  resolution: "nodemon@npm:2.0.22"
+"nodemon@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "nodemon@npm:3.0.1"
   dependencies:
     chokidar: ^3.5.2
     debug: ^3.2.7
     ignore-by-default: ^1.0.1
     minimatch: ^3.1.2
     pstree.remy: ^1.1.8
-    semver: ^5.7.1
-    simple-update-notifier: ^1.0.7
+    semver: ^7.5.3
+    simple-update-notifier: ^2.0.0
     supports-color: ^5.5.0
     touch: ^3.1.0
     undefsafe: ^2.0.5
   bin:
     nodemon: bin/nodemon.js
-  checksum: 9c987e139748f5b5c480c6c9080bdc97304ee7d29172b7b3da1a7db590b1323ad57b96346304e9b522b0e445c336dc393ccd3f9f45c73b20d476d2347890dcd0
+  checksum: 6a5d81855760d6617049eccce10ccf02bddb482dab13ceea5280ae595ec7004eee13e7b934368e3f46c37fe4d970342a8c38c99cae7e93e4d7a3ed1c1ecb6acf
   languageName: node
   linkType: hard
 
@@ -17021,7 +17039,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:2 || 3 || 4 || 5, semver@npm:^5.4.1, semver@npm:^5.5.0, semver@npm:^5.6.0, semver@npm:^5.7.1":
+"semver@npm:2 || 3 || 4 || 5, semver@npm:^5.4.1, semver@npm:^5.5.0, semver@npm:^5.6.0":
   version: 5.7.2
   resolution: "semver@npm:5.7.2"
   bin:
@@ -17047,15 +17065,6 @@ __metadata:
   bin:
     semver: bin/semver.js
   checksum: 12d8ad952fa353b0995bf180cdac205a4068b759a140e5d3c608317098b3575ac2f1e09182206bf2eb26120e1c0ed8fb92c48c592f6099680de56bb071423ca3
-  languageName: node
-  linkType: hard
-
-"semver@npm:~7.0.0":
-  version: 7.0.0
-  resolution: "semver@npm:7.0.0"
-  bin:
-    semver: bin/semver.js
-  checksum: 272c11bf8d083274ef79fe40a81c55c184dff84dd58e3c325299d0927ba48cece1f020793d138382b85f89bab5002a35a5ba59a3a68a7eebbb597eb733838778
   languageName: node
   linkType: hard
 
@@ -17287,12 +17296,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"simple-update-notifier@npm:^1.0.7":
-  version: 1.1.0
-  resolution: "simple-update-notifier@npm:1.1.0"
+"simple-update-notifier@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "simple-update-notifier@npm:2.0.0"
   dependencies:
-    semver: ~7.0.0
-  checksum: 1012e9b6c504e559a948078177b3eedbb9d7e4d15878e2bda56314d08db609ca5da485be4ac9f838759faae8057935ee0246fcdf63f1233c86bd9fecb2a5544b
+    semver: ^7.5.3
+  checksum: 9ba00d38ce6a29682f64a46213834e4eb01634c2f52c813a9a7b8873ca49cdbb703696f3290f3b27dc067de6d9418b0b84bef22c3eb074acf352529b2d6c27fd
   languageName: node
   linkType: hard
 
@@ -18545,7 +18554,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-jest@npm:^29.0.5":
+"ts-jest@npm:^29.1.1":
   version: 29.1.1
   resolution: "ts-jest@npm:29.1.1"
   dependencies:
@@ -18633,9 +18642,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tsc-alias@npm:^1.8.6":
-  version: 1.8.7
-  resolution: "tsc-alias@npm:1.8.7"
+"tsc-alias@npm:^1.8.8":
+  version: 1.8.8
+  resolution: "tsc-alias@npm:1.8.8"
   dependencies:
     chokidar: ^3.5.3
     commander: ^9.0.0
@@ -18645,7 +18654,7 @@ __metadata:
     plimit-lit: ^1.2.6
   bin:
     tsc-alias: dist/bin/index.js
-  checksum: 77f721ea797a62a7cc74acda0baf928bb654bccb210471b63fef1e70a27a823c60f5832f51aa5976d573412bc90731e90774abf9127f3b6b13f284839f988d47
+  checksum: 204852f75ce516c991813c371e4b3cda8767c50b6ad12b5c1b5f0227eb7e69fef559775fc829ba744b37dfd9930a1632dbabd62366a474fa0e174b2625ccb54f
   languageName: node
   linkType: hard
 
@@ -18796,23 +18805,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:*":
-  version: 5.1.6
-  resolution: "typescript@npm:5.1.6"
+"typescript@npm:^5.2.2":
+  version: 5.2.2
+  resolution: "typescript@npm:5.2.2"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: b2f2c35096035fe1f5facd1e38922ccb8558996331405eb00a5111cc948b2e733163cc22fab5db46992aba7dd520fff637f2c1df4996ff0e134e77d3249a7350
+  checksum: 7912821dac4d962d315c36800fe387cdc0a6298dba7ec171b350b4a6e988b51d7b8f051317786db1094bd7431d526b648aba7da8236607febb26cf5b871d2d3c
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@*#~builtin<compat/typescript>":
-  version: 5.1.6
-  resolution: "typescript@patch:typescript@npm%3A5.1.6#~builtin<compat/typescript>::version=5.1.6&hash=5da071"
+"typescript@patch:typescript@^5.2.2#~builtin<compat/typescript>":
+  version: 5.2.2
+  resolution: "typescript@patch:typescript@npm%3A5.2.2#~builtin<compat/typescript>::version=5.2.2&hash=14eedb"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: f53bfe97f7c8b2b6d23cf572750d4e7d1e0c5fff1c36d859d0ec84556a827b8785077bc27676bf7e71fae538e517c3ecc0f37e7f593be913d884805d931bc8be
+  checksum: 07106822b4305de3f22835cbba949a2b35451cad50888759b6818421290ff95d522b38ef7919e70fb381c5fe9c1c643d7dea22c8b31652a717ddbd57b7f4d554
   languageName: node
   linkType: hard
 

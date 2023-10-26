@@ -1,29 +1,32 @@
-import { APIMember } from "types/api/astvel";
-import { Team } from "types/recoil/dnd";
+import { APICategory, APIMember, APIVoice } from "types/api/astvel";
+import { Team } from "stores/teams";
+import { TravelerTeam } from "stores/travelers/type";
+import { DestinationGroup, GroupType, UnselectedGroup } from "./group";
 
-export type GroupType =
+export type DndData =
   | {
-      type: "channel" | "team";
-      id: string;
+      type: "member";
+      data: APIMember & { parentId: string | null };
+      group: GroupType;
     }
   | {
-      type: "noSelect";
-      id: null;
-    };
-
-export type DragDataType = {
-  group: GroupType;
-} & (
-  | {
-      dataType: "member";
-      data: APIMember;
+      type: "voice";
+      data: APIVoice;
     }
   | {
-      dataType: "team";
+      type: "category";
+      data: APICategory;
+    }
+  | {
+      type: "travelerTeam";
+      data: TravelerTeam & { parentId: string | null };
+      group: Extract<GroupType, DestinationGroup | UnselectedGroup>;
+    }
+  | {
+      type: "team";
       data: Team;
     }
-);
-
-export type DropDataType = {
-  group: GroupType;
-};
+  | {
+      type: "unselected";
+      data: null;
+    };

@@ -1,1 +1,1 @@
-export { LargeDragTeam } from "./large";
+export { DraggableTeam } from "./team";

@@ -1,2 +1,1 @@
-export { LargeMemberModel } from "./large";
-export { SmallMemberModel } from "./small";
+export { Member } from "./member";

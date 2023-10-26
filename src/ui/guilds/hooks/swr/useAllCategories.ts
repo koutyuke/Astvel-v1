@@ -1,12 +1,10 @@
+import { useValidatedSession } from "hooks/useValidatedSession";
 import { swrAstvelFetcher } from "libs/axios";
-import { useSession } from "next-auth/react";
-import { sessionSchema } from "stores/schema/session";
 import useSWR from "swr";
 import { APICategory } from "types/api/astvel";
 
-const useAllCategories = (guildId?: string) => {
-  const { data: SESSION } = useSession();
-  const session = sessionSchema.safeParse(SESSION);
+const useAllCategories = (guildId: string | undefined) => {
+  const { session } = useValidatedSession();
 
   return useSWR<APICategory[]>(
     session.success && guildId

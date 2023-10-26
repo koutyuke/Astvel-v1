@@ -2,12 +2,11 @@ import * as RadixToast from "@radix-ui/react-toast";
 import { FC, ReactNode } from "react";
 import { IoCheckmarkCircleOutline, IoClose, IoInformationCircleOutline, IoWarningOutline } from "react-icons/io5";
 import { MdOutlineDoNotDisturbAlt } from "react-icons/md";
-import { useRecoilState } from "recoil";
-import { toastAtom } from "featutres/toast/stores/atom/atom";
 import style from "./toast.module.scss";
+import { useToastState } from "../stores";
 
 const Toast: FC = () => {
-  const [toastData, setToast] = useRecoilState(toastAtom);
+  const [toastData, setToast] = useToastState();
   const { status, open, message, title } = toastData;
 
   const setToastData = (value: boolean) => {
@@ -44,7 +43,7 @@ const Toast: FC = () => {
   }
 
   return (
-    <RadixToast.Provider swipeDirection="right" duration={5000}>
+    <RadixToast.Provider swipeDirection="right" duration={3000}>
       <RadixToast.Root
         open={open}
         onOpenChange={setToastData}

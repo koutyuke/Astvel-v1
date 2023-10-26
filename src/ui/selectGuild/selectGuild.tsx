@@ -1,8 +1,8 @@
-import { useCurrentUserGuilds } from "hooks";
 import { FC } from "react";
 import * as Tabs from "@radix-ui/react-tabs";
 import { InviteBot } from "ui/inviteBot";
 import { Guilds } from "./components/guilds";
+import { useCurrentUserGuilds } from "./hooks/useCurrentUserGuilds";
 
 const SelectGuild: FC = () => {
   const { data: guilds, error, isLoading } = useCurrentUserGuilds();

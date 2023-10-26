@@ -1,12 +1,10 @@
-import { useRecoilState } from "recoil";
-import { ToastType } from "types/recoil/toast";
-import { toastAtom, toastRefIdAtom } from "featutres/toast/stores/atom/atom";
+import { Toast, useToastRefIdState, useToastState } from "../stores";
 
 const useSetToast = () => {
-  const [id, setId] = useRecoilState(toastRefIdAtom);
-  const [toastData, setToast] = useRecoilState(toastAtom);
+  const [id, setId] = useToastRefIdState();
+  const [toastData, setToast] = useToastState();
 
-  return ({ status, title, message }: Omit<ToastType, "open">) => {
+  return ({ status, title, message }: Omit<Toast, "open">) => {
     clearTimeout(id);
     setToast({
       ...toastData,

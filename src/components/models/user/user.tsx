@@ -19,9 +19,9 @@ const User: FC<Props> = ({ id, name, image, children, contentAlignment }) => {
   );
 
   return (
-    <Popover open={open} setOpen={setOpen} sideOffset={10} align={contentAlignment} className="z-[60] bg-black px-6">
-      <p className="text-center text-xl">{name}</p>
-      <p className="text-center text-sm">{id}</p>
+    <Popover open={open} setOpen={setOpen} sideOffset={10} align={contentAlignment} className="z-[60] bg-black-1 px-6">
+      <p className="text-center text-lg">{name}</p>
+      <p className="text-center text-sm text-gray-500">{id}</p>
       {children}
     </Popover>
   );
