@@ -27,7 +27,7 @@ const variant = tv({
   variants: {
     placeTraveler: {
       small: "grid grid-cols-[repeat(auto-fill_,_minmax(2.5rem_,_1fr))] gap-1",
-      regular: "grid grid-cols-[repeat(auto-fill_,_minmax(8rem_,_1fr))] gap-1",
+      regular: "grid grid-cols-[repeat(auto-fill_,_minmax(8rem_,_1fr))] justify-items-start gap-1",
       large: "grid grid-cols-[repeat(auto-fill_,_minmax(5rem_,_1fr))] gap-1",
     },
   },
