@@ -1,4 +1,4 @@
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useResetRecoilState, useSetRecoilState } from "recoil";
 import { TeamTravelersSelectorFamily, VoiceTravelersSelectorFamily } from "./selectorFamily";
 import { TeamTravelersAtom, TravelerSizeAtom, UnselectedTravelersAtom, VoiceTravelersAtom } from "./atom";
 
@@ -10,6 +10,8 @@ export const useVoiceTravelersMutater = () => useSetRecoilState(VoiceTravelersAt
 
 export const useVoiceTravelersState = () => useRecoilState(VoiceTravelersAtom);
 
+export const useResetVoiceTravelers = () => useResetRecoilState(VoiceTravelersAtom);
+
 export const useIdTeamTravelersValue = (id: string) => useRecoilValue(TeamTravelersSelectorFamily(id));
 
 export const useTeamTravelersValue = () => useRecoilValue(TeamTravelersAtom);
@@ -18,11 +20,15 @@ export const useTeamTravelersMutater = () => useSetRecoilState(TeamTravelersAtom
 
 export const useTeamTravelersState = () => useRecoilState(TeamTravelersAtom);
 
+export const useResetTeamTravelers = () => useResetRecoilState(TeamTravelersAtom);
+
 export const useUnselectedTravelersValue = () => useRecoilValue(UnselectedTravelersAtom);
 
 export const useUnselectedTravelersMutater = () => useSetRecoilState(UnselectedTravelersAtom);
 
 export const useUnselectedTravelersState = () => useRecoilState(UnselectedTravelersAtom);
+
+export const useResetUnselectedTravelers = () => useResetRecoilState(UnselectedTravelersAtom);
 
 export const useTravelerSizeValue = () => useRecoilValue(TravelerSizeAtom);
 
