@@ -6,7 +6,7 @@ import { useValidatedSession } from "hooks/useValidatedSession";
 const useGuild = (guildId: string | undefined) => {
   const { session } = useValidatedSession();
 
-  return useSWR<APIGuild>(
+  return useSWR<APIGuild | null>(
     session.success && guildId
       ? {
           url: "/api/guilds",

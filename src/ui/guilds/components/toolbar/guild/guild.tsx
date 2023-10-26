@@ -14,7 +14,7 @@ const SelectedGuild: FC<Props> = ({ guildId }) => {
     return <div className="box-border h-9 w-9 animate-pulse rounded-md border border-gray-500 bg-gray-600" />;
   }
 
-  if (guild.data === undefined || guild.error !== undefined) {
+  if (guild.data === undefined || guild.data === null || guild.error !== undefined) {
     return null;
   }
 
