@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Image from "next/image";
 import { InternalLink } from "components/elements/link";
-import { SignIn } from "featutres/signIn/components";
+import { SignIn } from "features/signIn/components";
 import { HamburgerMenu } from "./hamburger/hamburger";
 
 const Header: FC = () => (

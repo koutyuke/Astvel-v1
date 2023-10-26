@@ -9,7 +9,7 @@ import { DragIcon } from "components/icon/drag";
 import { DownIcon } from "components/icon/down";
 import { twMerge } from "tailwind-merge";
 import { useIdTeamTravelersValue, useTravelerSizeValue } from "stores/travelers";
-import { DraggableMember } from "featutres/dnd/components/models/traveler/member";
+import { DraggableMember } from "features/dnd/components/models/traveler/member";
 import { TeamIcon } from "components/icon/team";
 import { FillSquareIcon } from "components/icon/square";
 import { tv } from "tailwind-variants";

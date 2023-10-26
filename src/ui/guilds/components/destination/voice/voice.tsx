@@ -7,12 +7,12 @@ import { PrivateSpeakerIcon, SpeakerIcon } from "components/icon/speaker";
 import { SortableContext, useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { FillSquareIcon } from "components/icon/square";
-import { DraggableMember } from "featutres/dnd/components/models/traveler/member";
+import { DraggableMember } from "features/dnd/components/models/traveler/member";
 import { DndData } from "types/models/dnd";
 import { twMerge } from "tailwind-merge";
 import { sortMoveY } from "ui/guilds/utils/sortMoveY";
 import { useIdVoiceTravelerValue, useTravelerSizeValue } from "stores/travelers/state";
-import { DraggableTeam } from "featutres/dnd/components/models/traveler/team";
+import { DraggableTeam } from "features/dnd/components/models/traveler/team";
 import { isPrivateVoiceChannel } from "utils/isPrivateVoiceChannel";
 import { tv } from "tailwind-variants";
 

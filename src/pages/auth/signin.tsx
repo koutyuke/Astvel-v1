@@ -1,7 +1,7 @@
 import { DiscordIcon } from "components/icon/discord";
 import { LinkIcon } from "components/icon/link";
 import { Layout } from "components/layouts";
-import { SignIn } from "featutres/signIn/components";
+import { SignIn } from "features/signIn/components";
 import { NextPageWithLayout } from "next";
 import Image from "next/image";
 

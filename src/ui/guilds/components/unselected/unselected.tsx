@@ -1,8 +1,8 @@
 import { useDroppable } from "@dnd-kit/core";
 import { SortableContext } from "@dnd-kit/sortable";
 import { FillSquareIcon } from "components/icon/square";
-import { DraggableMember } from "featutres/dnd/components/models/traveler/member";
-import { DraggableTeam } from "featutres/dnd/components/models/traveler/team";
+import { DraggableMember } from "features/dnd/components/models/traveler/member";
+import { DraggableTeam } from "features/dnd/components/models/traveler/team";
 import { ComponentPropsWithRef, FC } from "react";
 import { useTravelerSizeValue, useUnselectedTravelersValue } from "stores/travelers";
 import { twMerge } from "tailwind-merge";

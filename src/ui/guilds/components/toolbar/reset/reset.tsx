@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { createDialog } from "components/elements/dialog";
-import { useSetToast } from "featutres/toast/hooks";
+import { useSetToast } from "features/toast/hooks";
 import { BaseButton } from "components/elements/button";
 import { ResetIcon } from "components/icon/reset";
 import { useMemberReset } from "ui/guilds/hooks/useMemberReset";

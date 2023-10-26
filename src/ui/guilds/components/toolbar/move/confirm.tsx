@@ -9,7 +9,7 @@ import { TravelerTeam } from "stores/travelers/type";
 import { useChannelsValue } from "stores/channels";
 import { useTeamTravelersValue, useVoiceTravelersValue } from "stores/travelers";
 import { avatarUrlGen } from "utils/iconUrlGen";
-import { useSetToast } from "featutres/toast/hooks";
+import { useSetToast } from "features/toast/hooks";
 import { FC } from "react";
 import axios from "axios";
 import { useValidatedSession } from "hooks/useValidatedSession";
