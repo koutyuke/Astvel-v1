@@ -8,7 +8,7 @@ const TravelerSize: FC = () => {
   const [size, setSize] = useTravelerSizeState();
 
   return (
-    <div className="mx-1 flex w-24 space-x-1">
+    <div className="mx-1 flex w-[6.5rem] space-x-1">
       <button
         type="button"
         className={twMerge("group h-8 w-8 rounded-md transition", size === "regular" && "bg-black-3")}

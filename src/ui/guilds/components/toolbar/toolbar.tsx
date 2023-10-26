@@ -17,7 +17,7 @@ const ToolBar: FC<Props> = ({ guildId }) => (
     <Separator />
     <TravelerSize />
     <Separator />
-    <div className={twMerge("scrollber-hidden flex w-0 flex-1 items-center space-x-2 overflow-auto px-2")}>
+    <div className={twMerge("scrollber-hidden flex  h-full w-0 flex-1 items-center space-x-2 overflow-x-auto px-2")}>
       <Move guildId={guildId} />
       <Reset />
       <TeamSetting />
