@@ -25,7 +25,8 @@ const Team: FC<Props> = ({ className }) => {
               <p className="text-center leading-6 text-gray-500">
                 No team
                 <br />
-                If you want to create a team, click the
+                If you want to create a team, <br />
+                click the
                 <span className="mx-1 inline-block w-5 translate-y-0.5">
                   <TeamIcon size={20} />{" "}
                 </span>
