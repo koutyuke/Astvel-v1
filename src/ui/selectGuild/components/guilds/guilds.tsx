@@ -1,16 +1,17 @@
 import { FC } from "react";
 import { useRouter } from "next/router";
-import { useResetRecoilState } from "recoil";
-import { DnDMembersAtom, DnDTeamsAtom, TeamsAtom } from "stores/atom/dnd";
 import { useCurrentUserGuilds } from "ui/selectGuild/hooks/useCurrentUserGuilds";
+import { useResetTeamTravelers, useResetUnselectedTravelers, useResetVoiceTravelers } from "stores/travelers/state";
+import { useResetTeam } from "stores/teams/state";
 import { Guild } from "../model/guild";
 
 const Guilds: FC = () => {
   const { data: guilds, error, isLoading } = useCurrentUserGuilds();
   const router = useRouter();
-  const resetDnDMembers = useResetRecoilState(DnDMembersAtom);
-  const resetDnDTeams = useResetRecoilState(DnDTeamsAtom);
-  const resetTeams = useResetRecoilState(TeamsAtom);
+  const resetVoiceTravelers = useResetVoiceTravelers();
+  const resetTeamTravelers = useResetTeamTravelers();
+  const resetUnselectedTravelers = useResetUnselectedTravelers();
+  const resetTeams = useResetTeam();
 
   if (isLoading) {
     return <div>Loading</div>;
@@ -26,14 +27,12 @@ const Guilds: FC = () => {
           type="button"
           key={guild.id}
           onClick={() => {
-            resetDnDMembers();
-            resetDnDTeams();
+            resetVoiceTravelers();
+            resetTeamTravelers();
+            resetUnselectedTravelers();
             resetTeams();
             router.push({
-              pathname: "/guilds",
-              query: {
-                id: guild.id,
-              },
+              pathname: `/guilds/${guild.id}`,
             });
           }}
         >
