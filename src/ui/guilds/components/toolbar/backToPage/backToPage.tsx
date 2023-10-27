@@ -3,6 +3,9 @@ import { createDialog } from "components/elements/dialog";
 import { useRouter } from "next/router";
 import { FC, useState } from "react";
 import { SignOutIcon } from "components/icon/signOut";
+import { useResetTeam } from "stores/teams";
+import { useResetTeamTravelers, useResetUnselectedTravelers, useResetVoiceTravelers } from "stores/travelers";
+import { useResetChannels } from "stores/channels";
 
 const BackToPage: FC = () => {
   const [open, setOpen] = useState(false);
@@ -12,6 +15,11 @@ const BackToPage: FC = () => {
     </span>,
   );
   const router = useRouter();
+  const resetTeam = useResetTeam();
+  const resetTeamTravelers = useResetTeamTravelers();
+  const resetUnselectedTravelers = useResetUnselectedTravelers();
+  const resetVoiceTravelers = useResetVoiceTravelers();
+  const resetChannels = useResetChannels();
 
   return (
     <AddDialog open={open} setOpen={setOpen}>
@@ -37,6 +45,11 @@ const BackToPage: FC = () => {
             theme="danger"
             onClick={() => {
               router.push("/guilds");
+              resetTeam();
+              resetTeamTravelers();
+              resetUnselectedTravelers();
+              resetVoiceTravelers();
+              resetChannels();
             }}
           >
             <p>OK</p>
