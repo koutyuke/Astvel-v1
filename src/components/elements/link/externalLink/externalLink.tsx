@@ -4,7 +4,7 @@ import { twMerge } from "tailwind-merge";
 
 type Props = {
   url: string;
-  children: ReactNode;
+  children: ReactNode | string;
   icon?: boolean;
 } & ComponentPropsWithoutRef<"a">;
 
