@@ -49,40 +49,16 @@ const HamburgerMenu: FC = () => {
             open ? "opacity-100 delay-[400ms]" : "opacity-0",
           )}
         >
-          <InternalLink
-            path="/"
-            className="text-4xl font-semibold"
-            onClick={() => {
-              setOpen(false);
-            }}
-          >
+          <InternalLink path="/" className="text-4xl font-semibold">
             Home
           </InternalLink>
-          <InternalLink
-            path="/guilds"
-            className="text-4xl font-semibold"
-            onClick={() => {
-              setOpen(false);
-            }}
-          >
+          <InternalLink path="/guilds" className="text-4xl font-semibold">
             Guilds
           </InternalLink>
-          <InternalLink
-            path="/usage"
-            className="text-4xl font-semibold"
-            onClick={() => {
-              setOpen(false);
-            }}
-          >
+          <InternalLink path="/usage" className="text-4xl font-semibold">
             Usage
           </InternalLink>
-          <InternalLink
-            path="/information"
-            className="text-4xl font-semibold"
-            onClick={() => {
-              setOpen(false);
-            }}
-          >
+          <InternalLink path="/information" className="text-4xl font-semibold">
             Info
           </InternalLink>
         </div>
