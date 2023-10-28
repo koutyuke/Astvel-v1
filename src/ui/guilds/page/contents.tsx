@@ -1,10 +1,10 @@
 import { DndContext } from "@dnd-kit/core";
 import { FC, useState } from "react";
-import { DndOverlay } from "featutres/dnd/components/models/overlay";
-import { Toast } from "featutres/toast/components";
-import { customCollisionDetectionAlgorithm } from "featutres/dnd/utils";
+import { DndOverlay } from "features/dnd/components/models/overlay";
+import { Toast } from "features/toast/components";
+import { customCollisionDetectionAlgorithm } from "features/dnd/utils";
 import { DndData } from "types/models/dnd";
-import { useDragEnd, useReflectChannelChanges, useReflectTravelerChanges } from "featutres/dnd/hooks";
+import { useDragEnd, useReflectChannelChanges, useReflectTravelerChanges } from "features/dnd/hooks";
 import { twMerge } from "tailwind-merge";
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 import { ToolBar } from "../components/toolbar";

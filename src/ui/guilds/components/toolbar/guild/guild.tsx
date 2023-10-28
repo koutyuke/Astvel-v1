@@ -23,8 +23,8 @@ const SelectedGuild: FC<Props> = ({ guildId }) => {
       {guild.data.icon ? (
         <Image src={guildIconUrlGen(guildId, guild.data.icon)} alt="Guild Icon Image" width={40} height={40} />
       ) : (
-        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-500 ">
-          <p className=" text-center text-xl text-white">{guild.data.name[0]}</p>
+        <div className="flex h-full w-full items-center justify-center">
+          <p className="text-center text-xl text-white">{guild.data.name[0]}</p>
         </div>
       )}
     </div>

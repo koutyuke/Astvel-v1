@@ -1,5 +1,5 @@
 import { Layout } from "components/layouts";
-import { SignOut } from "featutres/signIn/components";
+import { SignOut } from "features/signIn/components";
 import { NextPageWithLayout } from "next";
 import Image from "next/image";
 

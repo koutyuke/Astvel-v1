@@ -1,6 +1,6 @@
 import { DownIcon } from "components/icon/down";
 import { SpeechBalloonTriangle } from "components/icon/speechBalloonTriangle";
-import { EmojiPicker } from "featutres/emojiPicker/components";
+import { EmojiPicker } from "features/emojiPicker/components";
 import { ComponentPropsWithoutRef, FC } from "react";
 import { twMerge } from "tailwind-merge";
 

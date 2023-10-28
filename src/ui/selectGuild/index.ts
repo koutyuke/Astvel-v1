@@ -1,1 +1,0 @@
-export { SelectGuild } from "./selectGuild";

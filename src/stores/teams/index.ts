@@ -1,2 +1,2 @@
-export { useTeamsMutater, useTeamsState, useTeamsValue } from "./state";
+export { useTeamsMutater, useTeamsState, useTeamsValue, useResetTeam } from "./state";
 export type { Team } from "./type";
