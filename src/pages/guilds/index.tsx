@@ -1,11 +1,27 @@
 import type { NextPageWithLayout } from "next";
 import { Layout } from "components/layouts";
-import { SelectGuild } from "ui/selectGuild";
+import { Content, Loading } from "ui/selectGuild/page";
+import { useCurrentUserGuilds } from "ui/selectGuild/hooks/useCurrentUserGuilds";
+import { AccessError } from "ui/root/page";
 
 const Guilds: NextPageWithLayout = () => {
-  return <SelectGuild />;
+  const { data: guilds, error, isLoading } = useCurrentUserGuilds();
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  if (error || guilds === undefined) {
+    return <AccessError />;
+  }
+
+  return <Content guilds={guilds} />;
 };
 
-Guilds.getLayout = page => <Layout title="Guilds - Astvel">{page}</Layout>;
+Guilds.getLayout = page => (
+  <Layout title="Guilds - Astvel" footerHidden>
+    {page}
+  </Layout>
+);
 
 export default Guilds;
