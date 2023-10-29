@@ -179,7 +179,7 @@ const MoveConfirm: FC<Props> = ({ guildId, setOpen }) => {
                 headers: { Authorization: `Bearer ${session.data.accessToken}` },
                 params: {
                   guild_id: guildId,
-                  user_id: session.data.user.provider_id,
+                  user_id: session.data.user.id,
                 },
               });
 

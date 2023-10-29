@@ -13,7 +13,7 @@ const useGuild = (guildId: string | undefined) => {
           token: session.data.accessToken,
           params: {
             guild_id: guildId,
-            user_id: session.data.user.provider_id,
+            user_id: session.data.user.id,
           },
         }
       : null,
