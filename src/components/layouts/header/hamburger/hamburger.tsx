@@ -1,9 +1,16 @@
 import { FC, Fragment, useEffect, useState } from "react";
 import { InternalLink } from "components/elements/link";
 import { twMerge } from "tailwind-merge";
+import { useRouter } from "next/router";
 
 const HamburgerMenu: FC = () => {
   const [open, setOpen] = useState<boolean>(false);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    setOpen(false);
+  }, [router.pathname]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "auto";
