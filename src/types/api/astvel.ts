@@ -7,6 +7,22 @@ type Permission = {
   deny: string;
 };
 
+type APIUser = {
+  id: string;
+  username: string;
+  global_name: string;
+  avatar: string;
+  discriminator: string;
+  email: string;
+  accent_color: string | null;
+  flags: number;
+  banner_color: string | null;
+  premium_type: number;
+  public_flags: number;
+  verified: boolean;
+  mfa_enabled: boolean;
+};
+
 type APIUserGuild = {
   id: string;
   name: string;
@@ -53,4 +69,4 @@ type APIRole = {
   permissions: string;
 };
 
-export type { APIGuild, APIMember, APIVoice, APICategory, APIRole, APIUserGuild, Permission };
+export type { APIUser, APIGuild, APIMember, APIVoice, APICategory, APIRole, APIUserGuild, Permission };
