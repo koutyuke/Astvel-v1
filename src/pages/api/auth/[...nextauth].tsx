@@ -1,7 +1,15 @@
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { prisma } from "libs/prisma";
 import nextAuth from "next-auth";
-import DiscordProvider, { DiscordProfile } from "next-auth/providers/discord";
+import DiscordProvider from "next-auth/providers/discord";
+
+type RefreshTokenResponse = {
+  access_token: string;
+  expires_in: number;
+  refresh_token: string;
+  scope: string;
+  token_type: string;
+};
 
 export default nextAuth({
   providers: [
@@ -13,19 +21,6 @@ export default nextAuth({
           scope: "identify email guilds",
         },
       },
-      profile(profile: DiscordProfile, token) {
-        return {
-          id: profile.id,
-          provider_id: profile.id,
-          username: profile.username,
-          global_name: profile.global_name,
-          avatar: profile.avatar,
-          discriminator: profile.discriminator,
-          banner_color: profile.banner_color,
-          access_token: token.access_token,
-          refresh_token: token.refresh_token,
-        };
-      },
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET,
@@ -33,9 +28,61 @@ export default nextAuth({
   callbacks: {
     async session({ session, user }) {
       const setSession = session;
+      const account = await prisma.account.findFirst({
+        where: {
+          userId: user.id,
+          provider: "discord",
+        },
+      });
+      const date = new Date();
+      const now = Math.floor(date.getTime() / 1000);
+
+      if (account === null || account.expires_at === null) {
+        return setSession;
+      }
+      if (account.expires_at > now) {
+        setSession.user = user;
+        setSession.accessToken = account.access_token ?? "";
+        setSession.refreshToken = account.refresh_token ?? "";
+        return setSession;
+      }
+
+      const newToken = await fetch("https://discord.com/api/oauth2/token", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams({
+          client_id: process.env.DISCORD_CLIENT_ID ?? "",
+          client_secret: process.env.DISCORD_CLIENT_SECRET ?? "",
+          grant_type: "refresh_token",
+          refresh_token: account.refresh_token ?? "",
+        }),
+      })
+        .then<RefreshTokenResponse>(res => res.json())
+        .catch(err => {
+          // eslint-disable-next-line no-console
+          console.error(err);
+          return null;
+        });
+
+      if (newToken === null) {
+        return setSession;
+      }
+      await prisma.account.update({
+        where: {
+          id: account.id,
+        },
+        data: {
+          access_token: newToken.access_token,
+          refresh_token: newToken.refresh_token,
+          expires_at: now + newToken.expires_in,
+        },
+      });
+
       setSession.user = user;
-      setSession.accessToken = user.access_token;
-      setSession.refreshToken = user.refresh_token;
+      setSession.accessToken = newToken.access_token;
+      setSession.refreshToken = newToken.refresh_token;
       return setSession;
     },
   },
