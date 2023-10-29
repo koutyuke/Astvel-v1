@@ -22,12 +22,10 @@ const apiVoiceChannel = async (req: Request, res: Response, client: Client<boole
   const { user_id: userId, guild_id: guildId, channel_id: channelId } = query.data;
 
   try {
-    const account = await prisma.account.findUnique({
+    const account = await prisma.account.findFirst({
       where: {
-        provider_providerAccountId: {
-          provider: "discord",
-          providerAccountId: userId,
-        },
+        provider: "discord",
+        userId,
       },
     });
 
@@ -42,7 +40,7 @@ const apiVoiceChannel = async (req: Request, res: Response, client: Client<boole
     }
 
     const guild = client.guilds.cache.find(g => g.id === guildId);
-    const user = guild?.members.cache.find(u => u.id === userId);
+    const user = guild?.members.cache.find(u => u.id === account.providerAccountId);
     const channel = guild?.channels.cache.find(c => c.id === channelId && c.type === ChannelType.GuildVoice) as
       | VoiceChannel
       | undefined;
@@ -80,7 +78,7 @@ const apiVoiceChannel = async (req: Request, res: Response, client: Client<boole
     };
 
     // owenr
-    if (ownerId === userId) {
+    if (ownerId === account.providerAccountId) {
       // console.log("owner");
       res.status(200).json(returnData);
       return;
@@ -96,7 +94,7 @@ const apiVoiceChannel = async (req: Request, res: Response, client: Client<boole
     let allow = BigInt(0);
     let deny = BigInt(0);
     const overwriteEveryone = permissionOverwriteRoles.find(role => role.id === guildId);
-    const overwriteMember = permissionOverwriteMembers.find(m => m.id === userId);
+    const overwriteMember = permissionOverwriteMembers.find(m => m.id === account.providerAccountId);
 
     if (overwriteEveryone === undefined) {
       res.status(400).json({ message: "Bad Request" });

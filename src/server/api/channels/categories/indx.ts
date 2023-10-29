@@ -21,12 +21,10 @@ const apiCategoryChannel = async (req: Request, res: Response, client: Client<bo
   const { user_id: userId, guild_id: guildId, category_id: channelId } = query.data;
 
   try {
-    const account = await prisma.account.findUnique({
+    const account = await prisma.account.findFirst({
       where: {
-        provider_providerAccountId: {
-          provider: "discord",
-          providerAccountId: userId,
-        },
+        provider: "discord",
+        userId,
       },
     });
 
@@ -41,7 +39,7 @@ const apiCategoryChannel = async (req: Request, res: Response, client: Client<bo
     }
 
     const guild = client.guilds.cache.find(g => g.id === guildId);
-    const user = guild?.members.cache.find(u => u.id === userId);
+    const user = guild?.members.cache.find(u => u.id === account.providerAccountId);
     const channel = guild?.channels.cache.find(c => c.id === channelId && c.type === ChannelType.GuildCategory) as
       | CategoryChannel
       | undefined;

@@ -14,7 +14,7 @@ const useSocketEffect = (guildId: string | undefined) => {
   const allMembers = useAllMembers(guildId);
 
   const accessToken = session.success ? session.data.accessToken : undefined;
-  const userId = session.success ? session.data.user.provider_id : undefined;
+  const userId = session.success ? session.data.user.id : undefined;
 
   useEffect(() => {
     if (guildId === undefined || userId === undefined || !session.success || accessToken === undefined) {
