@@ -22,12 +22,10 @@ const apiMember = async (req: Request, res: Response, client: Client<boolean>) =
   const { user_id: userId, guild_id: guildId, member_id: memberId } = query.data;
 
   try {
-    const account = await prisma.account.findUnique({
+    const account = await prisma.account.findFirst({
       where: {
-        provider_providerAccountId: {
-          provider: "discord",
-          providerAccountId: userId,
-        },
+        provider: "discord",
+        userId,
       },
     });
 
@@ -42,7 +40,7 @@ const apiMember = async (req: Request, res: Response, client: Client<boolean>) =
     }
 
     const guild = client.guilds.cache.find(g => g.id === guildId);
-    const user = guild?.members.cache.find(u => u.id === userId);
+    const user = guild?.members.cache.find(u => u.id === account.providerAccountId);
     const channels = guild?.channels.cache.filter(c => c.type === ChannelType.GuildVoice) as VoiceChannel[] | undefined;
     const everyone = guild?.roles.cache.find(r => r.id === guildId)?.permissions.bitfield;
     const targetChannel = channels?.find(c => c.members.some(m => m.id === memberId));
@@ -86,7 +84,7 @@ const apiMember = async (req: Request, res: Response, client: Client<boolean>) =
     };
 
     // owenr
-    if (ownerId === userId) {
+    if (ownerId === account.providerAccountId) {
       // console.log("owner");
       res.status(200).json(returnData);
       return;
@@ -102,7 +100,7 @@ const apiMember = async (req: Request, res: Response, client: Client<boolean>) =
     let allow = BigInt(0);
     let deny = BigInt(0);
     const overwriteEveryone = permissionOverwriteRoles.find(role => role.id === guildId);
-    const overwriteMember = permissionOverwriteMembers.find(m => m.id === userId);
+    const overwriteMember = permissionOverwriteMembers.find(m => m.id === account.providerAccountId);
 
     if (overwriteEveryone === undefined) {
       res.status(400).json({ message: "Bad Request" });

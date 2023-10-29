@@ -21,12 +21,10 @@ const apiRole = async (req: Request, res: Response, client: Client<boolean>) => 
   const { user_id: userId, guild_id: guildId, role_id: roleId } = query.data;
 
   try {
-    const account = await prisma.account.findUnique({
+    const account = await prisma.account.findFirst({
       where: {
-        provider_providerAccountId: {
-          provider: "discord",
-          providerAccountId: userId,
-        },
+        provider: "discord",
+        userId,
       },
     });
 
@@ -41,7 +39,7 @@ const apiRole = async (req: Request, res: Response, client: Client<boolean>) => 
     }
 
     const guild = client.guilds.cache.find(g => g.id === guildId);
-    const user = guild?.members.cache.find(u => u.id === userId);
+    const user = guild?.members.cache.find(u => u.id === account.providerAccountId);
     const role = guild?.roles.cache.find(r => r.id === roleId);
 
     if (guild === undefined || user === undefined || role === undefined) {
