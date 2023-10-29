@@ -20,8 +20,8 @@ const InternalLink: FC<Props> = ({ path, children, className }) => {
   }
 
   return (
-    <Link href={path} className={className}>
-      <a className="text-white transition hover:text-green-500">{children}</a>
+    <Link href={path}>
+      <a className={twMerge("text-white transition hover:text-green-500", className)}>{children}</a>
     </Link>
   );
 };
