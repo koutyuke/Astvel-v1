@@ -4,23 +4,30 @@ import { ComponentProps, ComponentPropsWithoutRef, FC } from "react";
 import { SignOutIcon } from "components/icon/signOut";
 import { avatarUrlGen } from "utils/iconUrlGen";
 import { signIn, signOut } from "../utils";
+import { useDiscordUser } from "../hooks/useDiscordUser";
 
 type SignOutProps = ComponentPropsWithoutRef<"button"> & Pick<ComponentProps<typeof User>, "contentAlignment">;
 
 const SignIn: FC<SignOutProps> = ({ contentAlignment }) => {
   const { session, status } = useValidatedSession();
+  const discordUser = useDiscordUser();
 
-  if (status === "loading") {
+  if (status === "loading" || discordUser.isLoading) {
     return <div className="h-9 w-9 animate-pulse rounded-full bg-gray-300 outline outline-2 outline-white" />;
   }
 
-  if (session.success) {
-    const { user } = session.data;
+  if (session.success && discordUser.data) {
     return (
       <User
-        name={user.discriminator === "0" ? user.global_name ?? "" : user.username ?? ""}
-        id={user.discriminator === "0" ? `@${user.username}` : `#${user.discriminator ?? ""}`}
-        image={avatarUrlGen(user.provider_id, user.avatar)}
+        name={
+          discordUser.data.discriminator === "0" ? discordUser.data.global_name ?? "" : discordUser.data.username ?? ""
+        }
+        id={
+          discordUser.data.discriminator === "0"
+            ? `@${discordUser.data.username}`
+            : `#${discordUser.data.discriminator ?? ""}`
+        }
+        image={avatarUrlGen(discordUser.data.id, discordUser.data.avatar)}
         contentAlignment={contentAlignment}
       >
         <button
