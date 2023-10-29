@@ -16,7 +16,7 @@ const AccessError: FC = () => {
         />
       </div>
       <div className="flex flex-col items-center justify-center space-y-2 text-center">
-        <p>You don&apos;t have access to this guild.</p>
+        <p>You don&apos;t have access to this page.</p>
         <p className="leading-6">
           Please check your network or
           <br />
