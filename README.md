@@ -45,7 +45,7 @@ You can choose once by creating a team.
 ### Clone repository
 
 ```bash
-git clone "https://github.com/cardo-usa/usa/"
+git clone "https://github.com/koutyuke/Astvel"
 ```
 
 ### Install
