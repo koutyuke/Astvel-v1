@@ -1,1 +1,0 @@
-export { InviteBot } from "./inviteBot";
