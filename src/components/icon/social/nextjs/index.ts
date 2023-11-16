@@ -1,0 +1,1 @@
+export { NextJSIcon } from "./nextjs";
