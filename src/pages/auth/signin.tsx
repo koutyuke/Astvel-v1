@@ -1,4 +1,4 @@
-import { DiscordIcon } from "components/icon/discord";
+import { DiscordIcon } from "components/icon/social/discord";
 import { LinkIcon } from "components/icon/link";
 import { Layout } from "components/layouts";
 import { SignIn } from "features/signIn/components";
