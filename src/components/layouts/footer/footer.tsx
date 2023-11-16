@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { ExternalLink, InternalLink } from "components/elements/link";
-import { GithubIcon } from "components/icon/github";
-import { DiscordIcon } from "components/icon/discord";
+import { GithubIcon } from "components/icon/social/github";
+import { DiscordIcon } from "components/icon/social/discord";
 
 const Footer = () => (
   <footer className="flex w-full flex-col justify-center space-y-8 border-t border-gray-500 px-8 py-16 tablet:p-16">
