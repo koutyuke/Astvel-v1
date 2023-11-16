@@ -1,0 +1,1 @@
+export { SwrIcon } from "./swr";
