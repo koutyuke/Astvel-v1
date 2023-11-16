@@ -1,0 +1,1 @@
+export { RadixUIIcon } from "./radixUI";
