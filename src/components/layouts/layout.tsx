@@ -14,15 +14,8 @@ const Layout: FC<Props> = ({ children, title, description, footerHidden, classNa
   <>
     <Seo title={title} description={description} />
     <Header />
-    <div className="h-fit w-full overflow-hidden">
-      <main
-        className={twMerge(
-          "m-auto flex min-h-screen w-full  max-w-[80rem] items-center justify-center pb-4 pt-20",
-          className,
-        )}
-      >
-        {children}
-      </main>
+    <div className="h-fit w-full overflow-x-hidden">
+      <main className={twMerge("m-auto min-h-screen w-full max-w-[80rem]  pb-10 pt-20", className)}>{children}</main>
     </div>
     {!footerHidden && <Footer />}
   </>
