@@ -54,6 +54,10 @@ const Information: NextPageWithLayout = () => (
   </div>
 );
 
-Information.getLayout = page => <Layout title="Informatino - Astvel">{page}</Layout>;
+Information.getLayout = page => (
+  <Layout title="Informatino - Astvel" className="flex items-center justify-center">
+    {page}
+  </Layout>
+);
 
 export default Information;
