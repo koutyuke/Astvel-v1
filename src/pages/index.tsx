@@ -1,21 +1,23 @@
 import { Layout } from "components/layouts";
 import type { NextPageWithLayout } from "next";
+import { Bot, Build, EndMessage, Hero, Linkage, App, Feature } from "ui/top/page";
 
 const Home: NextPageWithLayout = () => (
-  <div className="flex h-full flex-col items-center justify-center space-y-4">
-    <p className="w-full text-center text-4xl">Version &alpha;</p>
-    <div className="text-center text-xl">
-      Therefore, there are bugs and unimplemented.
-      <br />
-      If you have any suggestions, please send them to me via{" "}
-      <a href="https://twitter.com/kusuke0808" rel="noreferrer noopener" target="_blank" className="text-blue-400">
-        Twitter
-      </a>{" "}
-      DM.
-    </div>
+  <div className=" h-full min-h-full w-full ">
+    <Hero />
+    <Build />
+    <App className="mt-32" />
+    <Feature className="mt-36" />
+    <Bot className="mt-36" />
+    <Linkage className="mt-36" />
+    <EndMessage className="mt-36" />
   </div>
 );
 
-Home.getLayout = page => <Layout title="Astvel - DiscordVC拡張操作アプリケーション">{page}</Layout>;
+Home.getLayout = page => (
+  <Layout title="Astvel - DiscordVC拡張操作アプリケーション" className="pb-32 pt-0">
+    {page}
+  </Layout>
+);
 
 export default Home;
