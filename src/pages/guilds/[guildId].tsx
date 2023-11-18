@@ -33,7 +33,7 @@ const Guild: NextPageWithLayout = () => {
 };
 
 Guild.getLayout = page => (
-  <Layout title="Guild - Astvel" footerHidden>
+  <Layout title="Guild - Astvel" className="flex h-[1px] items-center justify-center pb-4" footerHidden>
     {page}
   </Layout>
 );

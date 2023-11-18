@@ -3,7 +3,7 @@ import type { NextPageWithLayout } from "next";
 import { Bot, Build, EndMessage, Hero, Linkage, App, Feature } from "ui/top/page";
 
 const Home: NextPageWithLayout = () => (
-  <div className=" h-full min-h-full w-full ">
+  <div>
     <Hero />
     <Build />
     <App className="mt-32" />
