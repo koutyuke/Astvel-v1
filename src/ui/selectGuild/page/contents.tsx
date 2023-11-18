@@ -3,6 +3,7 @@ import { APIUserGuild } from "types/api/astvel";
 import { useResetTeam } from "stores/teams";
 import { useResetTeamTravelers, useResetUnselectedTravelers, useResetVoiceTravelers } from "stores/travelers";
 import { useResetChannels } from "stores/channels";
+import { useDiscordUser } from "features/signIn/hooks/useDiscordUser";
 import { Guild } from "../components/guild";
 import { Bot } from "../components/bot";
 
@@ -16,15 +17,16 @@ const Content: FC<Props> = ({ guilds }) => {
   const resetUnselectedTravelers = useResetUnselectedTravelers();
   const resetVoiceTravelers = useResetVoiceTravelers();
   const resetChannels = useResetChannels();
+  const user = useDiscordUser();
+
+  if (user === undefined) {
+    return null;
+  }
 
   return (
-    <div className="flex h-full w-full flex-col space-y-2 px-8 pt-2 tablet:px-16">
-      <div className="flex w-full items-end justify-between border-b-[1px]  border-b-gray-500 px-2">
-        <p className="text-3xl font-medium">Guilds</p>
-        <p className="text-sm text-gray-500">
-          Select the guild <br className="tablet:hidden" />
-          you want to play for
-        </p>
+    <div className="flex h-full w-full flex-col space-y-2 self-start px-8 tablet:px-16">
+      <div className="flex w-full items-end justify-between border-b-[1px]  border-b-gray-500">
+        <p className="indent-4 text-3xl font-medium">{user.data?.username}&apos;s Guilds</p>
       </div>
       <div className="grid h-0 flex-1 grid-cols-[repeat(auto-fit_,_12rem)] grid-rows-[repeat(auto-fit_,_9rem)]  justify-center gap-4 overflow-auto p-2">
         <Bot />
