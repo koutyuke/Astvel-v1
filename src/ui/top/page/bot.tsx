@@ -26,7 +26,7 @@ const Bot: FC<Props> = ({ className }) => {
           </li>
         </ul>
         <h4 className="text-center text-2xl font-semibold tablet:text-start ">Invite Bot</h4>
-        <ExternalLink url={botInviteUrl} icon className="mx-auto w-fit tablet:ml-4">
+        <ExternalLink url={botInviteUrl} icon className="mx-auto w-fit text-start text-xl tablet:mx-0 tablet:indent-4">
           <span>Invite</span>
         </ExternalLink>
       </div>
