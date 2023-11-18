@@ -25,7 +25,7 @@ const Guilds: NextPageWithLayout = () => {
 };
 
 Guilds.getLayout = page => (
-  <Layout title="Guilds - Astvel" footerHidden>
+  <Layout title="Guilds - Astvel" className="pt-28">
     {page}
   </Layout>
 );

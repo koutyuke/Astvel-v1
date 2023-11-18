@@ -1,0 +1,1 @@
+export { SupabaseIcon } from "./supabase";

@@ -4,7 +4,7 @@ import Image from "next/image";
 const AccessError: FC = () => {
   return (
     <div className="grid grid-rows-[3rem_,_8rem_,_1fr] items-center justify-items-center gap-4 tablet:grid-cols-[8rem_,_18rem] tablet:grid-rows-[3rem_,_1fr]">
-      <p className="text-4xl">Access Error</p>
+      <p className="text-4xl font-bold">Access Error</p>
       <div className="h-fit w-fit tablet:col-span-1 tablet:row-[1_/_3]">
         <Image
           src="/space/destroyed-planet.png"
