@@ -18,7 +18,7 @@ img {
 }
 
 @layer components {
-  .scrollber-hidden {
+  .scrollbar-hidden {
     -ms-overflow-style: none;
     scrollbar-width: none;
     &::-webkit-scrollbar {
@@ -29,6 +29,7 @@ img {
 
 ::-webkit-scrollbar {
   width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
