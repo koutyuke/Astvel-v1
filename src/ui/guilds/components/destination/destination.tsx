@@ -2,6 +2,7 @@ import { SortableContext } from "@dnd-kit/sortable";
 import { ComponentPropsWithRef, FC } from "react";
 import { twMerge } from "tailwind-merge";
 import { useSortableChannels } from "ui/guilds/hooks/sortable/useSortableChannels";
+import { ScrollArea } from "components/elements/scrollArea";
 import { Category } from "./category";
 
 type Props = {
@@ -23,22 +24,21 @@ const Destination: FC<Props> = ({ guildId, className }) => {
 
   return (
     <SortableContext items={data}>
-      <div
-        className={twMerge(
-          "box-border h-full w-full space-y-2.5 overflow-auto rounded-lg border border-gray-500 bg-black-2 p-2.5",
-          className,
-        )}
+      <ScrollArea
+        className={twMerge("box-border h-full w-full rounded-lg border border-gray-500 bg-black-2", className)}
       >
-        {data.map(category => (
-          <Category
-            data={category}
-            guildId={guildId}
-            key={`guild-category-${category.id}`}
-            spaceSize={10}
-            voices={category.voices}
-          />
-        ))}
-      </div>
+        <div className={twMerge("h-full w-full space-y-2.5  p-2.5")}>
+          {data.map(category => (
+            <Category
+              data={category}
+              guildId={guildId}
+              key={`guild-category-${category.id}`}
+              spaceSize={10}
+              voices={category.voices}
+            />
+          ))}
+        </div>
+      </ScrollArea>
     </SortableContext>
   );
 };
