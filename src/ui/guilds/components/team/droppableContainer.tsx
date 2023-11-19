@@ -31,7 +31,7 @@ const variant = tv({
 
 const NoMemoTeamDroppableContainer: FC<Props> = ({ data: teamData, spaceSize }) => {
   const travelers = useIdTeamTravelersValue(teamData.id);
-  const [droppable, setDroppalbe] = useState(true);
+  const [droppable, setDroppable] = useState(true);
   const dndData: DndData = {
     type: "team",
     data: teamData,
@@ -76,7 +76,7 @@ const NoMemoTeamDroppableContainer: FC<Props> = ({ data: teamData, spaceSize }) 
       style={style}
       className={twMerge("relative", isDragging ? "z-10 opacity-50" : "z-0")}
       onValueChange={data => {
-        setDroppalbe(data.length !== 0);
+        setDroppable(data.length !== 0);
       }}
     >
       <Accordion.Item
@@ -92,7 +92,7 @@ const NoMemoTeamDroppableContainer: FC<Props> = ({ data: teamData, spaceSize }) 
           </div>
           <TeamIcon className="ml-1 h-5 w-5" />
           <span className="ml-1 w-5 text-center">{teamData.iconEmoji}</span>
-          <p className="ml-2 grow truncate text-start">{teamData.name}</p>
+          <p className="ml-2 w-[1px] grow truncate text-start">{teamData.name}</p>
           <Accordion.Trigger className="group">
             <DownIcon className="h-5 w-5 transition duration-300 hover:text-green-500 group-data-[state=open]:rotate-180" />
           </Accordion.Trigger>

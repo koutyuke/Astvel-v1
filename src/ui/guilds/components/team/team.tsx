@@ -41,7 +41,7 @@ const Team: FC<Props> = ({ className }) => {
           </div>
         )}
         <ScrollArea className="h-full w-full">
-          <div className=" h-full w-full space-y-2.5 overflow-auto p-2.5">
+          <div className="h-full w-full space-y-2.5 p-2.5">
             {teams.map(team => (
               <TeamDroppableContainer data={team} spaceSize={10} key={`team-${team.id}`} />
             ))}

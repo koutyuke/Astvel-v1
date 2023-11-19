@@ -52,21 +52,21 @@ const Category: FC<Props> = ({ guildId, data: categoryData, spaceSize, voices })
       <Accordion.Item
         value={categoryData.id}
         className={twMerge(
-          "box-border w-full items-center space-x-1 space-y-2.5 rounded-lg border border-gray-500 bg-black-2 py-2.5 pl-1 pr-2.5",
+          "box-border w-full items-center space-y-2.5 rounded-lg border border-gray-500 bg-black-2 py-2.5 pl-1 pr-2.5 transition",
         )}
       >
-        <Accordion.Header className="flex grow items-center">
-          <div ref={setActivatorNodeRef} {...attributes} {...listeners} className=" transition hover:text-green-500">
+        <Accordion.Header className="flex items-center">
+          <div ref={setActivatorNodeRef} {...attributes} {...listeners} className="transition hover:text-green-500">
             <DragIcon className="h-5 w-5" />
           </div>
           <CategoryIcon className="ml-1 h-5 w-5" />
-          <p className="ml-2 grow truncate text-start">{categoryData.name}</p>
+          <p className="ml-2 w-[1px] flex-1 truncate text-start">{categoryData.name}</p>
           <Accordion.Trigger className="group">
             <DownIcon className="h-5 w-5 transition duration-300 hover:text-green-500 group-data-[state=open]:rotate-180" />
           </Accordion.Trigger>
         </Accordion.Header>
         <SortableContext items={voices}>
-          <Accordion.Content className="ml-1.5 grow space-y-2.5 ">
+          <Accordion.Content className="ml-1.5 space-y-2.5 ">
             {voices.length !== 0 &&
               voices.map(voice => (
                 <Voice
