@@ -8,6 +8,7 @@ import { useTravelerSizeValue, useUnselectedTravelersValue } from "stores/travel
 import { twMerge } from "tailwind-merge";
 import { tv } from "tailwind-variants";
 import { DndData } from "types/models/dnd";
+import { ScrollArea } from "components/elements/scrollArea";
 
 type Props = Pick<ComponentPropsWithRef<"div">, "className">;
 
@@ -37,66 +38,70 @@ const Unselected: FC<Props> = ({ className }) => {
       <div
         ref={setNodeRef}
         className={twMerge(
-          "box-border h-full space-y-2 rounded-lg border border-gray-500 bg-black-3 p-2 transition",
+          "box-border h-full rounded-lg border border-gray-500 bg-black-3 transition",
           isOver && "border-green-500",
         )}
       >
-        {members.length !== 0 && (
-          <div className="w-full">
-            <div className="mx-1 flex items-center space-x-1.5">
-              <FillSquareIcon className="h-1.5 w-1.5" />
-              <p className="text-sm">Members</p>
-            </div>
-            <SortableContext items={members}>
-              <div
-                className={twMerge(
-                  "w-full items-center justify-items-center",
-                  variant({ placeTraveler: travelerSize }),
-                )}
-              >
-                {members.map(member => (
-                  <DraggableMember
-                    key={`member-unselected-${member.id}`}
-                    parentId={null}
-                    member={member}
-                    group={{
-                      type: "unselected",
-                      id: null,
-                    }}
-                  />
-                ))}
-              </div>
-            </SortableContext>
+        <ScrollArea className="h-full w-full">
+          <div className="relative h-full w-full space-y-2 p-2">
+            {members.length !== 0 && (
+              <>
+                <div className="sticky top-0 mx-1 flex w-full items-center space-x-1.5">
+                  <FillSquareIcon className="h-1.5 w-1.5" />
+                  <p className="text-sm">Members</p>
+                </div>
+                <SortableContext items={members}>
+                  <div
+                    className={twMerge(
+                      "w-full items-center justify-items-center",
+                      variant({ placeTraveler: travelerSize }),
+                    )}
+                  >
+                    {members.map(member => (
+                      <DraggableMember
+                        key={`member-unselected-${member.id}`}
+                        parentId={null}
+                        member={member}
+                        group={{
+                          type: "unselected",
+                          id: null,
+                        }}
+                      />
+                    ))}
+                  </div>
+                </SortableContext>
+              </>
+            )}
+            {teams.length !== 0 && (
+              <>
+                <div className="sticky top-0 mx-1 flex items-center space-x-1.5">
+                  <FillSquareIcon className="h-1.5 w-1.5" />
+                  <p className="text-sm">Teams</p>
+                </div>
+                <SortableContext items={teams}>
+                  <div
+                    className={twMerge(
+                      "w-full items-center justify-items-center",
+                      variant({ placeTraveler: travelerSize }),
+                    )}
+                  >
+                    {teams.map(team => (
+                      <DraggableTeam
+                        key={`member-unselected-${team.id}`}
+                        parentId={null}
+                        team={team}
+                        group={{
+                          type: "unselected",
+                          id: null,
+                        }}
+                      />
+                    ))}
+                  </div>
+                </SortableContext>
+              </>
+            )}
           </div>
-        )}
-        {teams.length !== 0 && (
-          <div className="w-full">
-            <div className="mx-1 flex items-center space-x-1.5">
-              <FillSquareIcon className="h-1.5 w-1.5" />
-              <p className="text-sm">Teams</p>
-            </div>
-            <SortableContext items={teams}>
-              <div
-                className={twMerge(
-                  "w-full items-center justify-items-center",
-                  variant({ placeTraveler: travelerSize }),
-                )}
-              >
-                {teams.map(team => (
-                  <DraggableTeam
-                    key={`member-unselected-${team.id}`}
-                    parentId={null}
-                    team={team}
-                    group={{
-                      type: "unselected",
-                      id: null,
-                    }}
-                  />
-                ))}
-              </div>
-            </SortableContext>
-          </div>
-        )}
+        </ScrollArea>
       </div>
     </div>
   );
