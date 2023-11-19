@@ -44,7 +44,7 @@ const Content: FC<Props> = ({ guildId }) => {
         <ToolBar guildId={guildId} />
         <div
           className={twMerge(
-            "scrollbar-hidden flex grow space-x-4 overflow-x-auto px-8 tablet:px-16",
+            "scrollbar-hidden flex flex-1 space-x-4 overflow-x-auto px-8 tablet:px-16",
             !isDragging && " snap-x snap-mandatory ",
           )}
         >
