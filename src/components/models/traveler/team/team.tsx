@@ -22,7 +22,7 @@ const variants = tv({
     },
     name: {
       small: "hidden",
-      regular: "block grow text-start",
+      regular: "block flex-1 text-start",
       large: "block w-16 text-center",
     },
     body: {
@@ -43,7 +43,7 @@ const NoMemoTeam: FC<Props> = forwardRef<HTMLDivElement, Props>(({ emoji, name, 
     >
       <p className={twMerge("", variants({ emoji: size }))}>{emoji}</p>
     </div>
-    <p className={twMerge("grow truncate text-xs", variants({ name: size }))}>{name}</p>
+    <p className={twMerge("truncate text-xs", variants({ name: size }))}>{name}</p>
   </div>
 ));
 
