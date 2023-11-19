@@ -24,21 +24,21 @@ const Destination: FC<Props> = ({ guildId, className }) => {
 
   return (
     <SortableContext items={data}>
-      <ScrollArea
-        className={twMerge("box-border h-full w-full rounded-lg border border-gray-500 bg-black-2", className)}
-      >
-        <div className={twMerge("h-full w-full space-y-2.5  p-2.5")}>
-          {data.map(category => (
-            <Category
-              data={category}
-              guildId={guildId}
-              key={`guild-category-${category.id}`}
-              spaceSize={10}
-              voices={category.voices}
-            />
-          ))}
-        </div>
-      </ScrollArea>
+      <div className={twMerge("box-border h-full w-full rounded-lg border border-gray-500 bg-black-2", className)}>
+        <ScrollArea className="h-full w-full ">
+          <div className="space-y-2.5 p-2.5">
+            {data.map(category => (
+              <Category
+                data={category}
+                guildId={guildId}
+                key={`guild-category-${category.id}`}
+                spaceSize={10}
+                voices={category.voices}
+              />
+            ))}
+          </div>
+        </ScrollArea>
+      </div>
     </SortableContext>
   );
 };
