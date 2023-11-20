@@ -146,19 +146,7 @@
       "multiline": true
     }
   ],
-  "commit-message-editor.dynamicTemplate": [
-    "{type}{scope}{description}",
-    "",
-    "{body}",
-    "",
-    "{footer}"
-  ],
-  "commit-message-editor.staticTemplate": [
-    "label: emoji (scope) short-description",
-    "",
-    "body",
-    "",
-    "footer"
-  ],
-  "commit-message-editor.view.defaultView": "form",
+  "commit-message-editor.dynamicTemplate": ["{type}{scope}{description}", "", "{body}", "", "{footer}"],
+  "commit-message-editor.staticTemplate": ["label: emoji (scope) short-description", "", "body", "", "footer"],
+  "commit-message-editor.view.defaultView": "form"
 }
