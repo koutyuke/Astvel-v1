@@ -1,17 +1,25 @@
 import { BaseButton } from "components/elements/button";
 import { createDialog } from "components/elements/dialog";
 import { useRouter } from "next/router";
-import { FC, useState } from "react";
+import { ComponentPropsWithoutRef, FC, useState } from "react";
 import { SignOutIcon } from "components/icon/signOut";
 import { useResetTeam } from "stores/teams";
 import { useResetTeamTravelers, useResetUnselectedTravelers, useResetVoiceTravelers } from "stores/travelers";
 import { useResetChannels } from "stores/channels";
+import { twMerge } from "tailwind-merge";
 
-const BackToPage: FC = () => {
+type Props = Pick<ComponentPropsWithoutRef<"div">, "className">;
+
+const BackToPage: FC<Props> = ({ className }) => {
   const [open, setOpen] = useState(false);
   const AddDialog = createDialog(
-    <span>
-      <SignOutIcon size={24} className="stroke-gray-400 transition hover:stroke-green-500" />
+    <span
+      className={twMerge(
+        "box-border flex h-9 w-9 items-center justify-center rounded-md border border-transparent transition hover:border-gray-500 hover:bg-black-3",
+        className,
+      )}
+    >
+      <SignOutIcon size={22} className="stroke-gray-400 stroke-[2.5]" />
     </span>,
   );
   const router = useRouter();
@@ -33,7 +41,7 @@ const BackToPage: FC = () => {
         <div className="flex w-full items-center justify-between">
           <BaseButton
             className="h-8"
-            theme="nomal"
+            theme="normal"
             onClick={() => {
               setOpen(false);
             }}
