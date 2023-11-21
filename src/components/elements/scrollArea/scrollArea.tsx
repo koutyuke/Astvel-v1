@@ -4,11 +4,11 @@ import { twMerge } from "tailwind-merge";
 
 type Props = {
   children: ReactNode;
-} & Pick<ComponentPropsWithoutRef<typeof RadixScrollArea.Root>, "className">;
+} & Pick<ComponentPropsWithoutRef<typeof RadixScrollArea.Root>, "className" | "type">;
 
-const ScrollArea: FC<Props> = ({ children, className }) => {
+const ScrollArea: FC<Props> = ({ children, className, type }) => {
   return (
-    <RadixScrollArea.Root className={twMerge("overflow-hidden", className)} type="auto">
+    <RadixScrollArea.Root className={twMerge("overflow-hidden", className)} type={type}>
       <RadixScrollArea.Viewport className="h-full w-full">{children}</RadixScrollArea.Viewport>
       <RadixScrollArea.Scrollbar
         orientation="vertical"
