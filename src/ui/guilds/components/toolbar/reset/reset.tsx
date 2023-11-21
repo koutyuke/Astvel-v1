@@ -8,8 +8,8 @@ import { useMemberReset } from "ui/guilds/hooks/useMemberReset";
 const Reset: FC = () => {
   const [open, setOpen] = useState(false);
   const AddDialog = createDialog(
-    <span>
-      <ResetIcon className=" stroke-gray-400 transition hover:stroke-green-500" size={26} />
+    <span className="box-border flex h-9 w-9 items-center justify-center rounded-md border border-transparent transition hover:border-gray-500 hover:bg-black-3">
+      <ResetIcon className=" stroke-gray-400 transition" size={26} />
     </span>,
   );
   const toastSetter = useSetToast();
@@ -29,7 +29,7 @@ const Reset: FC = () => {
 
         <div className="flex w-full items-center justify-between">
           <BaseButton
-            theme="nomal"
+            theme="normal"
             className="h-8"
             onClick={() => {
               setOpen(false);
