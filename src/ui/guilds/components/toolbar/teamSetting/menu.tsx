@@ -42,10 +42,10 @@ const TeamSettingMenu: FC<Props> = ({ setClose }) => {
   };
 
   return (
-    <div className="flex aspect-[9/16] max-h-[90svh] w-[30rem] max-w-[90vw] flex-col items-center rounded-lg bg-black-1 p-6 outline outline-1 outline-gray-500  tablet:aspect-[3/4]">
+    <div className="flex aspect-[9/16] max-h-[90svh] w-[30rem] max-w-[90vw] flex-col items-center rounded-lg bg-black-1 p-6 outline outline-1 outline-gray-500 tablet:aspect-[3/4] tablet:px-10 tablet:py-6">
       <p className="mb-4 text-center text-2xl">Team Setting</p>
       <div className="relative inline-block h-0 w-full flex-1 overflow-hidden">
-        <ul className={twMerge("h-full w-full space-y-4 overflow-y-auto overflow-x-hidden duration-300 tablet:px-4")}>
+        <ul className="h-full w-full space-y-4 overflow-y-auto overflow-x-hidden duration-300">
           <li className="w-full space-y-4">
             <div className="sticky top-0 z-10 flex w-full items-center space-x-2 bg-black-1">
               <FillSquareIcon size={5} />
@@ -95,7 +95,7 @@ const TeamSettingMenu: FC<Props> = ({ setClose }) => {
         </ul>
         <SelectEmoji
           className={twMerge(
-            "absolute left-0 top-0 z-20 w-full bg-black-1  duration-300 tablet:px-4",
+            "absolute left-0 top-0 z-20 w-full bg-black-1  duration-300",
             !pickerSetting.open && "hidden",
           )}
           close={() => {
@@ -105,7 +105,7 @@ const TeamSettingMenu: FC<Props> = ({ setClose }) => {
           onEmojiClick={pickerSetting.open ? pickerSetting.func : undefined}
         />
       </div>
-      <div className="absolute right-4 top-4">
+      <div className="absolute right-6 top-6">
         <button
           type="button"
           className="group rounded-full border border-gray-500 transition hover:border-green-500"
