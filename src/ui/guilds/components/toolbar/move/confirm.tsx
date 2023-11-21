@@ -13,6 +13,7 @@ import { useSetToast } from "features/toast/hooks";
 import { FC } from "react";
 import axios from "axios";
 import { useValidatedSession } from "hooks/useValidatedSession";
+import { PlusIcon } from "components/icon/plus";
 import { ChannelWithTravelers, TeamWithMembers, VoiceWithTravelers } from "./type";
 
 type Props = {
@@ -62,7 +63,7 @@ const MoveConfirm: FC<Props> = ({ guildId, setOpen }) => {
   const isSelectedTraveler = moveCandidate.length !== 0;
 
   return (
-    <div className="flex aspect-[9/16] max-h-[90svh] w-[30rem] max-w-[90vw] flex-col space-y-4 rounded-lg bg-black-1 p-6 text-white outline outline-1 outline-gray-500 tablet:aspect-[3/4]">
+    <div className="relative flex aspect-[9/16] max-h-[90svh] w-[30rem] max-w-[90vw] flex-col gap-y-4 rounded-lg bg-black-1 p-6 text-white outline outline-1 outline-gray-500 tablet:aspect-[3/4] tablet:px-10 tablet:py-6">
       <p className="w-full text-center text-2xl">Move Member</p>
       <div className="text-center">
         {isSelectedTraveler ? (
@@ -203,6 +204,17 @@ const MoveConfirm: FC<Props> = ({ guildId, setOpen }) => {
         >
           <p>Move</p>
         </BaseButton>
+      </div>
+      <div className="absolute right-6 top-6">
+        <button
+          type="button"
+          className="group rounded-full border border-gray-500 transition hover:border-green-500"
+          onClick={() => {
+            setOpen(false);
+          }}
+        >
+          <PlusIcon size={24} className="rotate-45 stroke-gray-500 transition group-hover:stroke-green-500" />
+        </button>
       </div>
     </div>
   );
