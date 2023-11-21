@@ -1,1 +1,0 @@
-export { RowsIcon } from "./rows";

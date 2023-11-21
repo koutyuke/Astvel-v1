@@ -1,5 +1,5 @@
 import { GridIcon, SmallGridIcon } from "components/icon/grid";
-import { RowsIcon } from "components/icon/rows";
+import { ListIcon } from "components/icon/list";
 import { ComponentPropsWithoutRef, FC } from "react";
 import { useTravelerSizeState } from "stores/travelers";
 import { twMerge } from "tailwind-merge";
@@ -23,7 +23,7 @@ const TravelerSize: FC<Props> = ({ className }) => {
           setSize("regular");
         }}
       >
-        <RowsIcon size={26} className="m-auto fill-gray-400 stroke-gray-400 stroke-[0.5]" />
+        <ListIcon size={26} className="m-auto fill-gray-400 stroke-gray-400 stroke-[0.5]" />
       </button>
       <button
         type="button"
