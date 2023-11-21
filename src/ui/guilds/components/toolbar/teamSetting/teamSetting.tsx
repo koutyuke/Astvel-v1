@@ -6,8 +6,8 @@ import { TeamSettingMenu } from "./menu";
 const TeamSetting: FC = () => {
   const [open, setOpen] = useState(false);
   const AddDialog = createDialog(
-    <span>
-      <TeamIcon size={26} className="fill-gray-400 transition hover:fill-green-500" />
+    <span className="box-border flex h-9 w-9 items-center justify-center rounded-md border border-transparent transition hover:border-gray-500 hover:bg-black-3">
+      <TeamIcon size={24} className="fill-gray-400" />
     </span>,
   );
 
