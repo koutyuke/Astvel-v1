@@ -42,7 +42,7 @@ const Unselected: FC<Props> = ({ className }) => {
           isOver && "border-green-500",
         )}
       >
-        <ScrollArea className="h-full w-full">
+        <ScrollArea className="h-full w-full" type="auto">
           <div className="relative h-full w-full space-y-2 p-2">
             {members.length !== 0 && (
               <>

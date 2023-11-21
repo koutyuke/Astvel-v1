@@ -18,7 +18,7 @@ const Team: FC<Props> = ({ className }) => {
     <SortableContext items={teams}>
       <div className={twMerge("relative h-full w-full rounded-lg border border-gray-500 bg-black-2", className)}>
         {teams.length === 0 && (
-          <div className="flex h-full items-center justify-center">
+          <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center">
             <p className="text-center leading-6 text-gray-500">
               No team
               <br />
@@ -40,7 +40,7 @@ const Team: FC<Props> = ({ className }) => {
             </p>
           </div>
         )}
-        <ScrollArea className="h-full w-full">
+        <ScrollArea className="h-full w-full" type="auto">
           <div className="h-full w-full space-y-2.5 p-2.5">
             {teams.map(team => (
               <TeamDroppableContainer data={team} spaceSize={10} key={`team-${team.id}`} />

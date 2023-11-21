@@ -27,7 +27,7 @@ const Destination: FC<Props> = ({ guildId, className }) => {
       <div
         className={twMerge("relative box-border h-full w-full rounded-lg border border-gray-500 bg-black-2", className)}
       >
-        <ScrollArea className="h-full w-full">
+        <ScrollArea className="h-full w-full" type="auto">
           <div className="space-y-2.5 p-2.5">
             {data.map(category => (
               <Category
