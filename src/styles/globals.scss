@@ -17,16 +17,6 @@ img {
   user-select: none;
 }
 
-@layer components {
-  .scrollbar-hidden {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
-}
-
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
