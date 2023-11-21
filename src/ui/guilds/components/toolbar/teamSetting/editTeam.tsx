@@ -101,7 +101,7 @@ const EditTeam: FC<Props> = ({ setPickerSetting, team, teamDelete, teamUpdate })
         <div className="flex space-x-2">
           <BaseButton
             className="h-8 w-8 rounded-md text-sm"
-            theme="nomal"
+            theme="normal"
             onClick={() => {
               setMode("edit");
             }}
@@ -133,7 +133,7 @@ const EditTeam: FC<Props> = ({ setPickerSetting, team, teamDelete, teamUpdate })
           )}
           <div className="flex space-x-2">
             <BaseButton
-              theme="nomal"
+              theme="normal"
               className="h-8 w-fit px-3 text-sm"
               onClick={() => {
                 reset();
@@ -162,7 +162,7 @@ const EditTeam: FC<Props> = ({ setPickerSetting, team, teamDelete, teamUpdate })
             <span>Delete</span>
           </BaseButton>
           <BaseButton
-            theme="nomal"
+            theme="normal"
             className="h-8 w-fit px-3 text-sm"
             onClick={() => {
               reset();

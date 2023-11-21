@@ -42,7 +42,7 @@ const DeleteAllTeams: FC<Props> = ({ deleteTeams }) => {
               Done
             </BaseButton>
             <BaseButton
-              theme="nomal"
+              theme="normal"
               className="h-fit w-fit bg-black-1 px-3 py-1 text-sm hover:bg-black-3"
               onClick={() => {
                 setConfirm(false);

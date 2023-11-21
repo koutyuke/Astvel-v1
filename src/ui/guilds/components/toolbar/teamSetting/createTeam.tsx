@@ -74,7 +74,7 @@ const CreateTeam: FC<Props> = ({ setPickerSetting, onSubmit }) => {
       <div className="relative flex h-8 w-full justify-end space-x-2">
         <BaseButton
           className="h-8 w-fit rounded-md px-3 text-sm"
-          theme="nomal"
+          theme="normal"
           onClick={() => {
             reset();
           }}

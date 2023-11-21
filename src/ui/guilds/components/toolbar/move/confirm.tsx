@@ -23,7 +23,7 @@ type Props = {
 const MoveConfirm: FC<Props> = ({ guildId, setOpen }) => {
   const toastSetter = useSetToast();
   const channels = useChannelsValue();
-  const voiceTraberlers = useVoiceTravelersValue();
+  const voiceTravelers = useVoiceTravelersValue();
   const teamTravelers = useTeamTravelersValue();
 
   const { session } = useValidatedSession();
@@ -35,7 +35,7 @@ const MoveConfirm: FC<Props> = ({ guildId, setOpen }) => {
   const moveCandidate = channels.reduce<ChannelWithTravelers[]>((acc, channel) => {
     const setVoices: VoiceWithTravelers[] = [];
     channel.voices.forEach(voice => {
-      const { members, teams } = voiceTraberlers.find(v => v.id === voice.id) ?? {
+      const { members, teams } = voiceTravelers.find(v => v.id === voice.id) ?? {
         members: [] as APIMember[],
         teams: [] as TravelerTeam[],
       };
@@ -145,7 +145,7 @@ const MoveConfirm: FC<Props> = ({ guildId, setOpen }) => {
 
       <div className="flex items-center justify-between">
         <BaseButton
-          theme="nomal"
+          theme="normal"
           className="h-8"
           onClick={() => {
             setOpen(false);
