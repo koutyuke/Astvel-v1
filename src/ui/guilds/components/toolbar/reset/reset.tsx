@@ -4,6 +4,7 @@ import { useSetToast } from "features/toast/hooks";
 import { BaseButton } from "components/elements/button";
 import { ResetIcon } from "components/icon/reset";
 import { useMemberReset } from "ui/guilds/hooks/useMemberReset";
+import { PlusIcon } from "components/icon/plus";
 
 const Reset: FC = () => {
   const [open, setOpen] = useState(false);
@@ -18,7 +19,7 @@ const Reset: FC = () => {
 
   return (
     <AddDialog open={open} setOpen={setOpen}>
-      <div className="flex aspect-video w-96 max-w-[90vw] flex-col items-center justify-between space-y-6 rounded-lg bg-black-1 p-6 text-white outline outline-1 outline-gray-500">
+      <div className="relative flex aspect-video w-96 max-w-[90vw] flex-col items-center justify-between gap-y-6 rounded-lg bg-black-1 p-6 text-white outline outline-1 outline-gray-500 tablet:px-10 tablet:py-6">
         <p className="w-full text-center text-2xl">Member Reset</p>
         <p className="w-full text-center">
           Reset all members.
@@ -48,6 +49,17 @@ const Reset: FC = () => {
           >
             <p>Reset</p>
           </BaseButton>
+        </div>
+        <div className="absolute right-6 top-6">
+          <button
+            type="button"
+            className="group rounded-full border border-gray-500 transition hover:border-green-500"
+            onClick={() => {
+              setOpen(false);
+            }}
+          >
+            <PlusIcon size={24} className="rotate-45 stroke-gray-500 transition group-hover:stroke-green-500" />
+          </button>
         </div>
       </div>
     </AddDialog>
