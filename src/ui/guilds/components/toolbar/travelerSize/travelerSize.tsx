@@ -15,9 +15,7 @@ const TravelerSize: FC<Props> = ({ className }) => {
         type="button"
         className={twMerge(
           "h-9 w-9 rounded-md border border-transparent bg-transparent transition hover:border-gray-500",
-          size === "regular"
-            ? "bg-black-2 shadow-[inset_0px_0px_8px_0px_#000] hover:border-transparent"
-            : "hover:bg-black-3",
+          size === "regular" ? "border-gray-500 bg-black-2 shadow-[inset_0px_0px_6px_4px_#000] " : "hover:bg-black-3",
         )}
         onClick={() => {
           setSize("regular");
@@ -29,9 +27,7 @@ const TravelerSize: FC<Props> = ({ className }) => {
         type="button"
         className={twMerge(
           "h-9 w-9 rounded-md border border-transparent bg-transparent transition hover:border-gray-500",
-          size === "large"
-            ? "bg-black-2 shadow-[inset_0px_0px_8px_0px_#000] hover:border-transparent"
-            : "hover:bg-black-3",
+          size === "large" ? "border-gray-500 bg-black-2 shadow-[inset_0px_0px_6px_4px_#000] " : "hover:bg-black-3",
         )}
         onClick={() => {
           setSize("large");
@@ -43,9 +39,7 @@ const TravelerSize: FC<Props> = ({ className }) => {
         type="button"
         className={twMerge(
           "h-9 w-9 rounded-md border border-transparent bg-transparent transition hover:border-gray-500",
-          size === "small"
-            ? "bg-black-2 shadow-[inset_0px_0px_8px_0px_#000] hover:border-transparent"
-            : "hover:bg-black-3",
+          size === "small" ? "border-gray-500 bg-black-2 shadow-[inset_0px_0px_6px_4px_#000] " : "hover:bg-black-3",
         )}
         onClick={() => {
           setSize("small");
