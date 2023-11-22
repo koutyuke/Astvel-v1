@@ -4,7 +4,7 @@ import { InternalLink } from "components/elements/link";
 
 const Hero: FC = () => {
   return (
-    <div className="relative grid h-screen max-h-[60rem] w-full grid-cols-12 items-center gap-6 shadow-2xl">
+    <div className="relative grid h-screen max-h-[60rem] w-full grid-cols-12 items-center gap-6 bg-transparent">
       <div className="z-20 col-[2_/_12] space-y-4 pt-[10%] tablet:col-[2_/_7]">
         <h1 className="text-6xl font-bold leading-none">
           Easily Move
