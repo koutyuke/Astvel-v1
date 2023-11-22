@@ -13,11 +13,11 @@ type Props = {
   guildId: string;
 };
 const ToolBar: FC<Props> = ({ guildId }) => (
-  <div className="mx-8 flex h-14 items-center rounded-lg border border-gray-500 bg-black-2 px-2 tablet:mx-16">
+  <div className="mx-8 box-border flex h-14 items-center rounded-lg border border-gray-500 bg-black-2 px-2 tablet:mx-16">
     <SelectedGuild guildId={guildId} />
     <Separator />
-    <ScrollArea className="h-fit w-[1px] flex-1" type="hover">
-      <div className="flex h-full w-full min-w-fit items-center space-x-2">
+    <ScrollArea className="box-border flex w-[1px] flex-1 py-1.5" type="auto">
+      <div className="flex h-10 w-full min-w-fit items-center space-x-2">
         <TravelerSize />
         <Separator />
         <div className={twMerge(" flex w-[1px] min-w-fit flex-1 space-x-1")}>
