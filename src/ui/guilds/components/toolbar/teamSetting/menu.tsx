@@ -43,7 +43,7 @@ const TeamSettingMenu: FC<Props> = ({ setClose }) => {
 
   return (
     <div className="flex aspect-[9/16] max-h-[90svh] w-[30rem] max-w-[90vw] flex-col items-center rounded-lg bg-black-1 p-6 outline outline-1 outline-gray-500 tablet:aspect-[3/4]">
-      <p className="mb-4 text-center text-2xl">Team Setting</p>
+      <p className="mb-4 text-center text-2xl font-semibold">Team Setting</p>
       <div className="relative inline-block h-1 w-full flex-1 overflow-hidden">
         <ScrollArea className="h-full w-full" type="hover">
           <ul className=" w-full list-inside list-disc gap-y-4 space-y-4 overflow-x-hidden px-4 ">

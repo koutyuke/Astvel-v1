@@ -20,7 +20,7 @@ const Reset: FC = () => {
   return (
     <AddDialog open={open} setOpen={setOpen}>
       <div className="relative flex aspect-video w-96 max-w-[90vw] flex-col items-center justify-between gap-y-6 rounded-lg bg-black-1 p-6 text-white outline outline-1 outline-gray-500 tablet:px-10 tablet:py-6">
-        <p className="w-full text-center text-2xl">Member Reset</p>
+        <p className="w-full text-center text-2xl font-semibold">Member Reset</p>
         <p className="w-full text-center">
           Reset all members.
           <br />
