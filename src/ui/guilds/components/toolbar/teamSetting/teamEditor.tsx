@@ -7,9 +7,19 @@ import { EmojiPickerSetting, TeamValue, schema } from "./store";
 type Props = {
   setPickerSetting: (value: EmojiPickerSetting) => void;
   onSubmit: (data: TeamValue) => void;
-};
+  onCancel?: () => void;
+} & (
+  | {
+      type: "create";
+      defaultValues?: undefined;
+    }
+  | {
+      type: "edit";
+      defaultValues: TeamValue;
+    }
+);
 
-const CreateTeam: FC<Props> = ({ setPickerSetting, onSubmit }) => {
+const TeamEditor: FC<Props> = ({ setPickerSetting, onSubmit, onCancel, type, defaultValues }) => {
   const {
     register,
     handleSubmit,
@@ -18,10 +28,7 @@ const CreateTeam: FC<Props> = ({ setPickerSetting, onSubmit }) => {
     formState: { errors },
     getValues,
   } = useForm<TeamValue>({
-    defaultValues: {
-      emoji: "",
-      name: "",
-    },
+    defaultValues,
     reValidateMode: "onChange",
     resolver: zodResolver(schema),
   });
@@ -67,26 +74,40 @@ const CreateTeam: FC<Props> = ({ setPickerSetting, onSubmit }) => {
           {...register("name")}
         />
       </div>
-      <div className="w-full pl-2">
-        {errors.emoji && <p className="text-sm text-red-500 ">* {errors.emoji.message}</p>}
-        {errors.name && <p className="text-sm text-red-500">* {errors.name.message}</p>}
-      </div>
+      <ul className="w-full list-inside list-disc pl-2">
+        {errors.emoji && <li className="text-sm text-red-500 ">{errors.emoji.message}</li>}
+        {errors.name && <li className="text-sm text-red-500">{errors.name.message}</li>}
+      </ul>
       <div className="relative flex h-8 w-full justify-end space-x-2">
-        <BaseButton
-          className="h-8 w-fit rounded-md px-3 text-sm"
-          theme="normal"
-          onClick={() => {
-            reset();
-          }}
-        >
-          <p className="m-auto">Reset</p>
-        </BaseButton>
+        {type === "create" && (
+          <BaseButton
+            className="h-8 w-fit rounded-md px-3 text-sm"
+            theme="normal"
+            onClick={() => {
+              reset();
+            }}
+          >
+            <p className="m-auto">Reset</p>
+          </BaseButton>
+        )}
+        {type === "edit" && (
+          <BaseButton className="h-8 w-fit rounded-md px-3 text-sm" theme="normal" onClick={onCancel}>
+            <p className="m-auto">Cancel</p>
+          </BaseButton>
+        )}
         <BaseButton className="flex h-8 w-fit rounded-md px-3 text-sm" theme="safety" type="submit">
-          <p className="m-auto">Create</p>
+          <p className="m-auto">
+            {type === "edit" && "Update"}
+            {type === "create" && "Create"}
+          </p>
         </BaseButton>
       </div>
     </form>
   );
 };
 
-export { CreateTeam };
+TeamEditor.defaultProps = {
+  onCancel: () => {},
+};
+
+export { TeamEditor };
