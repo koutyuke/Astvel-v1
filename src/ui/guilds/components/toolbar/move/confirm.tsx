@@ -65,7 +65,7 @@ const MoveConfirm: FC<Props> = ({ guildId, setOpen }) => {
   return (
     <div className="relative flex aspect-[9/16] max-h-[90svh] w-[30rem] max-w-[90vw] flex-col gap-y-4 rounded-lg bg-black-1 p-6 text-white outline outline-1 outline-gray-500 tablet:aspect-[3/4] tablet:px-10 tablet:py-6">
       <p className="w-full text-center text-2xl font-semibold">Move Member</p>
-      <div className="text-center">
+      <div className="text-center text-gray-400">
         {isSelectedTraveler ? (
           <p>
             Move Discord members.
