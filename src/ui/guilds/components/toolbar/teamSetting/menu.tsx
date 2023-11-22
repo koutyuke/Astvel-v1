@@ -1,10 +1,10 @@
 import { FC, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { useTeamsState } from "stores/teams";
-import { v4 as uuidv4 } from "uuid";
-import { FillSquareIcon } from "components/icon/square";
+import { v4 as uuid } from "uuid";
 import { PlusIcon } from "components/icon/plus";
-import { CreateTeam } from "./createTeam";
+import { ScrollArea } from "components/elements/scrollArea";
+import { TeamEditor } from "./teamEditor";
 import { EmojiPickerSetting } from "./store";
 import { SelectEmoji } from "./selectEmoji";
 import { EditTeam } from "./editTeam";
@@ -42,57 +42,55 @@ const TeamSettingMenu: FC<Props> = ({ setClose }) => {
   };
 
   return (
-    <div className="flex aspect-[9/16] max-h-[90svh] w-[30rem] max-w-[90vw] flex-col items-center rounded-lg bg-black-1 p-6 outline outline-1 outline-gray-500 tablet:aspect-[3/4] tablet:px-10 tablet:py-6">
+    <div className="flex aspect-[9/16] max-h-[90svh] w-[30rem] max-w-[90vw] flex-col items-center rounded-lg bg-black-1 p-6 outline outline-1 outline-gray-500 tablet:aspect-[3/4]">
       <p className="mb-4 text-center text-2xl">Team Setting</p>
-      <div className="relative inline-block h-0 w-full flex-1 overflow-hidden">
-        <ul className="h-full w-full space-y-4 overflow-y-auto overflow-x-hidden duration-300">
-          <li className="w-full space-y-4">
-            <div className="sticky top-0 z-10 flex w-full items-center space-x-2 bg-black-1">
-              <FillSquareIcon size={5} />
-              <p className="">Create New Team</p>
-            </div>
-            <div className="w-full">
-              <CreateTeam
-                setPickerSetting={setPickerSetting}
-                onSubmit={value => {
-                  const newId = uuidv4();
-                  setTeams([
-                    ...teams,
-                    {
-                      id: newId,
-                      name: value.name,
-                      iconEmoji: value.emoji,
-                    },
-                  ]);
-                }}
-              />
-            </div>
-          </li>
-          <li className="w-full space-y-4">
-            <div className="sticky top-0 z-10 flex w-full items-center space-x-2 bg-black-1">
-              <FillSquareIcon size={5} />
-              <p className="">Single Team</p>
-            </div>
-            <div className="w-full space-y-2">
-              {teams.map(team => (
-                <EditTeam
+      <div className="relative inline-block h-1 w-full flex-1 overflow-hidden">
+        <ScrollArea className="h-full w-full" type="hover">
+          <ul className=" w-full list-inside list-disc gap-y-4 space-y-4 overflow-x-hidden px-4 ">
+            <li className="w-full space-y-4">
+              <span>Create New Team</span>
+              <div className="w-full">
+                <TeamEditor
                   setPickerSetting={setPickerSetting}
-                  team={team}
-                  key={`edit-team-${team.id}`}
-                  teamDelete={teamDelete}
-                  teamUpdate={teamUpdate}
+                  onSubmit={value => {
+                    const newId = uuid();
+                    setTeams([
+                      ...teams,
+                      {
+                        id: newId,
+                        name: value.name,
+                        iconEmoji: value.emoji,
+                      },
+                    ]);
+                  }}
+                  type="create"
                 />
-              ))}
-            </div>
-          </li>
-          <li className="w-full space-y-2">
-            <div className="sticky top-0 z-10 flex w-full items-center space-x-2">
-              <FillSquareIcon size={5} />
-              <p className="">All Team</p>
-            </div>
-            <DeleteAllTeams deleteTeams={deleteTeams} />
-          </li>
-        </ul>
+              </div>
+            </li>
+            {teams.length !== 0 && (
+              <>
+                <li className="w-full space-y-4">
+                  <span>Edit and Update</span>
+                  <div className="w-full space-y-2">
+                    {teams.map(team => (
+                      <EditTeam
+                        setPickerSetting={setPickerSetting}
+                        team={team}
+                        key={`edit-team-${team.id}`}
+                        deleteTeam={teamDelete}
+                        updateTeam={teamUpdate}
+                      />
+                    ))}
+                  </div>
+                </li>
+                <li className="w-full space-y-2">
+                  <span>Danger Zone</span>
+                  <DeleteAllTeams deleteTeams={deleteTeams} />
+                </li>
+              </>
+            )}
+          </ul>
+        </ScrollArea>
         <SelectEmoji
           className={twMerge(
             "absolute left-0 top-0 z-20 w-full bg-black-1  duration-300",
