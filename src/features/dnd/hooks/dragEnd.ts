@@ -11,7 +11,7 @@ const useDragEnd = () => {
   const channelsMutater = useChannelsMutater();
   const teamTravelersMutater = useTeamTravelersMutater();
   const unselectedTravelersMutater = useUnselectedTravelersMutater();
-  const voiceTrsvelersMutater = useVoiceTravelersMutater();
+  const voiceTravelersMutater = useVoiceTravelersMutater();
 
   return ({ active, over }: DragEndEvent) => {
     const activeData = active?.data.current as DndData | undefined;
@@ -75,7 +75,7 @@ const useDragEnd = () => {
             });
             break;
           case "destination":
-            voiceTrsvelersMutater(current => {
+            voiceTravelersMutater(current => {
               const changeVoice = current.find(c => c.id === activeData.group.id);
               const changeVoiceIndex = current.findIndex(c => c.id === activeData.group.id);
               if (changeVoice === undefined || changeVoiceIndex === -1) {
@@ -133,7 +133,7 @@ const useDragEnd = () => {
             });
             break;
           case "destination":
-            voiceTrsvelersMutater(current => {
+            voiceTravelersMutater(current => {
               const changeVoice = current.find(c => c.id === activeData.group.id);
               const changeVoiceIndex = current.findIndex(c => c.id === activeData.group.id);
               if (changeVoice === undefined || changeVoiceIndex === -1) {
@@ -175,7 +175,7 @@ const useDragEnd = () => {
         // add member
         switch (overData.group.type) {
           case "destination":
-            voiceTrsvelersMutater(current => {
+            voiceTravelersMutater(current => {
               const changeVoice = current.find(c => c.id === overData.group.id);
               const changeVoiceIndex = current.findIndex(c => c.id === overData.group.id);
               const overMemberIndex = changeVoice?.members.findIndex(member => member.id === overData.data.id);
@@ -265,7 +265,7 @@ const useDragEnd = () => {
             break;
 
           case "destination":
-            voiceTrsvelersMutater(current => {
+            voiceTravelersMutater(current => {
               const changeVoice = current.find(c => c.id === activeData.group.id);
               const changeVoiceIndex = current.findIndex(c => c.id === activeData.group.id);
               if (changeVoice === undefined || changeVoiceIndex === -1) {
@@ -301,7 +301,7 @@ const useDragEnd = () => {
             });
             break;
           case "destination":
-            voiceTrsvelersMutater(current => {
+            voiceTravelersMutater(current => {
               const changeVoice = current.find(c => c.id === activeData.group.id);
               const changeVoiceIndex = current.findIndex(c => c.id === activeData.group.id);
               if (changeVoice === undefined || changeVoiceIndex === -1) {
@@ -326,7 +326,7 @@ const useDragEnd = () => {
         // add traveler team
         switch (overData.group.type) {
           case "destination":
-            voiceTrsvelersMutater(current => {
+            voiceTravelersMutater(current => {
               const changeVoice = current.find(c => c.id === overData.group.id);
               const changeVoiceIndex = current.findIndex(c => c.id === overData.group.id);
               const overTeamIndex = changeVoice?.teams.findIndex(team => team.id === overData.data.id);
@@ -387,7 +387,7 @@ const useDragEnd = () => {
           });
           break;
         case "destination":
-          voiceTrsvelersMutater(current => {
+          voiceTravelersMutater(current => {
             const changeVoice = current.find(c => c.id === activeData.group.id);
             const changeVoiceIndex = current.findIndex(c => c.id === activeData.group.id);
             if (changeVoice === undefined || changeVoiceIndex === -1) {
@@ -429,7 +429,7 @@ const useDragEnd = () => {
       // add member
       switch (overData.type) {
         case "voice":
-          voiceTrsvelersMutater(current => {
+          voiceTravelersMutater(current => {
             const changeVoice = current.find(c => c.id === overData.data.id);
             const changeVoiceIndex = current.findIndex(c => c.id === overData.data.id);
             if (changeVoice === undefined || changeVoiceIndex === -1) {
@@ -487,7 +487,7 @@ const useDragEnd = () => {
           });
           break;
         case "destination":
-          voiceTrsvelersMutater(current => {
+          voiceTravelersMutater(current => {
             const changeVoice = current.find(c => c.id === activeData.group.id);
             const changeVoiceIndex = current.findIndex(c => c.id === activeData.group.id);
             if (changeVoice === undefined || changeVoiceIndex === -1) {
@@ -512,7 +512,7 @@ const useDragEnd = () => {
       // add traveler team
       switch (overData.type) {
         case "voice":
-          voiceTrsvelersMutater(current => {
+          voiceTravelersMutater(current => {
             const changeVoice = current.find(c => c.id === overData.data.id);
             const changeVoiceIndex = current.findIndex(c => c.id === overData.data.id);
             if (changeVoice === undefined || changeVoiceIndex === -1) {
