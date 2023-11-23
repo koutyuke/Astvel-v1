@@ -1,7 +1,7 @@
 import { Permission } from "types/api/astvel";
 import { permissionCheck } from "./permissionCheck";
 
-const isPrivateVoiceChannel = (guildId: string, permissionOverwriteRoles: Permission[]): boolean => {
+const isPrivateChannel = (guildId: string, permissionOverwriteRoles: Permission[]): boolean => {
   const everyone = permissionOverwriteRoles.find(role => role.id === guildId);
   const isPrivate =
     everyone !== undefined
@@ -9,4 +9,4 @@ const isPrivateVoiceChannel = (guildId: string, permissionOverwriteRoles: Permis
       : false;
   return isPrivate;
 };
-export { isPrivateVoiceChannel };
+export { isPrivateChannel };
