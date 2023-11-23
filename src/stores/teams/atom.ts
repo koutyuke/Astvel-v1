@@ -1,7 +1,4 @@
-import { atom } from "recoil";
+import { atomWithReset } from "jotai/utils";
 import { Team } from "./type";
 
-export const TeamsAtom = atom<Team[]>({
-  key: "Teams",
-  default: [],
-});
+export const TeamsAtom = atomWithReset<Team[]>([]);

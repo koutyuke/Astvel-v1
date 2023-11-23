@@ -1,10 +1,11 @@
-import { useRecoilState, useRecoilValue, useResetRecoilState, useSetRecoilState } from "recoil";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
+import { useResetAtom } from "jotai/utils";
 import { TeamsAtom } from "./atom";
 
-export const useTeamsValue = () => useRecoilValue(TeamsAtom);
+export const useTeamsValue = () => useAtomValue(TeamsAtom);
 
-export const useTeamsMutater = () => useSetRecoilState(TeamsAtom);
+export const useSetTeams = () => useSetAtom(TeamsAtom);
 
-export const useTeamsState = () => useRecoilState(TeamsAtom);
+export const useTeamsState = () => useAtom(TeamsAtom);
 
-export const useResetTeam = () => useResetRecoilState(TeamsAtom);
+export const useResetTeam = () => useResetAtom(TeamsAtom);
