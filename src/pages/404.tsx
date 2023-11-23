@@ -3,7 +3,7 @@ import { NextPageWithLayout } from "next";
 import Image from "next/image";
 
 const NotFound: NextPageWithLayout = () => (
-  <div className="flex h-full flex-col items-center justify-center space-y-4">
+  <div className="flex flex-col items-center justify-center space-y-4">
     <div className="flex h-20 items-center text-7xl">
       <span>4</span>
       <Image src="/icon.PNG" alt="user icon image" priority loading="eager" className="" width={75} height={75} />
@@ -18,6 +18,10 @@ const NotFound: NextPageWithLayout = () => (
   </div>
 );
 
-NotFound.getLayout = page => <Layout title="Page Not Fournd - Astvel">{page}</Layout>;
+NotFound.getLayout = page => (
+  <Layout title="Page Not Fournd - Astvel" className="flex items-center justify-center">
+    {page}
+  </Layout>
+);
 
 export default NotFound;
