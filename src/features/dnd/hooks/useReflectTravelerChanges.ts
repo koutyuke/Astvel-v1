@@ -4,13 +4,13 @@ import {
   TeamTravelers,
   VoiceTravelers,
   useTeamTravelersState,
-  useUnselectedTravelersMutater,
+  useSetUnselectedTravelers,
   useVoiceTravelersState,
 } from "stores/travelers";
 import { TravelerTeam } from "stores/travelers/type";
 import { APIMember } from "types/api/astvel";
 import { useAllMembers, useAllVoices } from "ui/guilds/hooks/swr";
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuid } from "uuid";
 
 const useReflectTravelerChanges = (guildId: string | undefined) => {
   const apiMembers = useAllMembers(guildId);
@@ -18,7 +18,7 @@ const useReflectTravelerChanges = (guildId: string | undefined) => {
   const allTeams = useTeamsValue();
 
   const [voiceTravelers, setVoiceTravelers] = useVoiceTravelersState();
-  const setUnselectedTravelers = useUnselectedTravelersMutater();
+  const setUnselectedTravelers = useSetUnselectedTravelers();
   const [teamTravelers, setTeamTravelers] = useTeamTravelersState();
 
   const selectedMembers = useMemo(
@@ -65,8 +65,8 @@ const useReflectTravelerChanges = (guildId: string | undefined) => {
           !selectedTeams.some(selectedTeam => selectedTeam.containerId === team.id) &&
           !currentUnselectedTravelers.teams.some(t => t.containerId === team.id)
         ) {
-          const uuid = uuidv4();
-          newTeams.push({ ...team, containerId: team.id, id: uuid });
+          const id = uuid();
+          newTeams.push({ ...team, containerId: team.id, id });
         }
       });
 

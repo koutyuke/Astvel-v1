@@ -1,17 +1,17 @@
 import { DragEndEvent } from "@dnd-kit/core";
 import { arrayMove } from "@dnd-kit/sortable";
-import { useChannelsMutater } from "stores/channels";
+import { useSetChannels } from "stores/channels";
 import { noCategoryValue } from "stores/channels/atom";
-import { useTeamsMutater } from "stores/teams";
-import { useTeamTravelersMutater, useUnselectedTravelersMutater, useVoiceTravelersMutater } from "stores/travelers";
+import { useSetTeams } from "stores/teams";
+import { useSetTeamTravelers, useSetUnselectedTravelers, useSetVoiceTravelers } from "stores/travelers";
 import { DndData } from "types/models/dnd";
 
 const useDragEnd = () => {
-  const teamsMutater = useTeamsMutater();
-  const channelsMutater = useChannelsMutater();
-  const teamTravelersMutater = useTeamTravelersMutater();
-  const unselectedTravelersMutater = useUnselectedTravelersMutater();
-  const voiceTravelersMutater = useVoiceTravelersMutater();
+  const setTeams = useSetTeams();
+  const setChannels = useSetChannels();
+  const setTeamTravelers = useSetTeamTravelers();
+  const setUnselectedTravelers = useSetUnselectedTravelers();
+  const setVoiceTravelers = useSetVoiceTravelers();
 
   return ({ active, over }: DragEndEvent) => {
     const activeData = active?.data.current as DndData | undefined;
@@ -22,14 +22,14 @@ const useDragEnd = () => {
     }
 
     if (activeData.type === "category" && overData.type === "category") {
-      channelsMutater(currentChannels => {
+      setChannels(currentChannels => {
         const activeIndex = currentChannels.findIndex(channel => channel.id === activeData.data.id);
         const overIndex = currentChannels.findIndex(channel => channel.id === overData.data.id);
 
         return arrayMove(currentChannels, activeIndex, overIndex);
       });
     } else if (activeData.type === "voice" && overData.type === "voice") {
-      channelsMutater(currentChannels => {
+      setChannels(currentChannels => {
         const category = currentChannels.find(
           channel =>
             channel.id === activeData.data.parentId ||
@@ -53,7 +53,7 @@ const useDragEnd = () => {
         ];
       });
     } else if (activeData.type === "team" && overData.type === "team") {
-      teamsMutater(currentTeams => {
+      setTeams(currentTeams => {
         const activeIndex = currentTeams.findIndex(team => team.id === activeData.data.id);
         const overIndex = currentTeams.findIndex(team => team.id === overData.data.id);
 
@@ -63,7 +63,7 @@ const useDragEnd = () => {
       if (activeData.data.parentId === overData.data.parentId) {
         switch (activeData.group.type) {
           case "unselected":
-            unselectedTravelersMutater(currentTravelers => {
+            setUnselectedTravelers(currentTravelers => {
               return {
                 ...currentTravelers,
                 members: arrayMove(
@@ -75,7 +75,7 @@ const useDragEnd = () => {
             });
             break;
           case "destination":
-            voiceTravelersMutater(current => {
+            setVoiceTravelers(current => {
               const changeVoice = current.find(c => c.id === activeData.group.id);
               const changeVoiceIndex = current.findIndex(c => c.id === activeData.group.id);
               if (changeVoice === undefined || changeVoiceIndex === -1) {
@@ -97,7 +97,7 @@ const useDragEnd = () => {
             });
             break;
           case "team":
-            teamTravelersMutater(current => {
+            setTeamTravelers(current => {
               const changeTeam = current.find(c => c.id === activeData.group.id);
               const changeTeamIndex = current.findIndex(c => c.id === activeData.group.id);
               if (changeTeam === undefined || changeTeamIndex === -1) {
@@ -125,7 +125,7 @@ const useDragEnd = () => {
         // delete member
         switch (activeData.group.type) {
           case "unselected":
-            unselectedTravelersMutater(currentTravelers => {
+            setUnselectedTravelers(currentTravelers => {
               return {
                 ...currentTravelers,
                 members: currentTravelers.members.filter(member => member.id !== activeData.data.id),
@@ -133,7 +133,7 @@ const useDragEnd = () => {
             });
             break;
           case "destination":
-            voiceTravelersMutater(current => {
+            setVoiceTravelers(current => {
               const changeVoice = current.find(c => c.id === activeData.group.id);
               const changeVoiceIndex = current.findIndex(c => c.id === activeData.group.id);
               if (changeVoice === undefined || changeVoiceIndex === -1) {
@@ -151,7 +151,7 @@ const useDragEnd = () => {
             });
             break;
           case "team":
-            teamTravelersMutater(current => {
+            setTeamTravelers(current => {
               const changeTeam = current.find(c => c.id === activeData.group.id);
               const changeTeamIndex = current.findIndex(c => c.id === activeData.group.id);
               if (changeTeam === undefined || changeTeamIndex === -1) {
@@ -175,7 +175,7 @@ const useDragEnd = () => {
         // add member
         switch (overData.group.type) {
           case "destination":
-            voiceTravelersMutater(current => {
+            setVoiceTravelers(current => {
               const changeVoice = current.find(c => c.id === overData.group.id);
               const changeVoiceIndex = current.findIndex(c => c.id === overData.group.id);
               const overMemberIndex = changeVoice?.members.findIndex(member => member.id === overData.data.id);
@@ -202,7 +202,7 @@ const useDragEnd = () => {
             });
             break;
           case "unselected":
-            unselectedTravelersMutater(currentTravelers => {
+            setUnselectedTravelers(currentTravelers => {
               const overMemberIndex = currentTravelers.members.findIndex(member => member.id === overData.data.id);
               if (overMemberIndex === -1) {
                 return currentTravelers;
@@ -218,7 +218,7 @@ const useDragEnd = () => {
             });
             break;
           case "team":
-            teamTravelersMutater(current => {
+            setTeamTravelers(current => {
               const changeTeam = current.find(c => c.id === overData.group.id);
               const changeTeamIndex = current.findIndex(c => c.id === overData.group.id);
               const overMemberIndex = changeTeam?.members.findIndex(member => member.id === overData.data.id);
@@ -252,7 +252,7 @@ const useDragEnd = () => {
       if (activeData.data.parentId === overData.data.parentId) {
         switch (activeData.group.type) {
           case "unselected":
-            unselectedTravelersMutater(currentTravelers => {
+            setUnselectedTravelers(currentTravelers => {
               return {
                 ...currentTravelers,
                 teams: arrayMove(
@@ -265,7 +265,7 @@ const useDragEnd = () => {
             break;
 
           case "destination":
-            voiceTravelersMutater(current => {
+            setVoiceTravelers(current => {
               const changeVoice = current.find(c => c.id === activeData.group.id);
               const changeVoiceIndex = current.findIndex(c => c.id === activeData.group.id);
               if (changeVoice === undefined || changeVoiceIndex === -1) {
@@ -293,7 +293,7 @@ const useDragEnd = () => {
         // delete traveler team
         switch (activeData.group.type) {
           case "unselected":
-            unselectedTravelersMutater(currentTravelers => {
+            setUnselectedTravelers(currentTravelers => {
               return {
                 ...currentTravelers,
                 teams: currentTravelers.teams.filter(team => team.id !== activeData.data.id),
@@ -301,7 +301,7 @@ const useDragEnd = () => {
             });
             break;
           case "destination":
-            voiceTravelersMutater(current => {
+            setVoiceTravelers(current => {
               const changeVoice = current.find(c => c.id === activeData.group.id);
               const changeVoiceIndex = current.findIndex(c => c.id === activeData.group.id);
               if (changeVoice === undefined || changeVoiceIndex === -1) {
@@ -326,7 +326,7 @@ const useDragEnd = () => {
         // add traveler team
         switch (overData.group.type) {
           case "destination":
-            voiceTravelersMutater(current => {
+            setVoiceTravelers(current => {
               const changeVoice = current.find(c => c.id === overData.group.id);
               const changeVoiceIndex = current.findIndex(c => c.id === overData.group.id);
               const overTeamIndex = changeVoice?.teams.findIndex(team => team.id === overData.data.id);
@@ -352,7 +352,7 @@ const useDragEnd = () => {
             });
             break;
           case "unselected":
-            unselectedTravelersMutater(currentTravelers => {
+            setUnselectedTravelers(currentTravelers => {
               const overTeamIndex = currentTravelers.teams.findIndex(team => team.id === overData.data.id);
 
               if (overTeamIndex === -1) {
@@ -379,7 +379,7 @@ const useDragEnd = () => {
       // delete member
       switch (activeData.group.type) {
         case "unselected":
-          unselectedTravelersMutater(currentTravelers => {
+          setUnselectedTravelers(currentTravelers => {
             return {
               ...currentTravelers,
               members: currentTravelers.members.filter(member => member.id !== activeData.data.id),
@@ -387,7 +387,7 @@ const useDragEnd = () => {
           });
           break;
         case "destination":
-          voiceTravelersMutater(current => {
+          setVoiceTravelers(current => {
             const changeVoice = current.find(c => c.id === activeData.group.id);
             const changeVoiceIndex = current.findIndex(c => c.id === activeData.group.id);
             if (changeVoice === undefined || changeVoiceIndex === -1) {
@@ -405,7 +405,7 @@ const useDragEnd = () => {
           });
           break;
         case "team":
-          teamTravelersMutater(current => {
+          setTeamTravelers(current => {
             const changeTeam = current.find(c => c.id === activeData.group.id);
             const changeTeamIndex = current.findIndex(c => c.id === activeData.group.id);
             if (changeTeam === undefined || changeTeamIndex === -1) {
@@ -429,7 +429,7 @@ const useDragEnd = () => {
       // add member
       switch (overData.type) {
         case "voice":
-          voiceTravelersMutater(current => {
+          setVoiceTravelers(current => {
             const changeVoice = current.find(c => c.id === overData.data.id);
             const changeVoiceIndex = current.findIndex(c => c.id === overData.data.id);
             if (changeVoice === undefined || changeVoiceIndex === -1) {
@@ -447,7 +447,7 @@ const useDragEnd = () => {
           });
           break;
         case "unselected":
-          unselectedTravelersMutater(currentTravelers => {
+          setUnselectedTravelers(currentTravelers => {
             return {
               ...currentTravelers,
               members: [...currentTravelers.members, activeData.data],
@@ -455,7 +455,7 @@ const useDragEnd = () => {
           });
           break;
         case "team":
-          teamTravelersMutater(current => {
+          setTeamTravelers(current => {
             const changeTeam = current.find(c => c.id === overData.data.id);
             const changeTeamIndex = current.findIndex(c => c.id === overData.data.id);
             if (changeTeam === undefined || changeTeamIndex === -1) {
@@ -479,7 +479,7 @@ const useDragEnd = () => {
       // delete traveler team
       switch (activeData.group.type) {
         case "unselected":
-          unselectedTravelersMutater(currentTravelers => {
+          setUnselectedTravelers(currentTravelers => {
             return {
               ...currentTravelers,
               teams: currentTravelers.teams.filter(team => team.id !== activeData.data.id),
@@ -487,7 +487,7 @@ const useDragEnd = () => {
           });
           break;
         case "destination":
-          voiceTravelersMutater(current => {
+          setVoiceTravelers(current => {
             const changeVoice = current.find(c => c.id === activeData.group.id);
             const changeVoiceIndex = current.findIndex(c => c.id === activeData.group.id);
             if (changeVoice === undefined || changeVoiceIndex === -1) {
@@ -512,7 +512,7 @@ const useDragEnd = () => {
       // add traveler team
       switch (overData.type) {
         case "voice":
-          voiceTravelersMutater(current => {
+          setVoiceTravelers(current => {
             const changeVoice = current.find(c => c.id === overData.data.id);
             const changeVoiceIndex = current.findIndex(c => c.id === overData.data.id);
             if (changeVoice === undefined || changeVoiceIndex === -1) {
@@ -530,7 +530,7 @@ const useDragEnd = () => {
           });
           break;
         case "unselected":
-          unselectedTravelersMutater(currentTravelers => {
+          setUnselectedTravelers(currentTravelers => {
             return {
               ...currentTravelers,
               teams: [...currentTravelers.teams, activeData.data],

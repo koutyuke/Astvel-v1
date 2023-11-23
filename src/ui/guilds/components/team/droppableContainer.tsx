@@ -8,7 +8,7 @@ import * as Accordion from "@radix-ui/react-accordion";
 import { DragIcon } from "components/icon/drag";
 import { DownIcon } from "components/icon/down";
 import { twMerge } from "tailwind-merge";
-import { useIdTeamTravelersValue, useTravelerSizeValue } from "stores/travelers";
+import { useTravelerSizeValue, useTeamTravelersValue } from "stores/travelers";
 import { DraggableMember } from "features/dnd/components/models/traveler/member";
 import { TeamIcon } from "components/icon/team";
 import { FillSquareIcon } from "components/icon/square";
@@ -30,7 +30,8 @@ const variant = tv({
 });
 
 const NoMemoTeamDroppableContainer: FC<Props> = ({ data: teamData, spaceSize }) => {
-  const travelers = useIdTeamTravelersValue(teamData.id);
+  const travelersList = useTeamTravelersValue();
+  const travelers = travelersList.find(traveler => traveler.id === teamData.id);
   const [droppable, setDroppable] = useState(true);
   const dndData: DndData = {
     type: "team",

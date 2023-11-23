@@ -1,2 +1,2 @@
-export { useChannelsMutater, useChannelsState, useChannelsValue, useIdChannelState, useResetChannels } from "./state";
+export { useSetChannels, useChannelsState, useChannelsValue, useResetChannels } from "./state";
 export type { NoCategory, Channel } from "./type";

@@ -1,14 +1,14 @@
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import { ToastAtom, ToastRefIdAtom } from "./atom";
 
-export const useToastState = () => useRecoilState(ToastAtom);
+export const useToastState = () => useAtom(ToastAtom);
 
-export const useToastValue = () => useRecoilValue(ToastAtom);
+export const useToastValue = () => useAtomValue(ToastAtom);
 
-export const useToastMutater = () => useSetRecoilState(ToastAtom);
+export const useSetToast = () => useSetAtom(ToastAtom);
 
-export const useToastRefId = () => useRecoilValue(ToastRefIdAtom);
+export const useToastRefId = () => useAtomValue(ToastRefIdAtom);
 
-export const useToastRefIdMutater = () => useSetRecoilState(ToastRefIdAtom);
+export const useSetToastRefId = () => useSetAtom(ToastRefIdAtom);
 
-export const useToastRefIdState = () => useRecoilState(ToastRefIdAtom);
+export const useToastRefIdState = () => useAtom(ToastRefIdAtom);

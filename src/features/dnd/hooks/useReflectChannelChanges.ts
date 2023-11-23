@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Channel, useChannelsMutater } from "stores/channels";
+import { Channel, useSetChannels } from "stores/channels";
 import { noCategoryValue } from "stores/channels/atom";
 import { APICategory, APIVoice } from "types/api/astvel";
 import { useAllCategories, useAllVoices } from "ui/guilds/hooks/swr";
@@ -8,14 +8,14 @@ const useReflectChannelChanges = (guildId: string | undefined) => {
   const apiCategories = useAllCategories(guildId);
   const apiVoices = useAllVoices(guildId);
 
-  const channelsMutater = useChannelsMutater();
+  const setChannels = useSetChannels();
 
   useEffect(() => {
     if (apiCategories.data === undefined || apiVoices.data === undefined) {
       return;
     }
 
-    channelsMutater(currentChannels => {
+    setChannels(currentChannels => {
       const apiCategoriesData = apiCategories.data as APICategory[];
       const apiVoicesData = apiVoices.data as APIVoice[];
 
@@ -65,7 +65,7 @@ const useReflectChannelChanges = (guildId: string | undefined) => {
 
       return returnChannels;
     });
-  }, [apiCategories.data, apiVoices.data, channelsMutater]);
+  }, [apiCategories.data, apiVoices.data, setChannels]);
 };
 
 export { useReflectChannelChanges };

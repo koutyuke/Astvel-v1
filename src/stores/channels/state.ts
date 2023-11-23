@@ -1,13 +1,11 @@
-import { useRecoilState, useRecoilValue, useResetRecoilState, useSetRecoilState } from "recoil";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
+import { useResetAtom } from "jotai/utils";
 import { ChannelsAtom } from "./atom";
-import { ChannelsSelectorFamily } from "./selectorFamily";
 
-export const useChannelsValue = () => useRecoilValue(ChannelsAtom);
+export const useChannelsValue = () => useAtomValue(ChannelsAtom);
 
-export const useChannelsMutater = () => useSetRecoilState(ChannelsAtom);
+export const useSetChannels = () => useSetAtom(ChannelsAtom);
 
-export const useChannelsState = () => useRecoilState(ChannelsAtom);
+export const useChannelsState = () => useAtom(ChannelsAtom);
 
-export const useIdChannelState = (id: string) => useRecoilValue(ChannelsSelectorFamily(id));
-
-export const useResetChannels = () => useResetRecoilState(ChannelsAtom);
+export const useResetChannels = () => useResetAtom(ChannelsAtom);
