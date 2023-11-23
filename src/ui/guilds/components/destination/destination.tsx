@@ -10,26 +10,28 @@ type Props = {
 } & Omit<ComponentPropsWithRef<"div">, "children">;
 
 const Destination: FC<Props> = ({ guildId, className }) => {
-  const { isLoading, error, data } = useSortableChannels(guildId);
+  const { isLoading, error, data: channels } = useSortableChannels(guildId);
 
-  if (isLoading) {
-    return (
-      <div className={twMerge("box-border animate-pulse rounded-lg border border-gray-500", className)}>loading</div>
-    );
-  }
-
-  if (error !== undefined || data === undefined) {
+  if (isLoading || error !== undefined || channels === undefined) {
     return null;
   }
 
   return (
-    <SortableContext items={data}>
+    <SortableContext items={channels}>
       <div
         className={twMerge("relative box-border h-full w-full rounded-lg border border-gray-500 bg-black-2", className)}
       >
+        {channels.length === 0 && (
+          <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center">
+            <p className="text-center leading-6 text-gray-500">
+              Oops, there is no authorized channel. <br />
+              Check with your server administrator.
+            </p>
+          </div>
+        )}
         <ScrollArea className="h-full w-full" type="auto">
           <div className="space-y-2.5 p-2.5">
-            {data.map(category => (
+            {channels.map(category => (
               <Category
                 data={category}
                 guildId={guildId}
