@@ -1,37 +1,33 @@
-import { useRecoilState, useRecoilValue, useResetRecoilState, useSetRecoilState } from "recoil";
-import { TeamTravelersSelectorFamily, VoiceTravelersSelectorFamily } from "./selectorFamily";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
+import { useResetAtom } from "jotai/utils";
 import { TeamTravelersAtom, TravelerSizeAtom, UnselectedTravelersAtom, VoiceTravelersAtom } from "./atom";
 
-export const useIdVoiceTravelerValue = (id: string) => useRecoilValue(VoiceTravelersSelectorFamily(id));
+export const useVoiceTravelersValue = () => useAtomValue(VoiceTravelersAtom);
 
-export const useVoiceTravelersValue = () => useRecoilValue(VoiceTravelersAtom);
+export const useSetVoiceTravelers = () => useSetAtom(VoiceTravelersAtom);
 
-export const useVoiceTravelersMutater = () => useSetRecoilState(VoiceTravelersAtom);
+export const useVoiceTravelersState = () => useAtom(VoiceTravelersAtom);
 
-export const useVoiceTravelersState = () => useRecoilState(VoiceTravelersAtom);
+export const useResetVoiceTravelers = () => useResetAtom(VoiceTravelersAtom);
 
-export const useResetVoiceTravelers = () => useResetRecoilState(VoiceTravelersAtom);
+export const useTeamTravelersValue = () => useAtomValue(TeamTravelersAtom);
 
-export const useIdTeamTravelersValue = (id: string) => useRecoilValue(TeamTravelersSelectorFamily(id));
+export const useSetTeamTravelers = () => useSetAtom(TeamTravelersAtom);
 
-export const useTeamTravelersValue = () => useRecoilValue(TeamTravelersAtom);
+export const useTeamTravelersState = () => useAtom(TeamTravelersAtom);
 
-export const useTeamTravelersMutater = () => useSetRecoilState(TeamTravelersAtom);
+export const useResetTeamTravelers = () => useResetAtom(TeamTravelersAtom);
 
-export const useTeamTravelersState = () => useRecoilState(TeamTravelersAtom);
+export const useUnselectedTravelersValue = () => useAtomValue(UnselectedTravelersAtom);
 
-export const useResetTeamTravelers = () => useResetRecoilState(TeamTravelersAtom);
+export const useSetUnselectedTravelers = () => useSetAtom(UnselectedTravelersAtom);
 
-export const useUnselectedTravelersValue = () => useRecoilValue(UnselectedTravelersAtom);
+export const useUnselectedTravelersState = () => useAtom(UnselectedTravelersAtom);
 
-export const useUnselectedTravelersMutater = () => useSetRecoilState(UnselectedTravelersAtom);
+export const useResetUnselectedTravelers = () => useResetAtom(UnselectedTravelersAtom);
 
-export const useUnselectedTravelersState = () => useRecoilState(UnselectedTravelersAtom);
+export const useTravelerSizeValue = () => useAtomValue(TravelerSizeAtom);
 
-export const useResetUnselectedTravelers = () => useResetRecoilState(UnselectedTravelersAtom);
+export const useSetTravelerSize = () => useSetAtom(TravelerSizeAtom);
 
-export const useTravelerSizeValue = () => useRecoilValue(TravelerSizeAtom);
-
-export const useTravelerSizeMutater = () => useSetRecoilState(TravelerSizeAtom);
-
-export const useTravelerSizeState = () => useRecoilState(TravelerSizeAtom);
+export const useTravelerSizeState = () => useAtom(TravelerSizeAtom);
