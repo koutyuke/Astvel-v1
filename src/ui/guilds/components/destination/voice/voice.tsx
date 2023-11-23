@@ -11,7 +11,7 @@ import { DraggableMember } from "features/dnd/components/models/traveler/member"
 import { DndData } from "types/models/dnd";
 import { twMerge } from "tailwind-merge";
 import { sortMoveY } from "ui/guilds/utils/sortMoveY";
-import { useIdVoiceTravelerValue, useTravelerSizeValue } from "stores/travelers/state";
+import { useTravelerSizeValue, useVoiceTravelersValue } from "stores/travelers/state";
 import { DraggableTeam } from "features/dnd/components/models/traveler/team";
 import { isPrivateChannel } from "utils/isPrivateVoiceChannel";
 import { tv } from "tailwind-variants";
@@ -34,7 +34,8 @@ const variant = tv({
 });
 
 const NoMemoVoice = ({ guildId, data: voiceData, spaceSize }: Props) => {
-  const travelers = useIdVoiceTravelerValue(voiceData.id);
+  const travelersList = useVoiceTravelersValue();
+  const travelers = travelersList.find(traveler => traveler.id === voiceData.id);
 
   const dndData: DndData = {
     type: "voice",
@@ -57,7 +58,7 @@ const NoMemoVoice = ({ guildId, data: voiceData, spaceSize }: Props) => {
   });
   const activeData = active?.data.current as DndData | undefined;
 
-  const [droppable, setDroppalbe] = useState(true);
+  const [droppable, setDroppable] = useState(true);
 
   const travelerSize = useTravelerSizeValue();
 
@@ -87,7 +88,7 @@ const NoMemoVoice = ({ guildId, data: voiceData, spaceSize }: Props) => {
       style={style}
       value={isDragging ? [] : undefined}
       onValueChange={data => {
-        setDroppalbe(data.length !== 0);
+        setDroppable(data.length !== 0);
       }}
     >
       <Accordion.Item
