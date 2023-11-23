@@ -44,16 +44,16 @@ const Content: FC<Props> = ({ guildId }) => {
         <ToolBar guildId={guildId} />
         <div
           className={twMerge(
-            "scrollber-hidden flex grow space-x-4 overflow-x-auto px-8 tablet:px-16",
+            "scrollbar-hidden flex flex-1 space-x-4 overflow-x-auto px-8 tablet:px-16",
             !isDragging && " snap-x snap-mandatory ",
           )}
         >
           <Destination
             guildId={guildId}
-            className={twMerge("w-1/3 min-w-[15rem] snap-center", !isDragging && "snap-center")}
+            className={twMerge("h-full w-1/3 min-w-[15rem]", !isDragging && "snap-center")}
           />
           <Unselected className={twMerge("w-1/3 min-w-[15rem]", !isDragging && "snap-center")} />
-          <Team className={twMerge("w-1/3 min-w-[15rem] snap-center", !isDragging && "snap-center")} />
+          <Team className={twMerge("w-1/3 min-w-[15rem]", !isDragging && "snap-center")} />
         </div>
       </div>
       <DndOverlay guildId={guildId} />

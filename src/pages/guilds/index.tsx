@@ -25,7 +25,7 @@ const Guilds: NextPageWithLayout = () => {
 };
 
 Guilds.getLayout = page => (
-  <Layout title="Guilds - Astvel" className="flex items-center justify-center pt-28">
+  <Layout title="Guilds - Astvel" className="flex items-center justify-center pt-24">
     {page}
   </Layout>
 );

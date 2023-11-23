@@ -9,7 +9,7 @@ import { Team } from "components/models/traveler/team";
 import { FC, memo } from "react";
 import { TravelerSize } from "stores/travelers";
 import { DndData } from "types/models/dnd";
-import { avatarUrlGen } from "utils/iconUrlGen";
+import { genUserAvatar } from "utils/iconUrl";
 import { permissionCheck } from "utils/permissionCheck";
 
 type Props = {
@@ -33,7 +33,7 @@ const NoMemoOverlayContents: FC<Props> = ({ guildId, active, size }) => {
     case "member":
       return (
         <Member
-          image={avatarUrlGen(activeData.data.id, activeData.data.avatar ?? activeData.data.userAvatar)}
+          image={genUserAvatar(activeData.data.id, activeData.data.avatar ?? activeData.data.userAvatar)}
           name={activeData.data.displayName}
           size={size}
           className="cursor-grabbing bg-black-3 outline outline-1 outline-green-500"

@@ -1,4 +1,4 @@
-import { guildIconUrlGen } from "utils/iconUrlGen";
+import { genGuildIcon } from "utils/iconUrl";
 import Image from "next/image";
 import { APIUserGuild } from "types/api/astvel";
 import { ComponentPropsWithoutRef, FC } from "react";
@@ -23,7 +23,7 @@ const GuildIcon: FC<IconProps> = ({ id, icon, name, className }) => {
       </div>
     );
   }
-  const iconUrl = guildIconUrlGen(id, icon);
+  const iconUrl = genGuildIcon(id, icon);
   return (
     <div className={twMerge("h-20 w-20 overflow-hidden rounded-full", className)}>
       <Image src={iconUrl} priority loading="eager" alt={`guild[${id}]-icon-image`} width={128} height={128} />

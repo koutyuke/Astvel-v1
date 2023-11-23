@@ -10,19 +10,15 @@ const DeleteAllTeams: FC<Props> = ({ deleteTeams }) => {
   return (
     <div className="flex flex-col space-y-4 rounded-lg border border-red-700 bg-red-700/10 p-4 text-red-500 ">
       <p>Delete all teams.</p>
-      <ul className="mx-2 space-y-1 text-white">
-        <li className="relative before:mr-2 before:inline-block before:h-1 before:w-1 before:rounded-full before:bg-red-500 before:align-middle before:content-['']">
-          Only teams will be deleted.
-        </li>
-        <li className="relative before:mr-2 before:inline-block before:h-1 before:w-1 before:rounded-full before:bg-red-500 before:align-middle before:content-['']">
-          Member will not be deleted
-        </li>
+      <ul className="mx-2 list-disc space-y-1 pl-4 text-white">
+        <li>Only teams will be deleted.</li>
+        <li>Members of the team will move to the unselected area.</li>
       </ul>
       <div className="flex w-fit space-x-2 self-end">
         {!confirm && (
           <BaseButton
             theme="danger"
-            className="h-fit w-fit bg-red-700/10 px-3 py-1 text-sm"
+            className="h-8 w-[4.5rem] bg-red-700/10 px-3 py-1 text-sm"
             onClick={() => {
               setConfirm(true);
             }}
@@ -34,7 +30,7 @@ const DeleteAllTeams: FC<Props> = ({ deleteTeams }) => {
           <div className="flex space-x-2">
             <BaseButton
               theme="danger"
-              className="h-fit w-fit bg-red-700/10 px-3 py-1 text-sm"
+              className="h-8 w-[4.5rem] bg-red-700/10 px-3 py-1 text-sm"
               onClick={() => {
                 deleteTeams();
               }}
@@ -42,8 +38,8 @@ const DeleteAllTeams: FC<Props> = ({ deleteTeams }) => {
               Done
             </BaseButton>
             <BaseButton
-              theme="nomal"
-              className="h-fit w-fit bg-black-1 px-3 py-1 text-sm hover:bg-black-3"
+              theme="normal"
+              className="h-8 w-[4.5rem] bg-black-1 px-3 py-1 text-sm hover:bg-black-3"
               onClick={() => {
                 setConfirm(false);
               }}

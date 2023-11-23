@@ -18,7 +18,7 @@ const variants = tv({
     }, // satisfies Record<Props["size"], string>,
     name: {
       small: "hidden",
-      regular: "block grow text-start",
+      regular: "block flex-1 text-start",
       large: "block w-16 text-center",
     }, // satisfies Record<Props["size"], string>,
     body: {
@@ -40,7 +40,7 @@ const NoMemoMember = forwardRef<HTMLDivElement, Props>(({ image, name, size, cla
       >
         <Image src={image} alt="Member Image" width={64} height={64} />
       </div>
-      <p className={twMerge("grow truncate text-xs", variants({ name: size }))}>{name}</p>
+      <p className={twMerge("truncate text-xs", variants({ name: size }))}>{name}</p>
     </div>
   );
 });

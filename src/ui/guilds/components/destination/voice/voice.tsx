@@ -13,7 +13,7 @@ import { twMerge } from "tailwind-merge";
 import { sortMoveY } from "ui/guilds/utils/sortMoveY";
 import { useIdVoiceTravelerValue, useTravelerSizeValue } from "stores/travelers/state";
 import { DraggableTeam } from "features/dnd/components/models/traveler/team";
-import { isPrivateVoiceChannel } from "utils/isPrivateVoiceChannel";
+import { isPrivateChannel } from "utils/isPrivateVoiceChannel";
 import { tv } from "tailwind-variants";
 
 type Props = {
@@ -74,7 +74,7 @@ const NoMemoVoice = ({ guildId, data: voiceData, spaceSize }: Props) => {
 
   const { members, teams } = travelers;
 
-  const isPrivate = isPrivateVoiceChannel(guildId, voiceData.permissionOverwriteRoles);
+  const isPrivate = isPrivateChannel(guildId, voiceData.permissionOverwriteRoles);
 
   return (
     <Accordion.Root

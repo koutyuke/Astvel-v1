@@ -2,7 +2,7 @@ import { Member } from "components/models/traveler/member";
 import { ComponentPropsWithoutRef } from "react";
 import { APIMember } from "types/api/astvel";
 import { DndData } from "types/models/dnd";
-import { avatarUrlGen } from "utils/iconUrlGen";
+import { genUserAvatar } from "utils/iconUrl";
 import { CSS } from "@dnd-kit/utilities";
 import { twMerge } from "tailwind-merge";
 import { useSortable } from "@dnd-kit/sortable";
@@ -26,7 +26,7 @@ const DraggableMember = ({ member, parentId, group }: Props) => {
     id,
     data: dragData,
   });
-  const image = avatarUrlGen(id, avatar ?? userAvatar);
+  const image = genUserAvatar(id, avatar ?? userAvatar);
   const style = {
     transform: CSS.Translate.toString(transform),
     transition,

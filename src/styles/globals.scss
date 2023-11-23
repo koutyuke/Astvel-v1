@@ -15,20 +15,13 @@ img {
 
 * {
   user-select: none;
-}
-
-@layer components {
-  .scrollber-hidden {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 ::-webkit-scrollbar {
   width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
