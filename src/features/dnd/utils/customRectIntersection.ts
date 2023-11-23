@@ -1,6 +1,6 @@
 import { Collision, CollisionDetection } from "@dnd-kit/core";
 
-const customRectIntersectin: CollisionDetection = ({
+const customRectIntersection: CollisionDetection = ({
   collisionRect: activeRect,
   droppableContainers,
   droppableRects,
@@ -48,4 +48,4 @@ const customRectIntersectin: CollisionDetection = ({
   });
 };
 
-export { customRectIntersectin };
+export { customRectIntersection };

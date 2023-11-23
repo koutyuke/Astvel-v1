@@ -1,6 +1,6 @@
 import { CollisionDetection, closestCenter } from "@dnd-kit/core";
 import { DndData } from "types/models/dnd";
-import { customRectIntersectin } from "./customRectIntersection";
+import { customRectIntersection } from "./customRectIntersection";
 
 const customCollisionDetectionAlgorithm: CollisionDetection = args => {
   const { active } = args;
@@ -39,7 +39,7 @@ const customCollisionDetectionAlgorithm: CollisionDetection = args => {
   }
 
   if (activeData.type === "member") {
-    const overMember = customRectIntersectin({
+    const overMember = customRectIntersection({
       ...args,
       droppableContainers: args.droppableContainers.filter(container => {
         const containerData = container.data.current as DndData | undefined;
@@ -47,7 +47,7 @@ const customCollisionDetectionAlgorithm: CollisionDetection = args => {
       }),
     });
     if (overMember.length === 0) {
-      return customRectIntersectin({
+      return customRectIntersection({
         ...args,
         droppableContainers: args.droppableContainers.filter(container => {
           const containerData = container.data.current as DndData | undefined;
@@ -63,7 +63,7 @@ const customCollisionDetectionAlgorithm: CollisionDetection = args => {
   }
 
   if (activeData.type === "travelerTeam") {
-    const overTravelerTeam = customRectIntersectin({
+    const overTravelerTeam = customRectIntersection({
       ...args,
       droppableContainers: args.droppableContainers.filter(container => {
         const containerData = container.data.current as DndData | undefined;
@@ -71,7 +71,7 @@ const customCollisionDetectionAlgorithm: CollisionDetection = args => {
       }),
     });
     if (overTravelerTeam.length === 0) {
-      return customRectIntersectin({
+      return customRectIntersection({
         ...args,
         droppableContainers: args.droppableContainers.filter(container => {
           const containerData = container.data.current as DndData | undefined;
