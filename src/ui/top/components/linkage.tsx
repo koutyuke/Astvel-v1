@@ -37,7 +37,11 @@ const Linkage: FC<Props> = ({ className }) => {
           <PermissionIcon size={56} className="m-auto stroke-green-500" />
         </div>
         <h3 className="text-3xl font-bold">Permission</h3>
-        <p className="text-lg text-gray-400 ">Protect the privileges granted to members of the server.</p>
+        <p className="text-lg text-gray-400 ">
+          Protect the privileges granted to members of the server.
+          <br />
+          You must have &quot;View Channel,&quot; &quot;Connect,&quot; or &quot;Move Member&quot; permission to use it.
+        </p>
       </div>
       <div className="col-[2_/_12]  flex min-h-full flex-col gap-4 rounded-lg bg-black-3 p-5 shadow-2xl  shadow-black tablet:col-[7_/_11]">
         <div className="flex h-20 w-20 items-center justify-center rounded-lg bg-black-1 shadow-[inset_0px_0px_16px_0px_#000]">
