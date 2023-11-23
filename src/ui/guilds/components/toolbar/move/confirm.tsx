@@ -1,7 +1,4 @@
 import { BaseButton } from "components/elements/button";
-import { CategoryIcon } from "components/icon/category";
-import { PrivateSpeakerIcon, SpeakerIcon } from "components/icon/speaker";
-import { TeamIcon } from "components/icon/team";
 import { Member } from "components/models/traveler/member";
 import { isPrivateVoiceChannel } from "utils/isPrivateVoiceChannel";
 import { APIMember } from "types/api/astvel";
@@ -14,7 +11,9 @@ import { FC } from "react";
 import axios from "axios";
 import { useValidatedSession } from "hooks/useValidatedSession";
 import { PlusIcon } from "components/icon/plus";
+import { ScrollArea } from "components/elements/scrollArea";
 import { ChannelWithTravelers, TeamWithMembers, VoiceWithTravelers } from "./type";
+import { Toggle } from "./toggle";
 
 type Props = {
   guildId: string;
@@ -80,68 +79,58 @@ const MoveConfirm: FC<Props> = ({ guildId, setOpen }) => {
           </p>
         )}
       </div>
-      <div className="box-border grow space-y-2 overflow-y-auto overflow-x-hidden rounded-lg border border-gray-500 p-2">
-        {moveCandidate.map(category => (
-          <div
-            className="box-border flex w-full flex-col space-y-2 rounded-lg border border-gray-500 p-2"
-            key={`move-candidate-${category.id}`}
-          >
-            <div className="flex space-x-2">
-              <CategoryIcon size={20} />
-              <p className="grow">{category.name}</p>
-            </div>
-            {category.voices.map(voice => {
-              const isPrivate = isPrivateVoiceChannel(guildId, voice.permissionOverwriteRoles);
-              return (
-                <div
-                  className="box-border flex grow flex-col space-y-1 rounded-lg border border-gray-500 p-2"
-                  key={`move-candidate-${voice.id}`}
-                >
-                  <div className="flex space-x-2">
-                    {isPrivate ? (
-                      <PrivateSpeakerIcon className="h-5 w-5" backgroundColor="bg-black-1" />
-                    ) : (
-                      <SpeakerIcon className="h-5 w-5" />
-                    )}
-                    <p className="grow">{voice.name}</p>
-                  </div>
-                  <div className="flex grow flex-wrap space-x-1 pl-1">
-                    {voice.members.map(member => (
-                      <Member
-                        key={`move-candidate-${member.id}`}
-                        name={member.displayName}
-                        image={avatarUrlGen(member.id, member.avatar ?? member.userAvatar)}
-                        size="small"
-                      />
-                    ))}
-                  </div>
-                  {voice.teams.map(team => (
-                    <div
-                      className="box-border flex grow flex-col space-y-1 rounded-lg border border-gray-500 p-2"
-                      key={`move-candidate-${team.id}`}
-                    >
-                      <div className="flex grow flex-wrap items-center space-x-1">
-                        <TeamIcon className="h-5 w-5" />
-                        <span className="w-5 text-center">{team.iconEmoji}</span>
-                        <p className="grow">{team.name}</p>
-                      </div>
-                      <div className="flex grow flex-wrap space-x-1">
-                        {team.members.map(member => (
-                          <Member
-                            key={`move-candidate-${member.id}`}
-                            name={member.displayName}
-                            image={avatarUrlGen(member.id, member.avatar ?? member.userAvatar)}
-                            size="small"
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  ))}
+      <div className="box-border h-1 w-full flex-1 overflow-x-hidden rounded-lg border border-gray-500">
+        <ScrollArea className="h-full w-full" type="auto">
+          <div className="w-full space-y-2 p-2">
+            {moveCandidate.map(category => (
+              <Toggle type="category" name={category.name} key={`move-confirm-${category.id}`}>
+                <div className="flex w-full flex-col gap-y-2">
+                  {category.voices.map(voice => {
+                    const isPrivate = isPrivateVoiceChannel(guildId, voice.permissionOverwriteRoles);
+                    return (
+                      <Toggle
+                        type={isPrivate ? "privateVoice" : "voice"}
+                        name={voice.name}
+                        key={`move-confirm-${voice.id}`}
+                      >
+                        <div className="flex w-full flex-col gap-y-2">
+                          {voice.members.length !== 0 && (
+                            <div className="flex w-full flex-col">
+                              {voice.members.map(member => (
+                                <Member
+                                  key={`move-confirm-${member.id}`}
+                                  name={member.displayName}
+                                  image={avatarUrlGen(member.id, member.avatar ?? member.userAvatar)}
+                                  size="regular"
+                                />
+                              ))}
+                            </div>
+                          )}
+                          <div className="flex w-full flex-col gap-y-2">
+                            {voice.teams.map(team => (
+                              <Toggle type="team" name={team.name} key={`move-confirm-${team.id}`}>
+                                <div className="flex w-full flex-col">
+                                  {team.members.map(member => (
+                                    <Member
+                                      key={`move-confirm-${member.id}`}
+                                      name={member.displayName}
+                                      image={avatarUrlGen(member.id, member.avatar ?? member.userAvatar)}
+                                      size="regular"
+                                    />
+                                  ))}
+                                </div>
+                              </Toggle>
+                            ))}
+                          </div>
+                        </div>
+                      </Toggle>
+                    );
+                  })}
                 </div>
-              );
-            })}
+              </Toggle>
+            ))}
           </div>
-        ))}
+        </ScrollArea>
       </div>
 
       <div className="flex items-center justify-between">
