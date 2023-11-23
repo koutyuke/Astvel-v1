@@ -1,4 +1,4 @@
-import { atom } from "recoil";
+import { atomWithReset } from "jotai/utils";
 import { Channel, NoCategory } from "./type";
 
 export const noCategoryValue: NoCategory = {
@@ -9,12 +9,9 @@ export const noCategoryValue: NoCategory = {
   parentId: null,
 };
 
-export const ChannelsAtom = atom<Channel[]>({
-  key: "Channels",
-  default: [
-    {
-      ...noCategoryValue,
-      voices: [],
-    },
-  ],
-});
+export const ChannelsAtom = atomWithReset<Channel[]>([
+  {
+    ...noCategoryValue,
+    voices: [],
+  },
+]);
