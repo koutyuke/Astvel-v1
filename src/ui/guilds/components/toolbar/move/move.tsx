@@ -32,7 +32,7 @@ const Move: FC<Props> = ({ guildId }) => {
   const AddDialog = createDialog(
     <span className="relative flex h-9 w-9 items-center justify-center rounded-md border border-transparent transition hover:border-gray-500 hover:bg-black-3">
       {isSelected && (
-        <span className="absolute right-0 top-0 flex h-2  w-2 -translate-y-1/2 translate-x-1/2 items-center justify-center">
+        <span className="absolute right-1.5 top-1.5 flex h-2  w-2 -translate-y-1/2 translate-x-1/2 items-center justify-center">
           <span className="absolute inline-flex h-full w-full animate-[ping_2s_ease-in-out_infinite] rounded-full bg-green-400 " />
           <span className="relative inline-flex h-[7px] w-[7px] rounded-full bg-green-500" />
         </span>
