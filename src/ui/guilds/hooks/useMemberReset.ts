@@ -1,10 +1,10 @@
-import { useTeamTravelersState, useUnselectedTravelersMutater, useVoiceTravelersState } from "stores/travelers";
+import { useTeamTravelersState, useSetUnselectedTravelers, useVoiceTravelersState } from "stores/travelers";
 import { TravelerTeam } from "stores/travelers/type";
 import { APIMember } from "types/api/astvel";
 
 const useMemberReset = () => {
   const [teamTravelers, teamMutater] = useTeamTravelersState();
-  const unselectedMutater = useUnselectedTravelersMutater();
+  const unselectedMutater = useSetUnselectedTravelers();
   const [voiceTravelers, voiceMutater] = useVoiceTravelersState();
 
   return () => {
