@@ -1,11 +1,11 @@
 import { BaseButton } from "components/elements/button";
 import { Member } from "components/models/traveler/member";
-import { isPrivateVoiceChannel } from "utils/isPrivateVoiceChannel";
+import { isPrivateChannel } from "utils/isPrivateVoiceChannel";
 import { APIMember } from "types/api/astvel";
 import { TravelerTeam } from "stores/travelers/type";
 import { useChannelsValue } from "stores/channels";
 import { useTeamTravelersValue, useVoiceTravelersValue } from "stores/travelers";
-import { avatarUrlGen } from "utils/iconUrlGen";
+import { genUserAvatar } from "utils/iconUrl";
 import { useSetToast } from "features/toast/hooks";
 import { FC } from "react";
 import axios from "axios";
@@ -86,7 +86,7 @@ const MoveConfirm: FC<Props> = ({ guildId, setOpen }) => {
               <Toggle type="category" name={category.name} key={`move-confirm-${category.id}`}>
                 <div className="flex w-full flex-col gap-y-2">
                   {category.voices.map(voice => {
-                    const isPrivate = isPrivateVoiceChannel(guildId, voice.permissionOverwriteRoles);
+                    const isPrivate = isPrivateChannel(guildId, voice.permissionOverwriteRoles);
                     return (
                       <Toggle
                         type={isPrivate ? "privateVoice" : "voice"}
@@ -100,7 +100,7 @@ const MoveConfirm: FC<Props> = ({ guildId, setOpen }) => {
                                 <Member
                                   key={`move-confirm-${member.id}`}
                                   name={member.displayName}
-                                  image={avatarUrlGen(member.id, member.avatar ?? member.userAvatar)}
+                                  image={genUserAvatar(member.id, member.avatar ?? member.userAvatar)}
                                   size="regular"
                                 />
                               ))}
@@ -114,7 +114,7 @@ const MoveConfirm: FC<Props> = ({ guildId, setOpen }) => {
                                     <Member
                                       key={`move-confirm-${member.id}`}
                                       name={member.displayName}
-                                      image={avatarUrlGen(member.id, member.avatar ?? member.userAvatar)}
+                                      image={genUserAvatar(member.id, member.avatar ?? member.userAvatar)}
                                       size="regular"
                                     />
                                   ))}
