@@ -42,7 +42,7 @@ const TeamSettingMenu: FC<Props> = ({ setClose }) => {
   };
 
   return (
-    <div className="flex aspect-[9/16] max-h-[90svh] w-[30rem] max-w-[90vw] flex-col items-center rounded-lg bg-black-1 p-6 outline outline-1 outline-gray-500 tablet:aspect-[3/4]">
+    <div className="flex aspect-[9/16] max-h-[90svh] w-[30rem] max-w-[90vw] flex-col items-center rounded-lg bg-black-1 px-2 py-6 outline outline-1 outline-gray-500 tablet:aspect-[3/4] tablet:px-6">
       <p className="mb-4 text-center text-2xl font-semibold">Team Setting</p>
       <div className="relative inline-block h-1 w-full flex-1 overflow-hidden">
         <ScrollArea className="h-full w-full" type="hover">
@@ -83,7 +83,7 @@ const TeamSettingMenu: FC<Props> = ({ setClose }) => {
                     ))}
                   </div>
                 </li>
-                <li className="w-full space-y-2">
+                <li className="w-full space-y-4">
                   <span>Danger Zone</span>
                   <DeleteAllTeams deleteTeams={deleteTeams} />
                 </li>
