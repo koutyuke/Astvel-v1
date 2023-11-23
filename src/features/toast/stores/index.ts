@@ -1,9 +1,9 @@
 export {
-  useToastMutater,
+  useSetToast,
   useToastState,
   useToastValue,
   useToastRefId,
-  useToastRefIdMutater,
+  useSetToastRefId as useSetRefId,
   useToastRefIdState,
 } from "./state";
 export type { Toast } from "./type";

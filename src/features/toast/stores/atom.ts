@@ -1,17 +1,11 @@
-import { atom } from "recoil";
+import { atom } from "jotai";
 import { Toast } from "./type";
 
 export const ToastAtom = atom<Toast>({
-  key: "toast",
-  default: {
-    open: false,
-    title: "",
-    message: "",
-    status: "success",
-  },
+  open: false,
+  title: "",
+  message: "",
+  status: "success",
 });
 
-export const ToastRefIdAtom = atom<number>({
-  key: "toastRefId",
-  default: 0,
-});
+export const ToastRefIdAtom = atom<number>(0);
