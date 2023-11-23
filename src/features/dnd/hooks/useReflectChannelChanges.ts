@@ -63,7 +63,7 @@ const useReflectChannelChanges = (guildId: string | undefined) => {
         }
       });
 
-      return returnChannels;
+      return returnChannels.filter(category => category.voices.length > 0);
     });
   }, [apiCategories.data, apiVoices.data, setChannels]);
 };
